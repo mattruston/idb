@@ -3,6 +3,8 @@ A site.
 
 ### Features
 
+- Connected to git!
+
 ### Navigation
 
 ##### Main navigation bar
