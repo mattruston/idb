@@ -6,6 +6,8 @@ $sans-serif: 'Lato', sans-serif;
 $regular: 400;
 $bold: 700;
 
+$nav-input-width: 250px;
+
 body {
 	font-family: $sans-serif !important;
 	background-color: $background-color;
@@ -21,7 +23,7 @@ body {
 
 .nav-input-group {
 	.nav-input {
-		width: 250px; 
+		width: $nav-input-width; 
 		border-radius: 2px 0px 0px 2px; 
 		border-color: $primary;
 

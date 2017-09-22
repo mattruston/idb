@@ -1,0 +1,19 @@
+{
+  "name": "vgdb",
+  "version": "0.0.1",
+  "description": "A site.",
+  "main": "index.js",
+  "scripts": {
+    "style": "sass --watch styles.scss:styles.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattruston/idb.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mattruston/idb/issues"
+  },
+  "homepage": "https://github.com/mattruston/idb#readme"
+}
