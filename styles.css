@@ -1,29 +1,56 @@
+body {
+  font-family: "Lato", sans-serif !important;
+  background-color: #f5f5f5 !important; }
+
+.primary-text {
+  color: #2de5c6 !important; }
+
+.primary {
+  background-color: #2de5c6; }
+
 .row-display {
-	padding: 1em 0em;
-}
+  padding: 1.25em 0em 0em; }
+  .row-display .row-title {
+    font-size: 2rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: transform .5s ease; }
+    .row-display .row-title:hover {
+      color: #2de5c6;
+      transform: translatex(5px); }
+      .row-display .row-title:hover:after {
+        content: " ";
+        position: relative;
+        border: 3px solid #2de5c6;
+        border-left: 0;
+        border-bottom: 0;
+        display: inline-block;
+        height: 0.4em;
+        width: 0.4em;
+        left: 6px;
+        bottom: 2px;
+        transform: rotate(45deg); }
+  .row-display .row-item {
+    height: 12em;
+    width: 9em;
+    background-color: #fff;
+    display: inline-block;
+    margin: .5em 1em 0em 0em;
+    vertical-align: top;
+    cursor: pointer;
+    transition: transform .3s ease; }
+    .row-display .row-item:hover {
+      transform: scale(1.05, 1.05);
+      box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.3); }
+    .row-display .row-item .row-item-body {
+      width: inherit;
+      height: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-weight: 700; }
+      .row-display .row-item .row-item-body h1 {
+        font-size: .75em; }
 
-.row-item {
-	height: 12em;
-	width: 9em;
-	background-color: #dbdbdb;
-	display: inline-block;
-	margin: 0em 1em 1em 0em;
-	vertical-align: top;
-
-	color: #fff;
-	font-family: 'Lato', sans-serif;
-	font-weight: 700;
-}
-
-.row-item-body {
-	width: inherit;
-	height: inherit;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	clear: both;
-}
-
-.row-item-body > h1 {
-	font-size: .75em;
-}
+/*# sourceMappingURL=styles.css.map */
