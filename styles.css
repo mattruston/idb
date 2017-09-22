@@ -1,0 +1,29 @@
+.row-display {
+	padding: 1em 0em;
+}
+
+.row-item {
+	height: 12em;
+	width: 9em;
+	background-color: #dbdbdb;
+	display: inline-block;
+	margin: 0em 1em 1em 0em;
+	vertical-align: top;
+
+	color: #fff;
+	font-family: 'Lato', sans-serif;
+	font-weight: 700;
+}
+
+.row-item-body {
+	width: inherit;
+	height: inherit;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	clear: both;
+}
+
+.row-item-body > h1 {
+	font-size: .75em;
+}
