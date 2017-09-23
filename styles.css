@@ -10,17 +10,23 @@ body {
 
 .nav-input-group .nav-input {
   width: 250px;
-  border-radius: 2px 0px 0px 2px;
-  border-color: #2de5c6;
+  border-radius: 4px 0px 0px 4px;
+  border-color: #d3d7db;
+  border-width: 1.5px;
+  border-right: none;
   line-height: 1;
-  padding: .25rem .75rem; }
+  padding: .25rem .75rem;
+  background-color: #d3d7db; }
+  .nav-input-group .nav-input:focus {
+    background-color: #fff;
+    border-color: #2de5c6; }
 .nav-input-group .nav-input-button {
-  border-radius: 0px 2px 2px 0px;
+  border-radius: 0px 4px 4px 0px;
   border-color: #2de5c6;
-  background-color: transparent;
-  color: #2de5c6; }
+  background-color: #2de5c6;
+  color: #fff; }
   .nav-input-group .nav-input-button:hover {
-    background-color: #2de5c6;
+    background-color: #1bddbc;
     color: #fff; }
 
 .row-display {

@@ -7,6 +7,8 @@ $regular: 400;
 $bold: 700;
 
 $nav-input-width: 250px;
+$nav-input-background: #d3d7db;
+$nav-input-border-radius: 4px;
 
 body {
 	font-family: $sans-serif !important;
@@ -24,20 +26,27 @@ body {
 .nav-input-group {
 	.nav-input {
 		width: $nav-input-width; 
-		border-radius: 2px 0px 0px 2px; 
-		border-color: $primary;
-
+		border-radius: $nav-input-border-radius 0px 0px $nav-input-border-radius; 
+		border-color: $nav-input-background;
+		border-width: 1.5px;
+		border-right: none;
 		line-height: 1;
 		padding: .25rem .75rem;
+		background-color: $nav-input-background;
+
+		&:focus {
+			background-color: #fff;
+			border-color: $primary;
+		}
 	}
 	.nav-input-button {
-		border-radius: 0px 2px 2px 0px;
+		border-radius: 0px $nav-input-border-radius $nav-input-border-radius 0px;
 		border-color: $primary;
-		background-color: transparent;
-		color: $primary;
+		background-color: $primary;
+		color: #fff;
 
 		&:hover {
-			background-color: $primary;
+			background-color: darken($primary, 5%);
 			color: #fff;
 		}
 	}
