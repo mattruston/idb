@@ -8,7 +8,7 @@ $bold: 700;
 
 $nav-input-width: 250px;
 $nav-input-background: #d3d7db;
-$nav-input-border-radius: 4px;
+$nav-input-border-radius: 0px;
 
 body {
 	font-family: $sans-serif !important;
@@ -36,7 +36,7 @@ body {
 
 		&:focus {
 			background-color: #fff;
-			border-color: $primary;
+			border-color: #fff;
 		}
 	}
 	.nav-input-button {
@@ -60,6 +60,7 @@ body {
 		font-weight: $regular;
 		cursor: pointer;
 		transition: transform .5s ease;
+		width: fit-content;
 
 		&:hover {
 			color: $primary;

@@ -10,7 +10,7 @@ body {
 
 .nav-input-group .nav-input {
   width: 250px;
-  border-radius: 4px 0px 0px 4px;
+  border-radius: 0px 0px 0px 0px;
   border-color: #d3d7db;
   border-width: 1.5px;
   border-right: none;
@@ -19,9 +19,9 @@ body {
   background-color: #d3d7db; }
   .nav-input-group .nav-input:focus {
     background-color: #fff;
-    border-color: #2de5c6; }
+    border-color: #fff; }
 .nav-input-group .nav-input-button {
-  border-radius: 0px 4px 4px 0px;
+  border-radius: 0px 0px 0px 0px;
   border-color: #2de5c6;
   background-color: #2de5c6;
   color: #fff; }
@@ -35,7 +35,8 @@ body {
     font-size: 2rem;
     font-weight: 400;
     cursor: pointer;
-    transition: transform .5s ease; }
+    transition: transform .5s ease;
+    width: fit-content; }
     .row-display .row-title:hover {
       color: #2de5c6;
       transform: translatex(5px); }
