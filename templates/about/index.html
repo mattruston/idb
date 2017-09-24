@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>gamingdb</title>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+</head>
+<body>
+	<span>
+		<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark justify-content-between">
+			<div class="container">
+				<a class="navbar-brand primary-text" href="/">gamingdb</a>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<form class="d-flex flex-row nav-input-group">
+						<input class="form-control nav-input" type="text" placeholder="Search" aria-label="Search">
+					    <button class="btn nav-input-button" type="submit">Search</button>
+					</form>
+					<div class="d-inline-flex flex-row justify-content-end w-100">
+						<ul class="nav navbar-nav navbar-right">
+					    	<li class="nav-item active"><a class="nav-link" href="/about">About</a></li>
+					        <li class="nav-item"><a class="nav-link" href="/games">Games</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/developers">Developers</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/platforms">Platforms</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/characters">Characters</a></li>
+					    </ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</span>
+	<div class="container">
+		<div class="team-intro">
+			<div class="team-name">Team xXGamersXx</div>
+			<div class="description">A website for all of those games.</div>
+		</div>
+		<div class="row">
+			<div class="col-sm">
+				<a class="about-card" href="https://github.com/Jaredk3nt" target="_blank">
+					<div class="about-img">
+						<img src="media/jared.jpg" alt="Jared">
+					</div>
+					<div class="about-content">
+						<div class="name">Jared Jones</div>
+						<div class="about-content-item description">
+							<div class="detail">Hi I'm Jared. I am a senior CS student.</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Responsibilities:</div>
+							<div class="detail">Front-end</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Commits:</div>
+							<div class="detail">5</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Issues:</div>
+							<div class="detail">5</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Unit Tests:</div>
+							<div class="detail">5</div>
+						</div>
+					</div>
+				</a>
+			</div>
+
+			<div class="col-sm">
+				<a class="about-card" href="https://github.com/jmpo1618" target="_blank">
+					<div class="about-img">
+						<img src="media/juan.jpg" alt="Juan">
+					</div>
+					<div class="about-content">
+						<div class="name">Juan M. Penaranda</div>
+						<div class="about-content-item description">
+							<div class="detail">Hi I'm Juan. I am a senior CS student.</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Responsibilities:</div>
+							<div class="detail">Back-end</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Commits:</div>
+							<div class="detail">5</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Issues:</div>
+							<div class="detail">5</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Unit Tests:</div>
+							<div class="detail">5</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm">
+				<a class="about-card" href="https://github.com/derektolliver" target="_blank">
+					<div class="about-img">
+						<img src="media/derek.jpg" alt="Derek">
+					</div>
+					<div class="about-content">
+						<div class="name">Derek Tolliver</div>
+						<div class="about-content-item description">
+							<div class="detail">Hi I'm Derek. I am a senior in CS.</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Responsibilities:</div>
+							<div class="detail">Backend</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Commits:</div>
+							<div class="detail">3</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Issues:</div>
+							<div class="detail">3</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Unit Tests:</div>
+							<div class="detail">3</div>
+						</div>
+					</div>
+				</a>
+			</div>
+
+			<div class="col-sm">
+				<a class="about-card" href="https://github.com/KishanRPatel" target="_blank">
+					<div class="about-img">
+						<img src="media/kishan.jpg" alt="Kishan">
+					</div>
+					<div class="about-content">
+						<div class="name">Kishan Patel</div>
+						<div class="about-content-item description">
+							<div class="detail">Hi I'm Kishan. I am a junior CS student.</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Responsibilities:</div>
+							<div class="detail">Front-end</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Commits:</div>
+							<div class="detail">5</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Issues:</div>
+							<div class="detail">5</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Unit Tests:</div>
+							<div class="detail">5</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="row justify-content-md-center">
+			<div class="col-sm-6">
+				<a class="about-card" href="https://github.com/mattruston" target="_blank">
+					<div class="about-img">
+						<img src="media/matt.jpg" alt="Matt">
+					</div>
+					<div class="about-content">
+						<div class="name">Matt Ruston</div>
+						<div class="about-content-item description">
+							<div class="detail">Hi I'm Matt. I am a senior CS student.</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Responsibilities:</div>
+							<div class="detail">Dev-ops</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Commits:</div>
+							<div class="detail">5</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Issues:</div>
+							<div class="detail">5</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Unit Tests:</div>
+							<div class="detail">5</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">
+		<a class="link" href="https://github.com/mattruston/idb">Check out the project on Github</a>
+	</div>
+</body>
+</html>

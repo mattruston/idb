@@ -1,0 +1,68 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# VGDB
+
+Video Game Database for UT Austin SWE project IDB
+
+## Games [/games]
+
+### List Games [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "123",
+                "title": "Overwatch",
+                "releaseDate": "2015",
+                "description": "...",
+                "genres": [
+                    "genre_id",
+                    "genre_id
+                ],
+                "platform": [
+                    "PC",
+                    "PS4",
+                    "XBOX1"
+                ],
+                "image": "https://....com/image.png",
+                "avgRating": "8.2",
+                "numRatings": "1234567",
+                "characters": [
+                    "char_id_1",
+                    "char_id_2"
+                ],
+                "playerPerspective": [
+                    "First Person",
+                    "Third Person
+                ],
+                "playModes": [
+                    "Single Player",
+                    "Online Multiplayer"
+                ],
+                "screenshots": [
+                    "http://urltoimage.com/image.png"
+                ],
+                "videos": [
+                    "http://urltovideo.com/video.mp4"
+                ],
+                "rating": [
+                    { 
+                        "title": "ESRB",
+                        "rating": "T"
+                    },
+                    {
+                        "title": "PEGI",
+                        "rating": "18"
+                    }
+                ],
+                "dlc": [
+                    "DLC Title"
+                ],
+                "expansions": [
+                    "Expansion Title"
+                ]
+                
+            }
+        ]
