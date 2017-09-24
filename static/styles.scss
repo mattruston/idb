@@ -27,8 +27,8 @@ body {
 
 .nav-input-group {
 	.nav-input {
-		width: $nav-input-width; 
-		border-radius: $nav-input-border-radius 0px 0px $nav-input-border-radius; 
+		width: $nav-input-width;
+		border-radius: $nav-input-border-radius 0px 0px $nav-input-border-radius;
 		border-color: $nav-input-background;
 		border-width: 1.5px;
 		border-right: none;
@@ -83,7 +83,7 @@ body {
 		}
 	}
 	.row-item {
-		height: 12em;
+			height: 12em;
 	    width: 9em;
 	    background-color: #fff;
 	    display: inline-block;
@@ -148,7 +148,7 @@ body {
 		vertical-align: top;
 		img {
 			width: 100%;
-		}	
+		}
 	}
 	.about-content {
 		display: inline-block;
@@ -178,12 +178,29 @@ body {
 	}
 }
 
+.grid-intro {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	.grid-name {
+		font-weight: $bold;
+		font-size: 2rem;
+		color: $primary;
+	}
+	.description {
+		font-size: 1rem;
+		padding-left: .25em;
+	}
+}
 
 .grid-item {
+		height: 12em;
+		width: 9em;
     background-color: #fff;
     vertical-align: top;
     cursor: pointer;
     transition: transform .3s ease;
+		background: url(url) no-repeat center;
+		background-size: contain;
 
     &:hover {
     	transform: scale(1.05, 1.05);
