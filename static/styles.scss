@@ -1,0 +1,222 @@
+$background-color:  #f5f5f5 !important;
+
+$primary: #2de5c6;
+
+$sans-serif: 'Lato', sans-serif;
+$regular: 400;
+$bold: 700;
+
+$nav-input-width: 250px;
+$nav-input-background: #d3d7db;
+$nav-input-border-radius: 0px;
+
+$text-color: #000;
+
+body {
+	font-family: $sans-serif !important;
+	background-color: $background-color;
+}
+
+.primary-text {
+	color: $primary !important;
+}
+
+.primary {
+	background-color: $primary;
+}
+
+.nav-input-group {
+	.nav-input {
+		width: $nav-input-width; 
+		border-radius: $nav-input-border-radius 0px 0px $nav-input-border-radius; 
+		border-color: $nav-input-background;
+		border-width: 1.5px;
+		border-right: none;
+		line-height: 1;
+		padding: .25rem .75rem;
+		background-color: $nav-input-background;
+
+		&:focus {
+			background-color: #fff;
+			border-color: #fff;
+		}
+	}
+	.nav-input-button {
+		border-radius: 0px $nav-input-border-radius $nav-input-border-radius 0px;
+		border-color: $primary;
+		background-color: $primary;
+		color: #fff;
+
+		&:hover {
+			background-color: darken($primary, 5%);
+			color: #fff;
+		}
+	}
+}
+
+.row-display {
+	padding: 1.25em 0em 0em;
+
+	.row-title {
+		font-size: 2rem;
+		font-weight: $regular;
+		cursor: pointer;
+		transition: transform .5s ease;
+		width: fit-content;
+
+		&:hover {
+			color: $primary;
+			transform: translatex(5px);
+
+			&:after {
+				content: " ";
+ 				position: relative;
+                border: 3px solid $primary;
+                border-left: 0; border-bottom: 0;
+                display: inline-block;
+                height: 0.4em;
+                width: 0.4em;
+                left: 6px;
+                bottom:2px;
+                transform: rotate(45deg);
+			}
+		}
+	}
+	.row-item {
+		height: 12em;
+	    width: 9em;
+	    background-color: #fff;
+	    display: inline-block;
+	    margin: .5em 1em 0em 0em;
+	    vertical-align: top;
+	    cursor: pointer;
+	    transition: transform .3s ease;
+
+	    &:hover {
+	    	transform: scale(1.05, 1.05);
+	    	box-shadow: 0px 1px 6px rgba(0, 0, 0, .3);
+	    }
+	    .row-item-body {
+	    	width: inherit;
+		    height: inherit;
+		    display: flex;
+		    align-items: center;
+		    justify-content: center;
+
+	    	color: #000;
+		    font-weight: 700;
+
+		    h1 {
+		    	font-size: .75em;
+		    }
+	    }
+	}
+}
+
+.team-intro {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	.team-name {
+		font-weight: $bold;
+		font-size: 2rem;
+		color: $primary;
+	}
+	.description {
+		font-size: 1rem;
+		padding-left: .25em;
+	}
+}
+
+.about-card {
+	box-sizing: border-box;
+	background-color: #fff;
+	padding: 1em;
+	display: inline-block;
+	transition: transform .5s ease;
+	margin: 1em 0em;
+	color: $text-color;
+	text-decoration-color: $text-color;
+
+	&:hover {
+    	transform: scale(1.05, 1.05);
+    	box-shadow: 0px 1px 6px rgba(0, 0, 0, .3);
+    	color: $text-color;
+    }
+	.about-img {
+		display: inline-block;
+		width: 40%;
+		vertical-align: top;
+		img {
+			width: 100%;
+		}	
+	}
+	.about-content {
+		display: inline-block;
+		width: 55%;
+		padding-left: .5em;
+
+		.name {
+			font-weight: $bold;
+			font-size: 1.4rem;
+			margin-bottom: .25em;
+		}
+		.about-content-item {
+			margin-bottom: .15em;
+
+			&.description {
+				margin-bottom: .25em;
+				font-size: 1rem;
+			}
+			.title {
+				display: inline-block;
+				font-weight: $bold;
+			}
+			.detail {
+				display: inline-block;
+			}
+		}
+	}
+}
+
+
+.grid-item {
+    background-color: #fff;
+    vertical-align: top;
+    cursor: pointer;
+    transition: transform .3s ease;
+
+    &:hover {
+    	transform: scale(1.05, 1.05);
+    	box-shadow: 0px 1px 6px rgba(0, 0, 0, .3);
+    }
+    .row-item-body {
+    	width: inherit;
+	    height: inherit;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+    	color: $text-color;
+	    font-weight: 700;
+
+	    h1 {
+	    	font-size: .75em;
+	    }
+    }
+}
+
+.footer {
+	width: 100%;
+	margin-top: 4em;
+	min-height: 5em;
+	text-align: center;
+	background-color: $primary;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.link {
+		font-weight: $bold;
+		font-size: 1em;
+		color: #fff;
+	}
+}
