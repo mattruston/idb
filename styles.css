@@ -143,4 +143,18 @@ body {
     .grid-item .row-item-body h1 {
       font-size: .75em; }
 
+.footer {
+  width: 100%;
+  margin-top: 4em;
+  min-height: 5em;
+  text-align: center;
+  background-color: #2de5c6;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .footer .link {
+    font-weight: 700;
+    font-size: 1em;
+    color: #fff; }
+
 /*# sourceMappingURL=styles.css.map */

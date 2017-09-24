@@ -203,3 +203,20 @@ body {
 	    }
     }
 }
+
+.footer {
+	width: 100%;
+	margin-top: 4em;
+	min-height: 5em;
+	text-align: center;
+	background-color: $primary;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.link {
+		font-weight: $bold;
+		font-size: 1em;
+		color: #fff;
+	}
+}
