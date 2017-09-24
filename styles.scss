@@ -113,6 +113,20 @@ body {
 	}
 }
 
+.team-intro {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	.team-name {
+		font-weight: $bold;
+		font-size: 2rem;
+		color: $primary;
+	}
+	.description {
+		font-size: 1rem;
+		padding-left: .25em;
+	}
+}
+
 .about-card {
 	box-sizing: border-box;
 	background-color: #fff;
