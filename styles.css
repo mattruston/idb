@@ -75,4 +75,42 @@ body {
       .row-display .row-item .row-item-body h1 {
         font-size: .75em; }
 
+.about-card {
+  box-sizing: border-box;
+  background-color: #fff;
+  padding: 1em;
+  display: inline-block;
+  transition: transform .5s ease;
+  margin: 1em 0em;
+  color: #000;
+  text-decoration-color: #000; }
+  .about-card:hover {
+    transform: scale(1.05, 1.05);
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.3);
+    color: #000; }
+  .about-card .about-img {
+    display: inline-block;
+    width: 40%;
+    vertical-align: top; }
+    .about-card .about-img img {
+      width: 100%; }
+  .about-card .about-content {
+    display: inline-block;
+    width: 55%;
+    padding-left: .5em; }
+    .about-card .about-content .name {
+      font-weight: 700;
+      font-size: 1.4rem;
+      margin-bottom: .25em; }
+    .about-card .about-content .about-content-item {
+      margin-bottom: .15em; }
+      .about-card .about-content .about-content-item.description {
+        margin-bottom: .25em;
+        font-size: 1rem; }
+      .about-card .about-content .about-content-item .title {
+        display: inline-block;
+        font-weight: 700; }
+      .about-card .about-content .about-content-item .detail {
+        display: inline-block; }
+
 /*# sourceMappingURL=styles.css.map */
