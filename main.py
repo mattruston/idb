@@ -45,6 +45,18 @@ def nintendo():
 def platforms():
     return render_template('/platforms/index.html')
 
+@app.route("/platform/playstation-3")
+def playstation3():
+    return render_template('/platforms/platforms/playstation-3.html')
+
+@app.route("/platform/xbox-360")
+def xbox360():
+    return render_template('/platforms/platforms/xbox-360.html')
+
+@app.route("/platform/wii")
+def wii():
+    return render_template('/platforms/platforms/wii.html')
+
 @app.route("/characters")
 def characters():
     return render_template('/characters/index.html')

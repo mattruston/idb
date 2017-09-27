@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>gamingdb Platforms</title>
+	<title>gamingdb -- Nintendo Wii</title>
 	<meta name=viewport content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -24,9 +24,9 @@
 					<div class="d-inline-flex flex-row justify-content-end w-100">
 						<ul class="nav navbar-nav navbar-right">
 					    	<li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-					        <li class="nav-item"><a class="nav-link" href="/games">Games</a></li><!--
+					        <li class="nav-item active"><a class="nav-link" href="/games">Games</a></li><!--
 					     --><li class="nav-item"><a class="nav-link" href="/developers">Developers</a></li><!--
-					     --><li class="nav-item active"><a class="nav-link" href="/platforms">Platforms</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/platforms">Platforms</a></li><!--
 					     --><li class="nav-item"><a class="nav-link" href="/characters">Characters</a></li>
 					    </ul>
 					</div>
@@ -36,38 +36,27 @@
 		</nav>
 	</span>
 
-	<div class="container">
-		<div class="grid-intro">
-			<div class="grid-name">Platforms</div>
-			<div class="description">A page for all of those platforms.</div>
+	<div class="page-body">
+		<div class="info-screen">
+			<div class="side-bar">
+				<img src="{{ url_for('static', filename='media/nintendo-wii-console.jpg') }}" alt="Nintendo Wii">
+				<div class="info-item">
+					<div class="title">Games</div>
+					<a href="/game/new-super-mario-bros-wii" class="info">New Super Mario Bros Wii</a>
+				</div>
+				<div class="info-item">
+					<div class="title">Characters</div>
+					<a href="/game/new-super-mario-bros-wii" class="info">Mario</a>
+				</div>
+			</div><div class="content">
+				<div class="main-title">Nintendo Wii</div>
+				<hr>
+				<div class="sub-title">Average Rating: <strong>--/100</strong></div>
+				<div class="content-item"><strong>Manufacturer: </strong>Nintendo</div>
+				<div class="summary">The Wii is a home video game console released by Nintendo on November 19, 2006. As a seventh-generation console, the Wii competed with Microsoft's Xbox 360 and Sony's PlayStation 3. The Wii introduced the Wii Remote controller, which can be used as a handheld pointing device and which detects movement in three dimensions. Like other seventh-generation consoles, it features a game download service, called "Virtual Console", which features emulated games from past systems. It succeeded the GameCube, and early models are fully backward-compatible with all GameCube games and most accessories. Nintendo first spoke of the console at the E3 2004 press conference and later unveiled it at E3 2005. </div>
+			</div>
 		</div>
-		<div class="row">
-			<a href="platform/playstation-3" class="col-sm d-flex justify-content-center">
-				<div class="grid-item-2" style="background-image: url({{ url_for('static', filename='media/playstation_3.jpg') }})">
-					<div class="info-cover">
-						<div class="title">Playstation 3</div>
-					</div>
-				</div>
-			</a>
-			<a href="platform/xbox-360" class="col-sm d-flex justify-content-center">
-				<div class="grid-item-2" style="background-image: url({{ url_for('static', filename='media/xbox_360.jpg') }})">
-					<div class="info-cover">
-						<div class="title">Xbox 360</div>
-					</div>
-				</div>
-			</a>
-			<a href="platform/wii" class="col-sm d-flex justify-content-center">
-				<div class="grid-item-2" style="background-image: url({{ url_for('static', filename='media/nintendo-wii-console.jpg') }})">
-					<div class="info-cover">
-						<div class="title">Nintendo Wii</div>
-					</div>
-				</div>
-			</a>
-		</div>
-	</div>
 
-	<div class="footer">
-		<a class="link" href="https://github.com/mattruston/idb">Check out the project on Github</a>
 	</div>
 </body>
 </html>
