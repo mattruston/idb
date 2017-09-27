@@ -29,6 +29,18 @@ def newSuperMarioBrosWii():
 def developers():
     return render_template('/developers/index.html')
 
+@app.route("/devs/bungie")
+def bungie():
+    return render_template('/developers/devs/bungie.html')
+
+@app.route("/devs/santa-monica-studios")
+def santaMonicaStudios():
+    return render_template('/developers/devs/santa-monica-studios.html')
+
+@app.route("/devs/nintendo")
+def nintendo():
+    return render_template('/developers/devs/nintendo.html')
+
 @app.route("/platforms")
 def platforms():
     return render_template('/platforms/index.html')
