@@ -61,6 +61,18 @@ def wii():
 def characters():
     return render_template('/characters/index.html')
 
+@app.route("/character/kratos")
+def kratos():
+    return render_template('/characters/characters/kratos.html')
+
+@app.route("/character/master-chief")
+def masterChief():
+    return render_template('/characters/characters/master-chief.html')
+
+@app.route("/character/mario")
+def mario():
+    return render_template('/characters/characters/mario.html')
+
 
 if __name__ == "__main__":
     app.run()
