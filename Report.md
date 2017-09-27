@@ -1,3 +1,18 @@
+### Motivation
+
+Video games are a beloved childhood pastime that most people continue to enjoy well into adulthood. As a team, each of us grew up playing video games. Video games not only built friendships, but were a great way to experience a rich story with deep characters. There is nothing quite like getting a new game and playing it for the first time. Immersing yourself in a new game is an amazing feeling, but it can be hard to find new video games that you like. We created GamingDB so that people have a place to go to find a new game to play by providing information about everything that comes together to make a video game. From the company who created the game to the major characters in the game, our site will provide users all the information they need about every aspect of a video game. We will provide information about video games, gaming platforms, major characters, and companies that publish or develop video games. With these models, we will be able to create a great web of information that people can browse through whenever they want to find a new game to play.
+
+### Use Cases
+
+We think that anyone looking to find a new game to play will find our site useful. It will also be useful to anyone with any interest in video games. From the home page, users will be able to see not only all recently released games, but also be able to see the highest rated video games ever. If they are ever looking for a new game to pick up, they can just consult the home page. If they are interested in a specific game or gaming genre, they will be able to go to the Games page and search for a specific game or filter by a certain game genre. Users will definitely find GamingDB useful when looking for new games to play. 
+
+Users will also be able to look up information about individual platforms as well. If they got to the Platforms page, they can see all major platforms ever created. From there, they can click on any platform and see all video games ever created for a given platform. Users will be able to use this information to see what games are available for their consoles.
+
+If users want to find out more information about a certain video game character, they will be able to go to the Characters page where they will find a list of all video game characters. From there, they will be able to click on any character and find out all kind of information about them including all games that they are in. Users can use this information to find new games to play with their favorite characters.
+
+Video games would not exist without companies spending time and money to develop and publish them. From the Companies page, users can choose a company and see all the games they have either developed, published, or both. From here, users can use this information to find new games to play created by their favorite companies.
+
+
 ### Models
 
 The models chosen for the database are _Games_, _Companies_, _Platforms_, and _Characters_. These were not arbitrary decisions; a deliberate process was employed in order to narrow down the vast number of possibilites available to make a video game database. Both technical and subjective perspectives were employed in the discussions. Next, a description of this process, the specifics for each of these models and their attributes, and the ways in which they are related to one another will be provided.
