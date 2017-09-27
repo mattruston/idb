@@ -17,6 +17,14 @@ def games():
 def godOfWar():
 	return render_template('/games/titles/god-of-war.html')
 
+@app.route("/game/halo-3")
+def halo3():
+	return render_template('/games/titles/halo-3.html')
+
+@app.route("/game/new-super-mario-bros-wii")
+def newSuperMarioBrosWii():
+	return render_template('/games/titles/new-super-mario-bros-wii.html')
+
 @app.route("/developers")
 def developers():
     return render_template('/developers/index.html')
