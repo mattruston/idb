@@ -13,6 +13,10 @@ def about():
 def games():
     return render_template('/games/index.html')
 
+@app.route("/game/god-of-war")
+def godOfWar():
+	return render_template('/games/titles/god-of-war.html')
+
 @app.route("/developers")
 def developers():
     return render_template('/developers/index.html')

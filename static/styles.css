@@ -8,6 +8,10 @@ body {
 .primary {
   background-color: #2de5c6; }
 
+.page-body {
+  width: 75%;
+  margin: 0 auto; }
+
 .nav-input-group .nav-input {
   width: 250px;
   border-radius: 0px 0px 0px 0px;
@@ -171,5 +175,64 @@ body {
     font-weight: 700;
     font-size: 1em;
     color: #fff; }
+
+.info-screen {
+  margin-top: 2em;
+  background-color: #fff;
+  padding: 1em;
+  box-sizing: border-box; }
+  .info-screen a {
+    color: #1bddbc;
+    text-decoration: none; }
+    .info-screen a:hover {
+      color: #2de5c6;
+      text-decoration: underline; }
+  .info-screen .side-bar {
+    width: 30%;
+    display: inline-block;
+    box-sizing: border-box; }
+    .info-screen .side-bar img {
+      width: 100%; }
+    .info-screen .side-bar .info-item {
+      margin: .6em 0em; }
+      .info-screen .side-bar .info-item .title {
+        font-family: "Lato", sans-serif;
+        font-weight: 700;
+        font-size: .9rem; }
+      .info-screen .side-bar .info-item .info {
+        font-family: "Lato", sans-serif;
+        font-weight: 400;
+        font-size: .8rem; }
+  .info-screen .content {
+    width: 70%;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding: 0em 0em 0em 1.5em; }
+    .info-screen .content .title {
+      font-family: "Lato", sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin: 0em 0em .25em 0em; }
+    .info-screen .content hr {
+      border-top: 2px solid #2de5c6;
+      margin: .1em 0em .5em 0em; }
+    .info-screen .content .sub-title {
+      font-family: "Lato", sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem; }
+      .info-screen .content .sub-title strong {
+        color: #2de5c6; }
+    .info-screen .content .item {
+      margin: .5em 0em;
+      font-family: "Lato", sans-serif;
+      font-weight: 400;
+      font-size: .9rem; }
+      .info-screen .content .item strong {
+        font-weight: 700; }
+    .info-screen .content .summary {
+      font-family: "Lato", sans-serif;
+      font-weight: 400;
+      font-size: .8rem; }
 
 /*# sourceMappingURL=styles.css.map */

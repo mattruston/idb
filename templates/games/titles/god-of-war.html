@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>gamingdb Games</title>
+	<title>gamingdb -- God of War</title>
 	<meta name=viewport content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -36,38 +36,27 @@
 		</nav>
 	</span>
 
-	<div class="container">
-		<div class="grid-intro">
-			<div class="grid-name">Games</div>
-			<div class="description">A page for all of those games.</div>
-		</div>
-		<div class="row">
-			<a href="game/god-of-war" class="col-sm d-flex justify-content-center">
-				<div class="grid-item" style="background-image: url({{ url_for('static', filename='media/ps3_god_war_iii.jpg') }})">
-					<div class="row-item-body">
-						<h1>Game Title</h1>
-					</div>
+	<div class="page-body">
+		<div class="info-screen">
+			<div class="side-bar">
+				<img src="{{ url_for('static', filename='media/ps3_god_war_iii.jpg') }}" alt="God of War III">
+				<div class="info-item">
+					<div class="title">Developer</div>
+					<a href="/game/god-of-war" class="info">SCE Santa Monica Studio</a>
 				</div>
-			</a>
-			<div class="col-sm d-flex justify-content-center">
-				<div class="grid-item" style="background-image: url({{ url_for('static', filename='media/Halo3coverart.jpg') }})">
-					<div class="row-item-body">
-						<h1>Game Title</h1>
-					</div>
+				<div class="info-item">
+					<div class="title">Genres</div>
+					<a href="/game/god-of-war" class="info">Hack & Slash</a>
 				</div>
-			</div>
-			<div class="col-sm d-flex justify-content-center">
-				<div class="grid-item" style="background-image: url({{ url_for('static', filename='media/new-super-mario-wii1-usjpg-e93439.jpg') }})">
-					<div class="row-item-body">
-						<h1>Game Title</h1>
-					</div>
-				</div>
+			</div><div class="content">
+				<div class="title">God of War III</div>
+				<hr>
+				<div class="sub-title">Rated: <strong>--/100</strong></div>
+				<div class="item"><strong>Platforms: </strong><a href="/game/god-of-war">Playstation 3</a></div>
+				<div class="summary">God of War III is an action-adventure hack and slash video game developed by Santa Monica Studio and published by Sony Computer Entertainment (SCE). Released for the PlayStation 3 (PS3) console on March 16, 2010, the game is the fifth installment in the God of War series, the seventh chronologically, and the sequel to 2007's God of War II. Loosely based on Greek mythology, the game is set in ancient Greece with vengeance as its central motif. The player controls the protagonist and former God of War Kratos, after his betrayal at the hands of his father Zeus, King of the Olympian Gods. Reigniting the Great War, Kratos ascends Mount Olympus until he is abandoned by the Titan Gaia. Guided by the spirit of Athena, Kratos battles monsters, gods, and Titans in a search for Pandora, without whom he cannot open Pandora's Box, defeat Zeus, and end the reign of the Olympian Gods.</div>
 			</div>
 		</div>
-	</div>
-
-	<div class="footer">
-		<a class="link" href="https://github.com/mattruston/idb">Check out the project on Github</a>
+		
 	</div>
 </body>
 </html>
