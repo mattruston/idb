@@ -12,7 +12,7 @@
 		<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark justify-content-between">
 			<div class="container">
 				<a class="navbar-brand primary-text" href="/">gamingdb</a>
-				
+
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -30,11 +30,41 @@
 					     --><li class="nav-item"><a class="nav-link" href="/characters">Characters</a></li>
 					    </ul>
 					</div>
-				    
+
 				</div>
 			</div>
 		</nav>
 	</span>
+
+	<div class="container">
+		<div class="grid-intro">
+			<div class="grid-name">Developrs</div>
+			<div class="description">A page for all of those developers.</div>
+		</div>
+		<div class="row">
+			<div class="col-sm d-flex justify-content-center">
+				<div class="grid-item" style="background-image: url({{ url_for('static', filename='media/santamonicastudios.jpg') }})">
+					<div class="row-item-body">
+						<h1>Developer</h1>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm d-flex justify-content-center">
+				<div class="grid-item" style="background-image: url({{ url_for('static', filename='media/bungie.png') }})">
+					<div class="row-item-body">
+						<h1>Developer</h1>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm d-flex justify-content-center">
+				<div class="grid-item" style="background-image: url({{ url_for('static', filename='media/Nintendo.png') }})">
+					<div class="row-item-body">
+						<h1>Developer</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div class="footer">
 		<a class="link" href="https://github.com/mattruston/idb">Check out the project on Github</a>
