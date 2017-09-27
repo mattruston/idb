@@ -55,3 +55,23 @@ Deploying can take a couple of minutes, but once it has finished your applicatio
 One thing we have noticed with deploying changes to code is that sometimes certain files may be cached, and so their changes won't take effect for a while after a deploy.
 
 That is all it takes to get a project up and running using the Google Cloud Platform.
+
+### Tools & Technologies
+
+#### Front-end
+
+- **Bootstrap**
+  - Front-end style framework that supplies 
+- **SASS**
+  - "Syntactically Awesome Style Sheets" a scripting language that compiles down to CSS. SASS provides many useful tools that make creating UI's better and easier, like: inheritance, nesting, variables, mixins, and more. 
+- **HTML**
+	- The markup language for creating the DOM for a webpage
+- **React**
+	- 
+
+#### Back-end
+
+- **Flask**
+	- A microframework for handling rendering and navigation for the webpage. 
+
+For this project we are currently building out a static webpage using HTML, SCSS and some bootstrap for starter styles in the front end, and Python Flask for the backend. When creating webpages HTML is a requirement, however CSS has had some improvements. We used SCSS which gives us more control and flexibility when writing styles. SCSS has variables, mixins, inheritance, and more useful tools that make creating good responsive UI much easier. SCSS then compiles down into CSS that the browser can read using SASS's command line tool. To render and handle our paging 
