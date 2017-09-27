@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>gamingdb Games</title>
+	<title>gamingdb -- Halo 3</title>
 	<meta name=viewport content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -36,38 +36,27 @@
 		</nav>
 	</span>
 
-	<div class="container">
-		<div class="grid-intro">
-			<div class="grid-name">Games</div>
-			<div class="description">A page for all of those games.</div>
+	<div class="page-body">
+		<div class="info-screen">
+			<div class="side-bar">
+				<img src="{{ url_for('static', filename='media/Halo3coverart.jpg') }}" alt="Halo 3">
+				<div class="info-item">
+					<div class="title">Developer</div>
+					<a href="/game/halo-3" class="info">Bungie</a>
+				</div>
+				<div class="info-item">
+					<div class="title">Genres</div>
+					<a href="/game/halo-3" class="info">First-Person Shooter</a>
+				</div>
+			</div><div class="content">
+				<div class="title">Halo 3</div>
+				<hr>
+				<div class="sub-title">Rated: <strong>--/100</strong></div>
+				<div class="item"><strong>Platforms: </strong><a href="/game/halo-3">Xbox 360</a></div>
+				<div class="summary">Halo 3 is a 2007 first-person shooter video game developed by Bungie for the Xbox 360 console. The third installment in the Halo franchise, the game concludes the story arc begun in 2001's Halo: Combat Evolved and continued in 2004's Halo 2. The game was released on September 25, 2007, in Australia, Brazil, India, New Zealand, North America, and Singapore; September 26, 2007, in Europe; and September 27, 2007, in Japan. Halo 3's story centers on the interstellar war between twenty-sixth century humanity and a collection of alien races known as the Covenant. The player assumes the role of the Master Chief, a cybernetically enhanced supersoldier, as he battles the Covenant. The game features vehicles, weapons, and gameplay elements not present in previous titles of the series, as well as the addition of saved gameplay films, file sharing, and the Forge map editor—a utility which allows the player to perform modifications to multiplayer levels.</div>
+			</div>
 		</div>
-		<div class="row">
-			<a href="game/god-of-war" class="col-sm d-flex justify-content-center">
-				<div class="grid-item" style="background-image: url({{ url_for('static', filename='media/ps3_god_war_iii.jpg') }})">
-					<div class="row-item-body">
-						<h1>Game Title</h1>
-					</div>
-				</div>
-			</a>
-			<a href="game/halo-3" class="col-sm d-flex justify-content-center">
-				<div class="grid-item" style="background-image: url({{ url_for('static', filename='media/Halo3coverart.jpg') }})">
-					<div class="row-item-body">
-						<h1>Game Title</h1>
-					</div>
-				</div>
-			</a>
-			<a href="game/new-super-mario-bros-wii" class="col-sm d-flex justify-content-center">
-				<div class="grid-item" style="background-image: url({{ url_for('static', filename='media/new-super-mario-wii1-usjpg-e93439.jpg') }})">
-					<div class="row-item-body">
-						<h1>Game Title</h1>
-					</div>
-				</div>
-			</a>
-		</div>
-	</div>
 
-	<div class="footer">
-		<a class="link" href="https://github.com/mattruston/idb">Check out the project on Github</a>
 	</div>
 </body>
 </html>
