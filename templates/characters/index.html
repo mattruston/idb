@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>gamingdb Characters</title>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+</head>
+<body>
+	<span>
+		<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark justify-content-between">
+			<div class="container">
+				<a class="navbar-brand primary-text" href="/">gamingdb</a>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<form class="d-flex flex-row nav-input-group">
+						<input class="form-control nav-input" type="text" placeholder="Search" aria-label="Search">
+					    <button class="btn nav-input-button" type="submit">Search</button>
+					</form>
+					<div class="d-inline-flex flex-row justify-content-end w-100">
+						<ul class="nav navbar-nav navbar-right">
+					    	<li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+					        <li class="nav-item"><a class="nav-link" href="/games">Games</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/developers">Developers</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/platforms">Platforms</a></li><!--
+					     --><li class="nav-item active"><a class="nav-link" href="/characters">Characters</a></li>
+					    </ul>
+					</div>
+
+				</div>
+			</div>
+		</nav>
+	</span>
+
+	<div class="container">
+		<div class="grid-intro">
+			<div class="grid-name">Games</div>
+			<div class="description">A page for all of those characters.</div>
+		</div>
+		<div class="row">
+			<a href="character/kratos" class="col-sm d-flex justify-content-center">
+				<div class="grid-item-2 large" style="background-image: url({{ url_for('static', filename='media/Kratos.jpg') }})">
+					<div class="info-cover">
+						<div class="title">Kratos</div>
+						<hr>
+						<div class="item">God of War</div>
+						<hr>
+						<div class="item">Human</div>
+						<hr>
+						<div class="item">Man</div>
+					</div>
+				</div>
+			</a>
+			<a href="character/master-chief" class="col-sm d-flex justify-content-center">
+				<div class="grid-item-2 large" style="background-image: url({{ url_for('static', filename='media/halo-master-chief.jpg') }})">
+					<div class="info-cover">
+						<div class="title">Master Chief</div>
+						<hr>
+						<div class="item">Halo</div>
+						<hr>
+						<div class="item">Human</div>
+						<hr>
+						<div class="item">Man</div>
+					</div>
+				</div>
+			</a>
+			<a href="character/mario" class="col-sm d-flex justify-content-center">
+				<div class="grid-item-2 large" style="background-image: url({{ url_for('static', filename='media/Mario.png') }})">
+					<div class="info-cover">
+						<div class="title">Mario</div>
+						<hr>
+						<div class="item">Super Mario Bros.</div>
+						<hr>
+						<div class="item">Human</div>
+						<hr>
+						<div class="item">Man</div>
+					</div>
+				</div>
+			</a>
+			<div class="col-sm d-flex justify-content-center">
+				<div class="grid-item-2 large">
+					<div class="cover-text">More Coming Soon!</div>
+					<div class="info-cover">
+						<div class="title">More Coming Soon!</div>
+						<hr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">
+		<a class="link" href="https://github.com/mattruston/idb">Check out the project on Github</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,326 @@
+body {
+  font-family: "Lato", sans-serif !important;
+  background-color: #f5f5f5 !important; }
+
+.primary-text {
+  color: #2de5c6 !important; }
+
+.primary {
+  background-color: #2de5c6; }
+
+.page-body {
+  width: 75%;
+  margin: 0 auto; }
+
+.inline-item {
+  display: inline-block;
+  margin: .5em;
+  vertical-align: top; }
+  .inline-item:first-child {
+    margin-left: 0em; }
+  .inline-item.info-box {
+    width: 25%;
+    background-color: #fff;
+    padding: .5em 1em;
+    box-sizing: border-box;
+    height: fit-content; }
+
+.centered {
+  display: flex;
+  justify-content: center; }
+
+.nav-input-group .nav-input {
+  width: 250px;
+  border-radius: 0px 0px 0px 0px;
+  border-color: #d3d7db;
+  border-width: 1.5px;
+  border-right: none;
+  line-height: 1;
+  padding: .25rem .75rem;
+  background-color: #d3d7db; }
+  .nav-input-group .nav-input:focus {
+    background-color: #fff;
+    border-color: #fff; }
+.nav-input-group .nav-input-button {
+  border-radius: 0px 0px 0px 0px;
+  border-color: #2de5c6;
+  background-color: #2de5c6;
+  color: #fff; }
+  .nav-input-group .nav-input-button:hover {
+    background-color: #1bddbc;
+    color: #fff; }
+
+.row-display {
+  padding: 1.25em 0em 0em; }
+  .row-display .row-title {
+    font-size: 2rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: transform .5s ease;
+    width: fit-content; }
+    .row-display .row-title:hover {
+      color: #2de5c6;
+      transform: translatex(5px); }
+      .row-display .row-title:hover:after {
+        content: " ";
+        position: relative;
+        border: 3px solid #2de5c6;
+        border-left: 0;
+        border-bottom: 0;
+        display: inline-block;
+        height: 0.4em;
+        width: 0.4em;
+        left: 6px;
+        bottom: 2px;
+        transform: rotate(45deg); }
+  .row-display .row-item {
+    height: 12em;
+    width: 9em;
+    background-color: #fff;
+    display: inline-block;
+    margin: .5em 1em 0em 0em;
+    vertical-align: top;
+    cursor: pointer;
+    transition: transform .3s ease; }
+    .row-display .row-item:hover {
+      transform: scale(1.05, 1.05);
+      box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.3); }
+    .row-display .row-item .row-item-body {
+      width: inherit;
+      height: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-weight: 700; }
+      .row-display .row-item .row-item-body h1 {
+        font-size: .75em; }
+
+.team-intro {
+  margin-top: 1em;
+  margin-bottom: 1em; }
+  .team-intro .team-name {
+    font-weight: 700;
+    font-size: 2rem;
+    color: #2de5c6; }
+  .team-intro .description {
+    font-size: 1rem;
+    padding-left: .25em; }
+
+.about-card {
+  box-sizing: border-box;
+  background-color: #fff;
+  padding: 1em;
+  display: inline-block;
+  transition: transform .5s ease;
+  margin: 1em 0em;
+  color: #000;
+  text-decoration-color: #000; }
+  .about-card:hover {
+    transform: scale(1.05, 1.05);
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.3);
+    color: #000; }
+  .about-card .about-img {
+    display: inline-block;
+    width: 40%;
+    vertical-align: top; }
+    .about-card .about-img img {
+      width: 100%; }
+  .about-card .about-content {
+    display: inline-block;
+    width: 55%;
+    padding-left: .5em; }
+    .about-card .about-content .name {
+      font-weight: 700;
+      font-size: 1.4rem;
+      margin-bottom: .25em; }
+    .about-card .about-content .about-content-item {
+      margin-bottom: .15em; }
+      .about-card .about-content .about-content-item.description {
+        margin-bottom: .25em;
+        font-size: 1rem; }
+      .about-card .about-content .about-content-item .title {
+        display: inline-block;
+        font-weight: 700; }
+      .about-card .about-content .about-content-item .detail {
+        display: inline-block; }
+
+.grid-intro {
+  margin-top: 1em;
+  margin-bottom: 1em; }
+  .grid-intro .grid-name {
+    font-weight: 700;
+    font-size: 2rem;
+    color: #2de5c6; }
+  .grid-intro .description {
+    font-size: 1rem;
+    padding-left: .25em; }
+
+.grid-item-2 {
+  height: 12em;
+  width: 9em;
+  background: url(url) no-repeat center;
+  background-color: #fff;
+  vertical-align: top;
+  cursor: pointer;
+  transition: transform .3s ease;
+  background-size: cover;
+  position: relative; }
+  .grid-item-2:hover {
+    transform: scale(1.05, 1.05);
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.3); }
+  .grid-item-2:hover > .info-cover {
+    display: block; }
+  .grid-item-2.large {
+    height: 16em;
+    width: 12em; }
+  .grid-item-2 .cover-text {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: .25em 0em;
+    text-align: center;
+    margin-top: .75em;
+    color: #2de5c6; }
+  .grid-item-2 .info-cover {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(45, 229, 198, 0.8), rgba(16, 130, 111, 0.8));
+    box-sizing: border-box;
+    padding: .5em;
+    transition: display 1s ease-in; }
+    .grid-item-2 .info-cover .title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #fff;
+      margin: .25em 0em;
+      text-align: center; }
+    .grid-item-2 .info-cover .item {
+      font-weight: 400;
+      color: #fff;
+      margin: .25em 0em;
+      font-size: .8rem; }
+    .grid-item-2 .info-cover hr {
+      margin: .2em 0em;
+      border-top: 1px solid #fff; }
+
+.grid-item {
+  height: 12em;
+  width: 9em;
+  background-color: #fff;
+  vertical-align: top;
+  cursor: pointer;
+  transition: transform .3s ease;
+  background: url(url) no-repeat center;
+  background-size: cover;
+  display: relative; }
+  .grid-item:hover {
+    transform: scale(1.05, 1.05);
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.3); }
+  .grid-item:hover > .body-info {
+    display: block; }
+  .grid-item .row-item-body {
+    width: inherit;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-weight: 700; }
+    .grid-item .row-item-body h1 {
+      font-size: 1em;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.8);
+      display: block; }
+  .grid-item .body-info {
+    display: none;
+    background: linear-gradient(to top, #2de5c6, transparent);
+    width: 100%;
+    height: 100%; }
+    .grid-item .body-info:hover {
+      display: block; }
+
+.footer {
+  width: 100%;
+  margin-top: 4em;
+  min-height: 3em;
+  text-align: center;
+  background-color: #2de5c6;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .footer .link {
+    font-weight: 700;
+    font-size: 1em;
+    color: #fff; }
+
+.info-screen {
+  margin-top: 2em;
+  background-color: #fff;
+  padding: 1em;
+  box-sizing: border-box; }
+  .info-screen a {
+    color: #1bddbc;
+    text-decoration: none; }
+    .info-screen a:hover {
+      color: #2de5c6;
+      text-decoration: underline; }
+  .info-screen .side-bar {
+    width: 30%;
+    display: inline-block;
+    box-sizing: border-box; }
+    .info-screen .side-bar img {
+      width: 100%; }
+    .info-screen .side-bar .info-item {
+      margin: .6em 0em; }
+      .info-screen .side-bar .info-item .title {
+        font-family: "Lato", sans-serif;
+        font-weight: 700;
+        font-size: .9rem; }
+      .info-screen .side-bar .info-item .info {
+        font-family: "Lato", sans-serif;
+        font-weight: 400;
+        font-size: .8rem; }
+  .info-screen .content {
+    width: 70%;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding: 0em 0em 0em 1.5em; }
+    .info-screen .content .main-title {
+      font-family: "Lato", sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin: 0em 0em .25em 0em; }
+    .info-screen .content hr {
+      border-top: 2px solid #2de5c6;
+      margin: .1em 0em .5em 0em; }
+    .info-screen .content .sub-title {
+      font-family: "Lato", sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem; }
+      .info-screen .content .sub-title strong {
+        color: #2de5c6; }
+    .info-screen .content .content-item {
+      margin: .5em 0em;
+      font-family: "Lato", sans-serif;
+      font-weight: 400;
+      font-size: .9rem; }
+      .info-screen .content .content-item strong {
+        font-weight: 700; }
+    .info-screen .content .summary {
+      font-family: "Lato", sans-serif;
+      font-weight: 400;
+      font-size: .8rem; }
+    .info-screen .content .display {
+      margin: .5em 0em; }
+      .info-screen .content .display .display-title {
+        margin-top: 2em;
+        font-size: 1.2rem;
+        font-weight: 700; }
+
+/*# sourceMappingURL=styles.css.map */

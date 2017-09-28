@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>gamingdb -- Santa Monica Studio</title>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+</head>
+<body>
+	<span>
+		<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark justify-content-between">
+			<div class="container">
+				<a class="navbar-brand primary-text" href="/">gamingdb</a>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<form class="d-flex flex-row nav-input-group">
+						<input class="form-control nav-input" type="text" placeholder="Search" aria-label="Search">
+					    <button class="btn nav-input-button" type="submit">Search</button>
+					</form>
+					<div class="d-inline-flex flex-row justify-content-end w-100">
+						<ul class="nav navbar-nav navbar-right">
+					    	<li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+					        <li class="nav-item active"><a class="nav-link" href="/games">Games</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/developers">Developers</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/platforms">Platforms</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/characters">Characters</a></li>
+					    </ul>
+					</div>
+
+				</div>
+			</div>
+		</nav>
+	</span>
+
+	<div class="page-body">
+		<div class="info-screen">
+			<div class="side-bar">
+				<img src="{{ url_for('static', filename='media/santamonicastudios.jpg') }}" alt="Santa Monica Studios">
+				<div class="info-item">
+					<div class="title">Games</div>
+					<a href="/game/god-of-war" class="info">God of War III</a>
+				</div>
+				<div class="info-item">
+					<div class="title">Website</div>
+					<a href="http://sms.playstation.com/" class="info">http://sms.playstation.com/</a>
+				</div>
+			</div><div class="content">
+				<div class="main-title">Santa Monica Studios</div>
+				<hr>
+				<div class="sub-title">Average Rating: <strong>--/100</strong></div>
+				<div class="content-item"><strong>Platforms: </strong><a href="/platform/playstation-3">Playstation 3</a></div>
+				<div class="summary">Santa Monica Studio, LLC is an American first-party video game developer and part of SIE Worldwide Studios, which is owned by Sony Interactive Entertainment. It is based in Los Angeles, California and was established in 1999.</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
