@@ -65,13 +65,39 @@ That is all it takes to get a project up and running using the Google Cloud Plat
 - **SASS**
   - "Syntactically Awesome Style Sheets" a scripting language that compiles down to CSS. SASS provides many useful tools that make creating UI's better and easier, like: inheritance, nesting, variables, mixins, and more. 
 - **HTML**
-	- The markup language for creating the DOM for a webpage
+	- The markup language for creating the DOM for a webpage.
 - **React**
-	- 
+	- React is a Javascript framework written by Facebook. It allows for dynamic SPA's that can reload components without a re-render on the entire page. It recently came under the MIT open-source license.
 
 #### Back-end
 
 - **Flask**
 	- A microframework for handling rendering and navigation for the webpage. 
 
-For this project we are currently building out a static webpage using HTML, SCSS and some bootstrap for starter styles in the front end, and Python Flask for the backend. When creating webpages HTML is a requirement, however CSS has had some improvements. We used SCSS which gives us more control and flexibility when writing styles. SCSS has variables, mixins, inheritance, and more useful tools that make creating good responsive UI much easier. SCSS then compiles down into CSS that the browser can read using SASS's command line tool. To render and handle our paging 
+#### Development Tools
+
+- **Git**
+	- Git is a version control system that we are using to keep track of our code base and enable parallel workflows. 
+- **Webpack** 
+	- Webpack is a bundler for web applications. It allows the application to be brought together into a single bundled Javascript file. This allows much of the deployment and development lifecycle to be taken care of on developer hardware.
+
+#### Documentation
+
+- **Apiary**
+	- We are documenting our applications API using a service called Apiary. Apiary allows us to create a 'blueprint' for our API that is used to roadmap our development and allow others to interact with our service.
+
+#### Misc
+
+- **Slack**
+	- A team based communication tool that can be linked to multiple other services for good collaboration practices.
+- **Github**
+	- Cloud based origin host for Git repositories, with a web client for viewing codebases and other things related to Git.
+- **Trello**
+	- A agile story management tool for keeping track of a backlog and active issues in the project.
+- **Google Domains**
+	- DNS provider for getting custom domain names.
+
+#### Datasources
+
+- **IGDB & GiantBomb**
+	- Two verbose libraries of videogame related data formatted to be RESTful API's. They contain a wealth of information about games, platforms, developers, characters, genres, publishers, and much more. 
