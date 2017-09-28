@@ -136,9 +136,9 @@ That is all it takes to get a project up and running using the Google Cloud Plat
 #### Front-end
 
 - **Bootstrap**
-  - Front-end style framework that supplies 
+    - Front-end style framework that supplies pre-built CSS styles for a web application.
 - **SASS**
-  - "Syntactically Awesome Style Sheets" a scripting language that compiles down to CSS. SASS provides many useful tools that make creating UI's better and easier, like: inheritance, nesting, variables, mixins, and more. 
+    - "Syntactically Awesome Style Sheets" a scripting language that compiles down to CSS. SASS provides many useful tools that make creating UI's better and easier, like: inheritance, nesting, variables, mixins, and more. 
 - **HTML**
 	- The markup language for creating the DOM for a webpage.
 - **React**
@@ -147,7 +147,7 @@ That is all it takes to get a project up and running using the Google Cloud Plat
 #### Back-end
 
 - **Flask**
-	- A microframework for handling rendering and navigation for the webpage. 
+	- A microframework for handling rendering and navigation for the webpage.
 
 #### Development Tools
 
@@ -163,6 +163,8 @@ That is all it takes to get a project up and running using the Google Cloud Plat
 
 #### Misc
 
+- **Google Cloud Platform**
+    - A service that allows for cloud hosting of content with easy to learn setup, rapid releases, and automatic scalability.
 - **Slack**
 	- A team based communication tool that can be linked to multiple other services for good collaboration practices.
 - **Github**
