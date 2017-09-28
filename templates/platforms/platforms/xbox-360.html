@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>gamingdb -- Xbox 360</title>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+</head>
+<body>
+	<span>
+		<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark justify-content-between">
+			<div class="container">
+				<a class="navbar-brand primary-text" href="/">gamingdb</a>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<form class="d-flex flex-row nav-input-group">
+						<input class="form-control nav-input" type="text" placeholder="Search" aria-label="Search">
+					    <button class="btn nav-input-button" type="submit">Search</button>
+					</form>
+					<div class="d-inline-flex flex-row justify-content-end w-100">
+						<ul class="nav navbar-nav navbar-right">
+					    	<li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+					        <li class="nav-item active"><a class="nav-link" href="/games">Games</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/developers">Developers</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/platforms">Platforms</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/characters">Characters</a></li>
+					    </ul>
+					</div>
+
+				</div>
+			</div>
+		</nav>
+	</span>
+
+	<div class="page-body">
+		<div class="info-screen">
+			<div class="side-bar">
+				<img src="{{ url_for('static', filename='media/xbox_360.jpg') }}" alt="Playstation 3">
+				<div class="info-item">
+					<div class="title">Games</div>
+					<a href="/game/halo-3" class="info">Halo 3</a>
+				</div>
+				<div class="info-item">
+					<div class="title">Characters</div>
+					<a href="/character/master-chief" class="info">Master Chief</a>
+				</div>
+			</div><div class="content">
+				<div class="main-title">Xbox 360</div>
+				<hr>
+				<div class="sub-title">Average Rating: <strong>--/100</strong></div>
+				<div class="content-item"><strong>Manufacturer: </strong>Microsoft</div>
+				<div class="summary">The Xbox 360 is a home video game console developed by Microsoft. As the successor to the original Xbox, it is the second console in the Xbox series. It competed with Sony's PlayStation 3 and Nintendo's Wii as part of the seventh generation of video game consoles. It was officially unveiled on MTV on May 12, 2005, with detailed launch and game information announced later that month at the 2005 E3 expo. The Xbox 360 features an online service, Xbox Live, which was expanded from its previous iteration on the original Xbox and received regular updates during the console's lifetime. Available in free and subscription-based varieties, Xbox Live allows users to: play games online; download games (through Xbox Live Arcade) and game demos; purchase and stream music, television programs, and films through the Xbox Music and Xbox Video portals; and access third-party content services through media streaming applications. In addition to online multimedia features, it allows users to stream media from local PCs. Several peripherals have been released, including wireless controllers, expanded hard drive storage, and the Kinect motion sensing camera. The release of these additional services and peripherals helped the Xbox brand grow from gaming-only to encompassing all multimedia, turning it into a hub for living-room computing entertainment.</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
