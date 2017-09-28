@@ -3,9 +3,9 @@ HOST: http://polls.apiblueprint.org/
 
 # VGDB
 
-Video Game Database for UT Austin SWE project IDB
+Video Game Database for UT Austin SWE IDB project
 
-## Games [/games]
+## Games Collection [/games/collection]
 
 ### List Games [GET]
 
@@ -13,56 +13,257 @@ Video Game Database for UT Austin SWE project IDB
 
         [
             {
-                "id": "123",
+                "game_id": "1",
                 "title": "Overwatch",
-                "releaseDate": "2015",
-                "description": "...",
+                "image": "https://....com/image.png",
                 "genres": [
                     "genre_id",
-                    "genre_id
+                    "genre_id"
                 ],
-                "platform": [
-                    "PC",
-                    "PS4",
-                    "XBOX1"
+                "platforms": [
+                    "platform_id",
+                    "platform_id
                 ],
-                "image": "https://....com/image.png",
-                "avgRating": "8.2",
-                "numRatings": "1234567",
-                "characters": [
-                    "char_id_1",
-                    "char_id_2"
-                ],
-                "playerPerspective": [
-                    "First Person",
-                    "Third Person
-                ],
-                "playModes": [
-                    "Single Player",
-                    "Online Multiplayer"
-                ],
-                "screenshots": [
-                    "http://urltoimage.com/image.png"
-                ],
-                "videos": [
-                    "http://urltovideo.com/video.mp4"
-                ],
-                "rating": [
-                    { 
-                        "title": "ESRB",
-                        "rating": "T"
-                    },
-                    {
-                        "title": "PEGI",
-                        "rating": "18"
-                    }
-                ],
-                "dlc": [
-                    "DLC Title"
-                ],
-                "expansions": [
-                    "Expansion Title"
+                "companies": [
+                    "company_id",
+                    "company_id"
                 ]
-                
+            },
+            {
+                "game_id": "2",
+                "title": "Hearthstone",
+                "image": "https://....com/image.png",
+                "genres": [
+                    "genre_id",
+                    "genre_id"
+                ],
+                "platforms": [
+                    "platform_id",
+                    "platform_id
+                ],
+                "companies": [
+                    "company_id",
+                    "company_id"
+                ]
             }
         ]
+
+## Games [/games/game]
+
+### Get Game [GET]
+
++ Response 200 (application/json)
+
+        {
+            "game_id": "123",
+            "title": "Overwatch",
+            "releaseDate": "2015",
+            "description": "...",
+            "genres": [
+                "genre_id",
+                "genre_id
+            ],
+            "platform": [
+                "PC",
+                "PS4",
+                "XBOX1"
+            ],
+            "image": "https://....com/image.png",
+            "avgRating": "8.2",
+            "numRatings": "1234567",
+            "characters": [
+                "char_id_1",
+                "char_id_2"
+            ],
+            "playerPerspective": [
+                "First Person",
+                "Third Person
+            ],
+            "playModes": [
+                "Single Player",
+                "Online Multiplayer"
+            ],
+            "screenshots": [
+                "http://urltoimage.com/image.png"
+            ],
+            "videos": [
+                "http://urltovideo.com/video.mp4"
+            ],
+            "rating": [
+                {
+                    "title": "ESRB",
+                    "rating": "T"
+                },
+                {
+                    "title": "PEGI",
+                    "rating": "18"
+                }
+            ],
+            "dlc": [
+                "DLC Title"
+            ],
+            "expansions": [
+                "Expansion Title"
+            ]
+        }
+
+## Characters Collection [/characters/collection]
+
+### List Characters [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "character_id": "1",
+                "name": "Master Chief",
+                "image": "https://....com/image.png",
+                "games": [
+                    "game_id",
+                    "game_id"
+                ],
+                "species": "Human"
+                "gender": "Man"
+            },
+            {
+                "character_id": "2",
+                "name": "Kratos",
+                "image": "https://....com/image.png",
+                "games": [
+                    "game_id",
+                    "game_id"
+                ],
+                "species": "Human"
+                "gender": "Man"
+            }
+        ]
+
+## Characters [/characters/character]
+
+### Get Character [GET]
+
++ Response 200 (application/json)
+
+        {
+            "character_id": "123",
+            "name": "Mario",
+            "description": "...",
+            "games": [
+                "game_id",
+                "game_id"
+            ],
+            "platform": [
+                "platform_id",
+                "platform_id"
+            ],
+            "image": "https://....com/image.png"
+        }
+
+## Platforms Collection [/platforms/collection]
+
+### List Platforms [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "platform_id": "1",
+                "name": "Xbox 360",
+                "manufacturer": "Microsoft",
+                "games": [
+                    "game_id",
+                    "game_id"
+                ],
+                "release_date": "YYYY-MM-DD"
+            },
+            {
+                "platform_id": "2",
+                "name": "Playstation 3",
+                "manufacturer": "Sony",
+                "games": [
+                    "game_id",
+                    "game_id"
+                ],
+                "release_date": "YYYY-MM-DD"
+            }
+        ]
+
+## Platforms [/platforms/platform]
+
+### Get Platform [GET]
+
++ Response 200 (application/json)
+
+        {
+            "platform_id": "1"
+            "name": "Xbox 360",
+            "average_rating": "XX",
+            "description": "...",
+            "games": [
+                "game_id",
+                "game_id"
+            ],
+            "characters": [
+                "character_id",
+                "character_id"
+            ],
+            "image": "https://....com/image.png"
+        }
+
+## Developers Collection [/developers/collection]
+
+### List Developers [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "developer_id": "1",
+                "name": "Bungie"
+                "average_rating": "--/100"
+                "location": "Bellevue, Washington",
+                "games": [
+                    "game_id",
+                    "game_id"
+                ],
+                "image": "https://....com/image.png"
+            },
+            {
+                "developer_id": "2",
+                "name": "Nintendo"
+                "average_rating": "--/100"
+                "location": "Kyoto, Japan",
+                "games": [
+                    "game_id",
+                    "game_id"
+                ],
+                "image": "https://....com/image.png"
+            }
+<<<<<<< Updated upstream
+        ]
+=======
+        ]
+
+## Developers [/developers/developer]
+
+### Get Developer [GET]
+
++ Response 200 (application/json)
+
+        {
+            "developer_id": "1",
+            "name": "Bungie",
+            "average_rating": "XX",
+            "descripton": "...",
+            "games": [
+                "game_id",
+                "game_id"
+            ],
+            "platforms": [
+                "platform_id",
+                "platform_id"
+            ],
+            "website": "https://....com/",
+            "image": "https://....com/image.png"
+        }
+>>>>>>> Stashed changes
