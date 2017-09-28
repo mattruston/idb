@@ -31,6 +31,28 @@ body {
 	margin: 0 auto;
 }
 
+.inline-item {
+	display: inline-block;
+	margin: .5em;
+	vertical-align: top;
+
+	&:first-child {
+		margin-left: 0em;
+	}
+	&.info-box {
+		width: 25%;
+		background-color: #fff;
+		padding: .5em 1em;
+		box-sizing: border-box;
+		height: fit-content;
+	}
+}
+.centered {
+	display: flex;
+	justify-content: center;
+	//align-items: center;
+}
+
 .nav-input-group {
 	.nav-input {
 		width: $nav-input-width;
@@ -201,11 +223,12 @@ body {
 .grid-item-2 {
 	height: 12em;
 	width: 9em;
+	background: url(url) no-repeat center;
 	background-color: #fff;
     vertical-align: top;
     cursor: pointer;
     transition: transform .3s ease;
-	background: url(url) no-repeat center;
+	
 	background-size: cover;
 	position: relative;
 
@@ -215,6 +238,18 @@ body {
     }
 	&:hover > .info-cover {
 		display: block;
+	}
+	&.large {
+		height: 16em;
+		width: 12em;
+	}
+	.cover-text {
+		font-weight: $bold;
+		font-size: 1.2rem;
+		margin: .25em 0em;
+		text-align: center;
+		margin-top: .75em;
+		color: $primary;
 	}
 	.info-cover {
 		display: none;
@@ -302,12 +337,13 @@ body {
 .footer {
 	width: 100%;
 	margin-top: 4em;
-	min-height: 5em;
+	min-height: 3em;
 	text-align: center;
 	background-color: $primary;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
 
 	.link {
 		font-weight: $bold;
