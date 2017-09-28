@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>gamingdb -- Nintendo</title>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+</head>
+<body>
+	<span>
+		<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark justify-content-between">
+			<div class="container">
+				<a class="navbar-brand primary-text" href="/">gamingdb</a>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<form class="d-flex flex-row nav-input-group">
+						<input class="form-control nav-input" type="text" placeholder="Search" aria-label="Search">
+					    <button class="btn nav-input-button" type="submit">Search</button>
+					</form>
+					<div class="d-inline-flex flex-row justify-content-end w-100">
+						<ul class="nav navbar-nav navbar-right">
+					    	<li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+					        <li class="nav-item active"><a class="nav-link" href="/games">Games</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/developers">Developers</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/platforms">Platforms</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/characters">Characters</a></li>
+					    </ul>
+					</div>
+
+				</div>
+			</div>
+		</nav>
+	</span>
+
+	<div class="page-body">
+		<div class="info-screen">
+			<div class="side-bar">
+				<img src="{{ url_for('static', filename='media/Nintendo.png') }}" alt="Nintendo">
+				<div class="info-item">
+					<div class="title">Games</div>
+					<a href="/game/new-super-mario-bros-wii" class="info">New Super Mario Bros Wii</a>
+				</div>
+				<div class="info-item">
+					<div class="title">Website</div>
+					<a href="https://www.nintendo.com/" class="info">https://www.nintendo.com/</a>
+				</div>
+			</div><div class="content">
+				<div class="main-title">Nintendo</div>
+				<hr>
+				<div class="sub-title">Average Rating: <strong>--/100</strong></div>
+				<div class="content-item"><strong>Platforms: </strong><a href="/platform/wii">Wii</a></div>
+				<div class="summary">Nintendo Co., Ltd. is a Japanese multinational consumer electronics and video game company headquartered in Kyoto. Nintendo is one of the world's largest video game companies by market capitalization, creating some of the best-known and top-selling video game franchises, such as Mario, The Legend of Zelda, and Pokémon. Founded on 23 September 1889 by Fusajiro Yamauchi, it originally produced handmade hanafuda playing cards. By 1963, the company had tried several small niche businesses, such as cab services and love hotels. Abandoning previous ventures in favor of toys in the 1960s, Nintendo then developed into a video game company in the 1970s, ultimately becoming one of the most influential in the industry and Japan's third most-valuable company with a market value of over $85 billion. From 1992 until 2016, Nintendo was also the majority shareholder of Major League Baseball's Seattle Mariners.</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
