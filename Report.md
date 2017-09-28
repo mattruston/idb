@@ -12,6 +12,81 @@ If users want to find out more information about a certain video game character,
 
 Video games would not exist without companies spending time and money to develop them. From the Developers page, users can choose a developer and see all the games they have created. From here, users can use this information to find new games to play created by their favorite developers, as well as other developer details.
 
+### RESTful API
+
+Based on our use cases mentioned above, we wanted to create simple APIs to allow us to provide the data necessary for each page, while also allowing utility as far as listing all the elements to the users. Our basic GET requests are as follows:
+
+List Games
+
+Get Game
+
+List Characters
+
+Get Characters
+
+List Platforms
+
+Get Platform
+
+List Developers
+
+Get Developer
+
+An example of a response to a request:
+
+```
+List Games [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "game_id": "1",
+                "title": "Overwatch",
+                "image": "https://....com/image.png",
+                "genres": [
+                    "genre_id",
+                    "genre_id"
+                ],
+                "platforms": [
+                    "platform_id",
+                    "platform_id"
+                ],
+                "companies": [
+                    "company_id",
+                    "company_id"
+                ]
+            },
+            {
+                "game_id": "2",
+                "title": "Hearthstone",
+                "image": "https://....com/image.png",
+                "genres": [
+                    "genre_id",
+                    "genre_id"
+                ],
+                "platforms": [
+                    "platform_id",
+                    "platform_id"
+                ],
+                "companies": [
+                    "company_id",
+                    "company_id"
+                ]
+            }
+        ]
+```
+
+The purpose of these two specific cases for each model, getting and instance and listing all instances satisfies our use cases. On the main page of a model, Games for instance, we want to display pages of games to our users. Listing all examples of this with the information provided in each object allows us to display an image of the game, the title of the game, genres associated with the game, platforms the game can be played on, and the companies who made it.
+
+In the case where a user wants to get more information about a game, they would be taken to the unique page of the game filled in with the data from the Get Game request. This request provides us with all of the other attributes about the game. This pattern is followed by the APIs for the other models as well.
+
+Going forward, we would like to implement paging along with our list requests. We need to have a better understanding of how it works, but based on our current knowledge we know it's necessary to include a pagination token in the request, as well as the response. This would allow a user to retrieve a single page of elements at a time, only loading one page to the user at a given moment. If the user wants to see more elements, they would go to the next page which would create a new list request with the pagination token of the previous list response.
+
+We would also like to include filtering. This would allow certain attributes to be taken into account when listing elements, narrowing the search results for the user. This would be included with the request of a given API, only showing results that match the filter passed into the request.
+
+We believe the use of these APIs should allows to provide as much information necessary to the user in a timely manner, and is also organized in such a way that it is simple to access whatever is data needed for specific pages.
+
 ### Models
 
 The models chosen for the database are _Games_, _Companies_, _Platforms_, and _Characters_. These were not arbitrary decisions; a deliberate process was employed in order to narrow down the vast number of possibilites available to make a video game database. Both technical and subjective perspectives were employed in the discussions. Next, a description of this process, the specifics for each of these models and their attributes, and the ways in which they are related to one another will be provided.
@@ -101,3 +176,6 @@ That is all it takes to get a project up and running using the Google Cloud Plat
 
 - **IGDB & GiantBomb**
 	- Two verbose libraries of videogame related data formatted to be RESTful API's. They contain a wealth of information about games, platforms, developers, characters, genres, publishers, and much more. 
+
+	
+The tools have been very helpful in getting through this first project. Trello allows much greater visualization of issues, comments associated with them, and what stage of completion they are in. Google Cloud Platform has allowed for frictionless integration between our site and our repository, and allows for updates to appear seamlessly after they are completed.
