@@ -131,6 +131,8 @@ One thing we have noticed with deploying changes to code is that sometimes certa
 
 That is all it takes to get a project up and running using the Google Cloud Platform.
 
+We also needed to get our project to use a custom domain. We purchased gamingdb.info from Google Domains, Google's domain selling service. From there, we went to our Google Cloud Platform console under App Engine Settings and added our custom domain to the project. From there, all we had left to do was configure the DNS correctly so that GCP could generate the SSL certificates and link the domain to our project. To configure the DNS, all we had to do was go to Google Domains and add custom resource records using the information provided by GCP when adding your custom domain. After those couple steps, we had our project up and running on a custom domain.
+
 ### Tools & Technologies
 
 #### Front-end
