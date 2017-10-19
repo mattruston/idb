@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavItem from './NavItem';
+import './styles/Nav.css';
 
 /* Nav component for a standard style navbar */
 class Nav extends Component {

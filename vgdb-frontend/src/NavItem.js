@@ -11,3 +11,5 @@ class NavItem extends Component {
         );
     }
 }
+
+export default NavItem;
