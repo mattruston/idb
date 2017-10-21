@@ -1,0 +1,32 @@
+.grid-item {
+    height: auto;
+    flex: 1;
+    text-decoration: none;
+}
+.grid-item-container {
+    display: flex;
+    flex-direction: column;
+    width: 8em;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.cover-image {
+    display: flex;
+    flex-direction: column;
+    padding: .5em;
+    background-color: #ccc;
+}
+.cover-image:hover > .item-detail-list {
+    visibility: visible;
+}
+.item-detail-list {
+    visibility: hidden;
+}
+.item-detail {
+    background-color: #fff;
+    padding: .75em;
+}
+.item-title {
+    color: #333;
+    text-align: center;
+}
