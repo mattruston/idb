@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../App.css';
 import NavItem from './NavItem';
 
 /* Nav component for a standard style navbar */
@@ -14,10 +14,10 @@ class Nav extends Component {
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNav">
-					<form class="d-flex flex-row nav-input-group">
+					{/* <form class="d-flex flex-row nav-input-group">
 						<input class="form-control nav-input" type="text" placeholder="Search" aria-label="Search"/>
 					    <button class="btn nav-input-button" type="submit">Search</button>
-					</form>
+					</form> */}
 					<div class="d-inline-flex flex-row justify-content-end w-100">
 						<NavItem text="Games" link="/games"/>
                         <NavItem text="Developers" link="/developers"/>

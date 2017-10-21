@@ -3,6 +3,14 @@ import GridItem from './GridItem';
 
 /* Multiline flexible column layout for griditems */
 class GridLayout extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+            
+        };
+    }
+
     render() {
         return (
             <div className="grid-layout">
