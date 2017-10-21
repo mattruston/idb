@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../App.css';
+import './NavItem.css';
 
 /* Link or Text item on the nav */
 class NavItem extends Component {

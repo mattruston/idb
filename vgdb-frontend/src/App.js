@@ -30,7 +30,7 @@ class App extends Component {
           </Switch>
         </BrowserRouter>
 				<div className="footer">
-					<a class="link" href="https://github.com/mattruston/idb">Check out the project on Github</a>
+					<a className="link" href="https://github.com/mattruston/idb">Check out the project on Github</a>
 				</div>
       </div>
     );
