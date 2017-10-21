@@ -1,5 +1,5 @@
 //
-//  main.swift
+//  Platforms.swift
 //  GamingDBScraper
 //
 //  Created by Matthew Ruston on 10/21/17.
@@ -7,7 +7,3 @@
 //
 
 import Foundation
-
-
-getTopGames(through: 2)
-print("Done")
