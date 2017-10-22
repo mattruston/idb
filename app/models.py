@@ -1,5 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.dialects import postgresql
+import json_parser
 
 
 app = Flask(__name__)
@@ -8,11 +10,15 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
+game_genre_assoc = db.Table('game_genre',
+        db.Column('game_id', db.Integer, db.ForeignKey('game.game_id')),
+        db.Column('genre_id', db.Integer, db.ForeignKey('genre.genre_id'))
+)
+
 game_dev_assoc = db.Table('game_dev',
         db.Column('game_id', db.Integer, db.ForeignKey('game.game_id')),
         db.Column('developer_id', db.Integer, db.ForeignKey('developer.developer_id'))
 )
-
 
 game_plat_assoc = db.Table('game_plat',
         db.Column('game_id', db.Integer, db.ForeignKey('game.game_id')),
@@ -41,26 +47,25 @@ plat_char_assoc = db.Table('plat_char',
 class Game(db.Model):
     game_id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String)
-    description = db.Column(db.String)
-    rating = db.Column(db.Float)
-    image_url = db.Column(db.String)
-    release_date = db.Column(db.Date)
-    # related_game_ids = db.Column(db.Array(db.Integer))
+    description = db.Column(db.String, nullable=True)
+    rating = db.Column(db.Float, nullable=True)
+    image_url = db.Column(db.String, nullable=True)
+    release_date = db.Column(db.Date, nullable=True)
+    # related_game_ids = db.Column(postgresql.ARRAY(db.Integer))
+    # screenshot_urls = db.Column(postgresql.ARRAY(db.String), nullable=True)
 
-    genre = db.Column(db.Integer, db.ForeignKey('genre.genre_id'))
-
+    genres = db.relationship('Genre', secondary=game_genre_assoc, backref=db.backref('games', lazy='dynamic'))
     developers = db.relationship('Developer', secondary=game_dev_assoc, backref=db.backref('games', lazy='dynamic'))
     platforms = db.relationship('Platform', secondary=game_plat_assoc, backref=db.backref('games', lazy='dynamic'))
     characters = db.relationship('Character', secondary=game_char_assoc, backref=db.backref('games', lazy='dynamic'))
 
-    def __init__(self, game_id, title, description, rating, image_url, release_date, related_game_ids):
-        self.game_id = game_id
+    def __init__(self, title, description=None, rating=None, image_url=None, release_date=None):
         self.title = title
         self.description = description
         self.rating = rating
         self.image_url = image_url
         self.release_date = release_date
-        self.related_game_ids = related_game_ids
+        # self.screenshot_urls = screenshot_urls
 
     def __repr__(self):
         return self.title
@@ -69,15 +74,14 @@ class Game(db.Model):
 class Developer(db.Model):
     developer_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
-    description = db.Column(db.String)
-    average_rating = db.Column(db.Float)
-    website = db.Column(db.String)
-    image_url = db.Column(db.String)
-    location = db.Column(db.String)
+    description = db.Column(db.String, nullable=True)
+    average_rating = db.Column(db.Float, nullable=True)
+    website = db.Column(db.String, nullable=True)
+    image_url = db.Column(db.String, nullable=True)
+    location = db.Column(db.String, nullable=True)
     platforms = db.relationship('Platform', secondary=dev_plat_assoc, backref=db.backref('developers', lazy='dynamic'))
 
-    def __init__(self, developer_id, name, description, average_rating, website, image_url, location):
-        self.developer_id = developer_id
+    def __init__(self, name, description=None, average_rating=None, website=None, image_url=None, location=None):
         self.name = name
         self.description = description
         self.average_rating = average_rating
@@ -92,17 +96,18 @@ class Developer(db.Model):
 class Platform(db.Model):
     platform_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
-    description = db.Column(db.String)
-    image_url = db.Column(db.String)
-    release_date = db.Column(db.Date)
+    description = db.Column(db.String, nullable=True)
+    image_url = db.Column(db.String, nullable=True)
+    release_date = db.Column(db.Date, nullable=True)
+    website = db.Column(db.String, nullable=True)
     characters = db.relationship('Character', secondary=plat_char_assoc, backref=db.backref('platforms', lazy='dynamic'))
 
-    def __init__(self, platform_id, name, description, image_url, release_date):
-        self.platform_id = platform_id
+    def __init__(self, name, description=None, image_url=None, release_date=None, website=None):
         self.name = name
         self.description = description
         self.image_url = image_url
         self.release_date = release_date
+        self.website = website
 
     def __repr__(self):
         return self.name
@@ -111,23 +116,22 @@ class Platform(db.Model):
 class Character(db.Model):
     character_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
-    summary = db.Column(db.String)
-    image_url = db.Column(db.String)
-    species = db.Column(db.String)
-    gender = db.Column(db.String)
+    summary = db.Column(db.String, nullable=True)
+    image_url = db.Column(db.String, nullable=True)
+    species = db.Column(db.String, nullable=True)
+    gender = db.Column(db.String, nullable=True)
     # friends = db.Column(db.Array(db.Integer))
     # enemies = db.Column(db.Array(db.Integer))
 
-    def __init__(self, character_id, name, summary, image_url, species, gender, friends, enemies):
-        self.character_id = character_id
+    def __init__(self, name, summary=None, image_url=None, species=None, gender=None):
         self.name = name
         self.summary = summary
         self.image_url = image_url
         self.species = species
         self.gender = gender
-        self.friends = friends
-        self.enemies = enemies
-    
+        # self.friends = friends
+        # self.enemies = enemies
+
     def __repr__(self):
         return self.name
 
@@ -135,14 +139,9 @@ class Character(db.Model):
 class Genre(db.Model):
     genre_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
-    db.relationship('Game', backref='genre', lazy='dynamic')
 
-    def __init__(self, genre_id, name):
-        self.genre_id = genre_id
+    def __init__(self, name):
         self.name = name
 
     def __repr__(self):
         return self.name
-
-db.create_all()
-app.run()
