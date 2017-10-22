@@ -9,5 +9,5 @@
 import Foundation
 
 
-getTopGames(through: 2)
+getPlatforms(through: 136)
 print("Done")
