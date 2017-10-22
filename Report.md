@@ -22,7 +22,7 @@ Get Game
 
 List Characters
 
-Get Characters
+Get Character
 
 List Platforms
 
@@ -113,6 +113,20 @@ Character->Game: Appears in
 Character->Platform: Appears on
 ```
 
+### DB
+
+The database for our site is based on PostgreSQL's relational structure. In addition to that, in order to populate our instance (which is hosted in Google Cloud Platform), we used SQLAlchemy in conjuction with Flask. The former is a Python library that allows easy management of SQL tables. In essence, our code creates the Flask app with information to log into our Postgres instance and is used in the construction of an abstract `db` made available by SQLAlchemy. Next, we utilize the class `Model` provided by the library to create our own classes that define the models described above through inheritance. This allows the underlyting implementation of the library to grab these newly defined classes and generate tables containing columns for attributes that we chose during the definition.
+
+After this point, our tables are not necessarily connected with each other. To achieve this connection, and since most of our models are connected in a many-to-many fashion, we use the concept of association tables made available by SQLAlchemy. Essentially, we create one table for each many-to-many relationship between our models and initialize these relationships using the `backref` attribute; the latter ensures that, when a change is made to one of the tables in the relationship, the change is relfected in the table that shares this relationship. For instance, if I add a platform to a game, the game will also be listed in the `.games` attribute of the platform.
+
+Other miscellaneus advantages to this combination of tools motivated our choice. SQLAlchemy for example, handles the auto-incrementation of the `id`s we use as our primary keys. It also handles the creation of RESTful API requests if specified. On the other hand, Postgres allows us to use arrays of elements as attributes in our models, making the implementation of our `screenshot_urls` trivial.
+
+Lastly, when populating our database we follow these steps:
+
+1. Drop any current tables and information in our database in order to avoid conflicts and achieve idempotence in our operations.
+2. Create every table specified by our models.
+3. Parse the JSONs scraped from our data sources to create rows, at each point checking for relationships and adding those as well.
+
 ### Hosting
 
 We are using the Google Cloud Platform to host our website. The Google Cloud Platform is a powerful back-end service that has many capabilities useful for running applications. It ranges from just giving you an empty Linux virtual machine where you can run your application however you want, to using something like the App Engine which handles many of the common hurdles you normally have to overcome with a back-end service. Because of the many capabilities the App Engine provides, this is the service we are using to run our web application. It has easy commands for deploying a website, can auto-scale if the website suddenly starts getting a lot of traffic, and provides useful analytics on the requests made to our application.
@@ -150,6 +164,10 @@ We also needed to get our project to use a custom domain. We purchased gamingdb.
 
 - **Flask**
   - A microframework for handling rendering and navigation for the web page.
+- **SQLAlchemy**
+  - Python library that aids in the generation of SQL databases.
+- **PostgreSQL**
+  - Object-relational databse system.
 
 #### Development Tools
 
