@@ -21,7 +21,7 @@ fileprivate let platformAttributes: [String] =
     "name",
     "logo",
     "website",
-    "games",
+    "games"
         ]
 
 fileprivate let pageSize = 1

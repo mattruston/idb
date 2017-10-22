@@ -9,5 +9,6 @@
 import Foundation
 
 
-getPlatforms(through: 136)
+getCompanies()
+
 print("Done")
