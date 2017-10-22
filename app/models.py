@@ -52,20 +52,20 @@ class Game(db.Model):
     image_url = db.Column(db.String, nullable=True)
     release_date = db.Column(db.Date, nullable=True)
     # related_game_ids = db.Column(postgresql.ARRAY(db.Integer))
-    # screenshot_urls = db.Column(postgresql.ARRAY(db.String), nullable=True)
+    screenshot_urls = db.Column(postgresql.ARRAY(db.String), nullable=True)
 
     genres = db.relationship('Genre', secondary=game_genre_assoc, backref=db.backref('games', lazy='dynamic'))
     developers = db.relationship('Developer', secondary=game_dev_assoc, backref=db.backref('games', lazy='dynamic'))
     platforms = db.relationship('Platform', secondary=game_plat_assoc, backref=db.backref('games', lazy='dynamic'))
     characters = db.relationship('Character', secondary=game_char_assoc, backref=db.backref('games', lazy='dynamic'))
 
-    def __init__(self, title, description=None, rating=None, image_url=None, release_date=None):
+    def __init__(self, title, description=None, rating=None, image_url=None, release_date=None, screenshot_urls=None):
         self.title = title
         self.description = description
         self.rating = rating
         self.image_url = image_url
         self.release_date = release_date
-        # self.screenshot_urls = screenshot_urls
+        self.screenshot_urls = screenshot_urls
 
     def __repr__(self):
         return self.title

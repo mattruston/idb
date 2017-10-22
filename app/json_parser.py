@@ -32,7 +32,7 @@ class Parser:
                     d['description'] = game['summary']
                 if 'total_rating' in game:
                     d['rating'] = game['total_rating']
-                if 'image_url' in game:
+                if 'cover' in game:
                     d['image_url'] = 'http:' + \
                         game['cover']['url'].strip(
                             '\\').replace('/t_thumb', "")
@@ -41,7 +41,7 @@ class Parser:
                     for image in game['screenshots']:
                         screenshots.append(
                             'http:' + image['url'].strip('\\').replace('/t_thumb', ""))
-                # d['screenshot_urls'] = screenshots
+                d['screenshot_urls'] = screenshots
                 self.game_dict[game['id']] = d
                 new_row = models.Game(**d)
                 models.db.session.add(new_row)
