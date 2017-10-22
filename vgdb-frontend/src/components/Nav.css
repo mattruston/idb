@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: row;
     height: inherit;
+    justify-content: space-between;
 }
 .nav-section {
     display: flex;

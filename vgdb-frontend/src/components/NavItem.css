@@ -5,7 +5,19 @@
 }
 .nav-item:hover {
     color: #2de5c6;
+    text-decoration: none;
 }
 .nav-link {
-    
+    text-decoration: none;
+}
+.nav-link-bold {
+    color: #2de5c6;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+.nav-link-bold:hover {
+    color: #24b79e;
+}
+a {
+    text-decoration: none;
 }

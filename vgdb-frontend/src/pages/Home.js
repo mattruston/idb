@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GridLayout from '../components/GridLayout';
+import Title from '../components/Title';
 
 class Home extends Component {
     constructor(props) {
@@ -18,7 +19,6 @@ class Home extends Component {
                 {title: "test-item-3", details: ["test", "test", "test"], url:"/games"},
                 {title: "test-item-3", details: ["test", "test", "test"], url:"/games"},
                 {title: "test-item-3", details: ["test", "test", "test"], url:"/games"},
-                {title: "test-item-3", details: ["test", "test", "test"], url:"/games"},
                 {title: "test-item-3", details: ["test", "test", "test"], url:"/games"}
             ]
         };
@@ -27,7 +27,7 @@ class Home extends Component {
         return (
             <div>
                 <div className="container">
-                    <h1>Home</h1>
+                    <Title title="Gamez"/>
                     <GridLayout items={this.state.testitems}/>
                 </div>
             </div>

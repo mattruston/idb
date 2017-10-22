@@ -9,7 +9,7 @@ class Nav extends Component {
             <nav className="nav">
                 <div className="container nav-container">
                     <div className="nav-start nav-section">
-                        <NavItem text="gamingdb" link="/"/>
+                        <NavItem text="gamingdb" link="/" bold={true}/>
                     </div>
                     <div className="nav-end nav-section">
                         <div className="nav-menu">
