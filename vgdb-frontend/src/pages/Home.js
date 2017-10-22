@@ -7,12 +7,19 @@ class Home extends Component {
     
         this.state = {
             testitems: [
-                {title: "test-item-1", details: ["test", "test", "test"]},
-                {title: "test-item-2", details: ["test", "test", "test"]},
-                {title: "test-item-3", details: ["test", "test", "test"]},
-                {title: "test-item-3", details: ["test", "test", "test"]},
-                {title: "test-item-3", details: ["test", "test", "test"]},
-                {title: "test-item-3", details: ["test", "test", "test"]}
+                {title: "test-item-1", details: ["test", "test", "test"], url:"/games"},
+                {title: "test-item-2", details: ["test", "test", "test"], url:"/games"},
+                {title: "test-item-3", details: ["test", "test", "test"], url:"/games"},
+                {title: "test-item-3", details: ["test", "test", "test"], url:"/games"},
+                {title: "test-item-3", details: ["test", "test", "test"], url:"/games"},
+                {title: "test-item-3", details: ["test", "test", "test"], url:"/games"},
+                {title: "test-item-3", details: ["test", "test", "test"], url:"/games"},
+                {title: "test-item-3", details: ["test", "test", "test"], url:"/games"},
+                {title: "test-item-3", details: ["test", "test", "test"], url:"/games"},
+                {title: "test-item-3", details: ["test", "test", "test"], url:"/games"},
+                {title: "test-item-3", details: ["test", "test", "test"], url:"/games"},
+                {title: "test-item-3", details: ["test", "test", "test"], url:"/games"},
+                {title: "test-item-3", details: ["test", "test", "test"], url:"/games"}
             ]
         };
     }

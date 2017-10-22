@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './GridItem.css';
 
 class GridItem extends Component {
     render() {
         return (
-            <a href="{ this.props.url }" className="grid-item">
+            <Link to={ this.props.url } className="grid-item">
                 <div className="grid-item-container">
                     <div className="cover-image">
                         <div className="item-detail-list">
@@ -22,7 +23,7 @@ class GridItem extends Component {
                         <div className="item-title">{this.props.title}</div>
                     </div>
                 </div>
-            </a>
+            </Link>
         );
     }
 }
