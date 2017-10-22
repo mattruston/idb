@@ -13,13 +13,8 @@
     display: flex;
     align-items: center;
 }
-.nav-start {
-
-}
-.nav-end {
-
-}
 .nav-menu {
     display: flex;
     flex-direction: row;
+    width: auto;
 }
