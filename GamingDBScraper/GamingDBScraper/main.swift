@@ -9,6 +9,6 @@
 import Foundation
 
 
-getCompanies()
+getCharacters()
 
 print("Done")

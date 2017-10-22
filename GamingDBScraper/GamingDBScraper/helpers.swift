@@ -10,6 +10,7 @@ import Foundation
 
 let basePath = "https://api-2445582011268.apicast.io"
 let key = "be32cf8f710c797b67940515881e533f"
+let key2 = "0f4f06eec3715e153e1cf9d135510d21"
 
 func request(for path: String) -> URLRequest? {
     guard let url = URL(string: "\(basePath)\(path)") else {
@@ -18,7 +19,7 @@ func request(for path: String) -> URLRequest? {
     }
     
     var request = URLRequest(url: url)
-    request.addValue(key, forHTTPHeaderField: "user-key")
+    request.addValue(key2, forHTTPHeaderField: "user-key")
     request.addValue("application/json", forHTTPHeaderField: "Accept")
     
     return request
