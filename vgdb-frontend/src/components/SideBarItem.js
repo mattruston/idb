@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './BarItem.css';
 
 class SideBarItem extends Component {
     render() {
         return (
-            <div class="info-item">
-                <div class="title">{this.props.attribute}</div>
+            <div className="info-item">
+                <div className="bar-item-title">{this.props.attribute}</div>
                     {this.props.url && 
-                        <Link to={this.props.url} class="info">{this.props.info}</Link>
+                        <Link to={this.props.url} className="bar-item-info">{this.props.info}</Link>
                     }
                     {!this.props.url &&
-                        <div class="info">{this.props.info}</div>
+                        <div className="bar-item-info">{this.props.info}</div>
                     }
             </div>
         )
