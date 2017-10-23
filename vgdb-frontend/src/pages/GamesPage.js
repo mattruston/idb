@@ -19,7 +19,7 @@ class GamesPage extends Component {
         return (
             <div>
                 <div className="container">
-                    <Title title="Gamez"/>
+                    <Title title="Games"/>
                     <GridLayout items={this.state.testitems}/>
                 </div>
             </div>

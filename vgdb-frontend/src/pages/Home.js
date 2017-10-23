@@ -18,7 +18,6 @@ class Home extends Component {
                 {title: "test-item-3", details: ["test", "test", "test"], url:"/games"},
                 {title: "test-item-3", details: ["test", "test", "test"], url:"/games"},
                 {title: "test-item-3", details: ["test", "test", "test"], url:"/games"},
-                {title: "test-item-3", details: ["test", "test", "test"], url:"/games"},
                 {title: "test-item-3", details: ["test", "test", "test"], url:"/games"}
             ]
         };

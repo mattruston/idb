@@ -1,6 +1,6 @@
 .grid-item {
     height: auto;
-    flex: 1;
+    
     text-decoration: none;
     transition: transform .3s ease;
 }
