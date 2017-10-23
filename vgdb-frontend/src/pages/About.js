@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Title from '../components/Title';
 import AboutCard from '../components/AboutCard';
 import Title from '../components/Title';
 import './About.css';
