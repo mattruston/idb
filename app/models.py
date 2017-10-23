@@ -1,13 +1,8 @@
-from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects import postgresql
-import json_parser
 
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://juanmpenaranda@localhost:5432/postgres'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+db = SQLAlchemy()
 
 
 game_genre_assoc = db.Table('game_genre',
@@ -120,10 +115,11 @@ class Character(db.Model):
     image_url = db.Column(db.String, nullable=True)
     species = db.Column(db.String, nullable=True)
     gender = db.Column(db.String, nullable=True)
+    score = db.Column(db.Integer, nullable=True)
     # friends = db.Column(db.Array(db.Integer))
     # enemies = db.Column(db.Array(db.Integer))
 
-    def __init__(self, name, summary=None, image_url=None, species=None, gender=None):
+    def __init__(self, name, summary=None, image_url=None, species=None, gender=None, score=None):
         self.name = name
         self.summary = summary
         self.image_url = image_url
