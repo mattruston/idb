@@ -9,6 +9,7 @@ import PlatformsPage from './pages/PlatformsPage';
 import CharactersPage from './pages/CharactersPage';
 import AboutPage from './pages/About';
 import Home from './pages/Home';
+import DetailsPage from './pages/DetailsPage';
 
 class App extends Component {
   render() {
@@ -21,10 +22,10 @@ class App extends Component {
           <Route exact path='/platforms' component={PlatformsPage}/>
           <Route exact path='/characters'	component={CharactersPage}/>
           <Route exact path='/about' component={AboutPage}/>
-          {/* <Route exact path='/games/:game'						component={Game}/>
-          <Route exact path='/developers/:developer'	component={Developer}/>
-          <Route exact path='/platforms/:platform'		component={Platform}/>
-          <Route exact path='/characters/:character'	component={Character}/> */}
+          <Route exact path='/games/:id' component={DetailsPage}/>
+          <Route exact path='/developers/:id'	component={DetailsPage}/>
+          <Route exact path='/platforms/:id' component={DetailsPage}/>
+          <Route exact path='/characters/:id'	component={DetailsPage}/>
 				<div className="footer">
 					<a className="link" href="https://github.com/mattruston/idb">Check out the project on Github</a>
 				</div>
