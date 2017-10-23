@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Title from '../components/Title';
 import AboutCard from '../components/AboutCard';
+import Title from '../components/Title';
 import './About.css';
 
 class About extends Component {
     render() {
         return (
             <div className="container">
-                <h1>About</h1>
+                 <Title title="About"/>
                 <div className="about-grid">
                     <div className="about-card-wrapper">
                         <AboutCard 
@@ -23,7 +24,7 @@ class About extends Component {
                     </div>
                     <div className="about-card-wrapper">
                         <AboutCard 
-                        name="Kishan Patel" description="Hi, I'm Kishan. I'm a senior CS student at UT." roles="Backend" commits="26" issues="15" tests="0" url="https://github.com/KishanRPatel" image="https://avatars2.githubusercontent.com/u/25357245?s=400&v=4"/>
+                        name="Kishan Patel" description="Hi, I'm Kishan. I'm a senior CS student at UT." roles="Frontend" commits="26" issues="15" tests="0" url="https://github.com/KishanRPatel" image="https://avatars3.githubusercontent.com/u/25357245?s=400&v=4"/>
                     </div>
                     <div className="about-card-wrapper">
                         <AboutCard 
