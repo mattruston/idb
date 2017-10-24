@@ -9,6 +9,6 @@
 import Foundation
 
 
-getCharacters()
+getGenres()
 
 print("Done")
