@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>gamingdb -- Halo 3</title>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+</head>
+<body>
+	<span>
+		<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark justify-content-between">
+			<div class="container">
+				<a class="navbar-brand primary-text" href="/">gamingdb</a>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<form class="d-flex flex-row nav-input-group">
+						<input class="form-control nav-input" type="text" placeholder="Search" aria-label="Search">
+					    <button class="btn nav-input-button" type="submit">Search</button>
+					</form>
+					<div class="d-inline-flex flex-row justify-content-end w-100">
+						<ul class="nav navbar-nav navbar-right">
+					    	<li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+					        <li class="nav-item active"><a class="nav-link" href="/games">Games</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/developers">Developers</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/platforms">Platforms</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/characters">Characters</a></li>
+					    </ul>
+					</div>
+
+				</div>
+			</div>
+		</nav>
+	</span>
+
+	<div class="page-body">
+		<div class="info-screen">
+			<div class="side-bar">
+				<img src="{{ url_for('static', filename='media/Halo3coverart.jpg') }}" alt="Halo 3">
+				<div class="info-item">
+					<div class="title">Developer</div>
+					<a href="/devs/bungie" class="info">Bungie</a>
+				</div>
+				<div class="info-item">
+					<div class="title">Genres</div>
+					<a href="/game/halo-3" class="info">First-Person Shooter</a>
+				</div>
+			</div><div class="content">
+				<div class="main-title">Halo 3</div>
+				<hr>
+				<div class="sub-title">Rated: <strong>--/100</strong></div>
+				<div class="content-item"><strong>Platforms: </strong><a href="/platform/xbox-360">Xbox 360</a></div>
+				<div class="summary">Halo 3 is a 2007 first-person shooter video game developed by Bungie for the Xbox 360 console. The third installment in the Halo franchise, the game concludes the story arc begun in 2001's Halo: Combat Evolved and continued in 2004's Halo 2. The game was released on September 25, 2007, in Australia, Brazil, India, New Zealand, North America, and Singapore; September 26, 2007, in Europe; and September 27, 2007, in Japan. Halo 3's story centers on the interstellar war between twenty-sixth century humanity and a collection of alien races known as the Covenant. The player assumes the role of the Master Chief, a cybernetically enhanced supersoldier, as he battles the Covenant. The game features vehicles, weapons, and gameplay elements not present in previous titles of the series, as well as the addition of saved gameplay films, file sharing, and the Forge map editor—a utility which allows the player to perform modifications to multiplayer levels.</div>
+
+				<div class="display">
+					<div class="display-title">Related Games</div>
+					<div class="row">
+						<a href="/game/god-of-war" class="col-sm d-flex justify-content-center">
+							<div class="grid-item-2" style="background-image: url({{ url_for('static', filename='media/ps3_god_war_iii.jpg') }})">
+								<div class="info-cover">
+									<div class="title">God of War III</div>
+									<div class="item">Hack & Slash</div>
+									<hr>
+									<div class="item">Playstation 3</div>
+									<hr>
+									<div class="item">SCE Santa Monica Studio</div>
+								</div>
+							</div>
+						</a>
+						<a href="/game/halo-3" class="col-sm d-flex justify-content-center">
+							<div class="grid-item-2" style="background-image: url({{ url_for('static', filename='media/Halo3coverart.jpg') }})">
+								<div class="info-cover">
+									<div class="title">Halo 3</div>
+									<hr>
+									<div class="item">FPS</div>
+									<hr>
+									<div class="item">Xbox 360</div>
+									<hr>
+									<div class="item">Bungie</div>
+								</div>
+							</div>
+						</a>
+						<a href="/game/new-super-mario-bros-wii" class="col-sm d-flex justify-content-center">
+							<div class="grid-item-2" style="background-image: url({{ url_for('static', filename='media/new-super-mario-wii1-usjpg-e93439.jpg') }})">
+								<div class="info-cover">
+									<div class="title">New Super Mario Bros</div>
+									<hr>
+									<div class="item">Platformer</div>
+									<hr>
+									<div class="item">Nintendo Wii</div>
+									<hr>
+									<div class="item">Nintendo</div>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

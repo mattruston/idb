@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>gamingdb</title>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+</head>
+<body>
+	<span>
+		<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark justify-content-between">
+			<div class="container">
+				<a class="navbar-brand primary-text" href="/">gamingdb</a>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<form class="d-flex flex-row nav-input-group">
+						<input class="form-control nav-input" type="text" placeholder="Search" aria-label="Search">
+					    <button class="btn nav-input-button" type="submit">Search</button>
+					</form>
+					<div class="d-inline-flex flex-row justify-content-end w-100">
+						<ul class="nav navbar-nav navbar-right">
+					    	<li class="nav-item active"><a class="nav-link" href="/about">About</a></li>
+					        <li class="nav-item"><a class="nav-link" href="/games">Games</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/developers">Developers</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/platforms">Platforms</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/characters">Characters</a></li>
+					    </ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</span>
+	<div class="container">
+		<div class="team-intro">
+			<div class="team-name">Motivation</div>
+			<div class="description">Video games are a beloved childhood pastime that most people continue to enjoy well into adulthood. As a team, each of us grew up playing video games. Video games not only built friendships, but were a great way to experience a rich story with deep characters. There is nothing quite like getting a new game and playing it for the first time. Immersing yourself in a new game is an amazing feeling, but it can be hard to find new video games that you like. We created GamingDB so that people have a place to go to find a new game to play by providing information about everything that comes together to make a video game. From the developers who created the game to the major characters in the game, our site will provide users all the information they need about every aspect of a video game. We will provide information about video games, gaming platforms, major characters, and companies that develop video games. With these models, we will be able to create a great web of information that people can browse through whenever they want to find a new game to play.</div>
+		</div>
+		<div class="team-intro">
+			<div class="team-name">Team xXGamersXx</div>
+			<div class="description">A website for all of those games.</div>
+		</div>
+		<div class="row">
+			<div class="col-sm">
+				<a class="about-card" href="https://github.com/Jaredk3nt" target="_blank">
+					<div class="about-img">
+						<img src="{{ url_for('static', filename='media/jared.jpg') }}" alt="Jared">
+					</div>
+					<div class="about-content">
+						<div class="name">Jared Jones</div>
+						<div class="about-content-item description">
+							<div class="detail">Hi I'm Jared. I am a senior CS student.</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Responsibilities:</div>
+							<div class="detail">Front-end</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Commits:</div>
+							<div class="detail">5</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Issues:</div>
+							<div class="detail">5</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Unit Tests:</div>
+							<div class="detail">5</div>
+						</div>
+					</div>
+				</a>
+			</div>
+
+			<div class="col-sm">
+				<a class="about-card" href="https://github.com/jmpo1618" target="_blank">
+					<div class="about-img">
+						<img src="{{ url_for('static', filename='media/juan.jpg') }}" alt="Juan">
+					</div>
+					<div class="about-content">
+						<div class="name">Juan M. Penaranda</div>
+						<div class="about-content-item description">
+							<div class="detail">Hi I'm Juan. I am a senior CS student.</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Responsibilities:</div>
+							<div class="detail">Back-end</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Commits:</div>
+							<div class="detail">5</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Issues:</div>
+							<div class="detail">5</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Unit Tests:</div>
+							<div class="detail">5</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm">
+				<a class="about-card" href="https://github.com/derektolliver" target="_blank">
+					<div class="about-img">
+						<img src="{{ url_for('static', filename='media/derek.jpg') }}" alt="Derek">
+					</div>
+					<div class="about-content">
+						<div class="name">Derek Tolliver</div>
+						<div class="about-content-item description">
+							<div class="detail">Hi I'm Derek. I am a senior in CS.</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Responsibilities:</div>
+							<div class="detail">Back-end</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Commits:</div>
+							<div class="detail">3</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Issues:</div>
+							<div class="detail">3</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Unit Tests:</div>
+							<div class="detail">3</div>
+						</div>
+					</div>
+				</a>
+			</div>
+
+			<div class="col-sm">
+				<a class="about-card" href="https://github.com/KishanRPatel" target="_blank">
+					<div class="about-img">
+						<img src="{{ url_for('static', filename='media/kishan.jpg') }}" alt="Kishan">
+					</div>
+					<div class="about-content">
+						<div class="name">Kishan Patel</div>
+						<div class="about-content-item description">
+							<div class="detail">Hi I'm Kishan. I am a junior CS student.</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Responsibilities:</div>
+							<div class="detail">Front-end</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Commits:</div>
+							<div class="detail">5</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Issues:</div>
+							<div class="detail">5</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Unit Tests:</div>
+							<div class="detail">5</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="row justify-content-md-center">
+			<div class="col-sm-6">
+				<a class="about-card" href="https://github.com/mattruston" target="_blank">
+					<div class="about-img">
+						<img src="{{ url_for('static', filename='media/matt.jpg') }}" alt="Matt">
+					</div>
+					<div class="about-content">
+						<div class="name">Matt Ruston</div>
+						<div class="about-content-item description">
+							<div class="detail">Hi I'm Matt. I am a senior CS student.</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Responsibilities:</div>
+							<div class="detail">Dev-ops</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Commits:</div>
+							<div class="detail">5</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Issues:</div>
+							<div class="detail">5</div>
+						</div>
+						<div class="about-content-item">
+							<div class="title">Unit Tests:</div>
+							<div class="detail">5</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+
+		<div class="centered">
+			<div class="team-intro inline-item info-box">
+				<div class="team-name">Stats</div>
+				<div class="description"><strong>Total Commits:</strong> X</div>
+				<div class="description"><strong>Total Issues:</strong> 15</div>
+				<div class="description"><strong>Total Unit Tests:</strong> 0</div>
+				<div class="description">
+					<a class="link" href="http://docs.vgdb1.apiary.io/#">Apiary Documentation</a>
+				</div>
+				<div class="description">
+					<a class="link" href="https://trello.com/b/OBZSfuJU/phase-1">Trello Issues</a>
+				</div>
+			</div>
+
+			<div class="team-intro inline-item info-box">
+				<div class="team-name">Data Sources</div>
+				<div class="description">
+					<a class="link" href="https://igdb.github.io/api/about/welcome/">IGDB</a>
+				</div>
+				<div class="description">
+					<a class="link" href="https://www.giantbomb.com/api/documentation">GiantBomb</a>
+				</div>
+			</div>
+
+			<div class="team-intro inline-item info-box">
+				<div class="team-name">Tools</div>
+				<div class="description"><strong>Trello</strong> - Issue tracker</div>
+				<div class="description"><strong>PlanItPoker</strong> - Creating and estimating user stories</div>
+				<div class="description"><strong>Google Domains</strong> - Bought and registered our domain</div>
+				<div class="description"><strong>Apiary</strong> - API Documentation</div>
+				<div class="description"><strong>Google Cloud Platform </strong>- Used App Engine to deploy our site</div>
+				<div class="description"><strong>Slack</strong> - Used for team communication</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">
+		<a class="link" href="https://github.com/mattruston/idb">Check out the project on Github</a>
+	</div>
+</body>
+</html>

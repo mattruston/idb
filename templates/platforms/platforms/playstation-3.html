@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>gamingdb -- Playstation 3</title>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+</head>
+<body>
+	<span>
+		<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark justify-content-between">
+			<div class="container">
+				<a class="navbar-brand primary-text" href="/">gamingdb</a>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<form class="d-flex flex-row nav-input-group">
+						<input class="form-control nav-input" type="text" placeholder="Search" aria-label="Search">
+					    <button class="btn nav-input-button" type="submit">Search</button>
+					</form>
+					<div class="d-inline-flex flex-row justify-content-end w-100">
+						<ul class="nav navbar-nav navbar-right">
+					    	<li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+					        <li class="nav-item active"><a class="nav-link" href="/games">Games</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/developers">Developers</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/platforms">Platforms</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/characters">Characters</a></li>
+					    </ul>
+					</div>
+
+				</div>
+			</div>
+		</nav>
+	</span>
+
+	<div class="page-body">
+		<div class="info-screen">
+			<div class="side-bar">
+				<img src="{{ url_for('static', filename='media/playstation_3.jpg') }}" alt="Playstation 3">
+				<div class="info-item">
+					<div class="title">Games</div>
+					<a href="/game/god-of-war" class="info">God of War III</a>
+				</div>
+				<div class="info-item">
+					<div class="title">Characters</div>
+					<a href="/character/kratos" class="info">Kratos</a>
+				</div>
+			</div><div class="content">
+				<div class="main-title">Playstation 3</div>
+				<hr>
+				<div class="sub-title">Average Rating: <strong>--/100</strong></div>
+				<div class="content-item"><strong>Manufacturer: </strong>Sony</div>
+				<div class="summary">The PlayStation 3 (PS3) is a home video game console developed by Sony Interactive Entertainment. It is the successor to PlayStation 2, and is part of the PlayStation brand of consoles. It was first released on November 11, 2006, in Japan,[8] November 17, 2006, in North America, and March 23, 2007, in Europe and Australia.[9][10][11] The PlayStation 3 mainly competes against consoles such as Microsoft's Xbox 360 and Nintendo's Wii as part of the seventh generation of video game consoles. The console was first officially announced at E3 2005, and was released at the end of 2006. It was the first console to use Blu-ray Disc as its primary storage medium.[12] The console was the first PlayStation to integrate social gaming services, including being the first to introduce Sony's social gaming service, PlayStation Network,[13] and its[14] remote connectivity with PlayStation Portable and PlayStation Vita,[15] being able to remote control the console from the devices.</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

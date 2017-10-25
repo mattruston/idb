@@ -1,0 +1,55 @@
+PlanItPoker Stories
+
+1 Point = 1 hour of work
+
+#1 Create a home page with recently released games and highest rated games.
+Estimate: 1 point
+Actual: 1 point
+
+#2 Create a navbar with links to each model's pages and to an about page with
+information about each team member.
+Estimate: .5 points
+Actual: .5 points
+
+#3 Create a page for Games with 3 images of games you can hover over for more
+information and click on to go to their individual page for more information.
+Estimate: 1 point
+Actual: 2 points
+
+#4 Create a page for Platforms with 3 images of consoles you can hover over for 
+more information and click on to go to their individual pages for more 
+information.
+Estimate: 1 point
+Actual: 1 point
+
+#5 Create a page for Characters with 3 images of characters you can hover over for 
+more information and click on to go to their individual pages for more 
+information.
+Estimate: 1 point
+Actual: 1 point
+
+#6 Create a page for Companies with 3 images of developers you can hover over for 
+more information and click on to go to their individual pages for more 
+information.
+Estimate: 2 points
+Actual: 2 points
+
+#7 Create an individual page for the 3 Developer models that link to at least 2 of 
+the other models
+Estimate: 2 points
+Actual: 1 point
+
+#8 Create an individual page for the 3 Game models that link to at least 2 of
+the other models
+Estimate: 2 points
+Actual: 1 point
+
+#9 Create an individual page for the 3 Platform models that link to at least 2 of
+the other models
+Estimate: 2 point
+Actual: 1 point
+
+#10 Create an individual page for the 3 Character models that link to at least 2 of
+the other models
+Estimate: 2 points
+Actual: 1 point

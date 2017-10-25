@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>gamingdb -- Mario</title>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+</head>
+<body>
+	<span>
+		<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark justify-content-between">
+			<div class="container">
+				<a class="navbar-brand primary-text" href="/">gamingdb</a>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<form class="d-flex flex-row nav-input-group">
+						<input class="form-control nav-input" type="text" placeholder="Search" aria-label="Search">
+					    <button class="btn nav-input-button" type="submit">Search</button>
+					</form>
+					<div class="d-inline-flex flex-row justify-content-end w-100">
+						<ul class="nav navbar-nav navbar-right">
+					    	<li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+					        <li class="nav-item"><a class="nav-link" href="/games">Games</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/developers">Developers</a></li><!--
+					     --><li class="nav-item"><a class="nav-link" href="/platforms">Platforms</a></li><!--
+					     --><li class="nav-item active"><a class="nav-link" href="/characters">Characters</a></li>
+					    </ul>
+					</div>
+
+				</div>
+			</div>
+		</nav>
+	</span>
+
+	<div class="page-body">
+		<div class="info-screen">
+			<div class="side-bar">
+				<img src="{{ url_for('static', filename='media/Mario.png') }}" alt="Mario">
+				<div class="info-item">
+					<div class="title">Games</div>
+					<a href="/game/new-super-mario-bros-wii" class="info">New Super Mario Bros Wii</a>
+				</div>
+				<div class="info-item">
+					<div class="title">Species</div>
+					<div class="info">Human</div>
+				</div>
+			</div><div class="content">
+				<div class="main-title">Mario</div>
+				<hr>
+				<div class="content-item"><strong>Platforms: </strong><a href="/platform/wii">Nintendo Wii</a></div>
+				<div class="summary">Mario lives in the Mushroom Kingdom, which is where he fights Bowser (originally called King Koopa). In most of his games, Mario is rescuing Princess Peach (originally called Princess Toadstool) from the evil Bowser. Mario has appeared in over 200 video games since his first appearance. Since Super Mario 64, Mario is currently voiced by Charles Martinet, who also voices Mario's brother, Luigi, their "evil'' counterparts, Wario and Waluigi, his friends Toadsworth and MC Ballyhoo and their baby versions of themselves, Baby Mario and Baby Luigi.</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
