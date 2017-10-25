@@ -2,6 +2,7 @@ from unittest import main, TestCase
 import json
 from models import *
 from app import app
+import requests
 
 
 class DBTests(TestCase):
@@ -73,6 +74,62 @@ class DBTests(TestCase):
             self.assertEqual(query.name, "Run and Gun")
             db.session.delete(genre)
             db.session.commit()
+
+    def test_game_get_request(self):
+        with app.app_context():
+            api_request = requests.get("http://gamingdb.info/api/game/13")
+            game_data = json.loads(api_request.text)
+            api_id = game_data['game_id']
+            api_release_date = game_data['release_date']
+
+            db_request = db.session.query(Game).get(13)
+            db_id = db_request['game_id']
+            db_release_date = db_request['release_date']
+
+            self.assertEqual(api_id, db_id)
+            self.assertEqual(api_release_date, db_release_date)
+
+    def test_developer_get_request(self):
+        with app.app_context():
+            api_request = requests.get("http://gamingdb.info/api/developer/21")
+            developer_data = json.loads(api_request.text)
+            api_id = developer_data['developer_id']
+            api_name = developer_data['name']
+
+            db_request = db.session.query(Developer).get(21)
+            db_id = db_request['developer_id']
+            db_name = db_request['name']
+
+            self.assertEqual(api_id, db_id)
+            self.assertEqual(api_name, db_name)
+
+    def test_platform_get_request(self):
+        with app.app_context():
+            api_request = requests.get('http://gamingdb.info/api/platform/8')
+            platform_data = json.loads(api_request.text)
+            api_id = platform_data['platform_id']
+            api_name = platform_data['platform_name']
+
+            db_request = db.session.query(Platform).get(8)
+            db_id = db_request['platform_id']
+            db_name = db_request['name']
+
+            self.assertEqual(api_id, db_id)
+            self.assertEqual(api_name, db_name)
+
+    def test_character_get_request(self):
+        with app.app_context():
+            api_request = requests.get('http://gamingdb.info/api/character/69')
+            character_data = json.loads(api_request.text)
+            api_id = character_data['character_id']
+            api_name = character_data['name']
+
+            db_request = db.session.query(Character).get(69)
+            db_id = db_request['character_id']
+            db_name = db_request['name']
+
+            self.assertEqual(api_id, db_id)
+            self.assertEqual(api_name, db_name)
         
 if __name__ == "__main__":
     main()
