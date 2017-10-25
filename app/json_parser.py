@@ -24,7 +24,7 @@ class Parser:
         return date.fromtimestamp(epoch / 1000).strftime('%Y-%m-%d %H:%M:%S')
 
     def parse_games(self):
-        with open('igdb_games.json') as game_data:
+        with open('../data/igdb_games.json') as game_data:
             data = json.load(game_data)
             for game in data:
                 d = {}
@@ -69,7 +69,7 @@ class Parser:
                 models.db.session.commit()
 
     def parse_companies(self):
-        with open('igdb_companies.json') as company_data:
+        with open('../data/igdb_companies.json') as company_data:
             data = json.load(company_data)
             for company in data:
                 if not company:
@@ -100,7 +100,7 @@ class Parser:
                 models.db.session.commit()
 
     def parse_platforms(self):
-        with open('igdb_platforms.json') as platform_data:
+        with open('../data/igdb_platforms.json') as platform_data:
             data = json.load(platform_data)
             for platform in data:
                 d = {}
@@ -135,7 +135,7 @@ class Parser:
 
 
     def parse_characters(self):
-        with open('igdb_characters.json') as character_data:
+        with open('../data/igdb_characters.json') as character_data:
             data = json.load(character_data)
             for character in data:
                 d = {}

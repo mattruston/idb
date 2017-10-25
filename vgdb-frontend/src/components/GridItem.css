@@ -1,0 +1,42 @@
+.grid-item {
+    height: auto;
+    
+    text-decoration: none;
+    transition: transform .3s ease;
+}
+.grid-item:hover {
+    text-decoration: none;
+    transform: scale(1.05, 1.05);
+}
+.grid-item-container {
+    display: flex;
+    flex-direction: column;
+    width: 9em;
+    box-sizing: border-box;
+    margin: .5em;
+}
+.cover-image {
+    display: flex;
+    flex-direction: column;
+    height: 10em;
+    width: 9em;
+    background-color: #ccc;
+}
+.cover-image:hover > .item-detail-list {
+    visibility: visible;
+}
+.item-detail-list {
+    visibility: hidden;
+    background-color: rgba(0,0,0, 0.2);
+    height: 100%;
+    padding: .5em;
+}
+.item-detail {
+    width: 100%;
+    background-color: #fff;
+    padding: .75em 0em;
+}
+.item-title {
+    color: #333;
+    text-align: center;
+}
