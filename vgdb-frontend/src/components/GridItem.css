@@ -21,15 +21,17 @@
     height: 10em;
     width: 9em;
     background-color: #ccc;
+    background-size: cover;
 }
 .cover-image:hover > .item-detail-list {
     visibility: visible;
 }
 .item-detail-list {
     visibility: hidden;
-    background-color: rgba(0,0,0, 0.2);
+    background-color: rgba(0,0,0, 0.5);
     height: 100%;
     padding: .5em;
+    color: #fff;
 }
 .item-detail {
     width: 100%;
@@ -39,4 +41,7 @@
 .item-title {
     color: #333;
     text-align: center;
+}
+.item-detail-title {
+    font-weight: 700;
 }

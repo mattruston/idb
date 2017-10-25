@@ -37,16 +37,34 @@ class GamesPage extends Component {
         this.fetchGames();
     };
 
+    _buildDetails(obj) {
+        let details = []
+        if(obj.release_date) 
+            details.push({ title: "Released:", content:obj.release_date});
+        if(obj.rating) 
+            details.push({title: "Rating:", content:obj.rating});
+        if(obj.genres.length > 0)
+            details.push({title: "Genre:", content:obj.genres[0]});
+
+        return details;
+    }
+
     fetchGames() {
         fetch(gamesEndpoint(this.state.page),{
             method: 'GET'
         }).then(response => response.json())
         .then(response => {
             for (var i = 0; i < response.objects.length; i++) {
-                var gameObj = response.objects[i];
-                gameObj.url = gameURL(gameObj.game_id);
+                let obj = response.objects[i];
+                let details = this._buildDetails(obj);
+                let item = {
+                    title: obj.title,
+                    img: obj.image_url,
+                    url: "/games/" + obj.game_id,
+                    details: details
+                }
                 var gamesArray = this.state.games.slice();
-                gamesArray.push(gameObj);
+                gamesArray.push(item);
                 this.setState({ games: gamesArray });
             }
             this.setState({
