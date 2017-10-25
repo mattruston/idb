@@ -10,6 +10,7 @@ class Parser:
                       '048': 'Bahrain', '032': 'Argentina', '524': 'Nepal', '050': 'Bangladesh', '328': 'Guyana', '092': 'Virgin Islands, British', '076': 'Brazil', '678': 'Sao Tome and Principe', '184': 'Cook Islands', '104': 'Myanmar', '756': 'Switzerland', '470': 'Malta', '626': 'Timor-Leste', '124': 'Canada', '068': 'Bolivia, Plurinational State of', '276': 'Germany', '320': 'Guatemala', '222': 'El Salvador', '716': 'Zimbabwe', '052': 'Barbados', '616': 'Poland', '060': 'Bermuda', '504': 'Morocco', '466': 'Mali', '175': 'Mayotte', '275': 'Palestinian Territory, Occupied', '300': 'Greece', '266': 'Gabon', '070': 'Bosnia and Herzegovina', '654': 'Saint Helena, Ascension and Tristan da Cunha', '232': 'Eritrea', '840': 'United States', '574': 'Norfolk Island', '832': 'Jersey', '388': 'Jamaica', '688': 'Serbia', '233': 'Estonia', '356': 'India', '204': 'Benin', '512': 'Oman', '646': 'Rwanda', '764': 'Thailand', '376': 'Israel', '428': 'Latvia', '430': 'Liberia', '474': 'Martinique', '530': 'Netherlands Antilles', '496': 'Mongolia', '334': 'Heard Island and McDonald Islands', '170': 'Colombia', '417': 'Kyrgyzstan', '108': 'Burundi', '724': 'Spain', '308': 'Grenada', '598': 'Papua New Guinea', '324': 'Guinea', '643': 'Russian Federation', '414': 'Kuwait', '262': 'Djibouti', '760': 'Syrian Arab Republic', '478': 'Mauritania', '562': 'Niger', '586': 'Pakistan', '348': 'Hungary', '051': 'Armenia', '422': 'Lebanon', '694': 'Sierra Leone', '798': 'Tuvalu', '372': 'Ireland', '894': 'Zambia', '100': 'Bulgaria', '340': 'Honduras', '292': 'Gibraltar', '498': 'Moldova, Republic of', '044': 'Bahamas', '600': 'Paraguay', '807': 'Macedonia, the former Yugoslav Republic of', '352': 'Iceland', '583': 'Micronesia, Federated States of', '666': 'Saint Pierre and Miquelon', '208': 'Denmark', '520': 'Nauru', '612': 'Pitcairn', '316': 'Guam', '796': 'Turks and Caicos Islands', '499': 'Montenegro', '762': 'Tajikistan', '191': 'Croatia', '336': 'Holy See (Vatican City State)', '862': 'Venezuela, Bolivarian Republic of', '887': 'Yemen', '239': 'South Georgia and the South Sandwich Islands', '090': 'Solomon Islands', '585': 'Palau', '152': 'Chile', '188': 'Costa Rica', '604': 'Peru', '112': 'Belarus', '312': 'Guadeloupe', '624': 'Guinea-Bissau', '584': 'Marshall Islands', '703': 'Slovakia', '012': 'Algeria', '450': 'Madagascar', '084': 'Belize', '016': 'American Samoa', '826': 'United Kingdom', '120': 'Cameroon', '638': 'Réunion', '462': 'Maldives', '260': 'French Southern Territories', '268': 'Georgia', '710': 'South Africa', '418': "Lao People's Democratic Republic", '566': 'Nigeria', '072': 'Botswana', '203': 'Czech Republic', '732': 'Western Sahara', '158': 'Taiwan, Province of China', '226': 'Equatorial Guinea', '831': 'Guernsey', '148': 'Chad'}
     gender = {0: 'Male', 1: 'Female', 2: 'Unknown'}
     species = {1: 'Human', 2: 'Alien', 3: 'Animal', 4: 'Android', 5: 'Unknown'}
+    genres = {2: 'Point-and-click', 4: 'Fighting', 5: 'Shooter', 7: 'Music', 8: 'Platform', 9: 'Puzzle', 10: 'Racing', 11: 'Real Time Strategy (RTS)', 12: 'Role-playing (RPG)', 13: 'Simulator', 14: 'Sport', 15: 'Strategy', 16: 'Turn-based strategy (TBS)', 24: 'Tactical', 25: "Hack and slash\Beat 'em up", 26: 'Quiz\Trivia', 30: 'Pinball', 31: 'Adventure', 32: 'Indie', 33: 'Arcade'}
 
     def __init__(self):
         self.game_dict = {}
@@ -47,6 +48,16 @@ class Parser:
                 self.game_dict[game['id']] = d
                 new_row = models.Game(**d)
                 models.db.session.add(new_row)
+                game_genres = []
+                if 'genres' in game:
+                    for genre_id in game['genres']:
+                        genre_row = None
+                        if genre_id in self.genre_dict:
+                            genre_row = models.Genre.query.filter(
+                                models.Genre.name == self.genre_dict[genre_id]['name'])
+                        else:
+                            genre_row = models.Genre(genres[genre_id])
+                        new_row.genres.append(genre_row)
                 models.db.session.commit()
 
     def parse_companies(self):
