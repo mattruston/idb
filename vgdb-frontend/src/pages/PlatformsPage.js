@@ -20,7 +20,7 @@ class PlatformsPage extends Component {
             <div>
                 <div className="container">
                     <Title title="Platforms"/>
-                    <GridLayout items={this.state.testitems}/>
+                    <GridLayout items={this.state.testitems}  details={[]}/>
                 </div>
             </div>
         )

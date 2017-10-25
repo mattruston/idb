@@ -20,7 +20,7 @@ class DevPage extends Component {
             <div>
                 <div className="container">
                     <Title title="Developers"/>
-                    <GridLayout items={this.state.testitems}/>
+                    <GridLayout items={this.state.testitems} details={[]}/>
                 </div>
             </div>
         )
