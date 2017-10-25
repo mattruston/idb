@@ -80,14 +80,14 @@ class DBTests(TestCase):
             api_request = requests.get("http://gamingdb.info/api/game/13")
             game_data = json.loads(api_request.text)
             api_id = game_data['game_id']
-            api_release_date = game_data['release_date']
+            api_title = game_data['title']
 
             db_request = db.session.query(Game).get(13)
-            db_id = db_request['game_id']
-            db_release_date = db_request['release_date']
+            db_id = db_request.game_id
+            db_release_date = db_request.title
 
             self.assertEqual(api_id, db_id)
-            self.assertEqual(api_release_date, db_release_date)
+            self.assertEqual(api_title, db_title)
 
     def test_developer_get_request(self):
         with app.app_context():
@@ -97,8 +97,8 @@ class DBTests(TestCase):
             api_name = developer_data['name']
 
             db_request = db.session.query(Developer).get(21)
-            db_id = db_request['developer_id']
-            db_name = db_request['name']
+            db_id = db_request.developer_id
+            db_name = db_request.name
 
             self.assertEqual(api_id, db_id)
             self.assertEqual(api_name, db_name)
@@ -111,8 +111,8 @@ class DBTests(TestCase):
             api_name = platform_data['platform_name']
 
             db_request = db.session.query(Platform).get(8)
-            db_id = db_request['platform_id']
-            db_name = db_request['name']
+            db_id = db_request.platform_id
+            db_name = db_request.name
 
             self.assertEqual(api_id, db_id)
             self.assertEqual(api_name, db_name)
@@ -125,8 +125,8 @@ class DBTests(TestCase):
             api_name = character_data['name']
 
             db_request = db.session.query(Character).get(69)
-            db_id = db_request['character_id']
-            db_name = db_request['name']
+            db_id = db_request.character_id
+            db_name = db_request.name
 
             self.assertEqual(api_id, db_id)
             self.assertEqual(api_name, db_name)
