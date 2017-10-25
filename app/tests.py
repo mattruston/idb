@@ -84,7 +84,7 @@ class DBTests(TestCase):
 
             db_request = db.session.query(Game).get(13)
             db_id = db_request.game_id
-            db_release_date = db_request.title
+            db_title = db_request.title
 
             self.assertEqual(api_id, db_id)
             self.assertEqual(api_title, db_title)
@@ -108,7 +108,7 @@ class DBTests(TestCase):
             api_request = requests.get('http://gamingdb.info/api/platform/8')
             platform_data = json.loads(api_request.text)
             api_id = platform_data['platform_id']
-            api_name = platform_data['platform_name']
+            api_name = platform_data['name']
 
             db_request = db.session.query(Platform).get(8)
             db_id = db_request.platform_id
