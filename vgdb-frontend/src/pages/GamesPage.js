@@ -49,6 +49,9 @@ class GamesPage extends Component {
                 gamesArray.push(gameObj);
                 this.setState({ games: gamesArray });
             }
+            this.setState({
+                loading: false
+            });
         });
     };
 
