@@ -5,7 +5,7 @@ import Title from '../components/Title';
 const gamesEndpoint = pageNumber =>
                     `http://gamingdb.info/api/game?page=${pageNumber}`
 const gameURL = gameID =>
-                `http://gamingdb.info/games/${gameID}`
+                `/games/${gameID}`
 
 class GamesPage extends Component {
     constructor(props) {
