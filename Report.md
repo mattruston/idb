@@ -35,53 +35,68 @@ Get Developer
 An example of a response to a request:
 
 ```
-List Games [GET]
+Get Game [GET]
 
 + Response 200 (application/json)
 
-        [
+		{
+          "characters": [], 
+          "description": "Cuphead is a classic run and gun action game heavily focused on boss battles. Inspired by cartoons of the 1930s, the visuals and audio are painstakingly created with the same techniques of the era, i.e. traditional cel animation (hand drawn & hand inked!), watercolor backgrounds, and original jazz recordings. Play as Cuphead or Mugman (in single player or co-op) as you traverse strange worlds, acquire new weapons, learn powerful super moves, and discover hidden secrets. Cuphead is all action, all the time.", 
+          "developers": [
             {
-                "game_id": "1",
-                "title": "Overwatch",
-                "image": "https://....com/image.png",
-                "genres": [
-                    "genre_id",
-                    "genre_id"
-                ],
-                "platforms": [
-                    "platform_id",
-                    "platform_id"
-                ],
-                "companies": [
-                    "company_id",
-                    "company_id"
-                ]
-            },
-            {
-                "game_id": "2",
-                "title": "Hearthstone",
-                "image": "https://....com/image.png",
-                "genres": [
-                    "genre_id",
-                    "genre_id"
-                ],
-                "platforms": [
-                    "platform_id",
-                    "platform_id"
-                ],
-                "companies": [
-                    "company_id",
-                    "company_id"
-                ]
+              "average_rating": null, 
+              "description": "StudioMDHR (Studio Moldenhauer) is an independent video game company founded by two brothers: Chad &amp; Jared Moldenhauer.\nBased in Oakville, ON / Regina, SK", 
+              "developer_id": 254, 
+              "image_url": "http://images.igdb.com/igdb/image/upload/qrhnhn54o6gepip9oo1y.jpg", 
+              "location": "United States", 
+              "name": "Studio MDHR", 
+              "website": "http://studiomdhr.com/"
             }
-        ]
+          ], 
+          "game_id": 13, 
+          "genres": [], 
+          "image_url": "http://images.igdb.com/igdb/image/upload/gtzfjc9pipa6s7v7m68g.jpg", 
+          "platforms": [
+            {
+              "description": "Windows XP, the successor to Windows 2000 and Windows ME, was the first consumer-oriented operating system produced by Microsoft to be built on the Windows NT kernel. Windows XP was released worldwide for retail sale on October 25, 2001, and over 400 million copies were in use in January 2006", 
+              "image_url": "http://images.igdb.com/igdb/image/upload/e9w12ei09dljpsiwz7pv.jpg", 
+              "name": "PC (Microsoft Windows)", 
+              "platform_id": 4, 
+              "release_date": "2001-10-25", 
+              "website": "http://windows.microsoft.com/"
+            }, 
+            {
+              "description": null, 
+              "image_url": null, 
+              "name": "Xbox One", 
+              "platform_id": 41, 
+              "release_date": "2013-11-22", 
+              "website": "http://www.xbox.com/en-US/xbox-one"
+            }
+          ], 
+          "rating": 80.7018744810862, 
+          "related_game_ids": [
+            103, 
+            65, 
+            45
+          ], 
+          "release_date": "2017-09-29", 
+          "screenshot_urls": [
+            "http://images.igdb.com/igdb/image/upload/sngyjwqwzzlciy0ko0sq.jpg", 
+            "http://images.igdb.com/igdb/image/upload/eulkrcocd1zyuvvcv7k0.jpg", 
+            "http://images.igdb.com/igdb/image/upload/ec5tsfhl7wjabwjnsshs.jpg", 
+            "http://images.igdb.com/igdb/image/upload/r9zt66wdgqohmhuukiir.jpg", 
+            "http://images.igdb.com/igdb/image/upload/sqho6e7tv9verg6j1tvv.jpg"
+          ], 
+          "title": "Cuphead"
+        }
 ```
 
 The purpose of these two specific cases for each model, getting an instance and listing all instances satisfies our use cases. On the main page of a model, Games, for instance, we want to display pages of games to our users. Listing all examples of this with the information provided in each object allows us to display an image of the game, the title of the game, genres associated with the game, platforms the game can be played on, and the companies who made it.
 
 In the case where a user wants to get more information about a game, they would be taken to the unique page of the game filled in with the data from the Get Game request. This request provides us with all of the other attributes about the game. This pattern is followed by the APIs for the other models as well.
 
-Going forward, we would like to implement paging along with our list requests. We need to have a better understanding of how it works, but based on our current knowledge we know it's necessary to include a pagination token in the request, as well as the response. This would allow a user to retrieve a single page of elements at a time, only loading one page to the user at a given moment. If the user wants to see more elements, they would go to the next page which would create a new list request with the pagination token of the previous list response.
+Pagination was easily implemented using SQLAlchemy's API manager. One of this objects allows us to specify a table on which we wish to call a GET request using our API and handles that request for us. Using the keyword `results_per_page` we were able to be explicit about the amount of rows that we wanted in our JSON for each page. This instance of the object notation also include the total number of elements, total number of pages, and the current page number, to be used in subsequent requests or other frontend constructs.
 
 We would also like to include filtering. This would allow certain attributes to be taken into account when listing elements, narrowing the search results for the user. This would be included with the request of a given API, only showing results that match the filter passed into the request.
 
