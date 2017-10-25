@@ -17,7 +17,8 @@ class Parser:
         self.platform_dict = {}
         self.company_dict = {}
         self.character_dict = {}
-        self.genre_dict = {}
+        self.genre_set = set() 
+        self.related_games = {}
 
     def get_sql_date(self, epoch):
         return date.fromtimestamp(epoch / 1000).strftime('%Y-%m-%d %H:%M:%S')
@@ -45,19 +46,26 @@ class Parser:
                         screenshots.append(
                             'http:' + image['url'].strip('\\').replace('/t_thumb', ""))
                 d['screenshot_urls'] = screenshots
+                self.related_games[game['id']] = []
+                if 'games' in game:
+                    for i, v in enumerate(game['games']):
+                        if i == 3:
+                            break
+                        self.related_games[game['id']].append(v) 
                 self.game_dict[game['id']] = d
                 new_row = models.Game(**d)
-                models.db.session.add(new_row)
                 game_genres = []
                 if 'genres' in game:
                     for genre_id in game['genres']:
                         genre_row = None
-                        if genre_id in self.genre_dict:
+                        if genre_id in self.genre_set:
                             genre_row = models.Genre.query.filter(
-                                models.Genre.name == self.genre_dict[genre_id]['name'])
+                                models.Genre.name == self.genres[genre_id]).first()
                         else:
-                            genre_row = models.Genre(genres[genre_id])
-                        new_row.genres.append(genre_row)
+                            genre_row = models.Genre(self.genres[genre_id])
+                            self.genre_set.add(genre_id)
+                        genre_row.games.append(new_row)
+                models.db.session.add(new_row)
                 models.db.session.commit()
 
     def parse_companies(self):
@@ -155,3 +163,12 @@ class Parser:
                             game_row.characters.append(new_row)
                 models.db.session.add(new_row)
                 models.db.session.commit()
+    
+    def add_related_games(self):
+        for game, related in self.related_games.items():
+            results = []
+            for elem in related:
+                if elem in self.game_dict:
+                    results.append(models.Game.query.filter(models.Game.title == self.game_dict[elem]['title']).first().game_id)
+            models.Game.query.filter(models.Game.title == self.game_dict[game]['title']).first().related_game_ids = results
+            models.db.session.commit()

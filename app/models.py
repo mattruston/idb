@@ -46,7 +46,7 @@ class Game(db.Model):
     rating = db.Column(db.Float, nullable=True)
     image_url = db.Column(db.String, nullable=True)
     release_date = db.Column(db.Date, nullable=True)
-    # related_game_ids = db.Column(postgresql.ARRAY(db.Integer))
+    related_game_ids = db.Column(postgresql.ARRAY(db.Integer))
     screenshot_urls = db.Column(postgresql.ARRAY(db.String), nullable=True)
 
     genres = db.relationship('Genre', secondary=game_genre_assoc, backref=db.backref('games', lazy='dynamic'))
@@ -74,6 +74,7 @@ class Developer(db.Model):
     website = db.Column(db.String, nullable=True)
     image_url = db.Column(db.String, nullable=True)
     location = db.Column(db.String, nullable=True)
+
     platforms = db.relationship('Platform', secondary=dev_plat_assoc, backref=db.backref('developers', lazy='dynamic'))
 
     def __init__(self, name, description=None, average_rating=None, website=None, image_url=None, location=None):
@@ -95,6 +96,7 @@ class Platform(db.Model):
     image_url = db.Column(db.String, nullable=True)
     release_date = db.Column(db.Date, nullable=True)
     website = db.Column(db.String, nullable=True)
+
     characters = db.relationship('Character', secondary=plat_char_assoc, backref=db.backref('platforms', lazy='dynamic'))
 
     def __init__(self, name, description=None, image_url=None, release_date=None, website=None):
@@ -116,8 +118,6 @@ class Character(db.Model):
     species = db.Column(db.String, nullable=True)
     gender = db.Column(db.String, nullable=True)
     score = db.Column(db.Integer, nullable=True)
-    # friends = db.Column(db.Array(db.Integer))
-    # enemies = db.Column(db.Array(db.Integer))
 
     def __init__(self, name, summary=None, image_url=None, species=None, gender=None, score=None):
         self.name = name
@@ -125,8 +125,6 @@ class Character(db.Model):
         self.image_url = image_url
         self.species = species
         self.gender = gender
-        # self.friends = friends
-        # self.enemies = enemies
 
     def __repr__(self):
         return self.name
