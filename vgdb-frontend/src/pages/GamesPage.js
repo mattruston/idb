@@ -1,35 +1,44 @@
 import React, { Component } from 'react';
 import GridLayout from '../components/GridLayout';
 import Title from '../components/Title';
+import Loader from '../components/Loader';
+import Pagination from 'react-js-pagination';
 
 const gamesEndpoint = pageNumber =>
                     `http://gamingdb.info/api/game?page=${pageNumber}`
 const gameURL = gameID =>
                 `/games/${gameID}`
 
+const TOTAL_GAMES = 1000;
+
+const GAMES_PER_PAGE = 8;
+
 class GamesPage extends Component {
     constructor(props) {
         super(props);
-        this.page = 1;
         this.state = {
-            testitems: [
-                {title: "test-item-1", details: ["test", "test", "test"], url:"/games/13"},
-                {title: "test-item-2", details: ["test", "test", "test"], url:"/games/124"},
-                {title: "test-item-3", details: ["test", "test", "test"], url:"/games/125"},
-                {title: "test-item-3", details: ["test", "test", "test"], url:"/games/126"}
-            ],
+            page: 1,
             details: [
                 "rating",
                 "release_date",
                 "genre"
             ],
-            games:[]
-            
+            games:[],
+            loading: true
         };
-    }
+    };
 
-    componentDidMount() {
-        fetch(gamesEndpoint(this.page),{
+    changePage(pageNumber) {
+        this.setState({
+            page: pageNumber,
+            games: [],
+            loading: true
+        });
+        this.fetchGames();
+    };
+
+    fetchGames() {
+        fetch(gamesEndpoint(this.state.page),{
             method: 'GET'
         }).then(response => response.json())
         .then(response => {
@@ -38,19 +47,32 @@ class GamesPage extends Component {
                 gameObj.url = gameURL(gameObj.game_id);
                 var gamesArray = this.state.games.slice();
                 gamesArray.push(gameObj);
-                this.setState({ games: gamesArray })
+                this.setState({ games: gamesArray });
             }
         });
-    }
+    };
 
+    componentDidMount() {
+        this.fetchGames();
+    };
 
     render() {
         return (
             <div>
-                <div className="container">
-                    <Title title="Games"/>
-                    <GridLayout items={this.state.games} details={this.state.details}/>
-                </div>
+                {this.state.loading && <Loader/>}
+                {!this.state.loading && 
+                    <div className="container">
+                        <Title title="Games"/>
+                        <GridLayout items={this.state.games} details={this.state.details}/>
+                    </div>
+                }
+               <Pagination
+                    hideDisabled
+                    activePage={this.state.page}
+                    itemsCountPerPage={GAMES_PER_PAGE}
+                    totalItemsCount={TOTAL_GAMES}
+                    onChange={(pageNumber) => this.changePage(pageNumber)}
+                />
             </div>
         )
     }
