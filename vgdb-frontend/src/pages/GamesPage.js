@@ -24,7 +24,6 @@ class GamesPage extends Component {
                 "genre"
             ],
             games:[]
-            
         };
     }
 
@@ -42,7 +41,6 @@ class GamesPage extends Component {
             }
         });
     }
-
 
     render() {
         return (
