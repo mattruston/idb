@@ -35,7 +35,7 @@ class Parser:
                 if 'summary' in game:
                     d['description'] = game['summary']
                 if 'total_rating' in game:
-                    d['rating'] = game['total_rating']
+                    d['rating'] = round(game['total_rating'], 2)
                 if 'cover' in game:
                     d['image_url'] = 'http:' + \
                         game['cover']['url'].strip(
