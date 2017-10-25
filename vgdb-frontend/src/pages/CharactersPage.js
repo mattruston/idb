@@ -20,7 +20,7 @@ class CharactersPage extends Component {
             <div>
                 <div className="container">
                     <Title title="Characters"/>
-                    <GridLayout items={this.state.testitems}/>
+                    <GridLayout items={this.state.testitems}  details={[]}/>
                 </div>
             </div>
         )

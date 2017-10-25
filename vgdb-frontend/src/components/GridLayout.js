@@ -19,7 +19,7 @@ class GridLayout extends Component {
                     <div className="grid"> 
                     {
                         this.props.items.map(item => 
-                            <GridItem details={item.details} title={item.title} url={item.url}></GridItem> 
+                            <GridItem details={this.props.details} item={item}></GridItem> 
                         )
                     }
                     </div>

@@ -24,7 +24,7 @@ class Home extends Component {
             <div>
                 <div className="container">
                     <Title title="Gamez"/>
-                    <GridLayout items={this.state.games}/>
+                    <GridLayout items={this.state.games} details={[]}/>
                 </div>
             </div>
         )

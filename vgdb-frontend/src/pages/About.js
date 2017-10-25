@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AboutCard from '../components/AboutCard';
 import Title from '../components/Title';
+import ToolCard from '../components/ToolCard'
 import './About.css';
 
 const gitEndpoint = "https://api.github.com/repos/mattruston/idb/stats/contributors";
@@ -57,6 +58,7 @@ class About extends Component {
                         name="Matt Ruston" description="Hi, I'm Matt. I'm a senior CS student at UT." roles="Backend" commits={this.state.mattruston}  issues="15" tests="0" url="https://github.com/mattruston" image="https://avatars0.githubusercontent.com/u/10778569?s=400&v=4"/>
                     </div>
                 </div>
+                <ToolCard/>
             </div>
         )
     }
