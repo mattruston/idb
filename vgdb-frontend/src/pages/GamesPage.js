@@ -6,11 +6,13 @@ import Loader from '../components/Loader';
 let endpoint = (pageNumber) =>
                     `http://gamingdb.info/api/game?page=${pageNumber}`
 
+let pageLimit = 42;
+
 class GamesPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            page: 10,
+            page: 1,
             games:[],
             loading: true
         };
@@ -52,8 +54,9 @@ class GamesPage extends Component {
                     <div className="container main-page">
                         <Title title="Games"/>
                         <GridLayout items={this.state.games}/>
-                        <button onClick={this.decPage}>Previous Page</button>
-                        <button onClick={this.incPage}>Next Page</button>
+			            <div>{"Page Number: " + this.state.page + "/" + pageLimit}</div>
+                        <button onClick={this.decPage} disabled={this.state.page == 1}>Previous Page</button>
+                        <button onClick={this.incPage} disabled={this.state.page == pageLimit}>Next Page</button>
                     </div>
                 }
             </div>

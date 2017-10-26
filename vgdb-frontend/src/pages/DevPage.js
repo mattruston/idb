@@ -6,6 +6,8 @@ import Loader from '../components/Loader';
 const endpoint = pageNumber =>
                     `http://gamingdb.info/api/developer?page=${pageNumber}`
 
+let pageLimit = 39;
+
 class DevPage extends Component {
     constructor(props) {
         super(props);
@@ -52,19 +54,29 @@ class DevPage extends Component {
                     <div className="container main-page">
                         <Title title="Developers"/>
                         <GridLayout items={this.state.developers}/>
+                        <div>{"Page Number: " + this.state.page + "/" + pageLimit}</div>
+                        <button onClick={this.decPage} disabled={this.state.page == 1}>Previous Page</button>
+                        <button onClick={this.incPage} disabled={this.state.page == pageLimit}>Next Page</button>
                     </div>
                 }
             </div>
         )
     }
 
-    changePage(pageNumber) {
+    incPage = () => {
+        this.changePage(this.state.page + 1);
+    }
+
+    decPage = () => {
+        this.changePage(this.state.page - 1);
+    }
+
+    changePage = (page) => {
         this.setState({
-            page: pageNumber,
+            page: page,
             developers: [],
             loading: true
-        });
-        this.fetchData();
+        }, () => { this.fetchData() });
     };
 
     _buildDetails(obj) {

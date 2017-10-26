@@ -3,7 +3,8 @@ import GridLayout from '../components/GridLayout';
 import Title from '../components/Title';
 import Loader from '../components/Loader';
 
-const topPicks = ["200", "13", "6"]
+const topPicks = ["200", "13", "6", "56", "163", "167", "123", "121",
+                    "202", "178", "184", "227"];
 
 class Home extends Component {
     constructor(props) {

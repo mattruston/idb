@@ -3,8 +3,10 @@ import GridLayout from '../components/GridLayout';
 import Title from '../components/Title';
 import Loader from '../components/Loader';
 
-const endpoint = pageNumber =>
+let endpoint = pageNumber =>
                     `http://gamingdb.info/api/platform?page=${pageNumber}`
+                
+let pageLimit = 6;
 
 class PlatformsPage extends Component {
     constructor(props) {
@@ -52,19 +54,29 @@ class PlatformsPage extends Component {
                     <div className="container main-page">
                         <Title title="Platforms"/>
                         <GridLayout items={this.state.platforms}/>
+                        <div>{"Page Number: " + this.state.page + "/" + pageLimit}</div>
+                        <button onClick={this.decPage} disabled={this.state.page == 1}>Previous Page</button>
+                        <button onClick={this.incPage} disabled={this.state.page == pageLimit}>Next Page</button>
                     </div>
                 }
             </div>
         )
     }
 
-    changePage(pageNumber) {
+    incPage = () => {
+        this.changePage(this.state.page + 1);
+    }
+
+    decPage = () => {
+        this.changePage(this.state.page - 1);
+    }
+
+    changePage = (page) => {
         this.setState({
-            page: pageNumber,
+            page: page,
             platforms: [],
             loading: true
-        });
-        this.fetchData();
+        }, () => { this.fetchData() });
     };
 
     _buildDetails(obj) {
