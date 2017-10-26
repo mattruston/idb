@@ -14,6 +14,7 @@
 		C997E97E1F9C1E2F00AA60F0 /* Companies.swift in Sources */ = {isa = PBXBuildFile; fileRef = C997E97D1F9C1E2F00AA60F0 /* Companies.swift */; };
 		C997E9801F9D392B00AA60F0 /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C997E97F1F9D392B00AA60F0 /* Characters.swift */; };
 		C997E9821F9FE24D00AA60F0 /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = C997E9811F9FE24D00AA60F0 /* Genres.swift */; };
+		C997E9861FA25D7400AA60F0 /* GameImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = C997E9851FA25D7400AA60F0 /* GameImages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,7 @@
 		C997E97D1F9C1E2F00AA60F0 /* Companies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Companies.swift; sourceTree = "<group>"; };
 		C997E97F1F9D392B00AA60F0 /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
 		C997E9811F9FE24D00AA60F0 /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
+		C997E9851FA25D7400AA60F0 /* GameImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameImages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				C997E97D1F9C1E2F00AA60F0 /* Companies.swift */,
 				C997E97F1F9D392B00AA60F0 /* Characters.swift */,
 				C997E9811F9FE24D00AA60F0 /* Genres.swift */,
+				C997E9851FA25D7400AA60F0 /* GameImages.swift */,
 			);
 			path = GamingDBScraper;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				C997E97A1F9C06DA00AA60F0 /* Games.swift in Sources */,
 				C997E9801F9D392B00AA60F0 /* Characters.swift in Sources */,
 				C997E9821F9FE24D00AA60F0 /* Genres.swift in Sources */,
+				C997E9861FA25D7400AA60F0 /* GameImages.swift in Sources */,
 				C997E97E1F9C1E2F00AA60F0 /* Companies.swift in Sources */,
 				C997E9781F9C06CE00AA60F0 /* Platforms.swift in Sources */,
 				C997E9711F9BBD2B00AA60F0 /* main.swift in Sources */,

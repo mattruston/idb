@@ -9,6 +9,6 @@
 import Foundation
 
 
-getGenres()
+downloadGameImages()
 
 print("Done")
