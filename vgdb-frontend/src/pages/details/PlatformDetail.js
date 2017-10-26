@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import DetailsPage from './DetailsPage';
+import Loader from '../../components/Loader';
 
 class PlatformDetail extends Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class PlatformDetail extends Component {
             mainbar: [],
             img: "",
             sidebar: [],
+            loading: true
         };
     }
 
@@ -19,8 +21,13 @@ class PlatformDetail extends Component {
 
     render() {
         return(
-            <DetailsPage title={this.state.title} description={this.state.description}
+            <div>
+                {this.state.loading && <Loader/>}
+                {!this.state.loading && 
+                    <DetailsPage title={this.state.title} description={this.state.description}
                         mainbar={this.state.mainbar} img={this.state.img} sidebar={this.state.sidebar}/>
+                }
+                </div>
         );
     }
 
@@ -46,6 +53,7 @@ class PlatformDetail extends Component {
                     { title: "Developers", content: devs }
                 ]
             });
+            this.setState({ loading: false });
         });
     }
 

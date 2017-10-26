@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import DetailsPage from './DetailsPage';
+import Loader from '../../components/Loader';
 
 class GameDetail extends Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class GameDetail extends Component {
             mainbar: [],
             img: "",
             sidebar: [],
+            loading: true
         };
     }
 
@@ -19,8 +21,13 @@ class GameDetail extends Component {
 
     render() {
         return(
-            <DetailsPage title={this.state.title} description={this.state.description}
-                        mainbar={this.state.mainbar} img={this.state.img} sidebar={this.state.sidebar}/>
+            <div>
+                {this.state.loading && <Loader/>}
+                {!this.state.loading && 
+                    <DetailsPage title={this.state.title} description={this.state.description}
+                            mainbar={this.state.mainbar} img={this.state.img} sidebar={this.state.sidebar}/>
+                }
+            </div>
         );
     }
 
@@ -36,7 +43,7 @@ class GameDetail extends Component {
                 title: response.title ? response.title : "",
                 description: response.description ? response.description : "",
                 mainbar: [
-                    { title: "Rating", content: response.rating ? response.rating : "" },
+                    { title: "Rating", content: response.rating ? response.rating.toFixed(1) + "/100" : "" },
                     { title: "Genres", content: genres }
 
                 ],
@@ -47,6 +54,9 @@ class GameDetail extends Component {
                     { title: "Developers", content: devs }
                 ]
             });
+            this.setState({
+                loading: false
+            })
         });
     }
 

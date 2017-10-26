@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import DetailsPage from './DetailsPage';
+import Loader from '../../components/Loader';
 
 class CharDetail extends Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class CharDetail extends Component {
             mainbar: [],
             img: "",
             sidebar: [],
+            loading: true
         };
     }
 
@@ -19,8 +21,13 @@ class CharDetail extends Component {
 
     render() {
         return(
-            <DetailsPage title={this.state.title} description={this.state.description}
-                        mainbar={this.state.mainbar} img={this.state.img} sidebar={this.state.sidebar}/>
+            <div>
+                {this.state.loading && <Loader/>}
+                {!this.state.loading && 
+                    <DetailsPage title={this.state.title} description={this.state.description}
+                            mainbar={this.state.mainbar} img={this.state.img} sidebar={this.state.sidebar}/>
+                }
+            </div>
         );
     }
 
@@ -43,6 +50,7 @@ class CharDetail extends Component {
                     { title: "Appears in", content: games},
                 ]
             });
+            this.setState({ loading: false });
         });
     }
 
