@@ -31,7 +31,7 @@ class PlatformsPage extends Component {
                 let details = this._buildDetails(obj);
                 let item = {
                     title: obj.name,
-                    img: obj.image_url,
+                    img: obj.thumb_url,
                     url: "/platforms/" + obj.platform_id,
                     details: details
                 }

@@ -47,6 +47,10 @@ body {
 .pagination-button:hover {
     background-color: #24b79e;
 }
+.pagination-button:disabled,
+.pagination-button[disabled] {
+    background-color: #aaa;
+}
 .left {
     border-left: 1px solid #24b79e;
     border-radius: 0px 5px 5px 0px;

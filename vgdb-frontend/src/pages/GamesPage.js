@@ -31,7 +31,7 @@ class GamesPage extends Component {
                 let details = this._buildDetails(obj);
                 let item = {
                     title: obj.title,
-                    img: obj.image_url,
+                    img: obj.thumb_url,
                     url: "/games/" + obj.game_id,
                     details: details
                 }
