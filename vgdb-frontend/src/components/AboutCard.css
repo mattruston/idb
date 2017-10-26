@@ -47,3 +47,12 @@
 .detail {
     display: inline-block;
 }
+
+@media only screen and (max-width:500px) {
+    .about-card {
+        width: 100%;
+    }
+    .about-img {
+        width: 100%;
+    }
+}

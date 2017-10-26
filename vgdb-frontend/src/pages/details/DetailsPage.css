@@ -29,3 +29,16 @@ hr {
 .detail-description {
     margin-top: 1em;
 }
+
+@media only screen and (max-width:500px) {
+    .inline-block {
+        display: block;
+    }
+    .sidebar {
+        width: 100%;
+    }
+    .details {
+        width: 100%;
+        padding-left: 0em;
+    }
+}

@@ -1,6 +1,5 @@
 .grid-item {
     height: auto;
-    
     text-decoration: none;
     transition: transform .3s ease;
 }
@@ -11,15 +10,15 @@
 .grid-item-container {
     display: flex;
     flex-direction: column;
-    width: 9em;
+    width: 12em;
     box-sizing: border-box;
     margin: .5em;
 }
 .cover-image {
     display: flex;
     flex-direction: column;
-    height: 10em;
-    width: 9em;
+    height: 14em;
+    width: 12em;
     background-color: #ccc;
     background-size: cover;
 }

@@ -18,3 +18,18 @@
     flex-direction: row;
     width: auto;
 }
+
+@media only screen and (max-width:500px) {
+    .nav {
+        height: auto;
+    }
+    .nav-container {
+        flex-direction: column;
+    }
+    .nav-section {
+        display: block;
+    }
+    .nav-menu {
+        flex-wrap: wrap;
+    }
+}
