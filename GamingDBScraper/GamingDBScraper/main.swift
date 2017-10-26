@@ -9,6 +9,6 @@
 import Foundation
 
 
-getGenres()
+downloadCharacterImages()
 
 print("Done")

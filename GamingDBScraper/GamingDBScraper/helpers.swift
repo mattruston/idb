@@ -8,9 +8,9 @@
 
 import Foundation
 
-let basePath = "https://api-2445582011268.apicast.io"
-let key = "be32cf8f710c797b67940515881e533f"
-let key2 = "0f4f06eec3715e153e1cf9d135510d21"
+fileprivate let basePath = "https://api-2445582011268.apicast.io"
+fileprivate let key = "be32cf8f710c797b67940515881e533f"
+fileprivate let key2 = "0f4f06eec3715e153e1cf9d135510d21"
 
 func request(for path: String) -> URLRequest? {
     guard let url = URL(string: "\(basePath)\(path)") else {
