@@ -1,6 +1,8 @@
 runtime: python
 env: flex
-entrypoint: gunicorn -b :$PORT main:app
+entrypoint: gunicorn -w 1 -t 1800 -b :$PORT app.app:app
 
 runtime_config:
   python_version: 3
+beta_settings:
+    cloud_sql_instances: gamingdb-180920:us-central1:gamingdb
