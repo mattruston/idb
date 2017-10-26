@@ -49,13 +49,12 @@ class Home extends Component {
                 }
                 var arr = this.state.topgames.slice();
                 arr.push(item);
-                this.setState({ topgames: arr });
+                this.setState({ 
+                    topgames: arr,
+                    loading: false
+                 });
             });
         }
-        this.setState({
-            topgames: this.state.topgames,
-            loading: false
-        });
     }
 
     _buildDetails(obj) {
