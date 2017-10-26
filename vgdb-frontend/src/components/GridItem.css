@@ -44,3 +44,12 @@
 .item-detail-title {
     font-weight: 700;
 }
+@media only screen and (max-width:560px) {
+    .grid-item-container {
+        width: 19em;
+    }
+    .cover-image {
+        width: 19em;
+        height: 20em;
+    }
+} 

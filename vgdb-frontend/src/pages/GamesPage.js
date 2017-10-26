@@ -74,7 +74,7 @@ class GamesPage extends Component {
         if(obj.rating) 
             details.push({title: "Rating:", content: obj.rating.toFixed(0) + "/100"});
         if(obj.genres.length > 0)
-            details.push({title: "Genre:", content:obj.genres[0]});
+            details.push({title: "Genre:", content:obj.genres[0].name});
 
         return details;
     }
