@@ -85,7 +85,10 @@ class DevPage extends Component {
         if(obj.location) 
             details.push({ title: "Location:", content: obj.location});
         if(obj.average_rating)
-            details.push({title: "Rating:", content: obj.average_rating})
+            details.push({title: "Rating:", content: obj.average_rating});
+        if(obj.games)
+            if(obj.games.length > 0)
+                details.push({title: "Game:", content: obj.games[0].title});
 
         return details;
     }
