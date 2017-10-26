@@ -37,9 +37,8 @@ class Parser:
                 if 'total_rating' in game:
                     d['rating'] = round(game['total_rating'], 2)
                 if 'cover' in game:
-                    d['image_url'] = 'http:' + \
-                        game['cover']['url'].strip(
-                            '\\').replace('/t_thumb', "")
+                    d['image_url'] = 'http:' + game['cover']['url'].strip('\\').replace('/t_thumb', "/games").replace('images.igdb.com/igdb', 'res.cloudinary.com/gamingdb')
+                    d['thumb_url'] = 'http:' + game['cover']['url'].strip('\\').replace('/t_thumb', "/w_400,h_500,c_fit/games").replace('images.igdb.com/igdb', 'res.cloudinary.com/gamingdb')
                 screenshots = []
                 if 'screenshots' in game:
                     for image in game['screenshots']:
@@ -79,9 +78,8 @@ class Parser:
                 if 'description' in company:
                     d['description'] = company['description']
                 if 'logo' in company:
-                    d['image_url'] = 'http:' + \
-                        company['logo']['url'].strip(
-                            '\\').replace('/t_thumb', "")
+                    d['image_url'] = 'http:' + company['logo']['url'].strip('\\').replace('/t_thumb', "/companies").replace('images.igdb.com/igdb', 'res.cloudinary.com/gamingdb')
+                    d['thumb_url'] = 'http:' + company['logo']['url'].strip('\\').replace('/t_thumb', "/w_400,h_500,c_fit/companies").replace('images.igdb.com/igdb', 'res.cloudinary.com/gamingdb')
                 if 'website' in company:
                     d['website'] = company['website']
                 if 'country' in company:
@@ -113,11 +111,11 @@ class Parser:
                 if 'website' in platform:
                     d['website'] = platform['website']
                 if 'logo' in platform:
-                    d['image_url'] = 'http:' + \
-                        platform['logo']['url'].strip(
-                            '\\').replace('/t_thumb', "")
+                    d['image_url'] = 'http:' + platform['logo']['url'].strip('\\').replace('/t_thumb', "/platforms").replace('images.igdb.com/igdb', 'res.cloudinary.com/gamingdb')
+                    d['thumb_url'] = 'http:' + platform['logo']['url'].strip('\\').replace('/t_thumb', "/w_400,h_500,c_fit/platforms").replace('images.igdb.com/igdb', 'res.cloudinary.com/gamingdb')
                 self.platform_dict[platform['id']] = d
                 new_row = app.models.Platform(**d)
+                top_game = (0.0, None)
                 if 'games' in platform:
                     for game in platform['games']:
                         if game in self.game_dict:
@@ -143,9 +141,8 @@ class Parser:
                 d['name'] = character['name']
                 if 'mug_shot' in character:
                     score += 3
-                    d['image_url'] = 'http:' + \
-                        character['mug_shot']['url'].strip(
-                            '\\').replace('/t_thumb', "")
+                    d['image_url'] = 'http:' + character['mug_shot']['url'].strip('\\').replace('/t_thumb', "/characters").replace('images.igdb.com/igdb', 'res.cloudinary.com/gamingdb')
+                    d['thumb_url'] = 'http:' + character['mug_shot']['url'].strip('\\').replace('/t_thumb', "/w_400,h_500,c_fit/characters").replace('images.igdb.com/igdb', 'res.cloudinary.com/gamingdb')
                 if 'gender' in character:
                     score += 1
                     d['gender'] = self.gender[character['gender']]
