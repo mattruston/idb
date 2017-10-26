@@ -9,6 +9,6 @@
 import Foundation
 
 
-downloadGameImages()
+downloadPlatformImages()
 
 print("Done")

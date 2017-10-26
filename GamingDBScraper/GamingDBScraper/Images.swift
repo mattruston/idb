@@ -8,11 +8,13 @@
 
 import Foundation
 
-fileprivate var gameJson: [[String: Any]] = []
+fileprivate var fileJson: [[String: Any]] = []
 fileprivate let basePath = "https://images.igdb.com/igdb/image/upload/"
 
+// MARK: - Games
+
 func downloadGameImages() {
-    readInGameData()
+    readInFileData("igdb_games.json")
     for id in getGameIds() {
         downloadImage(id)
     }
@@ -21,7 +23,7 @@ func downloadGameImages() {
 func getGameIds() -> [String] {
     var ids: [String] = []
     print("Parsing games")
-    for game in gameJson {
+    for game in fileJson {
         if let imageData = game["cover"] as? [String: Any] {
             if let path = imageData["cloudinary_id"] as? String {
                 ids.append(path)
@@ -30,6 +32,32 @@ func getGameIds() -> [String] {
     }
     return ids
 }
+
+
+// MARK: - Platform
+
+func downloadPlatformImages() {
+    readInFileData("igdb_platforms.json")
+    for id in getPlatformIds() {
+        downloadImage(id)
+    }
+}
+
+func getPlatformIds() -> [String] {
+    var ids: [String] = []
+    print("Parsing platforms")
+    for game in fileJson {
+        if let imageData = game["logo"] as? [String: Any] {
+            if let path = imageData["cloudinary_id"] as? String {
+                ids.append(path)
+            }
+        }
+    }
+    return ids
+}
+
+
+// MARK: - Helpers
 
 func downloadImage(_ id: String) {
     
@@ -70,7 +98,7 @@ func downloadImage(_ id: String) {
     }
 }
 
-fileprivate func saveImage(data: Data, id: String, type: String) -> Bool {
+func saveImage(data: Data, id: String, type: String) -> Bool {
     
     if let documentDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
         let imagePath = documentDirectoryUrl.appendingPathComponent("images/\(id)\(type)")
@@ -87,13 +115,13 @@ fileprivate func saveImage(data: Data, id: String, type: String) -> Bool {
     return false
 }
 
-func readInGameData() {
+func readInFileData(_ file: String) {
     if let documentDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-        let fileUrl = documentDirectoryUrl.appendingPathComponent("igdb_games.json")
+        let fileUrl = documentDirectoryUrl.appendingPathComponent(file)
         do {
             let data = try Data(contentsOf: fileUrl)
             if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
-                gameJson = json
+                fileJson = json
             }
         } catch {
             print(error)
