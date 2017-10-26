@@ -7,8 +7,6 @@ import Pagination from '../components/Pagination';
 let endpoint = pageNumber =>
                     `http://gamingdb.info/api/platform?page=${pageNumber}`
                 
-let pageLimit = 6;
-
 class PlatformsPage extends Component {
     constructor(props) {
         super(props);
@@ -24,6 +22,9 @@ class PlatformsPage extends Component {
             method: 'GET'
         }).then(response => response.json())
         .then(response => {
+            this.setState({
+                pageLimit: response.total_pages
+            });
             for (var i = 0; i < response.objects.length; i++) {
                 let obj = response.objects[i];
                 let details = this._buildDetails(obj);
