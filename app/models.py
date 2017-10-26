@@ -45,6 +45,7 @@ class Game(db.Model):
     description = db.Column(db.String, nullable=True)
     rating = db.Column(db.Float, nullable=True)
     image_url = db.Column(db.String, nullable=True)
+    thumb_url = db.Column(db.String, nullable=True)
     release_date = db.Column(db.Date, nullable=True)
     related_game_ids = db.Column(postgresql.ARRAY(db.Integer))
     screenshot_urls = db.Column(postgresql.ARRAY(db.String), nullable=True)
@@ -54,11 +55,12 @@ class Game(db.Model):
     platforms = db.relationship('Platform', secondary=game_plat_assoc, backref=db.backref('games', lazy='dynamic'))
     characters = db.relationship('Character', secondary=game_char_assoc, backref=db.backref('games', lazy='dynamic'))
 
-    def __init__(self, title, description=None, rating=None, image_url=None, release_date=None, screenshot_urls=None):
+    def __init__(self, title, description=None, rating=None, image_url=None, thumb_url=None, release_date=None, screenshot_urls=None):
         self.title = title
         self.description = description
         self.rating = rating
         self.image_url = image_url
+        self.thumb_url = thumb_url
         self.release_date = release_date
         self.screenshot_urls = screenshot_urls
 
@@ -73,16 +75,18 @@ class Developer(db.Model):
     average_rating = db.Column(db.Float, nullable=True)
     website = db.Column(db.String, nullable=True)
     image_url = db.Column(db.String, nullable=True)
+    thumb_url = db.Column(db.String, nullable=True)
     location = db.Column(db.String, nullable=True)
 
     platforms = db.relationship('Platform', secondary=dev_plat_assoc, backref=db.backref('developers', lazy='dynamic'))
 
-    def __init__(self, name, description=None, average_rating=None, website=None, image_url=None, location=None):
+    def __init__(self, name, description=None, average_rating=None, website=None, image_url=None, thumb_url=None, location=None):
         self.name = name
         self.description = description
         self.average_rating = average_rating
         self.website = website
         self.image_url = image_url
+        self.thumb_url = thumb_url
         self.location = location
 
     def __repr__(self):
@@ -94,15 +98,17 @@ class Platform(db.Model):
     name = db.Column(db.String)
     description = db.Column(db.String, nullable=True)
     image_url = db.Column(db.String, nullable=True)
+    thumb_url = db.Column(db.String, nullable=True)
     release_date = db.Column(db.Date, nullable=True)
     website = db.Column(db.String, nullable=True)
 
     characters = db.relationship('Character', secondary=plat_char_assoc, backref=db.backref('platforms', lazy='dynamic'))
 
-    def __init__(self, name, description=None, image_url=None, release_date=None, website=None):
+    def __init__(self, name, description=None, image_url=None, thumb_url=None, release_date=None, website=None):
         self.name = name
         self.description = description
         self.image_url = image_url
+        self.thumb_url = thumb_url
         self.release_date = release_date
         self.website = website
 
@@ -115,14 +121,16 @@ class Character(db.Model):
     name = db.Column(db.String)
     summary = db.Column(db.String, nullable=True)
     image_url = db.Column(db.String, nullable=True)
+    thumb_url = db.Column(db.String, nullable=True)
     species = db.Column(db.String, nullable=True)
     gender = db.Column(db.String, nullable=True)
     score = db.Column(db.Integer, nullable=True)
 
-    def __init__(self, name, summary=None, image_url=None, species=None, gender=None, score=None):
+    def __init__(self, name, summary=None, image_url=None, thumb_url=None, species=None, gender=None, score=None):
         self.name = name
         self.summary = summary
         self.image_url = image_url
+        self.thumb_url = thumb_url
         self.species = species
         self.gender = gender
 
