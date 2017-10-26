@@ -34,7 +34,7 @@ class About extends Component {
     
     render() {
         return (
-            <div className="container">
+            <div className="container main-page">
                  <Title title="About"/>
                 <div className="about-grid">
                     <div className="about-card-wrapper">

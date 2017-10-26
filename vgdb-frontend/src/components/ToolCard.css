@@ -39,3 +39,9 @@
 .detail {
     display: inline-block;
 }
+
+@media only screen and (max-width:500px) {
+    .tool-card {
+        width: 100%;
+    }
+}

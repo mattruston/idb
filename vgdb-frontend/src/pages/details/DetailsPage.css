@@ -9,16 +9,15 @@
 }
 .sidebar {
     width: 25%;
-    padding: 2em 1em 2em 0em;
+    padding: 1em 1em 2em 0em;
 }
 .sidebar-img {
     background: #aaa;
     width: 100%;
-    padding-top: 100%;
 }
 .details {
     width: 75%;
-    padding: 2em 0em 2em 1em;
+    padding: 1.5em 0em 2em 1em;
 }
 .detail-title {
     font-weight: 700;
@@ -29,4 +28,17 @@ hr {
 }
 .detail-description {
     margin-top: 1em;
+}
+
+@media only screen and (max-width:500px) {
+    .inline-block {
+        display: block;
+    }
+    .sidebar {
+        width: 100%;
+    }
+    .details {
+        width: 100%;
+        padding-left: 0em;
+    }
 }

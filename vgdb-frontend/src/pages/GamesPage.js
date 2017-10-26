@@ -1,58 +1,95 @@
 import React, { Component } from 'react';
 import GridLayout from '../components/GridLayout';
 import Title from '../components/Title';
+import Loader from '../components/Loader';
+import Pagination from '../components/Pagination';
 
-const gamesEndpoint = pageNumber =>
+let endpoint = (pageNumber) =>
                     `http://gamingdb.info/api/game?page=${pageNumber}`
-const gameURL = gameID =>
-                `/games/${gameID}`
 
 class GamesPage extends Component {
     constructor(props) {
         super(props);
-        this.page = 1;
         this.state = {
-            testitems: [
-                {title: "test-item-1", details: ["test", "test", "test"], url:"/games/13"},
-                {title: "test-item-2", details: ["test", "test", "test"], url:"/games/124"},
-                {title: "test-item-3", details: ["test", "test", "test"], url:"/games/125"},
-                {title: "test-item-3", details: ["test", "test", "test"], url:"/games/126"}
-            ],
-            details: [
-                "rating",
-                "release_date",
-                "genre"
-            ],
-            games:[]
-            
+            page: 1,
+            games:[],
+            loading: true,
+            pageLimit: 0
         };
-    }
+    };
 
-    componentDidMount() {
-        fetch(gamesEndpoint(this.page),{
+    fetchData() {
+        fetch(endpoint(this.state.page),{
             method: 'GET'
         }).then(response => response.json())
         .then(response => {
+            this.setState({
+                pageLimit: response.total_pages
+            });
             for (var i = 0; i < response.objects.length; i++) {
-                var gameObj = response.objects[i];
-                gameObj.url = gameURL(gameObj.game_id);
+                let obj = response.objects[i];
+                let details = this._buildDetails(obj);
+                let item = {
+                    title: obj.title,
+                    img: obj.thumb_url,
+                    url: "/games/" + obj.game_id,
+                    details: details
+                }
                 var gamesArray = this.state.games.slice();
-                gamesArray.push(gameObj);
-                this.setState({ games: gamesArray })
+                gamesArray.push(item);
+                this.setState({ games: gamesArray });
             }
+            this.setState({
+                loading: false
+            });
         });
-    }
+    };
 
+    componentDidMount() {
+        this.fetchData();
+    };
 
     render() {
         return (
             <div>
-                <div className="container">
-                    <Title title="Games"/>
-                    <GridLayout items={this.state.games} details={this.state.details}/>
-                </div>
+                {this.state.loading && <Loader/>}
+                {!this.state.loading && 
+                    <div className="container main-page">
+                        <Title title="Games"/>
+                        <GridLayout items={this.state.games}/>
+			            <Pagination page={this.state.page} pagelimit={this.state.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
+                    </div>
+                }
             </div>
         )
+    }
+
+    incPage = () => {
+        this.changePage(this.state.page + 1);
+    }
+
+    decPage = () => {
+        this.changePage(this.state.page - 1);
+    }
+
+    changePage = (page) => {
+        this.setState({
+            page: page,
+            games: [],
+            loading: true
+        }, () => { this.fetchData() });
+    };
+
+    _buildDetails(obj) {
+        let details = []
+        if(obj.release_date) 
+            details.push({ title: "Released:", content:obj.release_date});
+        if(obj.rating) 
+            details.push({title: "Rating:", content: obj.rating.toFixed(0) + "/100"});
+        if(obj.genres.length > 0)
+            details.push({title: "Genre:", content:obj.genres[0].name});
+
+        return details;
     }
 }
 

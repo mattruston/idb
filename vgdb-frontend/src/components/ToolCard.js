@@ -11,7 +11,9 @@ class ToolCard extends Component {
                 {name: "Google Domains", description:"Bought and registered our domain"},
                 {name: "Apiary", description:"API Documentation"},
                 {name: "Google Cloud Platform", description:"Used App Engine to deploy our site"},
-                {name: "Slack", description:"Used for team communication"}
+                {name: "Slack", description:"Used for team communication"},
+                {name: "Flask", description:"Python server engine to power all the api and forward all non-api routing to React"},
+                {name: "React", description:"Frontend engine to power all of our clientside rendering and routing"}
             ]
         };
     }
