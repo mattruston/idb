@@ -1,6 +1,6 @@
 import json
 import datetime
-import models
+import app.models
 from datetime import date
 
 
@@ -24,7 +24,7 @@ class Parser:
         return date.fromtimestamp(epoch / 1000).strftime('%Y-%m-%d %H:%M:%S')
 
     def parse_games(self):
-        with open('../data/igdb_games.json') as game_data:
+        with open('data/igdb_games.json') as game_data:
             data = json.load(game_data)
             for game in data:
                 d = {}
@@ -53,23 +53,23 @@ class Parser:
                             break
                         self.related_games[game['id']].append(v) 
                 self.game_dict[game['id']] = d
-                new_row = models.Game(**d)
+                new_row = app.models.Game(**d)
                 game_genres = []
                 if 'genres' in game:
                     for genre_id in game['genres']:
                         genre_row = None
                         if genre_id in self.genre_set:
-                            genre_row = models.Genre.query.filter(
-                                models.Genre.name == self.genres[genre_id]).first()
+                            genre_row = app.models.Genre.query.filter(
+                                app.models.Genre.name == self.genres[genre_id]).first()
                         else:
-                            genre_row = models.Genre(self.genres[genre_id])
+                            genre_row = app.models.Genre(self.genres[genre_id])
                             self.genre_set.add(genre_id)
                         genre_row.games.append(new_row)
-                models.db.session.add(new_row)
-                models.db.session.commit()
+                app.models.db.session.add(new_row)
+                app.models.db.session.commit()
 
     def parse_companies(self):
-        with open('../data/igdb_companies.json') as company_data:
+        with open('data/igdb_companies.json') as company_data:
             data = json.load(company_data)
             for company in data:
                 if not company:
@@ -89,18 +89,18 @@ class Parser:
                     d['location'] = self.iso_to_country[country_code if len(
                         country_code) > 2 else '0' + country_code]
                 self.company_dict[company['id']] = d
-                new_row = models.Developer(**d)
+                new_row = app.models.Developer(**d)
                 if 'games' in company:
                     for game in company['games']:
                         if game in self.game_dict:
-                            game_row = models.Game.query.filter(
-                                models.Game.title == self.game_dict[game]['title']).first()
+                            game_row = app.models.Game.query.filter(
+                                app.models.Game.title == self.game_dict[game]['title']).first()
                             game_row.developers.append(new_row)
-                models.db.session.add(new_row)
-                models.db.session.commit()
+                app.models.db.session.add(new_row)
+                app.models.db.session.commit()
 
     def parse_platforms(self):
-        with open('../data/igdb_platforms.json') as platform_data:
+        with open('data/igdb_platforms.json') as platform_data:
             data = json.load(platform_data)
             for platform in data:
                 d = {}
@@ -117,25 +117,25 @@ class Parser:
                         platform['logo']['url'].strip(
                             '\\').replace('/t_thumb', "")
                 self.platform_dict[platform['id']] = d
-                new_row = models.Platform(**d)
+                new_row = app.models.Platform(**d)
                 if 'games' in platform:
                     for game in platform['games']:
                         if game in self.game_dict:
-                            game_row = models.Game.query.filter(
-                                models.Game.title == self.game_dict[game]['title']).first()
+                            game_row = app.models.Game.query.filter(
+                                app.models.Game.title == self.game_dict[game]['title']).first()
                             game_row.platforms.append(new_row)
                 if 'companies' in platform:
                     for company in platform['companies']:
                         if company in self.company_dict:
-                            company_row = models.Developer.query.filter(
-                                models.Developer.name == self.company_dict[company]['name']).first()
+                            company_row = app.models.Developer.query.filter(
+                                app.models.Developer.name == self.company_dict[company]['name']).first()
                             company_row.platforms.append(new_row)
-                models.db.session.add(new_row)
-                models.db.session.commit()
+                app.models.db.session.add(new_row)
+                app.models.db.session.commit()
 
 
     def parse_characters(self):
-        with open('../data/igdb_characters.json') as character_data:
+        with open('data/igdb_characters.json') as character_data:
             data = json.load(character_data)
             for character in data:
                 d = {}
@@ -154,21 +154,21 @@ class Parser:
                     d['species'] = self.species[character['species']]
                 d['score'] = score
                 self.character_dict[character['id']] = d
-                new_row = models.Character(**d)
+                new_row = app.models.Character(**d)
                 if 'games' in character:
                     for game in character['games']:
                         if game in self.game_dict:
-                            game_row = models.Game.query.filter(
-                                models.Game.title == self.game_dict[game]['title']).first()
+                            game_row = app.models.Game.query.filter(
+                                app.models.Game.title == self.game_dict[game]['title']).first()
                             game_row.characters.append(new_row)
-                models.db.session.add(new_row)
-                models.db.session.commit()
+                app.models.db.session.add(new_row)
+                app.models.db.session.commit()
     
     def add_related_games(self):
         for game, related in self.related_games.items():
             results = []
             for elem in related:
                 if elem in self.game_dict:
-                    results.append(models.Game.query.filter(models.Game.title == self.game_dict[elem]['title']).first().game_id)
-            models.Game.query.filter(models.Game.title == self.game_dict[game]['title']).first().related_game_ids = results
-            models.db.session.commit()
+                    results.append(app.models.Game.query.filter(app.models.Game.title == self.game_dict[elem]['title']).first().game_id)
+            app.models.Game.query.filter(app.models.Game.title == self.game_dict[game]['title']).first().related_game_ids = results
+            app.models.db.session.commit()
