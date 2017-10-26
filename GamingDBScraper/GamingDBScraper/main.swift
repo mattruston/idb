@@ -9,6 +9,6 @@
 import Foundation
 
 
-downloadPlatformImages()
+downloadCompanyImages()
 
 print("Done")

@@ -20,7 +20,7 @@ func downloadGameImages() {
     }
 }
 
-func getGameIds() -> [String] {
+fileprivate func getGameIds() -> [String] {
     var ids: [String] = []
     print("Parsing games")
     for game in fileJson {
@@ -43,11 +43,33 @@ func downloadPlatformImages() {
     }
 }
 
-func getPlatformIds() -> [String] {
+fileprivate func getPlatformIds() -> [String] {
     var ids: [String] = []
     print("Parsing platforms")
-    for game in fileJson {
-        if let imageData = game["logo"] as? [String: Any] {
+    for platform in fileJson {
+        if let imageData = platform["logo"] as? [String: Any] {
+            if let path = imageData["cloudinary_id"] as? String {
+                ids.append(path)
+            }
+        }
+    }
+    return ids
+}
+
+// MARK: - Company
+
+func downloadCompanyImages() {
+    readInFileData("igdb_companies.json")
+    for id in getCompanyIds() {
+        downloadImage(id)
+    }
+}
+
+fileprivate func getCompanyIds() -> [String] {
+    var ids: [String] = []
+    print("Parsing companies")
+    for company in fileJson {
+        if let imageData = company["logo"] as? [String: Any] {
             if let path = imageData["cloudinary_id"] as? String {
                 ids.append(path)
             }
@@ -59,7 +81,7 @@ func getPlatformIds() -> [String] {
 
 // MARK: - Helpers
 
-func downloadImage(_ id: String) {
+fileprivate func downloadImage(_ id: String) {
     
     let types: [String] = [".jpg", ".png"]
     var done = false
@@ -98,7 +120,7 @@ func downloadImage(_ id: String) {
     }
 }
 
-func saveImage(data: Data, id: String, type: String) -> Bool {
+fileprivate func saveImage(data: Data, id: String, type: String) -> Bool {
     
     if let documentDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
         let imagePath = documentDirectoryUrl.appendingPathComponent("images/\(id)\(type)")
@@ -115,13 +137,24 @@ func saveImage(data: Data, id: String, type: String) -> Bool {
     return false
 }
 
-func readInFileData(_ file: String) {
+fileprivate func readInFileData(_ file: String) {
     if let documentDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
         let fileUrl = documentDirectoryUrl.appendingPathComponent(file)
         do {
             let data = try Data(contentsOf: fileUrl)
             if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
                 fileJson = json
+            } else {
+                //For some reason something isnt the right type of dictionary, so we want to filter that out
+                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [Any] {
+                    print("Json had: \(json.count)")
+                    if let filtered = json.filter({ (item) -> Bool in
+                        return item is [String: Any]
+                    }) as? [[String: Any]] {
+                        print("filtered had: \(filtered.count)")
+                        fileJson = filtered
+                    }
+                }
             }
         } catch {
             print(error)
