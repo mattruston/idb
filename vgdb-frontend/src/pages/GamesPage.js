@@ -3,14 +3,14 @@ import GridLayout from '../components/GridLayout';
 import Title from '../components/Title';
 import Loader from '../components/Loader';
 
-const endpoint = pageNumber =>
+let endpoint = (pageNumber) =>
                     `http://gamingdb.info/api/game?page=${pageNumber}`
 
 class GamesPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            page: 1,
+            page: 10,
             games:[],
             loading: true
         };
@@ -52,19 +52,28 @@ class GamesPage extends Component {
                     <div className="container main-page">
                         <Title title="Games"/>
                         <GridLayout items={this.state.games}/>
+                        <button onClick={this.decPage}>Previous Page</button>
+                        <button onClick={this.incPage}>Next Page</button>
                     </div>
                 }
             </div>
         )
     }
 
-    changePage(pageNumber) {
+    incPage = () => {
+        this.changePage(this.state.page + 1);
+    }
+
+    decPage = () => {
+        this.changePage(this.state.page - 1);
+    }
+
+    changePage = (page) => {
         this.setState({
-            page: pageNumber,
+            page: page,
             games: [],
             loading: true
-        });
-        this.fetchData();
+        }, () => { this.fetchData() });
     };
 
     _buildDetails(obj) {
