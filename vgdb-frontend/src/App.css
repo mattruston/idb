@@ -27,6 +27,39 @@ body {
     margin-top: 1em;
 }
 
+.pagination {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 0em 5em;
+    flex-direction: column;
+}
+.pagination-button {
+    background-color: #2de5c6;
+    border: none;
+    padding: .5em;
+    color: #fff;
+    width: 8em;
+    text-align: center;
+    cursor: pointer;
+}
+.pagination-button:hover {
+    background-color: #24b79e;
+}
+.left {
+    border-left: 1px solid #24b79e;
+    border-radius: 0px 5px 5px 0px;
+}
+.right {
+    border-right: 1px solid #24b79e;
+    border-radius: 5px 0px 0px 5px;
+}
+.page-number {
+    font-weight: bold;
+    margin-top: .5em;
+}
+
 @media only screen and (max-width:780px) {
     .container {
         width: 95%;

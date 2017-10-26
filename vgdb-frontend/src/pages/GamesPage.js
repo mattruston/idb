@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GridLayout from '../components/GridLayout';
 import Title from '../components/Title';
 import Loader from '../components/Loader';
+import Pagination from '../components/Pagination';
 
 let endpoint = (pageNumber) =>
                     `http://gamingdb.info/api/game?page=${pageNumber}`
@@ -54,9 +55,7 @@ class GamesPage extends Component {
                     <div className="container main-page">
                         <Title title="Games"/>
                         <GridLayout items={this.state.games}/>
-			            <div>{"Page Number: " + this.state.page + "/" + pageLimit}</div>
-                        <button onClick={this.decPage} disabled={this.state.page == 1}>Previous Page</button>
-                        <button onClick={this.incPage} disabled={this.state.page == pageLimit}>Next Page</button>
+			            <Pagination page={this.state.   page} pagelimit={pageLimit} decPage={this.decPage} incPage={this.incPage}/>
                     </div>
                 }
             </div>
