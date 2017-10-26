@@ -13,7 +13,8 @@ class PlatformsPage extends Component {
         this.state = {
             page: 1,
             platforms:[],
-            loading: true
+            loading: true,
+            pageLimit: 0
         };
     };
 
@@ -56,7 +57,7 @@ class PlatformsPage extends Component {
                     <div className="container main-page">
                         <Title title="Platforms"/>
                         <GridLayout items={this.state.platforms}/>
-                        <Pagination page={this.state.   page} pagelimit={pageLimit} decPage={this.decPage} incPage={this.incPage}/>
+                        <Pagination page={this.state.page} pagelimit={this.state.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
                     </div>
                 }
             </div>

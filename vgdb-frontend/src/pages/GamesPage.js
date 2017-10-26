@@ -13,7 +13,8 @@ class GamesPage extends Component {
         this.state = {
             page: 1,
             games:[],
-            loading: true
+            loading: true,
+            pageLimit: 0
         };
     };
 
@@ -56,7 +57,7 @@ class GamesPage extends Component {
                     <div className="container main-page">
                         <Title title="Games"/>
                         <GridLayout items={this.state.games}/>
-			            <Pagination page={this.state.   page} pagelimit={pageLimit} decPage={this.decPage} incPage={this.incPage}/>
+			            <Pagination page={this.state.page} pagelimit={this.state.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
                     </div>
                 }
             </div>

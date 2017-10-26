@@ -13,7 +13,8 @@ class DevPage extends Component {
         this.state = {
             page: 1,
             developers:[],
-            loading: true
+            loading: true,
+            pageLimit: 0
         };
     };
 
@@ -56,7 +57,7 @@ class DevPage extends Component {
                     <div className="container main-page">
                         <Title title="Developers"/>
                         <GridLayout items={this.state.developers}/>
-                        <Pagination page={this.state.   page} pagelimit={pageLimit} decPage={this.decPage} incPage={this.incPage}/>
+                        <Pagination page={this.state.page} pagelimit={this.state.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
                     </div>
                 }
             </div>

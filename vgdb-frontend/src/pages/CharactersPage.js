@@ -13,7 +13,8 @@ class CharactersPage extends Component {
         this.state = {
             page: 1,
             characters:[],
-            loading: true
+            loading: true,
+            pageLimit: 0
         };
     };
 
@@ -56,7 +57,7 @@ class CharactersPage extends Component {
                     <div className="container main-page">
                         <Title title="Characters"/>
                         <GridLayout items={this.state.characters}/>
-                        <Pagination page={this.state.   page} pagelimit={pageLimit} decPage={this.decPage} incPage={this.incPage}/>
+                        <Pagination page={this.state.page} pagelimit={this.state.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
                     </div>
                 }
             </div>
