@@ -27,7 +27,7 @@ class DevPage extends Component {
                 let item = {
                     title: obj.name,
                     img: obj.image_url,
-                    url: "/developers/" + obj.platform_id,
+                    url: "/developers/" + obj.developer_id,
                     details: details
                 }
                 var devs = this.state.developers.slice();
