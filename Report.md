@@ -142,13 +142,22 @@ Lastly, when populating our database we follow these steps:
 2. Create every table specified by our models.
 3. Parse the JSONs scraped from our data sources to create rows, at each point checking for relationships and adding those as well.
 
-##### Getting the data
+#### Getting the data
 
 To populate our database with information we are building json files that have the information from our sources, that are then read into our database. To do this we wrote scripts that will run and scrape relevant information from other sources, and save that formatted data to json files. Once we have downloaded this information, we have it saved so that we don't have to scrape those sources again if we need to reload our database. This allows us to merge and build the information we want into a format that works with our database. We also then don't need to frequently make requests to the other sources, since once we download it once, we have it.
 
 We also scraped the images that we need to display and are hosting them ourselves on Cloudinary. This way we have access to the tools provided by the image hosting site, allowing us to request the images with trasformations already applied. This means if the website simply needs a small thumbnail, it will only need to request a small version of the image instead of downloading the entire large file and then shrinking it. This makes the website faster, and less costly to use.
 
+#### Issues
 
+##### Deploying to GCP
+When first deploying to GCP we were getting cryptic errors that gave us trouble. We were originally timing out because the database didn't have enough time to build itself successfully. After we adjusted the timeouts accordingly, it worked fine. However, it took time to diagnose.
+
+##### Differing Image Types
+Though we were able to retrieve many images from our APIs, we initially had issues handling .png files. In order to accomodate both file types, we needed to host all of our images on Cloudinary. This allowed us to perform transformations on the file type, so instead of needed to request specifically a .jpeg or .png, we can now always request .jpeg and Cloudinary will accomodate our request. We also gained the functionality of being able to apply other transformations such as height, width, and gravity (where the transformation starts).
+
+##### API Load Times
+We were receiving extended load times which gave our frontend a delay in requesting the information. In order to provide a visual signal to the client, we decided to add a loading animation to ensure it is clear the data is being loaded in. Moving forward, we would like to eliminate this latency entirely to provide a better user experience.
 
 ### Hosting
 
