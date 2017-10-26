@@ -23,7 +23,7 @@ class Home extends Component {
             <div>
                 {this.state.loading && <Loader/>}
                 {!this.state.loading && 
-                    <div className="container">
+                    <div className="container main-page">
                         <Title title="Team's Top Picks"/>
                         <GridLayout items={this.state.topgames}/>
                     </div>

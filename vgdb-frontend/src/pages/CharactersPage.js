@@ -49,7 +49,7 @@ class CharactersPage extends Component {
             <div>
                 {this.state.loading && <Loader/>}
                 {!this.state.loading && 
-                    <div className="container">
+                    <div className="container main-page">
                         <Title title="Characters"/>
                         <GridLayout items={this.state.characters}/>
                     </div>

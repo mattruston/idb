@@ -23,6 +23,9 @@ body {
     font-size: 1em;
     color: #fff; 
 }
+.main-page {
+    margin-top: 1em;
+}
 
 @media only screen and (max-width:780px) {
     .container {

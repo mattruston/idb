@@ -49,7 +49,7 @@ class PlatformsPage extends Component {
             <div>
                 {this.state.loading && <Loader/>}
                 {!this.state.loading && 
-                    <div className="container">
+                    <div className="container main-page">
                         <Title title="Platforms"/>
                         <GridLayout items={this.state.platforms}/>
                     </div>

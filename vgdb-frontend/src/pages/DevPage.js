@@ -49,7 +49,7 @@ class DevPage extends Component {
             <div>
                 {this.state.loading && <Loader/>}
                 {!this.state.loading && 
-                    <div className="container">
+                    <div className="container main-page">
                         <Title title="Developers"/>
                         <GridLayout items={this.state.developers}/>
                     </div>
