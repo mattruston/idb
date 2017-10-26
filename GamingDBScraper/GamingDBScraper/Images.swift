@@ -79,6 +79,29 @@ fileprivate func getCompanyIds() -> [String] {
 }
 
 
+// MARK: - Company
+
+func downloadCharacterImages() {
+    readInFileData("igdb_characters.json")
+    for id in getCharacterIds() {
+        downloadImage(id)
+    }
+}
+
+fileprivate func getCharacterIds() -> [String] {
+    var ids: [String] = []
+    print("Parsing characters")
+    for character in fileJson {
+        if let imageData = character["mug_shot"] as? [String: Any] {
+            if let path = imageData["cloudinary_id"] as? String {
+                ids.append(path)
+            }
+        }
+    }
+    return ids
+}
+
+
 // MARK: - Helpers
 
 fileprivate func downloadImage(_ id: String) {
