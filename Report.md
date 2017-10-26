@@ -142,6 +142,14 @@ Lastly, when populating our database we follow these steps:
 2. Create every table specified by our models.
 3. Parse the JSONs scraped from our data sources to create rows, at each point checking for relationships and adding those as well.
 
+##### Getting the data
+
+To populate our database with information we are building json files that have the information from our sources, that are then read into our database. To do this we wrote scripts that will run and scrape relevant information from other sources, and save that formatted data to json files. Once we have downloaded this information, we have it saved so that we don't have to scrape those sources again if we need to reload our database. This allows us to merge and build the information we want into a format that works with our database. We also then don't need to frequently make requests to the other sources, since once we download it once, we have it.
+
+We also scraped the images that we need to display and are hosting them ourselves on Cloudinary. This way we have access to the tools provided by the image hosting site, allowing us to request the images with trasformations already applied. This means if the website simply needs a small thumbnail, it will only need to request a small version of the image instead of downloading the entire large file and then shrinking it. This makes the website faster, and less costly to use.
+
+
+
 ### Hosting
 
 We are using the Google Cloud Platform to host our website. The Google Cloud Platform is a powerful back-end service that has many capabilities useful for running applications. It ranges from just giving you an empty Linux virtual machine where you can run your application however you want, to using something like the App Engine which handles many of the common hurdles you normally have to overcome with a back-end service. Because of the many capabilities the App Engine provides, this is the service we are using to run our web application. It has easy commands for deploying a website, can auto-scale if the website suddenly starts getting a lot of traffic, and provides useful analytics on the requests made to our application.
@@ -182,7 +190,9 @@ We also needed to get our project to use a custom domain. We purchased gamingdb.
 - **SQLAlchemy**
   - Python library that aids in the generation of SQL databases.
 - **PostgreSQL**
-  - Object-relational databse system.
+  - Object-relational database system.
+- **Cloudinary**
+  - An image hosting website. Provides tools for requesting images with transformations already applied.
 
 #### Development Tools
 
