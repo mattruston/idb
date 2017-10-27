@@ -25,7 +25,8 @@ class PlatformDetail extends Component {
                 {this.state.loading && <Loader/>}
                 {!this.state.loading && 
                     <DetailsPage title={this.state.title} description={this.state.description}
-                        mainbar={this.state.mainbar} img={this.state.img} sidebar={this.state.sidebar}/>
+                        mainbar={this.state.mainbar} img={this.state.img} sidebar={this.state.sidebar}
+                        linkbar={this.state.linkbar}/>
                 }
                 </div>
         );
@@ -38,8 +39,8 @@ class PlatformDetail extends Component {
         .then(response => {
             console.log(response);
             let genres = this._stringFromArray(response.genres);
-            let devs = this._stringFromArray(response.developers);
-            let characters = this._stringFromArray(response.characters);
+            let devs = this._linkbarFromArray(response.developers, "/developers/", "developer_id", "name");
+            let characters = this._linkbarFromArray(response.characters, "/characters/", "character_id", "name");
             this.setState({
                 title: response.name,
                 description: response.description ? response.description : "",
@@ -48,9 +49,11 @@ class PlatformDetail extends Component {
                 ],
                 img: response.image_url ? response.image_url : "",
                 sidebar: [
-                    { title: "Release Date", content: response.release_date ? response.release_date : ""} ,
-                    { title: "Characters", content: characters },
-                    { title: "Developers", content: devs }
+                    { title: "Release Date", content: response.release_date ? response.release_date : ""}
+                ],
+                linkbar: [
+                    { title: "Developers", links: devs },
+                    { title: "Characters", links: characters }
                 ]
             });
             this.setState({ loading: false });
@@ -67,6 +70,19 @@ class PlatformDetail extends Component {
             s += ", ";
         }
         return s.substring(0, s.length - 2);
+    }
+
+    _linkbarFromArray(array, path, idKey, titleKey) {
+        let result = [];
+        for (var i = 0; i < array.length; i++) {
+            result.push({
+            link: path + array[i][idKey],
+            text: array[i][titleKey]
+            })
+            if (i === 2)
+                break;
+        }
+        return result;
     }
 }
 

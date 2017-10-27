@@ -25,7 +25,8 @@ class CharDetail extends Component {
                 {this.state.loading && <Loader/>}
                 {!this.state.loading && 
                     <DetailsPage title={this.state.title} description={this.state.description}
-                            mainbar={this.state.mainbar} img={this.state.img} sidebar={this.state.sidebar}/>
+                            mainbar={this.state.mainbar} img={this.state.img} sidebar={this.state.sidebar}
+                            linkbar={this.state.linkbar}/>
                 }
             </div>
         );
@@ -37,7 +38,7 @@ class CharDetail extends Component {
         }).then(response => response.json())
         .then(response => {
             console.log(response);
-            let games = this._stringFromArray(response.games);
+            let games = this._linkbarFromArray(response.games, "/games/", "game_id", "title");
             this.setState({
                 title: response.name ? response.name : "",
                 description: response.description ? response.description : "",
@@ -46,8 +47,8 @@ class CharDetail extends Component {
                     { title: "Race", content: response.race ? response.race: "" }
                 ],
                 img: response.image_url ? response.image_url : "",
-                sidebar: [
-                    { title: "Appears in", content: games},
+                linkbar: [
+                    { title: "Appears in", links: games},
                 ]
             });
             this.setState({ loading: false });
@@ -64,6 +65,19 @@ class CharDetail extends Component {
             s += ", ";
         }
         return s.substring(0, s.length - 2);
+    }
+
+    _linkbarFromArray(array, path, idKey, titleKey) {
+        let result = [];
+        for (var i = 0; i < array.length; i++) {
+            result.push({
+                link: path + array[i][idKey],
+                text: array[i][titleKey]
+            })
+            if (i === 2)
+                break;
+        }
+        return result;
     }
 }
 
