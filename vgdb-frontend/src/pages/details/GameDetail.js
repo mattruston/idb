@@ -25,7 +25,8 @@ class GameDetail extends Component {
                 {this.state.loading && <Loader/>}
                 {!this.state.loading && 
                     <DetailsPage title={this.state.title} description={this.state.description}
-                            mainbar={this.state.mainbar} img={this.state.img} sidebar={this.state.sidebar}/>
+                            mainbar={this.state.mainbar} img={this.state.img} sidebar={this.state.sidebar} 
+                            linkbar={this.state.linkbar}/>
                 }
             </div>
         );
@@ -37,8 +38,9 @@ class GameDetail extends Component {
         }).then(response => response.json())
         .then(response => {
             let genres = this._stringFromArray(response.genres);
-            let devs = this._stringFromArray(response.developers);
-            let platforms = this._stringFromArray(response.platforms)
+            let devs = this._linkbarFromArray(response.developers, "/developers/","developer_id", "name");
+            let platforms = this._linkbarFromArray(response.platforms,"/platforms/", "platform_id", "name");
+            let characters = this._linkbarFromArray(response.characters, "/characters/", "character_id", "name")
             this.setState({
                 title: response.title ? response.title : "",
                 description: response.description ? response.description : "",
@@ -48,10 +50,10 @@ class GameDetail extends Component {
 
                 ],
                 img: response.image_url,
-                sidebar: [
-                    { title: "Release Date", content: response.release_date ? response.release_date : ""} ,
-                    { title: "Platforms", content: platforms },
-                    { title: "Developers", content: devs }
+                linkbar: [
+                    { title: "Platforms", links: platforms },
+                    { title: "Developers", links: devs },
+                    { title: "Characters", links: characters }
                 ]
             });
             this.setState({
@@ -71,6 +73,20 @@ class GameDetail extends Component {
         }
         return s.substring(0, s.length - 2);
     }
+
+    _linkbarFromArray(array, path, idKey, titleKey) {
+        let result = [];
+        for (var i = 0; i < array.length; i++) {
+            result.push({
+                link: path + array[i][idKey],
+                text: array[i][titleKey]
+            })
+            if (i === 2)
+                break;
+        }
+        return result;
+    }
+
 }
 
 export default GameDetail;
