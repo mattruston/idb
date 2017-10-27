@@ -1321,112 +1321,6 @@
   }
 },
 {
-  "summary" : "Business simulator with rich economic model (markets with shortages and surpluses, websites with black hat SEO, etc.), flexible configuration of movie production, complex casting, two modes of shooting (fast and detailed ones) and other features. Beautiful graphics and no sexually explicit content.",
-  "name" : "Porno Studio Tycoon",
-  "popularity" : 260,
-  "id" : 28465,
-  "genres" : [
-    13,
-    32
-  ],
-  "platforms" : [
-    6
-  ],
-  "screenshots" : [
-    {
-      "height" : 720,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/shotciissmwdisdwqdmg.jpg",
-      "cloudinary_id" : "shotciissmwdisdwqdmg",
-      "width" : 1280
-    },
-    {
-      "height" : 337,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/pntmmnwn6vzp8uqjeoeo.jpg",
-      "cloudinary_id" : "pntmmnwn6vzp8uqjeoeo",
-      "width" : 600
-    },
-    {
-      "height" : 720,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/xpgggartobfrwnkqhtwk.jpg",
-      "cloudinary_id" : "xpgggartobfrwnkqhtwk",
-      "width" : 1280
-    },
-    {
-      "height" : 720,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/ytq9dw8cgnaecekhdcdg.jpg",
-      "cloudinary_id" : "ytq9dw8cgnaecekhdcdg",
-      "width" : 1280
-    },
-    {
-      "height" : 720,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/kzgu4ywwcyzorcpjnsxq.jpg",
-      "cloudinary_id" : "kzgu4ywwcyzorcpjnsxq",
-      "width" : 1280
-    }
-  ],
-  "first_release_date" : 1493942400000,
-  "games" : [
-    38045,
-    33603,
-    22425,
-    43130,
-    36962,
-    16309,
-    41895,
-    43097,
-    44087,
-    26145
-  ],
-  "developers" : [
-    12666
-  ],
-  "publishers" : [
-    12666
-  ],
-  "cover" : {
-    "height" : 215,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/eku1gg56ltnfucepgqny.jpg",
-    "cloudinary_id" : "eku1gg56ltnfucepgqny",
-    "width" : 460
-  }
-},
-{
-  "name" : "Oppai Slider 2",
-  "popularity" : 242.5,
-  "id" : 22425,
-  "genres" : [
-    13
-  ],
-  "platforms" : [
-    6
-  ],
-  "first_release_date" : 1132876800000,
-  "games" : [
-    22422,
-    22423,
-    22470,
-    22426,
-    22472,
-    22406,
-    22421,
-    22471,
-    28465,
-    19785
-  ],
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 383,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/nkugb4uvps5dzccb1wpl.jpg",
-    "cloudinary_id" : "nkugb4uvps5dzccb1wpl",
-    "width" : 259
-  }
-},
-{
   "summary" : "Ashen is an action RPG about a wanderer in search of a place to call home. There is no sun and the natural light that exists comes from eruptions that cover the land in ash. This is a world where nothing lasts, no matter how tightly you cling to it. \n \nAt its core, Ashen is about forging relationships. \nPlayers can choose to guide those they trust to their camp, encouraging them to rest at the fire and perhaps remain. People you meet out in the world will have unique skills and crafting abilities to bolster your chances of survival. \n \nTogether, you might just stand a chance.",
   "name" : "Ashen",
   "popularity" : 238.25,
@@ -1662,60 +1556,6 @@
     "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/zf68w0klaobnok5nyulk.jpg",
     "cloudinary_id" : "zf68w0klaobnok5nyulk",
     "width" : 300
-  }
-},
-{
-  "summary" : "A Life in Silk is a highly-interactive visual-novel, that tells the story of a feminine sissy boy, who just recently turned 18 and dreams only of becoming a glamorous T-girl Goddess and rule the Big City with his beauty and never ending sexual appetite.\n\nBut while stuck in a small suburban town with his single but very libertine Mommy, he knows that to reach his expensive dream of perfect feminine transformation, he will need to seduce as many Sugar Daddies as he can with his advanced oral skills and erotically charge fashion sense, in hopes they will sponsor his transformation.",
-  "name" : "A Life in Silk - The First Cumming",
-  "popularity" : 212.5,
-  "id" : 16309,
-  "genres" : [
-    12,
-    13,
-    32
-  ],
-  "platforms" : [
-    6,
-    14
-  ],
-  "screenshots" : [
-    {
-      "height" : 671,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/qifbztmaielk7l9xayuz.jpg",
-      "cloudinary_id" : "qifbztmaielk7l9xayuz",
-      "width" : 892
-    },
-    {
-      "height" : 762,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/ijj2lfcvitqmfvqphwbe.jpg",
-      "cloudinary_id" : "ijj2lfcvitqmfvqphwbe",
-      "width" : 1020
-    }
-  ],
-  "first_release_date" : 1467849600000,
-  "games" : [
-    28465,
-    19785,
-    22425,
-    38045,
-    26145,
-    22422,
-    22470,
-    22472,
-    22423,
-    26163
-  ],
-  "developers" : [
-    8032
-  ],
-  "publishers" : [
-    8032
-  ],
-  "cover" : {
-    "height" : 1425,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/oo0dqt8ollefvigrr6bj.jpg",
-    "cloudinary_id" : "oo0dqt8ollefvigrr6bj",
-    "width" : 1425
   }
 },
 {
@@ -2007,34 +1847,6 @@
     "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/zrac3iilq0inlirpxrdv.jpg",
     "cloudinary_id" : "zrac3iilq0inlirpxrdv",
     "width" : 220
-  }
-},
-{
-  "name" : "The Legend of Queen Opala",
-  "popularity" : 166.5,
-  "games" : [
-    16468,
-    24048,
-    25300,
-    26223,
-    36792,
-    26145,
-    47823,
-    18090,
-    55289,
-    51991
-  ],
-  "id" : 26163,
-  "genres" : [
-    12,
-    31,
-    32
-  ],
-  "cover" : {
-    "height" : 615,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/itnqsuynccjd08wk4fyz.jpg",
-    "cloudinary_id" : "itnqsuynccjd08wk4fyz",
-    "width" : 435
   }
 },
 {
@@ -3082,63 +2894,6 @@
   }
 },
 {
-  "summary" : "Honey Select is an eroge created by the Japanese H-game company Illusion. The main objective of the game is to unlock the game’s achievements.",
-  "name" : "Honey Select",
-  "popularity" : 128.5,
-  "id" : 22486,
-  "genres" : [
-    13
-  ],
-  "platforms" : [
-    6
-  ],
-  "screenshots" : [
-    {
-      "height" : 707,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/a7pkqxtj6ossyt6oepqq.jpg",
-      "cloudinary_id" : "a7pkqxtj6ossyt6oepqq",
-      "width" : 1279
-    },
-    {
-      "height" : 360,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/ydq0pjld3va1bdnw99mj.jpg",
-      "cloudinary_id" : "ydq0pjld3va1bdnw99mj",
-      "width" : 640
-    },
-    {
-      "height" : 359,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/hkkwlg008vqciasltf65.jpg",
-      "cloudinary_id" : "hkkwlg008vqciasltf65",
-      "width" : 640
-    }
-  ],
-  "first_release_date" : 1473379200000,
-  "games" : [
-    22470,
-    22472,
-    19847,
-    22422,
-    22423,
-    22425,
-    22406,
-    19785,
-    22471,
-    11679
-  ],
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 600,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/j4w0ev381yutxuhv8akc.jpg",
-    "cloudinary_id" : "j4w0ev381yutxuhv8akc",
-    "width" : 424
-  }
-},
-{
   "summary" : "Startup Company is a business simulation sandbox game. You play as the CEO of a newly formed software company. Your job is to either complete client contracts to make money, or build your very own products.",
   "name" : "Startup Company",
   "popularity" : 127.5,
@@ -3203,44 +2958,6 @@
     "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/ohi340su1nsn4yoa7d9y.jpg",
     "cloudinary_id" : "ohi340su1nsn4yoa7d9y",
     "width" : 460
-  }
-},
-{
-  "summary" : "Artificial Academy 2 is an eroge high school social simulation, sequel of Artificial Academy.\n\nCreate and play any of up to 25 students of varying gender, orientation and other interaction abilities and personal inclinations. Make friends and lovers as the class competes for achievement in academics, athletics, popularity, and romance.",
-  "name" : "Artificial Academy 2",
-  "popularity" : 126.25,
-  "id" : 22472,
-  "genres" : [
-    13
-  ],
-  "total_rating" : 75,
-  "platforms" : [
-    6
-  ],
-  "first_release_date" : 1402617600000,
-  "games" : [
-    22422,
-    22471,
-    22470,
-    22423,
-    22425,
-    22421,
-    19785,
-    22406,
-    22426,
-    28465
-  ],
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 232,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/coftwsbu3uto83iw73d0.jpg",
-    "cloudinary_id" : "coftwsbu3uto83iw73d0",
-    "width" : 220
   }
 },
 {
@@ -3319,43 +3036,6 @@
     "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/m3pcyvvbezj3fbnxsofm.jpg",
     "cloudinary_id" : "m3pcyvvbezj3fbnxsofm",
     "width" : 3222
-  }
-},
-{
-  "summary" : "Artificial Girl 3 is an eroge (hentai game) and is the sequel to Artificial Girl 2.\n\nThe gameplay involves being a guy and living a life with one or many girls (whose various characteristics are set by the player).\n\nThe game is considered by the playerbase to be one of Illusion's finest games.",
-  "name" : "Artificial Girl 3",
-  "popularity" : 118.5,
-  "id" : 19785,
-  "genres" : [
-    13
-  ],
-  "platforms" : [
-    6
-  ],
-  "first_release_date" : 1196380800000,
-  "games" : [
-    22422,
-    22470,
-    22423,
-    22472,
-    22425,
-    16309,
-    22471,
-    22421,
-    28465,
-    22406
-  ],
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 600,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/x4hz5yacdqanmggyting.jpg",
-    "cloudinary_id" : "x4hz5yacdqanmggyting",
-    "width" : 401
   }
 },
 {
@@ -3800,74 +3480,6 @@
     "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/tyelx5vyuefiuff0gqai.jpg",
     "cloudinary_id" : "tyelx5vyuefiuff0gqai",
     "width" : 1280
-  }
-},
-{
-  "name" : "Sexy Beach 3",
-  "popularity" : 100.75,
-  "id" : 22422,
-  "genres" : [
-    13
-  ],
-  "platforms" : [
-    6
-  ],
-  "screenshots" : [
-    {
-      "height" : 768,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/m7d8fc0nsbbgj1htpssq.jpg",
-      "cloudinary_id" : "m7d8fc0nsbbgj1htpssq",
-      "width" : 1024
-    },
-    {
-      "height" : 768,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/kuyotrdro1b1i0tevjvp.jpg",
-      "cloudinary_id" : "kuyotrdro1b1i0tevjvp",
-      "width" : 1024
-    },
-    {
-      "height" : 768,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/tnt9t6gxk6sgomzyvejo.jpg",
-      "cloudinary_id" : "tnt9t6gxk6sgomzyvejo",
-      "width" : 1024
-    },
-    {
-      "height" : 768,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/rmzkqdh4yeooup3nyzf9.jpg",
-      "cloudinary_id" : "rmzkqdh4yeooup3nyzf9",
-      "width" : 1024
-    },
-    {
-      "height" : 768,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/ldldhzocpgclslaukylr.jpg",
-      "cloudinary_id" : "ldldhzocpgclslaukylr",
-      "width" : 1024
-    }
-  ],
-  "first_release_date" : 1159488000000,
-  "games" : [
-    22423,
-    22425,
-    22470,
-    22472,
-    22421,
-    22471,
-    19785,
-    22406,
-    22426,
-    28465
-  ],
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 477,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/hq3eh6p2iwdoqft9xp56.jpg",
-    "cloudinary_id" : "hq3eh6p2iwdoqft9xp56",
-    "width" : 320
   }
 },
 {
@@ -4614,40 +4226,6 @@
     "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/wvqjil3tq2kuutrw0xsb.jpg",
     "cloudinary_id" : "wvqjil3tq2kuutrw0xsb",
     "width" : 512
-  }
-},
-{
-  "summary" : "RapeLay drew a great deal of controversy and made global headlines when western press and politicians discovered it back in 2009. It eventually led the Japanese government to start regulating the sale of rape games.",
-  "name" : "RapeLay",
-  "popularity" : 76.25,
-  "id" : 22426,
-  "platforms" : [
-    6
-  ],
-  "first_release_date" : 1145577600000,
-  "games" : [
-    22425,
-    22422,
-    22423,
-    22470,
-    22472,
-    22406,
-    22480,
-    22418,
-    22421,
-    22471
-  ],
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 485,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/vnbirqq3wziiqrtm0afr.jpg",
-    "cloudinary_id" : "vnbirqq3wziiqrtm0afr",
-    "width" : 320
   }
 },
 {
@@ -5683,42 +5261,6 @@
   }
 },
 {
-  "name" : "Sexy Beach Zero",
-  "popularity" : 63.75,
-  "id" : 22423,
-  "genres" : [
-    13
-  ],
-  "platforms" : [
-    6
-  ],
-  "first_release_date" : 1288310400000,
-  "games" : [
-    22422,
-    22425,
-    22470,
-    22472,
-    22421,
-    22471,
-    19785,
-    22406,
-    22426,
-    28465
-  ],
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 363,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/j9sdjrchqzho4x1wwbnx.jpg",
-    "cloudinary_id" : "j9sdjrchqzho4x1wwbnx",
-    "width" : 250
-  }
-},
-{
   "summary" : "Allison Road is a survival horror game developed in Unreal Engine 4, played in first person view with optional Oculus Rift support. \n\nYou will take on the role of the unnamed protagonist who wakes up one day without any recollection of prior events. Over the course of five nights It is your objective to uncover the whereabouts of your family, unravel the mysteries of the house, and face off against Lily and other dark entities that are nested deep within the house, while the clock is relentlessly ticking towards 3:00am. \n\nWhat would you do if you could feel something stalking you in the dark in the safety of your own home? \nIf you couldn't tell what's real and what's not? \n\nAllison Road combines old-school survival horror and adventure game mechanics with next-gen graphics and optional VR support. \n\nThe game was initially developed by one person but then the team slowly grew to its current size of 6 people.",
   "name" : "Allison Road",
   "popularity" : 63.25,
@@ -6599,43 +6141,6 @@
     "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/vgy7me5wsakpzxgnnmaw.jpg",
     "cloudinary_id" : "vgy7me5wsakpzxgnnmaw",
     "width" : 600
-  }
-},
-{
-  "summary" : "Battle Raper II is a weapon-based 3D fighting game in which the players are able to knock female opponents' clothing off. Every character has unlimited guard, a move that can not be blocked, as well as a super move. The game also features a variety of alternative clothing items and weapons for all the characters that can be used to edit their models.\n\nThe game includes a single-player story mode, a multiplayer mode, and an Extras mode which is unlocked after finishing the storyline. As opposed to the first Battle Raper, the sequel actually does not feature rape but only consensual sex. Once a fight against a female character is won, the game enters a special mode where the unconscious woman lies on the ground in front of the player who now has to heal her wounds. The Replay mode allows the player to have sex with a chosen female character.",
-  "name" : "Battle Raper II",
-  "popularity" : 53,
-  "id" : 22418,
-  "genres" : [
-    4
-  ],
-  "platforms" : [
-    6
-  ],
-  "first_release_date" : 1114128000000,
-  "games" : [
-    22426,
-    22425,
-    22422,
-    22470,
-    22423,
-    22472,
-    22406,
-    22480,
-    36794,
-    28465
-  ],
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 430,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/roksgmnbpx8pca7ninox.jpg",
-    "cloudinary_id" : "roksgmnbpx8pca7ninox",
-    "width" : 305
   }
 },
 {
@@ -8513,43 +8018,6 @@
     "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/eqz9nfkztnkxtenmyltb.jpg",
     "cloudinary_id" : "eqz9nfkztnkxtenmyltb",
     "width" : 560
-  }
-},
-{
-  "summary" : "Yuusha is an eroge (hentai game) RPG.\nThe characters are based off the popular RPG series called Dragon Quest by Square\/Enix.",
-  "name" : "Yuusha",
-  "popularity" : 38,
-  "id" : 22480,
-  "genres" : [
-    12
-  ],
-  "platforms" : [
-    6
-  ],
-  "first_release_date" : 1254441600000,
-  "games" : [
-    22425,
-    22426,
-    22422,
-    22470,
-    22423,
-    22472,
-    22406,
-    26163,
-    16468,
-    16309
-  ],
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 298,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/pimto45arszvtmxvdr5v.jpg",
-    "cloudinary_id" : "pimto45arszvtmxvdr5v",
-    "width" : 220
   }
 },
 {
@@ -11253,31 +10721,6 @@
   }
 },
 {
-  "summary" : "Sexy Beach Premium Resort is the latest, fifth installment in Sexy Beach series of eroge by Illusion, released on September 11, 2015 with preliminary support for VR (Oculus Rift).",
-  "name" : "Sexy Beach Premium Resort",
-  "popularity" : 28.75,
-  "id" : 22485,
-  "genres" : [
-    13
-  ],
-  "platforms" : [
-    6
-  ],
-  "first_release_date" : 1441929600000,
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 400,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/nzgz3xfjjbpj9iu9v7or.jpg",
-    "cloudinary_id" : "nzgz3xfjjbpj9iu9v7or",
-    "width" : 275
-  }
-},
-{
   "summary" : "The Earthlings have joined the interstellar club. The galaxy will never be the same.\n\nThe year is 2086 and Earth has detected an alien distress call originating from the surface of Triton. In response, Star Control is formed with you as The Captain of Earth's first prototype starship.",
   "name" : "Star Control: Origins",
   "popularity" : 28.5,
@@ -11883,78 +11326,6 @@
     "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/c07m7bddncwljwzinnao.jpg",
     "cloudinary_id" : "c07m7bddncwljwzinnao",
     "width" : 1514
-  }
-},
-{
-  "name" : "Lula: The Sexy Empire",
-  "genres" : [
-    2,
-    13
-  ],
-  "platforms" : [
-    6,
-    16
-  ],
-  "first_release_date" : 915062400000,
-  "games" : [
-    22470,
-    22425,
-    19847,
-    22422,
-    29173,
-    22472,
-    22423,
-    22406,
-    28465,
-    54789
-  ],
-  "summary" : "Lula: The Sexy Empire (also known as Wet: The Sexy Empire) is a business simulation game for Windows[3] and AmigaOS.[4] The game revolves around building a multi-million dollar pornography and erotica industry. Character designs were done by German comic artist Carsten Wieland.\n\nAfter holding a bank and shooting guards, your two criminal buddies abandon you out in the middle of the desert, taking all the loot with them.\n\nThis is where you start the game: In a quiet desert town, almost broke, and with the FBI on your heels. You meet up with Lula, an aspiring 'actress', and together decide to make your ways to the top.\n\nIn the first part of the game you're in the small town, making enough money in a few days to buy a new identity, and evade the advancing FBI net, by taking photos and films of Lula in the nearby hotel. Once you get enough money, you decide to go into proper business for yourselves.\n\nThe second part consists of you setting up a movie-making business, hiring and firing staff, generating film 'plots', setting up cutting and editing facilities, and haggling for the best distribution deals until you are able to be a distributor yourself. Build up money here and we advance to the final section of the game.\n\nHaving made it in the movie-business, you now set up sex stores across the country, dealing more in resource-management and advertising until you're able to generate enough money to launch the Lula television satellite into orbit - the final aim of the game.",
-  "popularity" : 26.5,
-  "id" : 11679,
-  "total_rating" : 66.6035963763608,
-  "screenshots" : [
-    {
-      "height" : 480,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/qhc4gbbwb6l31j3xhfcp.jpg",
-      "cloudinary_id" : "qhc4gbbwb6l31j3xhfcp",
-      "width" : 640
-    },
-    {
-      "height" : 480,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/u9otf8hax9twfmnhjmi1.jpg",
-      "cloudinary_id" : "u9otf8hax9twfmnhjmi1",
-      "width" : 640
-    },
-    {
-      "height" : 480,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/nzi3crvxqtz0nqs8g7gg.jpg",
-      "cloudinary_id" : "nzi3crvxqtz0nqs8g7gg",
-      "width" : 640
-    },
-    {
-      "height" : 480,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/rduqrkiby3li7qu286sv.jpg",
-      "cloudinary_id" : "rduqrkiby3li7qu286sv",
-      "width" : 640
-    },
-    {
-      "height" : 480,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/uhzjltec98aetlribcrl.jpg",
-      "cloudinary_id" : "uhzjltec98aetlribcrl",
-      "width" : 640
-    }
-  ],
-  "developers" : [
-    6163
-  ],
-  "publishers" : [
-    139
-  ],
-  "cover" : {
-    "height" : 750,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/kznurgdihxcctuvle8j0.jpg",
-    "cloudinary_id" : "kznurgdihxcctuvle8j0",
-    "width" : 600
   }
 },
 {
@@ -18694,69 +18065,6 @@
   }
 },
 {
-  "summary" : "Sono Hanabira ni Kuchizuke o: Atelier no Koibito-tachi is an adult visual novel and the twelfth game in the Sono Hanabira ni Kuchizuke o series of games. It is the second visual novel featuring Azumi Risa and Ayase Miya, the couple introduced in the eleventh game in the series.",
-  "name" : "Sono Hanabira ni Kuchizuke o: Atelier no Koibito-tachi",
-  "popularity" : 16,
-  "id" : 12264,
-  "genres" : [
-    31
-  ],
-  "platforms" : [
-    6
-  ],
-  "screenshots" : [
-    {
-      "height" : 600,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/slkzu1tasxfqs3mlzqgk.jpg",
-      "cloudinary_id" : "slkzu1tasxfqs3mlzqgk",
-      "width" : 800
-    },
-    {
-      "height" : 600,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/qnt8yipvpbboillvqxad.jpg",
-      "cloudinary_id" : "qnt8yipvpbboillvqxad",
-      "width" : 800
-    },
-    {
-      "height" : 600,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/n0ku3szgic8vk9dzfwt1.jpg",
-      "cloudinary_id" : "n0ku3szgic8vk9dzfwt1",
-      "width" : 800
-    },
-    {
-      "height" : 600,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/pm7tppwt5ckpy25vkwhl.jpg",
-      "cloudinary_id" : "pm7tppwt5ckpy25vkwhl",
-      "width" : 800
-    }
-  ],
-  "first_release_date" : 1364515200000,
-  "games" : [
-    12263,
-    22425,
-    22426,
-    12275,
-    7218,
-    22422,
-    22470,
-    7364,
-    12200,
-    22472
-  ],
-  "developers" : [
-    6407
-  ],
-  "publishers" : [
-    6407
-  ],
-  "cover" : {
-    "height" : 1500,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/pws8psnthfvuj7dkq7us.jpg",
-    "cloudinary_id" : "pws8psnthfvuj7dkq7us",
-    "width" : 1061
-  }
-},
-{
   "name" : "Dishonored 2",
   "genres" : [
     5,
@@ -22096,42 +21404,6 @@
   }
 },
 {
-  "name" : "Sexy Beach 2",
-  "popularity" : 13.5,
-  "id" : 22421,
-  "genres" : [
-    13
-  ],
-  "platforms" : [
-    6
-  ],
-  "first_release_date" : 1057881600000,
-  "games" : [
-    22422,
-    22423,
-    22425,
-    22470,
-    22472,
-    22471,
-    19785,
-    22406,
-    22426,
-    28465
-  ],
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 320,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/flitmtl855k6n0z3ktzk.jpg",
-    "cloudinary_id" : "flitmtl855k6n0z3ktzk",
-    "width" : 216
-  }
-},
-{
   "summary" : "Tank Mechanic is a game about World War II tanks, their crews and their contribution in military history. As a tank museum owner your task is to recover destroyed or abandoned tanks and renovate them.",
   "name" : "Tank Mechanic Simulator",
   "popularity" : 13.5,
@@ -24781,31 +24053,6 @@
   }
 },
 {
-  "summary" : "The expansion adds upon the features seen in Artificial Girl 3 such as more clothing, additional locations, more spoken dialogue (in Japanese), and extra sexual positions.",
-  "name" : "Artificial Girl 3 Plus",
-  "popularity" : 12.25,
-  "id" : 22465,
-  "genres" : [
-    13
-  ],
-  "platforms" : [
-    6
-  ],
-  "first_release_date" : 1212364800000,
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 431,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/kcaqgkc68umd7bh7l9rm.jpg",
-    "cloudinary_id" : "kcaqgkc68umd7bh7l9rm",
-    "width" : 300
-  }
-},
-{
   "name" : "Europa Universalis IV",
   "genres" : [
     11,
@@ -26049,75 +25296,6 @@
     "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/ipxu9yvahjv929rh2z7z.jpg",
     "cloudinary_id" : "ipxu9yvahjv929rh2z7z",
     "width" : 1056
-  }
-},
-{
-  "summary" : "Sono Hanabira ni Kuchizuke o: Michael no Otome-tachi is an adult visual novel and the eleventh game in the Sono Hanabira ni Kuchizuke o series of games. The game introduces the new couple of Azumi Risa and Ayase Miya. All couples from Fuguriya's prior A Kiss For The Petals releases are also featured and have their own storylines that are tangential to the main story featuring Risa and Miya.",
-  "name" : "Sono Hanabira ni Kuchizuke o: Michael no Otome-tachi",
-  "popularity" : 11.25,
-  "id" : 12263,
-  "genres" : [
-    31
-  ],
-  "platforms" : [
-    6
-  ],
-  "screenshots" : [
-    {
-      "height" : 600,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/yxnt3oywc5em8ortzo0i.jpg",
-      "cloudinary_id" : "yxnt3oywc5em8ortzo0i",
-      "width" : 800
-    },
-    {
-      "height" : 600,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/jwfbef2fyei4vukpvzg0.jpg",
-      "cloudinary_id" : "jwfbef2fyei4vukpvzg0",
-      "width" : 800
-    },
-    {
-      "height" : 600,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/fx9ef1ynchciztlplswr.jpg",
-      "cloudinary_id" : "fx9ef1ynchciztlplswr",
-      "width" : 800
-    },
-    {
-      "height" : 600,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/rasf18tmnzmjnhzggetz.jpg",
-      "cloudinary_id" : "rasf18tmnzmjnhzggetz",
-      "width" : 800
-    },
-    {
-      "height" : 600,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/t0107a3vnydp8zlquhaq.jpg",
-      "cloudinary_id" : "t0107a3vnydp8zlquhaq",
-      "width" : 800
-    }
-  ],
-  "first_release_date" : 1354233600000,
-  "games" : [
-    12264,
-    22425,
-    22426,
-    12275,
-    7218,
-    22422,
-    22470,
-    7364,
-    12200,
-    22472
-  ],
-  "developers" : [
-    6407
-  ],
-  "publishers" : [
-    6407
-  ],
-  "cover" : {
-    "height" : 1500,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/vh3aaakv2fvmffuj8fcd.jpg",
-    "cloudinary_id" : "vh3aaakv2fvmffuj8fcd",
-    "width" : 1069
   }
 },
 {
@@ -28710,30 +27888,6 @@
     "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/ipprn0qv5n0bztlzp8em.jpg",
     "cloudinary_id" : "ipprn0qv5n0bztlzp8em",
     "width" : 680
-  }
-},
-{
-  "name" : "Real Kanojo",
-  "popularity" : 10,
-  "id" : 22469,
-  "genres" : [
-    13
-  ],
-  "platforms" : [
-    6
-  ],
-  "first_release_date" : 1266537600000,
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 364,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/ffj3wlbkqfpxmtayrp1b.jpg",
-    "cloudinary_id" : "ffj3wlbkqfpxmtayrp1b",
-    "width" : 250
   }
 },
 {
@@ -46124,59 +45278,6 @@
   }
 },
 {
-  "summary" : "Target of Desire is about 2 characters: Maia and Maria. \n \nThe game is an interactive comic book game that follows the story of Maia. \n \nThe story of Maria can also be found in her blog. Maria has a blog under the username of \"I am named Maria\", and she is on social media under the same username. Her blog helps to explain what is happening in the game.",
-  "name" : "Target of Desire: Episode 1",
-  "popularity" : 6,
-  "id" : 52745,
-  "genres" : [
-    2,
-    25,
-    31
-  ],
-  "platforms" : [
-    34
-  ],
-  "screenshots" : [
-    {
-      "height" : 720,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/kdkir7e7qydykgdpeolv.jpg",
-      "cloudinary_id" : "kdkir7e7qydykgdpeolv",
-      "width" : 1280
-    },
-    {
-      "height" : 720,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/ubunge14wpctmffr88il.jpg",
-      "cloudinary_id" : "ubunge14wpctmffr88il",
-      "width" : 1280
-    }
-  ],
-  "first_release_date" : 1493596800000,
-  "games" : [
-    25300,
-    17001,
-    28540,
-    7202,
-    19301,
-    7603,
-    27789,
-    7599,
-    11156,
-    11567
-  ],
-  "publishers" : [
-    13201
-  ],
-  "developers" : [
-    13201
-  ],
-  "cover" : {
-    "height" : 800,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/vmwqtogn9awdroao0dz6.jpg",
-    "cloudinary_id" : "vmwqtogn9awdroao0dz6",
-    "width" : 600
-  }
-},
-{
   "name" : "Cook, Serve, Delicious! 2!!",
   "genres" : [
     13,
@@ -47330,31 +46431,6 @@
   }
 },
 {
-  "summary" : "HaremMate is an eroge created by the Japanese H-game company Illusion.\n\nHaremMate is also the first Illusion to use Unity game engine, followed by the same company's Play Club,",
-  "name" : "HaremMate",
-  "popularity" : 5.75,
-  "id" : 22482,
-  "genres" : [
-    13
-  ],
-  "platforms" : [
-    6
-  ],
-  "first_release_date" : 1419552000000,
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 330,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/iopvj1i4e7wvbc8mdicd.jpg",
-    "cloudinary_id" : "iopvj1i4e7wvbc8mdicd",
-    "width" : 220
-  }
-},
-{
   "summary" : "\"The Well is a classically designed RPG built distinctively for VR with a beautifully stylized, storybook art style and dark, dreamlike atmosphere. Explore the world, collect secrets, recruit allies, and fight strange, challenging enemies for rewards.\" \n \nExplore Tholl, a world beyond your imagination! On this fantastic planet, peaceful villagers live in harmony while barbaric tribes keep to their wilderness. Into this world where nothing changes arise the Tesh, a demonic force bent on destruction. The Oracle summons YOU to Keep the Balance. You must recruit allies, brave the wilderness, explore the mysteries of Tholl and defeat the Tesh before they unmake the world! \n \nThe World of Tholl is vast and ancient, with many mysteries. Not everything is what it seems. There are secrets scattered throughout the world that reward you with items and gold. Exploring, recruiting new companions and finding all the world's secrets provides hours of gameplay.",
   "name" : "The Well",
   "popularity" : 5.75,
@@ -47940,64 +47016,6 @@
   }
 },
 {
-  "summary" : "The player doesn't impersonate a simple man, but a powerful, rich and famous nobleman who seems to be able to obtain whatever he wishes for. But will this be enough this time?",
-  "name" : "Elisa: Seduce the Innkeeper",
-  "popularity" : 5.75,
-  "id" : 63734,
-  "genres" : [
-    31,
-    32
-  ],
-  "platforms" : [
-    6
-  ],
-  "screenshots" : [
-    {
-      "height" : 1077,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/vlehwkpetmafwwy3lnhl.jpg",
-      "cloudinary_id" : "vlehwkpetmafwwy3lnhl",
-      "width" : 1920
-    },
-    {
-      "height" : 1080,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/zv6kj7vrsdoq5596gkyx.jpg",
-      "cloudinary_id" : "zv6kj7vrsdoq5596gkyx",
-      "width" : 1920
-    },
-    {
-      "height" : 1080,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/vh5tioeplvbyvkmhvw6t.jpg",
-      "cloudinary_id" : "vh5tioeplvbyvkmhvw6t",
-      "width" : 1920
-    },
-    {
-      "height" : 1080,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/yl9pezm93dfdpn2rsal5.jpg",
-      "cloudinary_id" : "yl9pezm93dfdpn2rsal5",
-      "width" : 1920
-    },
-    {
-      "height" : 1080,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/jltibnfztlw3hzndrn8a.jpg",
-      "cloudinary_id" : "jltibnfztlw3hzndrn8a",
-      "width" : 1920
-    }
-  ],
-  "first_release_date" : 1506297600000,
-  "games" : [
-    11233,
-    21604,
-    51978,
-    27266,
-    26223,
-    36543,
-    37022,
-    55289,
-    26145,
-    26914
-  ]
-},
-{
   "summary" : "\"A powerful ancient evil has arisen, and the war to save humanity has begun! The Mummy Demastered throws you into a 16-bit-inspired battle against the undead in a 2D, nonlinear, action-packed adventure. As an elite agent in the monster-hunting Prodigium organization, you must use a variety of weapons, upgrades, and mysterious artifacts to defend mankind against the supernatural hordes of Princess Ahmanet. Your Prodigium unit is already on the scene, but HQ lost contact with them hours ago. Only by exploring tombs, forests, abandoned tunnels, and the cursed streets of London will you discover the fate of your allies. But beware - Ahmanet commands legions of undead, insects, plague-ridden vermin, and worse! If you're not careful, you'll be the next soul in her army.\"",
   "name" : "The Mummy: Demastered",
   "popularity" : 5.75,
@@ -48042,43 +47060,6 @@
     "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/vqpfipskmpxwvigks14u.jpg",
     "cloudinary_id" : "vqpfipskmpxwvigks14u",
     "width" : 1200
-  }
-},
-{
-  "summary" : "Sexy Beach 3 Plus adds two new characters and one secret character, and several new gameplay features. If the player has any current progress in Sexy Beach 3, it can be loaded onto the expansion.",
-  "name" : "Sexy Beach 3 Plus",
-  "popularity" : 5.75,
-  "id" : 22463,
-  "genres" : [
-    13
-  ],
-  "platforms" : [
-    6
-  ],
-  "first_release_date" : 1166140800000,
-  "games" : [
-    22422,
-    22423,
-    22425,
-    22470,
-    22472,
-    22421,
-    22471,
-    19785,
-    22406,
-    22426
-  ],
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 400,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/ak4ovuxqltc2d8fq5pon.jpg",
-    "cloudinary_id" : "ak4ovuxqltc2d8fq5pon",
-    "width" : 270
   }
 },
 {
@@ -48262,64 +47243,6 @@
     "cloudinary_id" : "pfiioagfghgrwojbqfcy",
     "width" : 657
   }
-},
-{
-  "summary" : "突如として、チ○ポが乾く暇も無い毎日に!主人公は、はじめは単なる好奇心と男根目当てのオンナたちに翻弄されながらも、徐々にそのデカチンと射精力で、オンナたちを性の虜にしていきます。ここは、夢にまで見た好きなだけ種付けセックスして、みんなに喜ばれる世界!!",
-  "name" : "Otaku's Fantasy",
-  "popularity" : 5.75,
-  "id" : 63718,
-  "genres" : [
-    31,
-    32
-  ],
-  "platforms" : [
-    6
-  ],
-  "screenshots" : [
-    {
-      "height" : 768,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/g0m2tmbhmil2bgu5t9ag.jpg",
-      "cloudinary_id" : "g0m2tmbhmil2bgu5t9ag",
-      "width" : 1024
-    },
-    {
-      "height" : 768,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/tnmvhelopvn3nualiyo3.jpg",
-      "cloudinary_id" : "tnmvhelopvn3nualiyo3",
-      "width" : 1024
-    },
-    {
-      "height" : 768,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/cnwfjjwatxjyuwx1hxvd.jpg",
-      "cloudinary_id" : "cnwfjjwatxjyuwx1hxvd",
-      "width" : 1024
-    },
-    {
-      "height" : 768,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/xyx2d5bcp5cvqcg7dxvt.jpg",
-      "cloudinary_id" : "xyx2d5bcp5cvqcg7dxvt",
-      "width" : 1024
-    },
-    {
-      "height" : 768,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/vyzze3ttncolkxo2rfwj.jpg",
-      "cloudinary_id" : "vyzze3ttncolkxo2rfwj",
-      "width" : 1024
-    }
-  ],
-  "first_release_date" : 1507161600000,
-  "games" : [
-    11233,
-    28465,
-    21604,
-    26163,
-    43130,
-    38045,
-    51978,
-    51991,
-    27266,
-    26223
-  ]
 },
 {
   "summary" : "A first person shooter where you defend a beach from an oncoming invasion with one gun emplacement.",
@@ -51155,30 +50078,6 @@
   }
 },
 {
-  "name" : "Play Club",
-  "popularity" : 5.25,
-  "id" : 22478,
-  "genres" : [
-    13
-  ],
-  "platforms" : [
-    6
-  ],
-  "first_release_date" : 1429833600000,
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 315,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/jg7glwpqkodihvcyhh1c.jpg",
-    "cloudinary_id" : "jg7glwpqkodihvcyhh1c",
-    "width" : 220
-  }
-},
-{
   "name" : "Kingsman: The Golden Circle",
   "popularity" : 5.25,
   "id" : 54712,
@@ -51314,31 +50213,6 @@
     "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/d4fp6vg3vlebeecjgyyf.jpg",
     "cloudinary_id" : "d4fp6vg3vlebeecjgyyf",
     "width" : 851
-  }
-},
-{
-  "summary" : "Also known as Virtual Girl, it is the first in the Artificial Girl series.",
-  "name" : "Artificial Girl 1",
-  "popularity" : 5.25,
-  "id" : 19809,
-  "genres" : [
-    13
-  ],
-  "platforms" : [
-    6
-  ],
-  "first_release_date" : 1104451200000,
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 366,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/bmvwvyxd2kte91pdmfz7.jpg",
-    "cloudinary_id" : "bmvwvyxd2kte91pdmfz7",
-    "width" : 300
   }
 },
 {
@@ -54708,75 +53582,6 @@
   }
 },
 {
-  "summary" : "Sono Hanabira ni Kuchizuke o: Anata ni Chikau Ai is an adult visual novel and the seventeenth game in the Sono Hanabira ni Kuchizuke o series of games. It follows the couple from Sono Hanabira ni Kuchizuke o: Tenshi no Hanabira Zome.",
-  "name" : "Sono Hanabira ni Kuchizuke o: Anata ni Chikau Ai",
-  "popularity" : 4.75,
-  "id" : 12275,
-  "genres" : [
-    31
-  ],
-  "platforms" : [
-    6
-  ],
-  "screenshots" : [
-    {
-      "height" : 600,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/x5czccmnx0n18xqhecrz.jpg",
-      "cloudinary_id" : "x5czccmnx0n18xqhecrz",
-      "width" : 800
-    },
-    {
-      "height" : 600,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/ankilhp88j0pqnv2pd1h.jpg",
-      "cloudinary_id" : "ankilhp88j0pqnv2pd1h",
-      "width" : 800
-    },
-    {
-      "height" : 600,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/jzjkjnqpv0pcx7olj7iw.jpg",
-      "cloudinary_id" : "jzjkjnqpv0pcx7olj7iw",
-      "width" : 800
-    },
-    {
-      "height" : 600,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/ll3iqo8iislo4vtzsx7l.jpg",
-      "cloudinary_id" : "ll3iqo8iislo4vtzsx7l",
-      "width" : 800
-    },
-    {
-      "height" : 600,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/aeonv0hetlv9wfcgcao4.jpg",
-      "cloudinary_id" : "aeonv0hetlv9wfcgcao4",
-      "width" : 800
-    }
-  ],
-  "first_release_date" : 1400803200000,
-  "games" : [
-    12264,
-    12263,
-    12269,
-    22425,
-    12200,
-    22426,
-    12272,
-    7218,
-    12328,
-    22422
-  ],
-  "developers" : [
-    6387
-  ],
-  "publishers" : [
-    6387
-  ],
-  "cover" : {
-    "height" : 500,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/nafifoaq89dekzyabvbs.jpg",
-    "cloudinary_id" : "nafifoaq89dekzyabvbs",
-    "width" : 350
-  }
-},
-{
   "summary" : "Beacon is a sci-fi themed Action Roguelike. Played as a top-down shooter, you must fight your way through a randomly generated hostile world, all the while trying to locate your emergency distress beacon and escape the planet into which your ship has crashed. \n \nWhile you’re making your way through these areas you’ll not only find weapons and items to help you; You’ll also be collecting DNA from the enemies you defeat. Then, when you inevitably die, you’re given the opportunity to combine the DNA you’ve collected to your own, granting you different stats and potentially gameplay-altering physical mutations for your next run. \n \nBeacon aims to create a bridge between fast, frenetic action and long-term strategy, where your actions can be felt and built upon hours down the line.",
   "name" : "Beacon",
   "popularity" : 4.75,
@@ -57179,30 +55984,6 @@
     "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/dxfwvczn3qoaf9j6zgh9.jpg",
     "cloudinary_id" : "dxfwvczn3qoaf9j6zgh9",
     "width" : 3660
-  }
-},
-{
-  "name" : "Immoral Ward",
-  "popularity" : 4.5,
-  "id" : 22483,
-  "genres" : [
-    13
-  ],
-  "platforms" : [
-    6
-  ],
-  "first_release_date" : 1383264000000,
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 293,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/lbol7cjnk1gadcbkzdlt.jpg",
-    "cloudinary_id" : "lbol7cjnk1gadcbkzdlt",
-    "width" : 220
   }
 },
 {
@@ -59929,77 +58710,6 @@
   }
 },
 {
-  "summary" : "Negligee is developed and published by Dharker Studio. It was released in 20 Oct, 2016. \nA story of love and lingerie as you are thrust into the role as manager of the underwear shop ‘Negligee’. \n \nAs the new manager you must find the right girl (or girls) to aid you in running the shop, help the various shoppers find what they are looking for and get to grips with your new found position in order to be a success. \n \nWork alongside a set of beautiful girls in this high quality visual novel with multiple routes, choices and endings to unlock.",
-  "name" : "Negligee",
-  "popularity" : 4.25,
-  "id" : 28207,
-  "genres" : [
-    2,
-    31,
-    32
-  ],
-  "platforms" : [
-    6
-  ],
-  "screenshots" : [
-    {
-      "height" : 337,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/cji1jeu7fxuzdlbnlfni.jpg",
-      "cloudinary_id" : "cji1jeu7fxuzdlbnlfni",
-      "width" : 600
-    },
-    {
-      "height" : 348,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/oiml0hesynikqclbpsdi.jpg",
-      "cloudinary_id" : "oiml0hesynikqclbpsdi",
-      "width" : 620
-    },
-    {
-      "height" : 959,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/qixihpidtpyaanrwuqqo.jpg",
-      "cloudinary_id" : "qixihpidtpyaanrwuqqo",
-      "width" : 639
-    },
-    {
-      "height" : 497,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/xqsywlyhl7tuh3xwlllf.jpg",
-      "cloudinary_id" : "xqsywlyhl7tuh3xwlllf",
-      "width" : 600
-    },
-    {
-      "height" : 1080,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/qm6avpdruhtjzrlshnyk.jpg",
-      "cloudinary_id" : "qm6avpdruhtjzrlshnyk",
-      "width" : 1920
-    }
-  ],
-  "first_release_date" : 1476921600000,
-  "games" : [
-    13189,
-    25222,
-    15911,
-    41895,
-    36543,
-    26163,
-    29730,
-    55935,
-    55803,
-    16309
-  ],
-  "developers" : [
-    10527
-  ],
-  "publishers" : [
-    10527
-  ],
-  "cover" : {
-    "height" : 337,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/ifwyb3mua88iulhfum86.jpg",
-    "cloudinary_id" : "ifwyb3mua88iulhfum86",
-    "width" : 600
-  }
-},
-{
   "summary" : "\"Prey for the Gods is a brutal journey set on a desolate frozen island, where your only chance of survival is to destroy the very gods you believe in. \n \nIn Prey for the Gods, you play a lone hero sent to the edge of a dying world to discover the mystery behind a never-ending winter. Arriving with only the clothes on your back, you must survive the colossal dangers that you encounter. To restore balance and reclaim the land from the brink, you will be faced with questions that not even a God knows the answer to.\"",
   "name" : "Praey for the Gods",
   "popularity" : 4.25,
@@ -60322,31 +59032,6 @@
     "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/trneju00raq3e4uuk48y.jpg",
     "cloudinary_id" : "trneju00raq3e4uuk48y",
     "width" : 502
-  }
-},
-{
-  "summary" : "Artificial Girl 2 is an eroge (hentai game) and is the sequel to Artificial Girl.\n\nThe gameplay involves being a guy and living a life with one or many girls (whose various characteristics are set by the player).",
-  "name" : "Artificial Girl 2",
-  "popularity" : 4.25,
-  "id" : 19808,
-  "genres" : [
-    13
-  ],
-  "platforms" : [
-    6
-  ],
-  "first_release_date" : 1101427200000,
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 400,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/m5n2rbbqszslhrrlttqb.jpg",
-    "cloudinary_id" : "m5n2rbbqszslhrrlttqb",
-    "width" : 281
   }
 },
 {
@@ -62406,76 +61091,6 @@
   }
 },
 {
-  "name" : "Senran Kagura: Peach Beach Splash",
-  "genres" : [
-    5
-  ],
-  "platforms" : [
-    48
-  ],
-  "first_release_date" : 1489622400000,
-  "games" : [
-    19341,
-    44544,
-    41218,
-    41616,
-    41614,
-    41219,
-    18587,
-    1905,
-    41615,
-    28061
-  ],
-  "summary" : "Senran Kagura: Peach Beach Splash (閃乱カグラ PEACH BEACH SPLASH Senran Kagura Peach Beach Splash?) is a Third-Person Shooter for the PlayStation 4, published by Marvelous Entertainment. The game will be released on March 16, 2017 in Japan.",
-  "popularity" : 4.25,
-  "id" : 25656,
-  "total_rating" : 77.71428571428569,
-  "screenshots" : [
-    {
-      "height" : 561,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/ye9k10kni02nm2th9f92.jpg",
-      "cloudinary_id" : "ye9k10kni02nm2th9f92",
-      "width" : 998
-    },
-    {
-      "height" : 563,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/y7dzfb0fcbejouwwciek.jpg",
-      "cloudinary_id" : "y7dzfb0fcbejouwwciek",
-      "width" : 999
-    },
-    {
-      "height" : 787,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/oxiuc2vv8tngwftivimo.jpg",
-      "cloudinary_id" : "oxiuc2vv8tngwftivimo",
-      "width" : 1400
-    },
-    {
-      "height" : 360,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/cjkxapd5kaek3bxuaj6t.jpg",
-      "cloudinary_id" : "cjkxapd5kaek3bxuaj6t",
-      "width" : 640
-    },
-    {
-      "height" : 360,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/ikdc8ij3m1iytler8pp6.jpg",
-      "cloudinary_id" : "ikdc8ij3m1iytler8pp6",
-      "width" : 640
-    }
-  ],
-  "developers" : [
-    862
-  ],
-  "publishers" : [
-    782
-  ],
-  "cover" : {
-    "height" : 363,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/iv3z70nk2jwnrqaprevl.jpg",
-    "cloudinary_id" : "iv3z70nk2jwnrqaprevl",
-    "width" : 300
-  }
-},
-{
   "name" : "Pro Evolution Soccer 2",
   "genres" : [
     14
@@ -63898,27 +62513,6 @@
     "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/wihikpxrogeftz9qzl2b.jpg",
     "cloudinary_id" : "wihikpxrogeftz9qzl2b",
     "width" : 512
-  }
-},
-{
-  "name" : "Premium Play Darkness",
-  "popularity" : 4,
-  "id" : 22477,
-  "platforms" : [
-    6
-  ],
-  "first_release_date" : 1359072000000,
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 332,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/xfbv13hnljadb4qrcvde.jpg",
-    "cloudinary_id" : "xfbv13hnljadb4qrcvde",
-    "width" : 220
   }
 },
 {
@@ -65503,45 +64097,6 @@
   "developers" : [
     10503
   ]
-},
-{
-  "summary" : "Battle Raper has gained notoriety for its simulation of rape. This aspect was removed from the follow-up game Battle Raper II: The Game in 2005.\n\nBattle Raper is a hand-to-hand combat 3D fighting game. The gameplay system features power-ups that can be picked up in the arena. The female characters can lose their clothes as they take damage and special moves include sexually explicit grapple attacks. Besides the single- and multiplayer modes, including Story mode, Battle Raper features the Extra mode for the additional unlockable content. It allows the player to see unlockable artworks and animations, as well as features an option to allow to freely molest any of the four female characters (Mai Kisaragi, Suzume Hachisuka, Fa Taolee, Chihaya Kagami: the only male character is Zenon).",
-  "name" : "Battle Raper",
-  "popularity" : 4,
-  "id" : 22407,
-  "genres" : [
-    4
-  ],
-  "platforms" : [
-    6
-  ],
-  "screenshots" : [
-    {
-      "height" : 668,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/duwgwwyxolu8jph9hbky.jpg",
-      "cloudinary_id" : "duwgwwyxolu8jph9hbky",
-      "width" : 1024
-    },
-    {
-      "height" : 720,
-      "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/oac9keujs1ng7kpsohla.jpg",
-      "cloudinary_id" : "oac9keujs1ng7kpsohla",
-      "width" : 1280
-    }
-  ],
-  "first_release_date" : 1019174400000,
-  "developers" : [
-    10212
-  ],
-  "publishers" : [
-    10212
-  ],
-  "cover" : {
-    "height" : 353,
-    "url" : "\/\/images.igdb.com\/igdb\/image\/upload\/t_thumb\/pjy8fijom3jtqiixrs8m.jpg",
-    "cloudinary_id" : "pjy8fijom3jtqiixrs8m",
-    "width" : 250
-  }
 },
 {
   "name" : "Trine",
