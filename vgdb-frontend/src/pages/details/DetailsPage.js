@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SideBarItem from '../../components/SideBarItem';
 import MainBarItem from '../../components/MainBarItem';
+import LinkBarItem from '../../components/LinkBarItem';
 import './DetailsPage.css';
 
 class DetailsPage extends Component {
@@ -14,6 +15,12 @@ class DetailsPage extends Component {
                             <SideBarItem attribute={item.title} info={item.content}/>
                         )
                     }
+                    {
+                        this.props.linkbar.map(item => 
+                            <LinkBarItem attribute={item.title} links={item.links}/>
+                        )
+                    }
+
                     
                 </div><div className="details inline-block">
                     <h1 className="detail-title">{this.props.title}</h1>
