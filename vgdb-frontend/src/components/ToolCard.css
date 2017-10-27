@@ -4,10 +4,11 @@
 	padding: 1em;
 	display: inline-block;
 	transition: transform .5s ease;
-	margin: 1em 0em;
+	margin: 1em 1em;
 	color: #222;
     text-decoration-color: #222;
-    width: 30em;
+    width: 40%;
+    vertical-align: top;
 }
 .tool-card:hover {
     transform: scale(1.05, 1.05);
