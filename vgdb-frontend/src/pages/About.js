@@ -80,6 +80,10 @@ class About extends Component {
                     {name: "Issues", decription: "36" },
                     {name: "Unit Tests", description: "10" }
                 ]}/>
+                <ToolCard title="Data Scources" list={[
+                    {name: "IGDB", description: "Main source of data", url:"https://igdb.github.io/api/about/welcome/"},
+                    {name: "Giant Bomb", description: "Secondary source of data", url:"https://www.giantbomb.com/api/"},
+                ]}/>
             </div>
         )
     }
