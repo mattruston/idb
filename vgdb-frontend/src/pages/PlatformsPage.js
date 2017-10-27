@@ -83,7 +83,10 @@ class PlatformsPage extends Component {
     _buildDetails(obj) {
         let details = []
         if(obj.release_date) 
-            details.push({ title: "Released:", content:obj.release_date});
+            details.push({ title: "Released:", content: obj.release_date});
+        if(obj.games)
+            if(obj.games.length > 0)
+                details.push({title: "Game:", content: obj.games[0].title});
 
         return details;
     }

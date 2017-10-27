@@ -25,7 +25,8 @@ class DevDetail extends Component {
                 {this.state.loading && <Loader/>}
                 {!this.state.loading && 
                     <DetailsPage title={this.state.title} description={this.state.description}
-                            mainbar={this.state.mainbar} img={this.state.img} sidebar={this.state.sidebar}/>
+                            mainbar={this.state.mainbar} img={this.state.img} sidebar={this.state.sidebar}
+                            linkbar={this.state.linkbar}/>
                 }
             </div>
         );
@@ -36,7 +37,8 @@ class DevDetail extends Component {
             method: 'GET'
         }).then(response => response.json())
         .then(response => {
-            let platforms = this._stringFromArray(response.platforms);
+            let platforms = this._linkbarFromArray(response.platforms, "/platforms/", "platform_id", "name");
+            let games = this._linkbarFromArray(response.games, "/games/", "game_id", "title")
             this.setState({
                 title: response.name ? response.name : "",
                 description: response.description ? response.description : "",
@@ -45,9 +47,13 @@ class DevDetail extends Component {
                 ],
                 img: response.image_url,
                 sidebar: [
-                    { title: "Release Date", content: response.release_date ? response.release_date : ""} ,
-                    { title: "Platforms", content: platforms },
+                    { title: "Release Date", content: response.release_date ? response.release_date : ""}
+                ],
+                linkbar: [
+                    { title: "Platforms", links: platforms },
+                    { title: "Games", links: games }
                 ]
+
             });
             this.setState({ loading: false })
         });
@@ -63,6 +69,19 @@ class DevDetail extends Component {
             s += ", ";
         }
         return s.substring(0, s.length - 2);
+    }
+
+    _linkbarFromArray(array, path, idKey, titleKey) {
+        let result = [];
+        for (var i = 0; i < array.length; i++) {
+            result.push({
+                link: path + array[i][idKey],
+                text: array[i][titleKey]
+            })
+            if (i === 2)
+                break;
+        }
+        return result;
     }
 }
 
