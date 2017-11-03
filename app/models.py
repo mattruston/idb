@@ -97,6 +97,7 @@ class Platform(db.Model):
     platform_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     description = db.Column(db.String, nullable=True)
+    average_rating = db.Column(db.Float, nullable=True)
     image_url = db.Column(db.String, nullable=True)
     thumb_url = db.Column(db.String, nullable=True)
     release_date = db.Column(db.Date, nullable=True)
@@ -104,7 +105,7 @@ class Platform(db.Model):
 
     characters = db.relationship('Character', secondary=plat_char_assoc, backref=db.backref('platforms', lazy='dynamic'))
 
-    def __init__(self, name, description=None, image_url=None, thumb_url=None, release_date=None, website=None):
+    def __init__(self, name, description=None, average_rating=None, image_url=None, thumb_url=None, release_date=None, website=None):
         self.name = name
         self.description = description
         self.image_url = image_url

@@ -88,12 +88,19 @@ class Parser:
                         country_code) > 2 else '0' + country_code]
                 self.company_dict[company['id']] = d
                 new_row = app.models.Developer(**d)
+                rating_sum = 0
+                rating_count = 0
                 if 'games' in company:
                     for game in company['games']:
                         if game in self.game_dict:
                             game_row = app.models.Game.query.filter(
                                 app.models.Game.title == self.game_dict[game]['title']).first()
                             game_row.developers.append(new_row)
+                            if game_row.rating:
+                                rating_sum += game_row.rating
+                                rating_count += 1 
+                if rating_sum:
+                    new_row.average_rating = round(rating_sum / rating_count, 2)
                 app.models.db.session.add(new_row)
                 app.models.db.session.commit()
 
@@ -115,13 +122,19 @@ class Parser:
                     d['thumb_url'] = 'http:' + platform['logo']['url'].strip('\\').replace('/t_thumb', "/w_400,h_500,c_fit/platforms").replace('images.igdb.com/igdb', 'res.cloudinary.com/gamingdb')
                 self.platform_dict[platform['id']] = d
                 new_row = app.models.Platform(**d)
-                top_game = (0.0, None)
+                rating_sum = 0
+                rating_count = 0
                 if 'games' in platform:
                     for game in platform['games']:
                         if game in self.game_dict:
                             game_row = app.models.Game.query.filter(
                                 app.models.Game.title == self.game_dict[game]['title']).first()
                             game_row.platforms.append(new_row)
+                            if game_row.rating:
+                                rating_sum += game_row.rating
+                                rating_count += 1 
+                if rating_sum:
+                    new_row.average_rating = round(rating_sum / rating_count, 2)
                 if 'companies' in platform:
                     for company in platform['companies']:
                         if company in self.company_dict:
