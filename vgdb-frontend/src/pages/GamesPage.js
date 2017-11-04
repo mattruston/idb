@@ -11,7 +11,7 @@ class GamesPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            page: 1,
+            page: this.props.match.params.page,
             games:[],
             loading: true,
             pageLimit: 0
