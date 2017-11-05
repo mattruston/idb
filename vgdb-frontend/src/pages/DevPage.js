@@ -11,7 +11,6 @@ class DevPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            page: 1,
             developers:[],
             loading: true,
             pageLimit: 0
@@ -19,7 +18,7 @@ class DevPage extends Component {
     };
 
     fetchData() {
-        fetch(endpoint(this.state.page),{
+        fetch(endpoint(this.props.match.params.page),{
             method: 'GET'
         }).then(response => response.json())
         .then(response => {
@@ -57,24 +56,35 @@ class DevPage extends Component {
                     <div className="container main-page">
                         <Title title="Developers"/>
                         <GridLayout items={this.state.developers}/>
-                        <Pagination page={this.state.page} pagelimit={this.state.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
+                        <Pagination page={this.props.match.params.page} pagelimit={this.state.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
                     </div>
                 }
             </div>
         )
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.location !== prevProps.location) {
+            this.onRouteChanged();
+        }
+    }
+    
+    onRouteChanged() {
+        this.changePage();
+    }
+
     incPage = () => {
-        this.changePage(this.state.page + 1);
+        this.props.history.push('/developers/page/' + (parseInt(this.props.match.params.page) + 1));
+        this.changePage();
     }
 
     decPage = () => {
-        this.changePage(this.state.page - 1);
+        this.props.history.push('/developers/page/' + (parseInt(this.props.match.params.page) - 1));
+        this.changePage();
     }
 
-    changePage = (page) => {
+    changePage = () => {
         this.setState({
-            page: page,
             developers: [],
             loading: true
         }, () => { this.fetchData() });

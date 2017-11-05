@@ -1,3 +1,5 @@
+# gamingDB
+
 ### Motivation
 
 Video games are a beloved childhood pastime that most people continue to enjoy well into adulthood. As a team, each of us grew up playing video games. Video games not only build friendships but were a great way to experience a rich story with deep characters. There is nothing quite like getting a new game and playing it for the first time. Immersing yourself in a new game is an amazing feeling, but it can be hard to find new video games that you like. We created GamingDB so that people have a place to go to find a new game to play by providing information about everything that comes together to make a video game. From the developers who created the game to the major characters in the game, our site will provide users all the information they need about every aspect of a video game. We will provide information about video games, gaming platforms, major characters, and companies that develop video games. With these models, we will be able to create a great web of information that people can browse through whenever they want to find a new game to play.
@@ -22,7 +24,7 @@ Get Game
 
 List Characters
 
-Get Characters
+Get Character
 
 List Platforms
 
@@ -35,53 +37,68 @@ Get Developer
 An example of a response to a request:
 
 ```
-List Games [GET]
+Get Game [GET]
 
 + Response 200 (application/json)
 
-        [
+		{
+          "characters": [], 
+          "description": "Cuphead is a classic run and gun action game heavily focused on boss battles. Inspired by cartoons of the 1930s, the visuals and audio are painstakingly created with the same techniques of the era, i.e. traditional cel animation (hand drawn & hand inked!), watercolor backgrounds, and original jazz recordings. Play as Cuphead or Mugman (in single player or co-op) as you traverse strange worlds, acquire new weapons, learn powerful super moves, and discover hidden secrets. Cuphead is all action, all the time.", 
+          "developers": [
             {
-                "game_id": "1",
-                "title": "Overwatch",
-                "image": "https://....com/image.png",
-                "genres": [
-                    "genre_id",
-                    "genre_id"
-                ],
-                "platforms": [
-                    "platform_id",
-                    "platform_id"
-                ],
-                "companies": [
-                    "company_id",
-                    "company_id"
-                ]
-            },
-            {
-                "game_id": "2",
-                "title": "Hearthstone",
-                "image": "https://....com/image.png",
-                "genres": [
-                    "genre_id",
-                    "genre_id"
-                ],
-                "platforms": [
-                    "platform_id",
-                    "platform_id"
-                ],
-                "companies": [
-                    "company_id",
-                    "company_id"
-                ]
+              "average_rating": null, 
+              "description": "StudioMDHR (Studio Moldenhauer) is an independent video game company founded by two brothers: Chad &amp; Jared Moldenhauer.\nBased in Oakville, ON / Regina, SK", 
+              "developer_id": 254, 
+              "image_url": "http://images.igdb.com/igdb/image/upload/qrhnhn54o6gepip9oo1y.jpg", 
+              "location": "United States", 
+              "name": "Studio MDHR", 
+              "website": "http://studiomdhr.com/"
             }
-        ]
+          ], 
+          "game_id": 13, 
+          "genres": [], 
+          "image_url": "http://images.igdb.com/igdb/image/upload/gtzfjc9pipa6s7v7m68g.jpg", 
+          "platforms": [
+            {
+              "description": "Windows XP, the successor to Windows 2000 and Windows ME, was the first consumer-oriented operating system produced by Microsoft to be built on the Windows NT kernel. Windows XP was released worldwide for retail sale on October 25, 2001, and over 400 million copies were in use in January 2006", 
+              "image_url": "http://images.igdb.com/igdb/image/upload/e9w12ei09dljpsiwz7pv.jpg", 
+              "name": "PC (Microsoft Windows)", 
+              "platform_id": 4, 
+              "release_date": "2001-10-25", 
+              "website": "http://windows.microsoft.com/"
+            }, 
+            {
+              "description": null, 
+              "image_url": null, 
+              "name": "Xbox One", 
+              "platform_id": 41, 
+              "release_date": "2013-11-22", 
+              "website": "http://www.xbox.com/en-US/xbox-one"
+            }
+          ], 
+          "rating": 80.7018744810862, 
+          "related_game_ids": [
+            103, 
+            65, 
+            45
+          ], 
+          "release_date": "2017-09-29", 
+          "screenshot_urls": [
+            "http://images.igdb.com/igdb/image/upload/sngyjwqwzzlciy0ko0sq.jpg", 
+            "http://images.igdb.com/igdb/image/upload/eulkrcocd1zyuvvcv7k0.jpg", 
+            "http://images.igdb.com/igdb/image/upload/ec5tsfhl7wjabwjnsshs.jpg", 
+            "http://images.igdb.com/igdb/image/upload/r9zt66wdgqohmhuukiir.jpg", 
+            "http://images.igdb.com/igdb/image/upload/sqho6e7tv9verg6j1tvv.jpg"
+          ], 
+          "title": "Cuphead"
+        }
 ```
 
 The purpose of these two specific cases for each model, getting an instance and listing all instances satisfies our use cases. On the main page of a model, Games, for instance, we want to display pages of games to our users. Listing all examples of this with the information provided in each object allows us to display an image of the game, the title of the game, genres associated with the game, platforms the game can be played on, and the companies who made it.
 
 In the case where a user wants to get more information about a game, they would be taken to the unique page of the game filled in with the data from the Get Game request. This request provides us with all of the other attributes about the game. This pattern is followed by the APIs for the other models as well.
 
-Going forward, we would like to implement paging along with our list requests. We need to have a better understanding of how it works, but based on our current knowledge we know it's necessary to include a pagination token in the request, as well as the response. This would allow a user to retrieve a single page of elements at a time, only loading one page to the user at a given moment. If the user wants to see more elements, they would go to the next page which would create a new list request with the pagination token of the previous list response.
+Pagination was easily implemented using SQLAlchemy's API manager. One of this objects allows us to specify a table on which we wish to call a GET request using our API and handles that request for us. Using the keyword `results_per_page` we were able to be explicit about the amount of rows that we wanted in our JSON for each page. This instance of the object notation also include the total number of elements, total number of pages, and the current page number, to be used in subsequent requests or other frontend constructs.
 
 We would also like to include filtering. This would allow certain attributes to be taken into account when listing elements, narrowing the search results for the user. This would be included with the request of a given API, only showing results that match the filter passed into the request.
 
@@ -112,6 +129,37 @@ Platform->Game: Can play
 Character->Game: Appears in
 Character->Platform: Appears on
 ```
+
+### DB
+
+The database for our site is based on PostgreSQL's relational structure. In addition to that, in order to populate our instance (which is hosted in Google Cloud Platform), we used SQLAlchemy in conjuction with Flask. The former is a Python library that allows easy management of SQL tables. In essence, our code creates the Flask app with information to log into our Postgres instance and is used in the construction of an abstract `db` made available by SQLAlchemy. Next, we utilize the class `Model` provided by the library to create our own classes that define the models described above through inheritance. This allows the underlyting implementation of the library to grab these newly defined classes and generate tables containing columns for attributes that we chose during the definition.
+
+After this point, our tables are not necessarily connected with each other. To achieve this connection, and since most of our models are connected in a many-to-many fashion, we use the concept of association tables made available by SQLAlchemy. Essentially, we create one table for each many-to-many relationship between our models and initialize these relationships using the `backref` attribute; the latter ensures that, when a change is made to one of the tables in the relationship, the change is relfected in the table that shares this relationship. For instance, if I add a platform to a game, the game will also be listed in the `.games` attribute of the platform.
+
+Other miscellaneus advantages to this combination of tools motivated our choice. SQLAlchemy for example, handles the auto-incrementation of the `id`s we use as our primary keys. It also handles the creation of RESTful API requests if specified. On the other hand, Postgres allows us to use arrays of elements as attributes in our models, making the implementation of our `screenshot_urls` trivial.
+
+Lastly, when populating our database we follow these steps:
+
+1. Drop any current tables and information in our database in order to avoid conflicts and achieve idempotence in our operations.
+2. Create every table specified by our models.
+3. Parse the JSONs scraped from our data sources to create rows, at each point checking for relationships and adding those as well.
+
+#### Getting the data
+
+To populate our database with information we are building json files that have the information from our sources, that are then read into our database. To do this we wrote scripts that will run and scrape relevant information from other sources, and save that formatted data to json files. Once we have downloaded this information, we have it saved so that we don't have to scrape those sources again if we need to reload our database. This allows us to merge and build the information we want into a format that works with our database. We also then don't need to frequently make requests to the other sources, since once we download it once, we have it.
+
+We also scraped the images that we need to display and are hosting them ourselves on Cloudinary. This way we have access to the tools provided by the image hosting site, allowing us to request the images with trasformations already applied. This means if the website simply needs a small thumbnail, it will only need to request a small version of the image instead of downloading the entire large file and then shrinking it. This makes the website faster, and less costly to use.
+
+#### Issues
+
+##### Deploying to GCP
+When first deploying to GCP we were getting cryptic errors that gave us trouble. We were originally timing out because the database didn't have enough time to build itself successfully. After we adjusted the timeouts accordingly, it worked fine. However, it took time to diagnose.
+
+##### Differing Image Types
+Though we were able to retrieve many images from our APIs, we initially had issues handling .png files. In order to accomodate both file types, we needed to host all of our images on Cloudinary. This allowed us to perform transformations on the file type, so instead of needed to request specifically a .jpeg or .png, we can now always request .jpeg and Cloudinary will accomodate our request. We also gained the functionality of being able to apply other transformations such as height, width, and gravity (where the transformation starts).
+
+##### API Load Times
+We were receiving extended load times which gave our frontend a delay in requesting the information. In order to provide a visual signal to the client, we decided to add a loading animation to ensure it is clear the data is being loaded in. Moving forward, we would like to eliminate this latency entirely to provide a better user experience.
 
 ### Hosting
 
@@ -150,6 +198,12 @@ We also needed to get our project to use a custom domain. We purchased gamingdb.
 
 - **Flask**
   - A microframework for handling rendering and navigation for the web page.
+- **SQLAlchemy**
+  - Python library that aids in the generation of SQL databases.
+- **PostgreSQL**
+  - Object-relational database system.
+- **Cloudinary**
+  - An image hosting website. Provides tools for requesting images with transformations already applied.
 
 #### Development Tools
 
