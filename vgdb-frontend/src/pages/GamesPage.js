@@ -62,7 +62,17 @@ class GamesPage extends Component {
             });
         });
     };
-
+    
+    componentDidUpdate(prevProps) {
+        if (this.props.location !== prevProps.location) {
+            this.onRouteChanged();
+        }
+    }
+    
+    onRouteChanged() {
+        this.changePage();
+    }
+    
     incPage = () => {
         this.props.history.push('/games/page/' + (parseInt(this.props.match.params.page) + 1));
         this.changePage();

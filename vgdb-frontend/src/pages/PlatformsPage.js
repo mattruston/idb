@@ -63,6 +63,16 @@ class PlatformsPage extends Component {
         )
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.location !== prevProps.location) {
+            this.onRouteChanged();
+        }
+    }
+    
+    onRouteChanged() {
+        this.changePage();
+    }
+
     incPage = () => {
         this.props.history.push('/platforms/page/' + (parseInt(this.props.match.params.page) + 1));
         this.changePage();
@@ -73,7 +83,7 @@ class PlatformsPage extends Component {
         this.changePage();
     }
 
-    changePage = (page) => {
+    changePage = () => {
         this.setState({
             platforms: [],
             loading: true
