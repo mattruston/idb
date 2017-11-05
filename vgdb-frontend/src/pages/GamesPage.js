@@ -11,15 +11,33 @@ class GamesPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            page: this.props.match.params.page,
             games:[],
             loading: true,
             pageLimit: 0
         };
     };
 
+    componentDidMount() {
+        this.fetchData();
+    };
+
+    render() {
+        return (
+            <div>
+                {this.state.loading && <Loader/>}
+                {!this.state.loading && 
+                    <div className="container main-page">
+                        <Title title="Games"/>
+                        <GridLayout items={this.state.games}/>
+			            <Pagination page={this.props.match.params.page} pagelimit={this.state.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
+                    </div>
+                }
+            </div>
+        )
+    }
+
     fetchData() {
-        fetch(endpoint(this.state.page),{
+        fetch(endpoint(this.props.match.params.page),{
             method: 'GET'
         }).then(response => response.json())
         .then(response => {
@@ -45,36 +63,19 @@ class GamesPage extends Component {
         });
     };
 
-    componentDidMount() {
-        this.fetchData();
-    };
-
-    render() {
-        return (
-            <div>
-                {this.state.loading && <Loader/>}
-                {!this.state.loading && 
-                    <div className="container main-page">
-                        <Title title="Games"/>
-                        <GridLayout items={this.state.games}/>
-			            <Pagination page={this.state.page} pagelimit={this.state.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
-                    </div>
-                }
-            </div>
-        )
-    }
-
     incPage = () => {
-        this.changePage(this.state.page + 1);
+        console.log(this.props.match.params.page);
+        this.props.history.push('/games/page/' + (parseInt(this.props.match.params.page) + 1));
+        this.changePage();
     }
 
     decPage = () => {
-        this.changePage(this.state.page - 1);
+        this.props.history.push('/games/page/' + (parseInt(this.props.match.params.page) - 1));
+        this.changePage();
     }
 
-    changePage = (page) => {
+    changePage = () => {
         this.setState({
-            page: page,
             games: [],
             loading: true
         }, () => { this.fetchData() });

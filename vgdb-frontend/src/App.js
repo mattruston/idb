@@ -21,20 +21,20 @@ class App extends Component {
 				<Nav/>
 	<Switch>
           <Route exact path='/' component={Home}/>
-          <Route exact path='/games/pages/:page' component={GamesPage}/>
-          <Route exact path='/developers/pages/:page'	component={DevPage}/>
-          <Route exact path='/platforms/pages/:page' component={PlatformsPage}/>
-          <Route exact path='/characters/pages/:page'	component={CharactersPage}/>
+          <Route exact path='/games/page/:page' component={GamesPage}/>
+          <Route exact path='/developers/page/:page'	component={DevPage}/>
+          <Route exact path='/platforms/page/:page' component={PlatformsPage}/>
+          <Route exact path='/characters/page/:page'	component={CharactersPage}/>
           <Route exact path='/about' component={AboutPage}/>
           <Route exact path='/games/:id' component={GameDetail}/>
           <Route exact path='/developers/:id'	component={DevDetail}/>
           <Route exact path='/platforms/:id' component={PlatformDetail}/>
           <Route exact path='/characters/:id'	component={CharDetail}/>
-          <Redirect from="/games" to="/games/pages/1"/>
-	  <Redirect from="/developers" to="/developers/pages/1"/>
-	  <Redirect from="/platforms" to="/platforms/pages/1"/>
-	  <Redirect from="/characters" to="/characters/pages/1"/>
-	</Switch>
+          <Redirect from="/games" to="/games/page/1"/>
+          <Redirect from="/developers" to="/developers/page/1"/>
+          <Redirect from="/platforms" to="/platforms/page/1"/>
+          <Redirect from="/characters" to="/characters/page/1"/>
+        </Switch>
 				<div className="footer">
 					<a className="link" href="https://github.com/mattruston/idb">Check out the project on Github</a>
 				</div>
