@@ -11,7 +11,6 @@ class CharactersPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            page: this.props.match.params.page,
             characters:[],
             loading: true,
             pageLimit: 0
@@ -19,7 +18,7 @@ class CharactersPage extends Component {
     };
 
     fetchData() {
-        fetch(endpoint(this.state.page),{
+        fetch(endpoint(this.props.match.params.page),{
             method: 'GET'
         }).then(response => response.json())
         .then(response => {
@@ -57,7 +56,7 @@ class CharactersPage extends Component {
                     <div className="container main-page">
                         <Title title="Characters"/>
                         <GridLayout items={this.state.characters}/>
-                        <Pagination page={this.state.page} pagelimit={this.state.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
+                        <Pagination page={this.props.match.params.page} pagelimit={this.state.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
                     </div>
                 }
             </div>
@@ -65,16 +64,17 @@ class CharactersPage extends Component {
     }
 
     incPage = () => {
-        this.changePage(this.state.page + 1);
+        this.props.history.push('/characters/page/' + (parseInt(this.props.match.params.page) + 1));
+        this.changePage();
     }
 
     decPage = () => {
-        this.changePage(this.state.page - 1);
+        this.props.history.push('/characters/page/' + (parseInt(this.props.match.params.page) - 1));
+        this.changePage();
     }
 
     changePage = (page) => {
         this.setState({
-            page: page,
             characters: [],
             loading: true
         }, () => { this.fetchData() });

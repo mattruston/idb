@@ -64,7 +64,6 @@ class GamesPage extends Component {
     };
 
     incPage = () => {
-        console.log(this.props.match.params.page);
         this.props.history.push('/games/page/' + (parseInt(this.props.match.params.page) + 1));
         this.changePage();
     }
