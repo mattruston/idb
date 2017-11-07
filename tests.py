@@ -131,61 +131,61 @@ class DBTests(TestCase):
             self.assertEqual(api_id, db_id)
             self.assertEqual(api_name, db_name)
 
-        def test_get_first_game_alphabetically(self):
-            with app.app_context():
-                api_request = requests.get('http://gamingdb.info/api/game?q={"order_by":[{"field":"title","direction":"asc"}]}')
-                games_data = json.loads(api_request.text)
-                api_id = games_data['objects'][0]['game_id']
-                api_title = games_data['objects'][0]['title']
+    def test_get_first_game_alphabetically(self):
+        with app.app_context():
+            api_request = requests.get('http://gamingdb.info/api/game?q={"order_by":[{"field":"title","direction":"asc"}]}')
+            games_data = json.loads(api_request.text)
+            api_id = games_data['objects'][0]['game_id']
+            api_title = games_data['objects'][0]['title']
 
-                db_request = db.session.query(Game).order_by(Game.title)
-                db_id = db_request[0].game_id
-                db_title = db_request[0].title
+            db_request = db.session.query(Game).order_by(Game.title)
+            db_id = db_request[0].game_id
+            db_title = db_request[0].title
 
-                self.assertEqual(api_id, db_id)
-                self.assertEqual(api_title, db_title)
+            self.assertEqual(api_id, db_id)
+            self.assertEqual(api_title, db_title)
 
-        def test_get_first_platform_alphabetically(self):
-            with app.app_context():
-                api_request = requests.get('http://gamingdb.info/api/platform?q={"order_by":[{"field":"name","direction":"asc"}]}')
-                platform_data = json.loads(api_request.text)
-                api_id = platform_data['objects'][0]['platform_id']
-                api_name = platform_data['objects'][0]['name']
+    def test_get_first_platform_alphabetically(self):
+        with app.app_context():
+            api_request = requests.get('http://gamingdb.info/api/platform?q={"order_by":[{"field":"name","direction":"asc"}]}')
+            platform_data = json.loads(api_request.text)
+            api_id = platform_data['objects'][0]['platform_id']
+            api_name = platform_data['objects'][0]['name']
 
-                db_request = db.session.query(Platform).order_by(Platform.name)
-                db_id = db_request[0].platform_id
-                db_name = db_request[0].name
+            db_request = db.session.query(Platform).order_by(Platform.name)
+            db_id = db_request[0].platform_id
+            db_name = db_request[0].name
 
-                self.assertEqual(api_id, db_id)
-                self.assertEqual(api_name, db_name)
+            self.assertEqual(api_id, db_id)
+            self.assertEqual(api_name, db_name)
 
-        def test_get_first_developer_rating(self):
-            with app.app_context():
-                api_request = requests.get('http://gamingdb.info/api/developer?q={"order_by":[{"field":"average_rating","direction":"asc"}]}')
-                developer_data = json.loads(api_request.text)
-                api_id = developer_data['objects'][0]['developer_id']
-                api_average_rating = developer_data['objects'][0]['average_rating']
+    def test_get_first_developer_rating(self):
+        with app.app_context():
+            api_request = requests.get('http://gamingdb.info/api/developer?q={"order_by":[{"field":"average_rating","direction":"asc"}]}')
+            developer_data = json.loads(api_request.text)
+            api_id = developer_data['objects'][0]['developer_id']
+            api_average_rating = developer_data['objects'][0]['average_rating']
 
-                db_request = db.session.query(Developer).order_by(Developer.average_rating)
-                db_id = db_request[0].developer_id
-                db_average_rating = db_request[0].average_rating
+            db_request = db.session.query(Developer).order_by(Developer.average_rating)
+            db_id = db_request[0].developer_id
+            db_average_rating = db_request[0].average_rating
 
-                self.assertEqual(api_id, db_id)
-                self.assertEqual(api_average_rating, db_average_rating)
+            self.assertEqual(api_id, db_id)
+            self.assertEqual(api_average_rating, db_average_rating)
 
-        def test_get_first_character_alphabetically(self):
-            with app.app_context():
-                api_request = requests.get('http://gamingdb.info/api/character?q={"order_by":[{"field":"name","direction":"asc"}]}')
-                character_data = json.loads(api_request.text)
-                api_id = character_data['objects'][0]['character_id']
-                api_name = character_data['objects'][0]['name']
+    def test_get_first_character_alphabetically(self):
+        with app.app_context():
+            api_request = requests.get('http://gamingdb.info/api/character?q={"order_by":[{"field":"name","direction":"asc"}]}')
+            character_data = json.loads(api_request.text)
+            api_id = character_data['objects'][0]['character_id']
+            api_name = character_data['objects'][0]['name']
 
-                db_request = db.session.query(Character).order_by(Character.name)
-                db_id = db_request[0].character_id
-                db_name = db_request[0].name
+            db_request = db.session.query(Character).order_by(Character.name)
+            db_id = db_request[0].character_id
+            db_name = db_request[0].name
 
-                self.assertEqual(api_id, db_id)
-                self.assertEqual(api_name, db_name)
+            self.assertEqual(api_id, db_id)
+            self.assertEqual(api_name, db_name)
         
 if __name__ == "__main__":
     main()
