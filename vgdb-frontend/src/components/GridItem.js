@@ -19,7 +19,7 @@ class GridItem extends Component {
                         <div className="item-detail-list">
                             { 
                                 this.props.details.map( d => 
-                                    <div className="item">
+                                    <div key={d.title} className="item">
                                         <div className="item-detail-title">{d.title}</div>
                                         <div className="item-detail-content">{d.content}</div>
                                     </div>
