@@ -20,8 +20,6 @@ fileprivate let characterAttributes: [String] =
         "image"
 ]
 
-fileprivate var fileJson: [[String: Any]] = []
-
 
 /*
  Name
@@ -35,17 +33,28 @@ fileprivate var fileJson: [[String: Any]] = []
  */
 
 func downloadBombCharacters() {
-    readInFileData("igdb_games.json")
+    let gameJson: [[String: Any]] = readInFileData("igdb_games.json")
     
-    var allCharacters: [[String: Any]] = []
+    var allCharacters = readInFileData("bomb_characters.json")
     
-    for game in fileJson {
+    let startId = 7599 //This is the game to start looking for
+    var started = false
+    
+    for game in gameJson {
         if let name = game["name"] as? String, let gameId = game["id"] as? Int {
-            print("\(gameId): \(name)")
+            if gameId == startId {
+                started = true
+            }
+            
+            if started == false {
+                print("Skipping... \(gameId): \(name)")
+                continue
+            }
+            
             if let gamePath = searchForGame(game: name) {
                 print("Found game")
                 let characterPaths = getGameCharacters(gamePath: gamePath)
-                print("Got characters")
+                print("Got characters: \(characterPaths.count)")
                 for characterPath in characterPaths {
                     if var characterJson = getCharacterData(characterPath: characterPath) {
                         //We require that it has an id
@@ -77,12 +86,11 @@ func downloadBombCharacters() {
                 }
             }
         }
-        break
     }
     
     do {
         let data = try JSONSerialization.data(withJSONObject: allCharacters, options: .prettyPrinted)
-        save(data: data, to: "bomb_characters.json")
+        save(data: data, to: "chars.json")
     } catch {
         print("Failed to convert characters to data")
     }
@@ -182,13 +190,13 @@ fileprivate func searchForGame(game: String) -> String? {
 }
 
 
-fileprivate func readInFileData(_ file: String) {
+fileprivate func readInFileData(_ file: String) -> [[String: Any]] {
     if let documentDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
         let fileUrl = documentDirectoryUrl.appendingPathComponent(file)
         do {
             let data = try Data(contentsOf: fileUrl)
             if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
-                fileJson = json
+                return json
             } else {
                 
             }
@@ -196,4 +204,6 @@ fileprivate func readInFileData(_ file: String) {
             print(error)
         }
     }
+    
+    return []
 }
