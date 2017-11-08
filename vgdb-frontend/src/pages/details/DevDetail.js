@@ -43,7 +43,7 @@ class DevDetail extends Component {
                 title: response.name ? response.name : "",
                 description: response.description ? response.description : "",
                 mainbar: [
-                    { title: "Rating", content: response.rating ? response.rating : "" },
+                    { title: "Rating", content: response.average_rating ? response.average_rating : "" },
                 ],
                 img: response.image_url,
                 linkbar: [
