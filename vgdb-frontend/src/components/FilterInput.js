@@ -14,7 +14,6 @@ class FilterInput extends Component {
 	onMinChange = (evt) => {
 		this.setState({
 			min: evt.target.value,
-			minValid: this.isValidNum(evt.target.value)
 		});
 	};
 

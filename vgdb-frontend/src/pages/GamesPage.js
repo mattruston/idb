@@ -5,10 +5,10 @@ import Loader from '../components/Loader';
 import Pagination from '../components/Pagination';
 import SortAndFilter from '../components/SortAndFilter';
 
-let endpoint = (page, filter, sort) =>
+const endpoint = (page, filter, sort) =>
                     `http://gamingdb.info/api/game?page=${page}&q={"filters":${filter},"order_by":${sort}}`
 
-let rangeFilters = {
+const rangeFilters = {
     "Rating": {
         "low": "0",
         "high": "100",
@@ -23,7 +23,7 @@ let rangeFilters = {
     }
 };
 
-let attrMap = {
+const attrMap = {
     "Title": "title",
     "Rating": "rating",
     "Release Date": "release_date",
@@ -55,8 +55,9 @@ class GamesPage extends Component {
                     <div className="container main-page">
                         <Title title="Games"/>
                         <SortAndFilter 
-                            sortOptions={this._buildSortOptions(Object.keys(attrMap))} current={this.state.selectedSort} changeSort={this.changeSort}
-                            rangeFilters={rangeFilters} changeRangeFilter={this.changeRangeFilter}/>
+                            sortOptions={Object.keys(attrMap)} current={this.state.selectedSort} 
+                            changeSort={this.changeSort} rangeFilters={rangeFilters} 
+                            changeRangeFilter={this.changeRangeFilter}/>
                         <GridLayout items={this.state.games}/>
 			            <Pagination page={this.props.match.params.page} pagelimit={this.state.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
                     </div>
@@ -176,21 +177,6 @@ class GamesPage extends Component {
             details.push({title: "Genre:", content:obj.genres[0].name});
 
         return details;
-    }
-
-    _buildSortOptions(options) {
-        let result = [];
-        for (var i = 0; i < options.length; i++) {
-            result.push({
-                sort: options[i],
-                reverse: false
-            });
-            result.push({
-                sort: options[i],
-                reverse: true
-            });
-        }
-        return result;
     }
 }
 

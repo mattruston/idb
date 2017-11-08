@@ -5,15 +5,10 @@
     margin: 1em 0em;
     justify-content: space-between
 }
-.sort {
-
-}
-.filter {
-}
 /* Dropdown */
 .dropbtn {
-    width: 8em;
-    height: 100%;
+    min-width: 8em;
+    height: 3em;
     box-sizing: border-box;
     background-color: #2de5c6;
     color: white;
