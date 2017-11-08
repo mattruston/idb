@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
+import './styles/sortandfilter.css';
 
 class SortDropdown extends Component {
     constructor(props) {
 		super(props);
 
+        this.state = {
+            drop: false
+        }
 		this.setSortBy = (name, reverse) => {
 			return (event) => {
 				event.stopPropagation();
@@ -12,31 +16,34 @@ class SortDropdown extends Component {
 				return false;
 			};
 		};
-	}
+    }
+    
+    toggleDrop = () => {
+        this.setState({ drop: !this.state.drop });
+    }
 
     render() { 
 		const dropdownItem = (sortOpt) => {
 			const rev  = sortOpt.reverse;
 			const name = sortOpt.sort + (rev ? ' (Reverse)' : '');
 			return (
-				<li key={name}>
-					<a onClick={this.setSortBy(sortOpt.sort, rev)}>{name}</a>
-				</li>
+				<a onClick={this.setSortBy(sortOpt.sort, rev)}>{name}</a>
 			);
 		};
         return (
-            <div className="pagination">
-                <div className='dropdown'>
-                    <button className='pagination-button dropdown-toggle' type='button' 
-                    data-toggle='dropdown' aria-haspopup='true' 
-                    aria-expanded='true'>
+            <div className="sort">
+                <div className="dropdown">
+                    <button className="dropbtn" onClick={this.toggleDrop}>
                         {this.props.current}
                     </button>
-                    <ul className='dropdown-menu' aria-labelledby='sortByDropdown'>
+                    {
+                        this.state.drop && 
+                        <div className='dropdown-list'>
                             {this.props.sortOptions.map( sort => dropdownItem(sort) )}
-                    </ul>
+                        </div>
+                    }
                 </div>
-        </div>
+            </div>
         );
     }
 }

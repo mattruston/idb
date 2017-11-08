@@ -3,8 +3,7 @@ import GridLayout from '../components/GridLayout';
 import Title from '../components/Title';
 import Loader from '../components/Loader';
 import Pagination from '../components/Pagination';
-import SortDropdown from '../components/SortDropdown';
-import Filters from '../components/Filters';
+import SortAndFilter from '../components/SortAndFilter';
 
 let endpoint = (page, filter, sort) =>
                     `http://gamingdb.info/api/game?page=${page}&q={"filters":${filter},"order_by":${sort}}`
@@ -12,11 +11,15 @@ let endpoint = (page, filter, sort) =>
 let rangeFilters = {
     "Rating": {
         "low": "0",
-        "high": "100"
+        "high": "100",
+        "min": "0",
+        "max": "100"
     },
     "Release Date": {
         "low": "1977",
-        "high": "2017"
+        "high": "2017",
+        "min": "1977",
+        "max": "2017"
     }
 };
 
@@ -51,8 +54,9 @@ class GamesPage extends Component {
                 {!this.state.loading && 
                     <div className="container main-page">
                         <Title title="Games"/>
-                        <SortDropdown sortOptions={this._buildSortOptions(Object.keys(attrMap))} current={this.state.selectedSort} changeSort={this.changeSort}/>
-                        <Filters rangeFilters={rangeFilters} changeRangeFilter={this.changeRangeFilter}/>
+                        <SortAndFilter 
+                            sortOptions={this._buildSortOptions(Object.keys(attrMap))} current={this.state.selectedSort} changeSort={this.changeSort}
+                            rangeFilters={rangeFilters} changeRangeFilter={this.changeRangeFilter}/>
                         <GridLayout items={this.state.games}/>
 			            <Pagination page={this.props.match.params.page} pagelimit={this.state.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
                     </div>
@@ -62,14 +66,13 @@ class GamesPage extends Component {
     }
 
     fetchData() {
-        console.log(endpoint(this.props.match.params.page, 
-                        JSON.stringify(this.state.filter), 
-                            JSON.stringify(this.state.sort)));
-        fetch(endpoint(this.props.match.params.page, 
-                        JSON.stringify(this.state.filter), 
-                            JSON.stringify(this.state.sort)),{
-            method: 'GET'
-        }).then(response => response.json())
+        console.log("fetching data...");
+        fetch(
+            endpoint(this.props.match.params.page, 
+                JSON.stringify(this.state.filter), 
+                JSON.stringify(this.state.sort)),
+            { method: 'GET' })
+        .then(response => response.json())
         .then(response => {
             this.setState({
                 pageLimit: response.total_pages
@@ -105,15 +108,14 @@ class GamesPage extends Component {
     
     incPage = () => {
         this.props.history.push('/games/page/' + (parseInt(this.props.match.params.page, 10) + 1));
-        this.changePage();
     }
 
     decPage = () => {
         this.props.history.push('/games/page/' + (parseInt(this.props.match.params.page, 10) - 1));
-        this.changePage();
     }
 
     changePage = () => {
+        console.log("change page...");
         this.setState({
             games: [],
             loading: true
@@ -129,7 +131,9 @@ class GamesPage extends Component {
             selectedSort: attr + (reverse ? ' (Reverse)' : ''),
             games: [],
             loading: true
-        }, () => { this.fetchData() });
+        }, () => {
+            this.props.history.push('/games/page/1');
+        });
     };
 
     changeRangeFilter = (attr, low, high) => {
@@ -139,7 +143,9 @@ class GamesPage extends Component {
             filter: this._buildFilter(),
             games: [],
             loading: true
-        }, () => { this.fetchData() });
+        }, () => { 
+            this.props.history.push('/games/page/1'); 
+        });
     };
 
     _buildFilter() {

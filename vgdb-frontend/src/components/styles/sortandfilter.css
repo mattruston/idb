@@ -1,0 +1,75 @@
+.sortandfilter {
+    display: flex;
+    flex-direction: row;
+    height: 3em;
+    margin: 1em 0em;
+    justify-content: space-between
+}
+.sort {
+
+}
+.filter {
+}
+/* Dropdown */
+.dropbtn {
+    width: 8em;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: #2de5c6;
+    color: white;
+    padding: 1em;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-list {
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    min-width: 10em;
+}
+.dropdown-list a {
+    color: black;
+    padding: .5em;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-list a:hover {
+    background-color: #f1f1f1
+}
+/* .dropdown:hover .dropdown-list {
+    display: block;
+} */
+.filter-menu {
+    min-width: 18em;
+    right: 0;
+    padding: 1.5em;
+}
+/* Filter selections */
+.filter-item {
+    width: 100%;
+}
+.filter-title {
+
+}
+.filter-select {
+    width: 4em;
+    margin-top: .25em;
+    margin-right: .5em;
+}
+.filterbtn {
+    background-color: #2de5c6;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    padding: .25em .5em;
+    vertical-align: top;
+    margin-left: .5em;
+}

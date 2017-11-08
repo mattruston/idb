@@ -3,18 +3,13 @@ import React, {Component} from 'react';
 class FilterInput extends Component {
     constructor(props) {
 		super(props);
-
+        this.MAX = this.props.max;
+        this.MIN = this.props.min;
         this.state = {
-            min: this.props.min,
-            max: this.props.max,
-            minValid: true,
-			maxValid: true
+            min: this.props.low,
+            max: this.props.high
         }
 	}
-
-    isValidNum = (str) => (
-		str.length > 0 && !isNaN(str)
-	);
 
 	onMinChange = (evt) => {
 		this.setState({
@@ -26,10 +21,8 @@ class FilterInput extends Component {
 	onMaxChange = (evt) => {
 		this.setState({
 			max: evt.target.value,
-			maxValid: this.isValidNum(evt.target.value)
 		});
 	};
-
 
 	apply = () => {
 		this.props.changeFilter(
@@ -41,34 +34,19 @@ class FilterInput extends Component {
 
     render() { 
         return (
-            <div className="pagination">
-                <div className='dropdown'>
-                    <button className='pagination-button dropdown-toggle' type='button' 
-                    data-toggle='dropdown' aria-haspopup='true' 
-                    aria-expanded='true'> {this.props.attribute}</button>
-                    
-                    <label>From:</label>
-                    <input
-                        type='text'
-                        onChange={this.onMinChange}
-                        value={this.state.min}
-                        placeholder={this.state.lowest}
-                    />
-                    <label>To:</label>
-                    <input
-                        type='text'
-                        onChange={this.onMaxChange}
-                        value={this.state.max}
-                        placeholder={this.state.highest}
-                    />
-                    <button
-                        className='pagination-button'
-                        onClick={this.apply}
-                        disabled={!(this.state.minValid && this.state.maxValid)}
-                    >
-                        Apply
-                    </button>
-                </div>
+            <div className="filter-item">
+                <div className="filter-title">{this.props.attribute}</div>
+                <select className="filter-select" value={this.state.min} onChange={this.onMinChange}>
+                    { Array(this.MAX - this.MIN).fill().map( (_, i) => {
+                        return <option>{(i + 1) + parseInt(this.MIN)}</option> 
+                    })}
+                </select>
+                <select className="filter-select" value={this.state.max} onChange={this.onMaxChange}>
+                    { Array(this.MAX - this.MIN).fill().map( (_, i) => {
+                        return <option value={(i + 1) + parseInt(this.MIN)}>{(i + 1) + parseInt(this.MIN)}</option> 
+                    })}
+                </select>
+                <button className="filterbtn" onClick={this.apply}>Apply</button>
             </div>
         );
     }
