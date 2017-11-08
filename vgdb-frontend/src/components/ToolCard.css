@@ -1,0 +1,48 @@
+.tool-card {
+	box-sizing: border-box;
+	background-color: #fff;
+	padding: 1em;
+	display: inline-block;
+	transition: transform .5s ease;
+	margin: 1em 1em;
+	color: #222;
+    text-decoration-color: #222;
+    width: 40%;
+    vertical-align: top;
+}
+.tool-card:hover {
+    transform: scale(1.05, 1.05);
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, .3);
+    color: #222;
+}
+.tool-content {
+    display: inline-block;
+    width: 58%;
+    padding-left: .5em;
+}
+.name {
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.tool-content-item {
+    margin-bottom: .15em;
+}
+.tool-content-item.description {
+    margin-bottom: .25em;
+    font-size: 1rem;
+}
+.tool-title {
+    display: inline-block;
+    font-weight: 700;
+    margin-right: .25em;
+}
+.detail {
+    display: inline-block;
+}
+
+@media only screen and (max-width:500px) {
+    .tool-card {
+        width: 100%;
+    }
+}

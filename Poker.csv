@@ -1,0 +1,23 @@
+Phase 1 Stories,Estimate,Vote Started,Voting Duration,Avg Voting Time,Fastest,Slowest,Actual
+Create a home page with recently released games and highest rated games.,1,25/09/2017 13:43:55,0:00:46,0:00:20,Jared Jones,Kishan Patel,1
+Create a navbar with links to each model's pages and to an about page with information about each team member.,0.5,25/09/2017 13:42:16,0:00:44,0:00:21,Matt Ruston,Juan Ortiz,0.5
+Create a page for Games with 3 images of games you can hover over for more information and click on to go to their individual page for more information.,1,25/09/2017 13:41:18,0:00:20,0:00:08,Derek Tolliver,Kishan Patel,2
+ Create a page for Games with 3 images of games you can hover over for more information and click on to go to their individual page for more information.,1,25/09/2017 13:40:35,0:00:40,0:00:18,Jared Jones,Derek Tolliver,1
+Create a page for Characters with 3 images of characters you can hover over for more information and click on to go to their individual pages for more ,1,25/09/2017 13:40:04,0:00:28,0:00:16,Juan Ortiz,Matt Ruston,1
+Create a page for Companies with 3 images of developers you can hover over for more information and click on to go to their individual pages for more ,2,25/09/2017 13:39:29,0:00:33,0:00:10,Jared Jones,Kishan Patel,2
+Create an individual page for the 3 Developer models that link to at least 2 of the other models,2,25/09/2017 13:36:47,0:01:07,0:00:39,Derek Tolliver,Matt Ruston,1
+Create an individual page for the 3 Game models that link to at least 2 of the other models,2,25/09/2017 13:34:54,0:00:45,0:00:12,Jared Jones,Juan Ortiz,1
+Create an individual page for the 3 Platform models that link to at least 2 of the other models,2,25/09/2017 13:33:44,0:00:23,0:00:06,Kishan Patel,Matt Ruston,1
+Create an individual page for the 3 Character models that link to at least 2 of the other models,2,25/09/2017 13:32:52,0:00:21,0:00:06,Jared Jones,Derek Tolliver,1
+,,,,,,,
+Phase 2 Stories,,,,,,,
+"As a gamer, I want to see the rating for a video game so that I can decide whether or not to play it.",1,18/10/2017 20:43:55,0:01:46,0:00:50,Kishan Patel,Derek Tolliver,1
+"As a gamer, I want to see other games related to the video game that I am viewing so that I can find new games that I would like.",2,18/10/2017 20:42:16,0:00:28,0:00:10,Jared Jones,Matt Ruston,3
+"As a gamer, I want to see what games my favorite developer has created so that I can play those games.",1,18/10/2017 20:41:18,0:01:20,0:00:50,Juan Ortiz,Derek Tolliver,0.5
+"As a gamer, I want to see what games my favorite character is in so that I can continue playing games with that character.",1,18/10/2017 20:40:35,0:00:50,0:00:20,Matt Ruston,Jared Jones,1
+"As a gamer, I want to be able to see what genre a video game is so that I can find more games of that genre.",1,18/10/2017 20:40:04,0:00:48,0:00:22,Derek Tolliver,Matt Ruston,1
+"As a gamer, I want to see the average game rating for a developer so that I know how good they are at making games.",2,18/10/2017 20:39:29,0:00:53,0:00:33,Jared Jones,Kishan Patel,2
+"As a gamer, I want to see which a description of a video game so that I know what to expect if I were to play it.",1,18/10/2017 20:36:47,0:01:37,0:00:45,Jared Jones,Matt Ruston,1
+"As a gamer, I want to see the release date of a game so that I can figure out what it should currently cost to buy it.",1,18/10/2017 20:34:54,0:00:45,0:00:20,Matt Ruston,Derek Tolliver,0.5
+"As a gamer, I want to see what platforms a game is on so that I know whether or not I can play the game.",2,18/10/2017 20:33:44,0:00:43,0:00:29,Kishan Patel,Jared Jones,1
+"As a gamer, I want to see the highest rated game for a certain platform so that I can get the highest rated games for the platforms that I own.",2,18/10/2017 20:32:52,0:00:51,0:00:30,Juan Ortiz,Jared Jones,2

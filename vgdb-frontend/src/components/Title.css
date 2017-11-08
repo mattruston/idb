@@ -1,0 +1,23 @@
+.title {
+    font-size: 2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform .5s ease;
+    width: fit-content;
+}
+.title:hover {
+    color: #2de5c6;
+    transform: translatex(5px);
+}
+.title:hover::after {
+    content: " ";
+    position: relative;
+    border: 3px solid #2de5c6;
+    border-left: 0; border-bottom: 0;
+    display: inline-block;
+    height: 0.4em;
+    width: 0.4em;
+    left: 6px;
+    bottom:2px;
+    transform: rotate(45deg);
+}
