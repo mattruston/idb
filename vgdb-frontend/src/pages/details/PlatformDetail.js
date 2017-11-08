@@ -37,8 +37,6 @@ class PlatformDetail extends Component {
             method: 'GET'
         }).then(response => response.json())
         .then(response => {
-            console.log(response);
-            let genres = this._stringFromArray(response.genres);
             let devs = this._linkbarFromArray(response.developers, "/developers/", "developer_id", "name");
             let characters = this._linkbarFromArray(response.characters, "/characters/", "character_id", "name");
             let games = this._linkbarFromArray(response.games, "/games/", "game_id", "title");
@@ -46,7 +44,7 @@ class PlatformDetail extends Component {
                 title: response.name,
                 description: response.description ? response.description : "",
                 mainbar: [
-
+                    { title: "Rating", content: response.average_rating ? response.average_rating : "" }
                 ],
                 img: response.image_url ? response.image_url : "",
                 sidebar: [
@@ -55,7 +53,8 @@ class PlatformDetail extends Component {
                 linkbar: [
                     { title: "Developers", links: devs },
                     { title: "Characters", links: characters },
-                    { title: "Games", links: games }
+                    { title: "Games", links: games },
+                    { title: "Website", links: [{link: response.website, text: response.website, external: true}]}
                 ]
             });
             this.setState({ loading: false });

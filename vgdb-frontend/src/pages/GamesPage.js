@@ -3,15 +3,41 @@ import GridLayout from '../components/GridLayout';
 import Title from '../components/Title';
 import Loader from '../components/Loader';
 import Pagination from '../components/Pagination';
+import SortAndFilter from '../components/SortAndFilter';
 
-let endpoint = (pageNumber) =>
-                    `http://gamingdb.info/api/game?page=${pageNumber}`
+const endpoint = (page, filter, sort) =>
+                    `http://gamingdb.info/api/game?page=${page}&q={"filters":${filter},"order_by":${sort}}`
+
+const rangeFilters = {
+    "Rating": {
+        "low": "0",
+        "high": "100",
+        "min": "0",
+        "max": "100"
+    },
+    "Release Date": {
+        "low": "1977",
+        "high": "2017",
+        "min": "1977",
+        "max": "2017"
+    }
+};
+
+const attrMap = {
+    "Title": "title",
+    "Rating": "rating",
+    "Release Date": "release_date",
+    "Popularity": "game_id"
+};
 
 class GamesPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             games:[],
+            filter: [],
+            sort: [],
+            selectedSort: "Sort By",
             loading: true,
             pageLimit: 0
         };
@@ -28,6 +54,10 @@ class GamesPage extends Component {
                 {!this.state.loading && 
                     <div className="container main-page">
                         <Title title="Games"/>
+                        <SortAndFilter 
+                            sortOptions={Object.keys(attrMap)} current={this.state.selectedSort} 
+                            changeSort={this.changeSort} rangeFilters={rangeFilters} 
+                            changeRangeFilter={this.changeRangeFilter}/>
                         <GridLayout items={this.state.games}/>
 			            <Pagination page={this.props.match.params.page} pagelimit={this.state.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
                     </div>
@@ -37,9 +67,13 @@ class GamesPage extends Component {
     }
 
     fetchData() {
-        fetch(endpoint(this.props.match.params.page),{
-            method: 'GET'
-        }).then(response => response.json())
+        console.log("fetching data...");
+        fetch(
+            endpoint(this.props.match.params.page, 
+                JSON.stringify(this.state.filter), 
+                JSON.stringify(this.state.sort)),
+            { method: 'GET' })
+        .then(response => response.json())
         .then(response => {
             this.setState({
                 pageLimit: response.total_pages
@@ -74,21 +108,64 @@ class GamesPage extends Component {
     }
     
     incPage = () => {
-        this.props.history.push('/games/page/' + (parseInt(this.props.match.params.page) + 1));
-        this.changePage();
+        this.props.history.push('/games/page/' + (parseInt(this.props.match.params.page, 10) + 1));
     }
 
     decPage = () => {
-        this.props.history.push('/games/page/' + (parseInt(this.props.match.params.page) - 1));
-        this.changePage();
+        this.props.history.push('/games/page/' + (parseInt(this.props.match.params.page, 10) - 1));
     }
 
     changePage = () => {
+        console.log("change page...");
         this.setState({
             games: [],
             loading: true
         }, () => { this.fetchData() });
     };
+
+    changeSort = (attr, reverse) => {
+        this.setState({
+            sort: [{
+                "field": attrMap[attr],
+                "direction": reverse ? "desc" : "asc"
+            }],
+            selectedSort: attr + (reverse ? ' (Reverse)' : ''),
+            games: [],
+            loading: true
+        }, () => {
+            this.props.history.push('/games/page/1');
+        });
+    };
+
+    changeRangeFilter = (attr, low, high) => {
+        rangeFilters[attr].low = low;
+        rangeFilters[attr].high = high;
+        this.setState({
+            filter: this._buildFilter(),
+            games: [],
+            loading: true
+        }, () => { 
+            this.props.history.push('/games/page/1'); 
+        });
+    };
+
+    _buildFilter() {
+        let result = [];
+        Object.keys(rangeFilters).forEach(function(key) {
+            let filter = rangeFilters[key];
+            result.push({
+                "name": attrMap[key],
+                "op": "ge",
+                "val": filter.low
+            });
+            result.push({
+                "name": attrMap[key],
+                "op": "le",
+                "val": filter.high
+            })
+        });
+        return result;
+    }
 
     _buildDetails(obj) {
         let details = []

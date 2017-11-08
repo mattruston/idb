@@ -3,9 +3,17 @@ import GridLayout from '../components/GridLayout';
 import Title from '../components/Title';
 import Loader from '../components/Loader';
 import Pagination from '../components/Pagination';
+import SortAndFilter from '../components/SortAndFilter';
 
-let endpoint = pageNumber =>
-                    `http://gamingdb.info/api/character?page=${pageNumber}`
+const endpoint = (page, filter, sort) =>
+    `http://gamingdb.info/api/character?page=${page}&q={"filters":${filter},"order_by":${sort}}`
+
+const rangeFilters = { };
+
+const attrMap = {
+    "Name": "name",
+    "Popularity": "character_id"
+};
 
 class CharactersPage extends Component {
     constructor(props) {
@@ -13,14 +21,70 @@ class CharactersPage extends Component {
         this.state = {
             characters:[],
             loading: true,
-            pageLimit: 0
+            pageLimit: 0,
+            selectedSort: "Sort By",
+            filter: [],
+            sort: [],
         };
-    };
+    }
+
+    render() {
+        return (
+            <div>
+                {this.state.loading && <Loader/>}
+                {!this.state.loading && 
+                    <div className="container main-page">
+                        <Title title="Characters"/>
+                        <SortAndFilter 
+                            sortOptions={Object.keys(attrMap)} current={this.state.selectedSort} 
+                            changeSort={this.changeSort} rangeFilters={rangeFilters} 
+                            changeRangeFilter={this.changeRangeFilter}/>
+                        <GridLayout items={this.state.characters}/>
+                        <Pagination page={this.props.match.params.page} pagelimit={this.state.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
+                    </div>
+                }
+            </div>
+        )
+    }
+
+    componentDidMount() {
+        this.fetchData();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.location !== prevProps.location) {
+            this.onRouteChanged();
+        }
+    }
+    
+    onRouteChanged() {
+        this.changePage();
+    }
+
+    incPage = () => {
+        this.props.history.push('/characters/page/' + (parseInt(this.props.match.params.page, 10) + 1));
+        this.changePage();
+    }
+
+    decPage = () => {
+        this.props.history.push('/characters/page/' + (parseInt(this.props.match.params.page, 10) - 1));
+        this.changePage();
+    }
+
+    changePage = () => {
+        this.setState({
+            characters: [],
+            loading: true
+        }, () => { this.fetchData() });
+    }
 
     fetchData() {
-        fetch(endpoint(this.props.match.params.page),{
-            method: 'GET'
-        }).then(response => response.json())
+        fetch(
+            endpoint(this.props.match.params.page, 
+                JSON.stringify(this.state.filter), 
+                JSON.stringify(this.state.sort)),
+            { method: 'GET' })
+        .then(response => response.json())
         .then(response => {
             this.setState({
                 pageLimit: response.total_pages
@@ -42,53 +106,51 @@ class CharactersPage extends Component {
                 loading: false
             });
         });
-    };
-
-    componentDidMount() {
-        this.fetchData();
-    };
-
-    render() {
-        return (
-            <div>
-                {this.state.loading && <Loader/>}
-                {!this.state.loading && 
-                    <div className="container main-page">
-                        <Title title="Characters"/>
-                        <GridLayout items={this.state.characters}/>
-                        <Pagination page={this.props.match.params.page} pagelimit={this.state.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
-                    </div>
-                }
-            </div>
-        )
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props.location !== prevProps.location) {
-            this.onRouteChanged();
-        }
-    }
-    
-    onRouteChanged() {
-        this.changePage();
-    }
-
-    incPage = () => {
-        this.props.history.push('/characters/page/' + (parseInt(this.props.match.params.page) + 1));
-        this.changePage();
-    }
-
-    decPage = () => {
-        this.props.history.push('/characters/page/' + (parseInt(this.props.match.params.page) - 1));
-        this.changePage();
-    }
-
-    changePage = () => {
+    changeSort = (attr, reverse) => {
         this.setState({
+            sort: [{
+                "field": attrMap[attr],
+                "direction": reverse ? "desc" : "asc"
+            }],
+            selectedSort: attr + (reverse ? ' (Reverse)' : ''),
             characters: [],
             loading: true
-        }, () => { this.fetchData() });
-    };
+        }, () => {
+            this.props.history.push('/characters/page/1');
+        });
+    }
+
+    changeRangeFilter = (attr, low, high) => {
+        rangeFilters[attr].low = low;
+        rangeFilters[attr].high = high;
+        this.setState({
+            filter: this._buildFilter(),
+            characters: [],
+            loading: true
+        }, () => { 
+            this.props.history.push('/characters/page/1'); 
+        });
+    }
+
+    _buildFilter() {
+        let result = [];
+        Object.keys(rangeFilters).forEach(function(key) {
+            let filter = rangeFilters[key];
+            result.push({
+                "name": attrMap[key],
+                "op": "ge",
+                "val": filter.low
+            });
+            result.push({
+                "name": attrMap[key],
+                "op": "le",
+                "val": filter.high
+            })
+        });
+        return result;
+    }
 
     _buildDetails(obj) {
         let details = []
