@@ -161,6 +161,16 @@ Though we were able to retrieve many images from our APIs, we initially had issu
 ##### API Load Times
 We were receiving extended load times which gave our frontend a delay in requesting the information. In order to provide a visual signal to the client, we decided to add a loading animation to ensure it is clear the data is being loaded in. Moving forward, we would like to eliminate this latency entirely to provide a better user experience.
 
+### Search
+
+From a backend perspective, the utilization of Flask's API manager was extremely helpful and time-saving once again. It allows a certain set of arguments to be provided to HTTP requests in order to filter the results when querying a table. Specifically, an example of a query like this would be:
+
+```
+http://gamingdb.info/api/game?q={"filters":[{"or":[{"name":"title","op":"ilike","val":"%Mario Kart%"},{"name":"description","op":"ilike","val":"%Mario Kart%"},{"name":"genres","op":"any","val":{"name":"name","op":"ilike","val":"Mario Kart"}}]}]}
+```
+
+This request would return a JSON object with all game objects in our database that contain the string `"Mario Kart"` in their title, description, or genre, which are all of the string searchable attributes we have. The percentage signs used inside the strings are a SQL construct to allow zero or more characters.
+
 ### Hosting
 
 We are using the Google Cloud Platform to host our website. The Google Cloud Platform is a powerful back-end service that has many capabilities useful for running applications. It ranges from just giving you an empty Linux virtual machine where you can run your application however you want, to using something like the App Engine which handles many of the common hurdles you normally have to overcome with a back-end service. Because of the many capabilities the App Engine provides, this is the service we are using to run our web application. It has easy commands for deploying a website, can auto-scale if the website suddenly starts getting a lot of traffic, and provides useful analytics on the requests made to our application.
