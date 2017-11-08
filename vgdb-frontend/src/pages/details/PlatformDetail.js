@@ -41,6 +41,7 @@ class PlatformDetail extends Component {
             let genres = this._stringFromArray(response.genres);
             let devs = this._linkbarFromArray(response.developers, "/developers/", "developer_id", "name");
             let characters = this._linkbarFromArray(response.characters, "/characters/", "character_id", "name");
+            let games = this._linkbarFromArray(response.games, "/games/", "game_id", "title");
             this.setState({
                 title: response.name,
                 description: response.description ? response.description : "",
@@ -53,7 +54,8 @@ class PlatformDetail extends Component {
                 ],
                 linkbar: [
                     { title: "Developers", links: devs },
-                    { title: "Characters", links: characters }
+                    { title: "Characters", links: characters },
+                    { title: "Games", links: games }
                 ]
             });
             this.setState({ loading: false });

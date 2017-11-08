@@ -9,6 +9,6 @@
 import Foundation
 
 
-downloadCharacterImages()
+downloadBombCharacters()
 
 print("Done")
