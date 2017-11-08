@@ -1,0 +1,11 @@
+[Game|game_id:integer;title:text;rating:float;thumb_url:text;image_url:text;description:text;release_date:date;related_games_ids:integer array;]
+[Developer|developer_id:integer;name:text;description:text;average_rating:float;website:text;image_url:text;thumb_url:text;location:text;]
+[Platform|platform_id:integer;name:text;description:text;thumb_url:text;image_url:text;release_date:date;website:text;]
+[Character|character_id:integer;name:text;summary:text;image_url:text;thumb_url:text;species:text;gender:text;score:integer]
+[Genre|genre_id:integer;name:text;]
+
+[Game]1..*<->1[Genre]
+[Game]1..*<->1..*[Developer]
+[Game]1..*<->1..*[Platform]
+[Game]1..*<->0..*[Character]
+[Developer]1..*<->1..*[Platform]
