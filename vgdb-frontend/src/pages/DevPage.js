@@ -74,12 +74,12 @@ class DevPage extends Component {
     }
 
     incPage = () => {
-        this.props.history.push('/developers/page/' + (parseInt(this.props.match.params.page) + 1));
+        this.props.history.push('/developers/page/' + (parseInt(this.props.match.params.page, 10) + 1));
         this.changePage();
     }
 
     decPage = () => {
-        this.props.history.push('/developers/page/' + (parseInt(this.props.match.params.page) - 1));
+        this.props.history.push('/developers/page/' + (parseInt(this.props.match.params.page, 10) - 1));
         this.changePage();
     }
 
@@ -95,7 +95,7 @@ class DevPage extends Component {
         if(obj.location) 
             details.push({ title: "Location:", content: obj.location});
         if(obj.average_rating)
-            details.push({title: "Rating:", content: obj.average_rating});
+            details.push({title: "Average Rating:", content: obj.average_rating});
         if(obj.games)
             if(obj.games.length > 0)
                 details.push({title: "Game:", content: obj.games[0].title});

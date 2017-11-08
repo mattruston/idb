@@ -74,12 +74,12 @@ class PlatformsPage extends Component {
     }
 
     incPage = () => {
-        this.props.history.push('/platforms/page/' + (parseInt(this.props.match.params.page) + 1));
+        this.props.history.push('/platforms/page/' + (parseInt(this.props.match.params.page, 10) + 1));
         this.changePage();
     }
 
     decPage = () => {
-        this.props.history.push('/platforms/page/' + (parseInt(this.props.match.params.page) - 1));
+        this.props.history.push('/platforms/page/' + (parseInt(this.props.match.params.page, 10) - 1));
         this.changePage();
     }
 
@@ -94,6 +94,8 @@ class PlatformsPage extends Component {
         let details = []
         if(obj.release_date) 
             details.push({ title: "Released:", content: obj.release_date});
+        if(obj.average_rating)
+            details.push({title: "Average Rating:", content: obj.average_rating});
         if(obj.games)
             if(obj.games.length > 0)
                 details.push({title: "Game:", content: obj.games[0].title});

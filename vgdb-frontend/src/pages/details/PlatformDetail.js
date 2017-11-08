@@ -50,7 +50,8 @@ class PlatformDetail extends Component {
                 ],
                 img: response.image_url ? response.image_url : "",
                 sidebar: [
-                    { title: "Release Date", content: response.release_date ? response.release_date : ""}
+                    { title: "Release Date", content: response.release_date ? response.release_date : ""},
+                    { title: "Genres", content: genres}
                 ],
                 linkbar: [
                     { title: "Developers", links: devs },

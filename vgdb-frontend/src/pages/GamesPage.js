@@ -4,16 +4,28 @@ import Title from '../components/Title';
 import Loader from '../components/Loader';
 import Pagination from '../components/Pagination';
 import SortDropdown from '../components/SortDropdown';
+import Filters from '../components/Filters';
 
 let endpoint = (page, filter, sort) =>
                     `http://gamingdb.info/api/game?page=${page}&q={"filters":${filter},"order_by":${sort}}`
 
-let sortAttrMap = {
+let rangeFilters = {
+    "Rating": {
+        "low": "0",
+        "high": "100"
+    },
+    "Release Date": {
+        "low": "1977",
+        "high": "2017"
+    }
+};
+
+let attrMap = {
     "Title": "title",
     "Rating": "rating",
     "Release Date": "release_date",
     "Popularity": "game_id"
-}
+};
 
 class GamesPage extends Component {
     constructor(props) {
@@ -39,7 +51,8 @@ class GamesPage extends Component {
                 {!this.state.loading && 
                     <div className="container main-page">
                         <Title title="Games"/>
-                        <SortDropdown sortOptions={this._buildSortOptions(Object.keys(sortAttrMap))} current={this.state.selectedSort} changeSort={this.changeSort}/>
+                        <SortDropdown sortOptions={this._buildSortOptions(Object.keys(attrMap))} current={this.state.selectedSort} changeSort={this.changeSort}/>
+                        <Filters rangeFilters={rangeFilters} changeRangeFilter={this.changeRangeFilter}/>
                         <GridLayout items={this.state.games}/>
 			            <Pagination page={this.props.match.params.page} pagelimit={this.state.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
                     </div>
@@ -91,12 +104,12 @@ class GamesPage extends Component {
     }
     
     incPage = () => {
-        this.props.history.push('/games/page/' + (parseInt(this.props.match.params.page) + 1));
+        this.props.history.push('/games/page/' + (parseInt(this.props.match.params.page, 10) + 1));
         this.changePage();
     }
 
     decPage = () => {
-        this.props.history.push('/games/page/' + (parseInt(this.props.match.params.page) - 1));
+        this.props.history.push('/games/page/' + (parseInt(this.props.match.params.page, 10) - 1));
         this.changePage();
     }
 
@@ -110,7 +123,7 @@ class GamesPage extends Component {
     changeSort = (attr, reverse) => {
         this.setState({
             sort: [{
-                "field": sortAttrMap[attr],
+                "field": attrMap[attr],
                 "direction": reverse ? "desc" : "asc"
             }],
             selectedSort: attr + (reverse ? ' (Reverse)' : ''),
@@ -119,21 +132,33 @@ class GamesPage extends Component {
         }, () => { this.fetchData() });
     };
 
-    changeFilter = (attr, low, high) => {
+    changeRangeFilter = (attr, low, high) => {
+        rangeFilters[attr].low = low;
+        rangeFilters[attr].high = high;
         this.setState({
-            filter: [{
-                "name": attr,
-                "op": "ge",
-                "val": low
-            }, {
-                "name": attr,
-                "op": "le",
-                "val": high
-            }],
+            filter: this._buildFilter(),
             games: [],
             loading: true
         }, () => { this.fetchData() });
     };
+
+    _buildFilter() {
+        let result = [];
+        Object.keys(rangeFilters).forEach(function(key) {
+            let filter = rangeFilters[key];
+            result.push({
+                "name": attrMap[key],
+                "op": "ge",
+                "val": filter.low
+            });
+            result.push({
+                "name": attrMap[key],
+                "op": "le",
+                "val": filter.high
+            })
+        });
+        return result;
+    }
 
     _buildDetails(obj) {
         let details = []

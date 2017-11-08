@@ -46,9 +46,6 @@ class DevDetail extends Component {
                     { title: "Rating", content: response.rating ? response.rating : "" },
                 ],
                 img: response.image_url,
-                sidebar: [
-                    { title: "Release Date", content: response.release_date ? response.release_date : ""}
-                ],
                 linkbar: [
                     { title: "Platforms", links: platforms },
                     { title: "Games", links: games }

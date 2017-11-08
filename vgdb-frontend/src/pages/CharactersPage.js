@@ -74,12 +74,12 @@ class CharactersPage extends Component {
     }
 
     incPage = () => {
-        this.props.history.push('/characters/page/' + (parseInt(this.props.match.params.page) + 1));
+        this.props.history.push('/characters/page/' + (parseInt(this.props.match.params.page, 10) + 1));
         this.changePage();
     }
 
     decPage = () => {
-        this.props.history.push('/characters/page/' + (parseInt(this.props.match.params.page) - 1));
+        this.props.history.push('/characters/page/' + (parseInt(this.props.match.params.page, 10) - 1));
         this.changePage();
     }
 
