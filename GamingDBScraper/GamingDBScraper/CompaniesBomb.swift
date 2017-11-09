@@ -165,3 +165,4 @@ fileprivate func readInFileData(_ file: String) -> [[String: Any]] {
 //    let newCount = companies.count
 //
 //    print("Removed \(count - newCount) companies")
+

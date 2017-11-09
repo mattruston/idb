@@ -9,6 +9,6 @@
 import Foundation
 
 
-filterCharacterImages()
+matchPlatforms()
 
 print("Done")
