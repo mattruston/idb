@@ -20,6 +20,18 @@ class GameDetail extends Component {
         this._fetchData();
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.location !== prevProps.location) {
+            this.onRouteChanged();
+        }
+    }
+    
+    onRouteChanged() {
+        this.setState({ loading: true }, () => {
+            this._fetchData();
+        });
+    }
+
     render() {
         return(
             <div>
@@ -39,6 +51,7 @@ class GameDetail extends Component {
             method: 'GET'
         }).then(response => response.json())
         .then(response => {
+            console.log(response);
             Promise.all(
                 this._fetchRelatedGames(response.related_game_ids)
             ).then(results => {
@@ -53,7 +66,6 @@ class GameDetail extends Component {
                     };
                     relatedGamesArray.push(item);
                 }
-                 console.log(relatedGamesArray);
                 this.setState({
                     relatedGames: relatedGamesArray
                 });
@@ -86,10 +98,13 @@ class GameDetail extends Component {
 
     _fetchRelatedGames(idArray) {
         let promiseArray = [];
-        for (var i = 0; i < idArray.length; i++) {
-            promiseArray.push(
-                this._fetchGame(idArray[i])
-            );
+        console.log(idArray);
+        if(idArray !== null) {
+            for (var i = 0; i < idArray.length; i++) {
+                promiseArray.push(
+                    this._fetchGame(idArray[i])
+                );
+            }
         }
         return promiseArray;
     }

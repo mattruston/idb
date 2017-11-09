@@ -19,6 +19,18 @@ class DevDetail extends Component {
         this._fetchData();
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.location !== prevProps.location) {
+            this.onRouteChanged();
+        }
+    }
+    
+    onRouteChanged() {
+        this.setState({ loading: true }, () => {
+            this._fetchData();
+        });
+    }
+
     render() {
         return(
             <div>
