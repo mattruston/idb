@@ -54,7 +54,6 @@ class GameDetail extends Component {
             method: 'GET'
         }).then(response => response.json())
         .then(response => {
-            console.log(response);
             Promise.all(
                 this._fetchRelatedGames(response.related_game_ids)
             ).then(results => {
@@ -101,7 +100,6 @@ class GameDetail extends Component {
 
     _fetchRelatedGames(idArray) {
         let promiseArray = [];
-        console.log(idArray);
         if(idArray !== null) {
             for (var i = 0; i < idArray.length; i++) {
                 promiseArray.push(
