@@ -9,6 +9,6 @@
 import Foundation
 
 
-downloadBombCharacters()
+downloadBombCompanyInfo()
 
 print("Done")

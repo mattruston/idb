@@ -16,6 +16,7 @@
 		C997E9821F9FE24D00AA60F0 /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = C997E9811F9FE24D00AA60F0 /* Genres.swift */; };
 		C997E9861FA25D7400AA60F0 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = C997E9851FA25D7400AA60F0 /* Images.swift */; };
 		C99E22DD1FB38C39009E6258 /* CharactersBomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99E22DC1FB38C39009E6258 /* CharactersBomb.swift */; };
+		C99E22FD1FB4C69C009E6258 /* CompaniesBomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99E22FC1FB4C69C009E6258 /* CompaniesBomb.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +42,7 @@
 		C997E9811F9FE24D00AA60F0 /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
 		C997E9851FA25D7400AA60F0 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		C99E22DC1FB38C39009E6258 /* CharactersBomb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersBomb.swift; sourceTree = "<group>"; };
+		C99E22FC1FB4C69C009E6258 /* CompaniesBomb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesBomb.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				C997E9811F9FE24D00AA60F0 /* Genres.swift */,
 				C997E9851FA25D7400AA60F0 /* Images.swift */,
 				C99E22DC1FB38C39009E6258 /* CharactersBomb.swift */,
+				C99E22FC1FB4C69C009E6258 /* CompaniesBomb.swift */,
 			);
 			path = GamingDBScraper;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 				C997E97A1F9C06DA00AA60F0 /* Games.swift in Sources */,
 				C997E9801F9D392B00AA60F0 /* Characters.swift in Sources */,
 				C997E9821F9FE24D00AA60F0 /* Genres.swift in Sources */,
+				C99E22FD1FB4C69C009E6258 /* CompaniesBomb.swift in Sources */,
 				C997E9861FA25D7400AA60F0 /* Images.swift in Sources */,
 				C997E97E1F9C1E2F00AA60F0 /* Companies.swift in Sources */,
 				C997E9781F9C06CE00AA60F0 /* Platforms.swift in Sources */,
