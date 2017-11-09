@@ -106,7 +106,7 @@ class PlatformsPage extends Component {
                 let obj = response.objects[i];
                 let details = this._buildDetails(obj);
                 let item = {
-                    title: obj.name,
+                    name: obj.name,
                     img: obj.thumb_url,
                     url: "/platforms/" + obj.platform_id,
                     details: details
@@ -170,10 +170,10 @@ class PlatformsPage extends Component {
         if(obj.release_date) 
             details.push({ title: "Released:", content: obj.release_date});
         if(obj.average_rating)
-            details.push({title: "Average Rating:", content: obj.average_rating});
+            details.push({title: "Average Rating:", content: obj.average_rating + "/100"});
         if(obj.games)
             if(obj.games.length > 0)
-                details.push({title: "Game:", content: obj.games[0].title});
+                details.push({title: "Game:", content: obj.games[0].name});
 
         return details;
     }

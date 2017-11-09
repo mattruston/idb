@@ -41,7 +41,7 @@ class Home extends Component {
                 let obj = response;
                 let details = this._buildDetails(obj);
                 let item = {
-                    title: obj.title,
+                    name: obj.name,
                     img: obj.image_url,
                     url: "/games/" + obj.game_id,
                     details: details

@@ -99,7 +99,7 @@ class DevPage extends Component {
                 let obj = response.objects[i];
                 let details = this._buildDetails(obj);
                 let item = {
-                    title: obj.name,
+                    name: obj.name,
                     img: obj.thumb_url,
                     url: "/developers/" + obj.developer_id,
                     details: details
@@ -119,10 +119,10 @@ class DevPage extends Component {
         if(obj.location) 
             details.push({ title: "Location:", content: obj.location});
         if(obj.average_rating)
-            details.push({title: "Average Rating:", content: obj.average_rating});
+            details.push({title: "Average Rating:", content: obj.average_rating + "/100"});
         if(obj.games)
             if(obj.games.length > 0)
-                details.push({title: "Game:", content: obj.games[0].title});
+                details.push({title: "Game:", content: obj.games[0].name});
 
         return details;
     }

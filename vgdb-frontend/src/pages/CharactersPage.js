@@ -93,7 +93,7 @@ class CharactersPage extends Component {
                 let obj = response.objects[i];
                 let details = this._buildDetails(obj);
                 let item = {
-                    title: obj.name,
+                    name: obj.name,
                     img: obj.thumb_url,
                     url: "/characters/" + obj.character_id,
                     details: details
@@ -158,9 +158,9 @@ class CharactersPage extends Component {
             details.push({ title: "Gender:", content: obj.gender});
         if(obj.species)
             details.push({title: "Species:", content: obj.species});
-            if(obj.games)
+        if(obj.games)
             if(obj.games.length > 0)
-                details.push({title: "Game:", content: obj.games[0].title});
+                details.push({title: "Game:", content: obj.games[0].name});
 
         return details;
     }

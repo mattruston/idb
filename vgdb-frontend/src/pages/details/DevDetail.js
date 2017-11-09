@@ -6,7 +6,7 @@ class DevDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: "",
+            name: "",
             description: "",
             mainbar: [],
             img: "",
@@ -24,9 +24,10 @@ class DevDetail extends Component {
             <div>
                 {this.state.loading && <Loader/>}
                 {!this.state.loading && 
-                    <DetailsPage title={this.state.title} description={this.state.description}
+                    <DetailsPage name={this.state.name} description={this.state.description}
                             mainbar={this.state.mainbar} img={this.state.img} sidebar={this.state.sidebar}
-                            linkbar={this.state.linkbar}/>
+                            linkbar={this.state.linkbar} games={this.state.games} 
+                            gamesTitle={"Top Games:"}/>
                 }
             </div>
         );
@@ -37,20 +38,19 @@ class DevDetail extends Component {
             method: 'GET'
         }).then(response => response.json())
         .then(response => {
-            let platforms = this._linkbarFromArray(response.platforms, "/platforms/", "platform_id", "name");
-            let games = this._linkbarFromArray(response.games, "/games/", "game_id", "title")
+            let platforms = this._linkbarFromArray(response.platforms, "/platforms/", "platform_id");
+            let gameItems = this._gameItemsFromArray(response.games);
             this.setState({
-                title: response.name ? response.name : "",
+                name: response.name ? response.name : "",
                 description: response.description ? response.description : "",
                 mainbar: [
-                    { title: "Rating", content: response.average_rating ? response.average_rating : "" },
+                    { title: "Average Rating", content: response.average_rating ? response.average_rating + "/100" : "" },
                 ],
                 img: response.image_url,
                 linkbar: [
-                    { title: "Platforms", links: platforms },
-                    { title: "Games", links: games }
-                ]
-
+                    { title: "Platforms", links: platforms }
+                ],
+                games: gameItems 
             });
             this.setState({ loading: false })
         });
@@ -68,17 +68,46 @@ class DevDetail extends Component {
         return s.substring(0, s.length - 2);
     }
 
-    _linkbarFromArray(array, path, idKey, titleKey) {
+    _linkbarFromArray(array, path, idKey) {
         let result = [];
         for (var i = 0; i < array.length; i++) {
             result.push({
                 link: path + array[i][idKey],
-                text: array[i][titleKey]
-            })
-            if (i === 2)
+                text: array[i]["name"]
+            });
+        }
+        return result;
+    }
+
+    _gameItemsFromArray(gameArray) {
+        let result = [];
+         gameArray.sort(function(a, b) {
+            let valB = b.rating ? b.rating : 0;
+            let valA = a.rating ? a.rating : 0;
+            return b.rating - a.rating;
+        });
+        for (var i = 0; i < gameArray.length; i++) {
+            let obj = gameArray[i];
+            result.push({
+                name: obj.name,
+                img: obj.thumb_url,
+                url: "/games/" + obj.game_id,
+                details: this._buildGameDetails(obj)
+            });
+            if (i == 10)
                 break;
         }
         return result;
+    }
+
+    _buildGameDetails(obj) {
+        let details = []
+        if(obj.release_date) 
+            details.push({title: "Released:", content:obj.release_date});
+        if(obj.rating) 
+            details.push({title: "Rating:", content: obj.rating + "/100"});
+
+        return details;
     }
 }
 

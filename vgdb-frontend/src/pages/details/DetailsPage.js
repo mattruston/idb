@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SideBarItem from '../../components/SideBarItem';
 import MainBarItem from '../../components/MainBarItem';
 import LinkBarItem from '../../components/LinkBarItem';
+import GridLayout from '../../components/GridLayout';
 import './DetailsPage.css';
 
 class DetailsPage extends Component {
@@ -23,7 +24,7 @@ class DetailsPage extends Component {
 
                     
                 </div><div className="details inline-block">
-                    <h1 className="detail-title">{this.props.title}</h1>
+                    <h1 className="detail-title">{this.props.name}</h1>
                     <hr></hr>
                     {
                         this.props.mainbar.map(item => 
@@ -33,6 +34,8 @@ class DetailsPage extends Component {
                     <p className="detail-description">
                         {this.props.description}
                     </p>
+                    <h3 className="detail-subtitle">{this.props.gamesTitle}</h3>
+                    <GridLayout items={this.props.games}/>
                 </div>
             </div>
         );
