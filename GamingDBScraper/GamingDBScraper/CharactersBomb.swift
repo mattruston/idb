@@ -37,7 +37,11 @@ func downloadBombCharacters() {
     
     var allCharacters = readInFileData("bomb_characters.json")
     
-    let startId = 74 //This is the game to start looking for
+    print(allCharacters.count)
+    return
+    
+    let startId = 51486 //This is the game to start looking for
+    let toId = 27663
     var started = false
     
     for game in gameJson {
@@ -49,6 +53,10 @@ func downloadBombCharacters() {
             if started == false {
                 print("Skipping... \(gameId): \(name)")
                 continue
+            }
+            
+            if gameId == toId {
+                break
             }
             
             print("\(gameId): \(name)")
