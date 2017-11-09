@@ -35,7 +35,7 @@ class Parser:
                 if 'summary' in game:
                     d['description'] = game['summary']
                 if 'total_rating' in game:
-                    d['rating'] = round(game['total_rating'], 2)
+                    d['rating'] = int(game['total_rating'])
                 if 'cover' in game:
                     d['image_url'] = 'http:' + game['cover']['url'].strip('\\').replace('/t_thumb', "/games").replace('images.igdb.com/igdb', 'res.cloudinary.com/gamingdb')
                     d['thumb_url'] = 'http:' + game['cover']['url'].strip('\\').replace('/t_thumb', "/w_400,h_500,c_fit/games").replace('images.igdb.com/igdb', 'res.cloudinary.com/gamingdb')
@@ -100,7 +100,7 @@ class Parser:
                                 rating_sum += game_row.rating
                                 rating_count += 1 
                 if rating_sum:
-                    new_row.average_rating = round(rating_sum / rating_count, 2)
+                    new_row.average_rating = int(rating_sum / rating_count)
                 app.models.db.session.add(new_row)
                 app.models.db.session.commit()
 
@@ -137,7 +137,7 @@ class Parser:
                                 rating_sum += game_row.rating
                                 rating_count += 1 
                 if rating_sum:
-                    new_row.average_rating = round(rating_sum / rating_count, 2)
+                    new_row.average_rating = int(rating_sum / rating_count)
                 app.models.db.session.add(new_row)
                 app.models.db.session.commit()
 
