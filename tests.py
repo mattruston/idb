@@ -7,12 +7,12 @@ import requests
 
 class DBTests(TestCase):
     def test_create_game(self):
-        game = Game(title="Mugman: The Game", description="Best game.", rating=100.0, image_url='https://img00.deviantart.net/6d0a/i/2017/138/e/d/sad_mugman_by_vintage_ink1941-db9m5mi.jpg')
+        game = Game(name="Mugman: The Game", description="Best game.", rating=100.0, image_url='https://img00.deviantart.net/6d0a/i/2017/138/e/d/sad_mugman_by_vintage_ink1941-db9m5mi.jpg')
         with app.app_context():
             db.session.add(game)
             db.session.commit()
-            query = db.session.query(Game).filter_by(title="Mugman: The Game").first()
-            self.assertEqual(query.title, "Mugman: The Game")
+            query = db.session.query(Game).filter_by(name="Mugman: The Game").first()
+            self.assertEqual(query.name, "Mugman: The Game")
             self.assertEqual(query.description, "Best game.")
             self.assertEqual(query.rating, 100.00)
             self.assertEqual(query.image_url, "https://img00.deviantart.net/6d0a/i/2017/138/e/d/sad_mugman_by_vintage_ink1941-db9m5mi.jpg")
@@ -80,14 +80,14 @@ class DBTests(TestCase):
             api_request = requests.get("http://gamingdb.info/api/game/13")
             game_data = json.loads(api_request.text)
             api_id = game_data['game_id']
-            api_title = game_data['title']
+            api_name = game_data['name']
 
             db_request = db.session.query(Game).get(13)
             db_id = db_request.game_id
-            db_title = db_request.title
+            db_name = db_request.name
 
             self.assertEqual(api_id, db_id)
-            self.assertEqual(api_title, db_title)
+            self.assertEqual(api_name, db_name)
 
     def test_developer_get_request(self):
         with app.app_context():
@@ -133,17 +133,17 @@ class DBTests(TestCase):
 
     def test_get_first_game_alphabetically(self):
         with app.app_context():
-            api_request = requests.get('http://gamingdb.info/api/game?q={"order_by":[{"field":"title","direction":"asc"}]}')
+            api_request = requests.get('http://gamingdb.info/api/game?q={"order_by":[{"field":"name","direction":"asc"}]}')
             games_data = json.loads(api_request.text)
             api_id = games_data['objects'][0]['game_id']
-            api_title = games_data['objects'][0]['title']
+            api_name = games_data['objects'][0]['name']
 
-            db_request = db.session.query(Game).order_by(Game.title)
+            db_request = db.session.query(Game).order_by(Game.name)
             db_id = db_request[0].game_id
-            db_title = db_request[0].title
+            db_name = db_request[0].name
 
             self.assertEqual(api_id, db_id)
-            self.assertEqual(api_title, db_title)
+            self.assertEqual(api_name, db_name)
 
     def test_get_first_platform_alphabetically(self):
         with app.app_context():
