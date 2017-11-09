@@ -32,6 +32,34 @@ fileprivate let characterAttributes: [String] =
  
  */
 
+func filterCharacterImages() {
+    var allCharacters = readInFileData("characters.json")
+    
+    for x in 0..<allCharacters.count {
+        var character = allCharacters[x]
+        
+        if let images = character["image"] as? [String: String] {
+            if let original = images["original_url"] {
+                if original.contains("2853576-gblogo.png") {
+                    print("Removing Image")
+                    
+                    character.removeValue(forKey: "image")
+                    allCharacters[x] = character
+                }
+            }
+        }
+    }
+    
+    do {
+        let data = try JSONSerialization.data(withJSONObject: allCharacters, options: .prettyPrinted)
+        save(data: data, to: "chars.json")
+    } catch {
+        print("Failed to convert characters to data")
+    }
+    
+}
+
+
 func downloadBombCharacters() {
     let gameJson: [[String: Any]] = readInFileData("igdb_games.json")
     

@@ -9,6 +9,6 @@
 import Foundation
 
 
-downloadBombCharacters()
+matchPlatforms()
 
 print("Done")
