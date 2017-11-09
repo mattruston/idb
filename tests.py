@@ -51,7 +51,7 @@ class DBTests(TestCase):
             db.session.commit()
 
     def test_create_character(self):
-        character = Character(name="Mugman", summary="Best character.", gender='Male', species='Mug', 
+        character = Character(name="Mugman", summary="Best character.", gender='Male', 
                         image_url='https://img00.deviantart.net/6d0a/i/2017/138/e/d/sad_mugman_by_vintage_ink1941-db9m5mi.jpg')
         with app.app_context():
             db.session.add(character)
@@ -60,7 +60,6 @@ class DBTests(TestCase):
             self.assertEqual(query.name, "Mugman")
             self.assertEqual(query.summary, "Best character.")
             self.assertEqual(query.gender, 'Male')
-            self.assertEqual(query.species, 'Mug')
             self.assertEqual(query.image_url, "https://img00.deviantart.net/6d0a/i/2017/138/e/d/sad_mugman_by_vintage_ink1941-db9m5mi.jpg")
             db.session.delete(character)
             db.session.commit()
