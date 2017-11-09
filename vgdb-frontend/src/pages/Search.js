@@ -115,7 +115,6 @@ class Search extends Component {
 	};
 
     fetchData(filter, modelType) {
-        console.log(endpoint(modelType, JSON.stringify(filter)));
         fetch(endpoint(modelType, JSON.stringify(filter)),{
             method: 'GET'
         }).then(response => response.json())
@@ -126,9 +125,7 @@ class Search extends Component {
                 results: response.objects,
                 loading: false
             };
-            this.setState( resultObj, () => {
-                console.log(this.state);
-            });
+            this.setState( resultObj );
         });
 
     }
@@ -141,7 +138,7 @@ class Search extends Component {
                     <div className="container main-page">
                         <div className="search-query">Search Query: <strong>{this.props.match.params.query}</strong></div>
                         { this.state.game.results.map( (obj) => {
-                            return <SearchItem obj={obj} query={this.props.match.params.query}/>
+                            return <SearchItem obj={obj} query={this.props.match.params.query} link={"/games/" + obj.game_id}/>
                         })}
                     </div>
                 }

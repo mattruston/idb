@@ -13,6 +13,11 @@
     display: block;
     transition: transform .3s ease;
     margin: .75em 0em;
+    text-decoration: none;
+    color: #000;
+}
+.search-item-container:hover {
+    color: #000;
 }
 .search-item-container:hover {
     transform: scale(1.02, 1.02);
@@ -21,6 +26,10 @@
 }
 .search-item-thumbnail {
     height: 7em;
+    width: 5em;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: inline-block;
     vertical-align: top;
 }

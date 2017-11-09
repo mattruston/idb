@@ -12,13 +12,21 @@ class SearchBar extends Component {
     render() {
         return (
             <div className="search-bar">
-                <input className="search-bar-input" placeholder="Search" onChange={this.inputChange}></input>
-                <div className="search-bar-button" onClick={this.search}>
+                <input className="search-bar-input" placeholder="Search" onChange={this.inputChange} onKeyPress={this.enterPressed}></input>
+                <div className="search-bar-button" onClick={this.search} >
                     <img className="search-bar-button-img" src={require('../assets/search.svg')}/>
                 </div>
             </div>
         );
     }
+
+    enterPressed = (event) => {
+        var code = event.keyCode || event.which;
+        if(code === 13) { 
+            this.search();
+        } 
+    }
+
     inputChange = (e) => {
         this.setState({
             query: e.target.value
