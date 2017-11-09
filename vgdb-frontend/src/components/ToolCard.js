@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import './ToolCard.css';
 
 class ToolCard extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         let items = this.props.list.map((item) => {
             if(item.hasOwnProperty("url")) {

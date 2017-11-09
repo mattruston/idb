@@ -28,7 +28,7 @@ class GridItem extends Component {
                         </div>
                     </div>
                     <div className="item-detail">
-                        <div className="item-title">{ this.props.title.length > 23 ? this.props.title.substring(0, 20) + "..." : this.props.title }</div>
+                        <div className="item-title">{ this.props.name.length > 23 ? this.props.name.substring(0, 20) + "..." : this.props.name }</div>
                     </div>
                 </div>
             </Link>
