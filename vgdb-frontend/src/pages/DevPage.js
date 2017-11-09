@@ -90,11 +90,17 @@ class DevPage extends Component {
                 JSON.stringify(this.state.filter), 
                 JSON.stringify(this.state.sort)),
             { method: 'GET' })
-        .then(response => response.json())
+        .then(response => {
+            if(response.ok) {
+                return response.json();
+            }
+            throw new Error('Failed to retrieve response object for game.');
+        })
         .then(response => {
             this.setState({
                 pageLimit: response.total_pages
             });
+            console.log(response);
             for (var i = 0; i < response.objects.length; i++) {
                 let obj = response.objects[i];
                 let details = this._buildDetails(obj);
@@ -111,6 +117,9 @@ class DevPage extends Component {
             this.setState({
                 loading: false
             });
+        })
+        .catch(error => {
+            console.log(error);
         });
     }
 

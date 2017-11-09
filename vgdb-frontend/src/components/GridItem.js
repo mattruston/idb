@@ -2,20 +2,33 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './GridItem.css';
 
+const placeholder = require('../assets/imgholder.png');
+
 class GridItem extends Component {
     static defaultProps = {
-        aspect: "cover"
+        aspect: "cover",
     };
 
     constructor(props) {
         super(props);
+
+        // Check if the img value is null; if so we need to input placeholder
+        let img = this.props.img;
+        let empty = false;
+        if(img == null) {
+            img = placeholder;
+            empty = true;
+        }
+
         this.state = {
             imageStyle: {
-                backgroundImage: "url(" + this.props.img + ")",
-                backgroundSize: this.props.aspect 
+                backgroundImage: "url(" + img + ")",
+                // Use the given backgroundSize unless using placeholder
+                backgroundSize: empty ? "cover" : this.props.aspect 
             }
         }
     }
+
     render() {
         return (
             <Link to={ this.props.url } className="grid-item">
