@@ -27,7 +27,10 @@ class GameDetail extends Component {
     }
     
     onRouteChanged() {
-        this.setState({ loading: true }, () => {
+        this.setState({ 
+            loading: true,
+            relatedGames: []
+        }, () => {
             this._fetchData();
         });
     }
