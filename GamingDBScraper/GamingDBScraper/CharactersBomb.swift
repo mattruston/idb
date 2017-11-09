@@ -37,7 +37,7 @@ func downloadBombCharacters() {
     
     var allCharacters = readInFileData("bomb_characters.json")
     
-    let startId = 7599 //This is the game to start looking for
+    let startId = 74 //This is the game to start looking for
     var started = false
     
     for game in gameJson {
@@ -50,6 +50,8 @@ func downloadBombCharacters() {
                 print("Skipping... \(gameId): \(name)")
                 continue
             }
+            
+            print("\(gameId): \(name)")
             
             if let gamePath = searchForGame(game: name) {
                 print("Found game")
@@ -68,7 +70,9 @@ func downloadBombCharacters() {
                                     characterExists = true
                                     //Same cahracter, just update what our data to include this game
                                     if var updatedGames = existing["games"] as? [Int] {
-                                        updatedGames.append(gameId)
+                                        if updatedGames.contains(gameId) == false {
+                                            updatedGames.append(gameId)
+                                        }
                                         existing["games"] = updatedGames
                                     }
                                     
