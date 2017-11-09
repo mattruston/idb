@@ -3,11 +3,16 @@ import { Link } from 'react-router-dom';
 import './GridItem.css';
 
 class GridItem extends Component {
+    static defaultProps = {
+        aspect: "cover"
+    };
+
     constructor(props) {
         super(props);
         this.state = {
             imageStyle: {
-                backgroundImage: "url(" + this.props.img + ")"
+                backgroundImage: "url(" + this.props.img + ")",
+                backgroundSize: this.props.aspect 
             }
         }
     }

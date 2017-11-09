@@ -47,7 +47,7 @@ class DevPage extends Component {
                             sortOptions={Object.keys(attrMap)} current={this.state.selectedSort} 
                             changeSort={this.changeSort} rangeFilters={rangeFilters} 
                             changeRangeFilter={this.changeRangeFilter}/>
-                        <GridLayout items={this.state.developers}/>
+                        <GridLayout items={this.state.developers} aspect="contain"/>
                         <Pagination page={this.props.match.params.page} pagelimit={this.state.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
                     </div>
                 }
