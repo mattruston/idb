@@ -4,6 +4,10 @@ import './GridLayout.css';
 
 /* Multiline flexible column layout for griditems */
 class GridLayout extends Component {
+    static defaultProps = {
+        aspect: "cover"
+    };
+
     constructor(props) {
         super(props);
     
@@ -19,7 +23,7 @@ class GridLayout extends Component {
                     <div className="grid"> 
                     {
                         this.props.items.map(item => 
-                            <GridItem details={item.details} name={item.name} img={item.img} url={item.url}/>
+                            <GridItem details={item.details} name={item.name} img={item.img} url={item.url} aspect={this.props.aspect}/>
                         )
                     }
                     </div>
