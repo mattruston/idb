@@ -9,6 +9,6 @@
 import Foundation
 
 
-downloadBombCompanyInfo()
+filterCharacterImages()
 
 print("Done")
