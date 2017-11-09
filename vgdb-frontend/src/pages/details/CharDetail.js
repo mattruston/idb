@@ -33,6 +33,18 @@ class CharDetail extends Component {
         );
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.location !== prevProps.location) {
+            this.onRouteChanged();
+        }
+    }
+    
+    onRouteChanged() {
+        this.setState({ loading: true }, () => {
+            this._fetchData();
+        });
+    }
+
     _fetchData() {
         fetch("http://gamingdb.info/api/character/" + this.props.match.params.id,{
             method: 'GET'

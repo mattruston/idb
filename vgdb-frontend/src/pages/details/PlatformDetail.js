@@ -33,6 +33,18 @@ class PlatformDetail extends Component {
         );
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.location !== prevProps.location) {
+            this.onRouteChanged();
+        }
+    }
+    
+    onRouteChanged() {
+        this.setState({ loading: true }, () => {
+            this._fetchData();
+        });
+    }
+
     _fetchData() {
         fetch("http://gamingdb.info/api/platform/" + this.props.match.params.id,{
             method: 'GET'

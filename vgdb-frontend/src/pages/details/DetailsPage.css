@@ -32,6 +32,11 @@ hr {
 .detail-description {
     margin-top: 1em;
 }
+.detail-game-list {
+    background-color: #fff;
+    margin-top: 1em;
+    padding: 1em 1em .5em 1em;
+}
 
 @media only screen and (max-width:500px) {
     .inline-block {

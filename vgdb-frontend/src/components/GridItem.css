@@ -7,6 +7,9 @@
     text-decoration: none;
     transform: scale(1.05, 1.05);
 }
+.grid-item:hover>.grid-item-container {
+    box-shadow: 2px 2px 30px rgba(0,0,0, 0.2);
+}
 .grid-item-container {
     display: flex;
     flex-direction: column;
