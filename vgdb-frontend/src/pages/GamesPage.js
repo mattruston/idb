@@ -24,7 +24,7 @@ const rangeFilters = {
 };
 
 const attrMap = {
-    "Title": "title",
+    "Name": "name",
     "Rating": "rating",
     "Release Date": "release_date",
     "Popularity": "game_id"
@@ -82,7 +82,7 @@ class GamesPage extends Component {
                 let obj = response.objects[i];
                 let details = this._buildDetails(obj);
                 let item = {
-                    title: obj.title,
+                    name: obj.name,
                     img: obj.thumb_url,
                     url: "/games/" + obj.game_id,
                     details: details
@@ -172,7 +172,7 @@ class GamesPage extends Component {
         if(obj.release_date) 
             details.push({ title: "Released:", content:obj.release_date});
         if(obj.rating) 
-            details.push({title: "Rating:", content: obj.rating.toFixed(0) + "/100"});
+            details.push({title: "Rating:", content: obj.rating + "/100"});
         if(obj.genres.length > 0)
             details.push({title: "Genre:", content:obj.genres[0].name});
 
