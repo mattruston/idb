@@ -161,6 +161,16 @@ Though we were able to retrieve many images from our APIs, we initially had issu
 ##### API Load Times
 We were receiving extended load times which gave our frontend a delay in requesting the information. In order to provide a visual signal to the client, we decided to add a loading animation to ensure it is clear the data is being loaded in. Moving forward, we would like to eliminate this latency entirely to provide a better user experience.
 
+### Sorting and Filtering
+
+Both features to organize the data we display start with the API endpoints our backend provides. Flask's API manager and the capability of providing arguments it provides. In essence, we were able to specify multiple ways to filter and organize the responses through JSON objects. For instance, the following request gets every game with a rating between 50 and 100 and orders them in descending order based on rating again:
+
+```
+http://gamingdb.info/api/game?q={"filters":[{"name":"rating","op":"ge","val":50},{"name":"rating","op":"le","val":100}],"order_by":[{"field":"rating","direction":"desc"}]}
+```
+
+Given the previously mentioned pagination functionallity specified in the creation of our endpoints, these results are also paginated. This is a very simple example, but the amount of filters that we can add is not bounded.
+
 ### Search
 
 From a backend perspective, the utilization of Flask's API manager was extremely helpful and time-saving once again. It allows a certain set of arguments to be provided to HTTP requests in order to filter the results when querying a table. Specifically, an example of a query like this would be:
