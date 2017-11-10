@@ -171,15 +171,19 @@ http://gamingdb.info/api/game?q={"filters":[{"name":"rating","op":"ge","val":50}
 
 Given the previously mentioned pagination functionallity specified in the creation of our endpoints, these results are also paginated. This is a very simple example, but the amount of filters that we can add is not bounded.
 
+On the frontend, we allow for sorting in ascending in descending order. Every time the sorting or filtering changes, we reconstruct the url to fetch the data from the correct endpoint. Because the backend is paginated, we can just change the page of the contructed url to keep the sorting and filtering the same as you go through the pages for the model.
+
 ### Search
 
 From a backend perspective, the utilization of Flask's API manager was extremely helpful and time-saving once again. It allows a certain set of arguments to be provided to HTTP requests in order to filter the results when querying a table. Specifically, an example of a query like this would be:
 
 ```
-http://gamingdb.info/api/game?q={"filters":[{"or":[{"name":"title","op":"ilike","val":"%Mario Kart%"},{"name":"description","op":"ilike","val":"%Mario Kart%"},{"name":"genres","op":"any","val":{"name":"name","op":"ilike","val":"Mario Kart"}}]}]}
+http://gamingdb.info/api/game?q={"filters":[{"or":[{"name":"title","op":"ilike","val":"%Mario Kart%"},{"name":"description","op":"ilike","val":"%Mario Kart%"},{"name":"genres","op":"any","val":{"name":"name","op":"ilike","val":"%Mario Kart%"}}]}]}
 ```
 
 This request would return a JSON object with all game objects in our database that contain the string `"Mario Kart"` in their title, description, or genre, which are all of the string searchable attributes we have. The percentage signs used inside the strings are a SQL construct to allow zero or more characters.
+
+On the frontend, we dynamically build the filters for each model type depending on the data available for each model. The format for the filter is different for numbers and strings, so we also had to format the filter differently depending on the query. Everytime the query changes, we rebuild the filters for each model, construct the url for the endpoint, and fetch the data. Because the backend is already paginated and split up the search results based on the model, we did not have to further paginate the results.
 
 ### Hosting
 
