@@ -52,3 +52,12 @@
 .search-item-description>strong {
     color: #2de5c6;
 }
+.not-found {
+    width: 100%;
+    text-align: center;
+    margin-top: 3em;
+}
+.not-found>h1 {
+    color: #ccc;
+    font-weight: 700;
+}

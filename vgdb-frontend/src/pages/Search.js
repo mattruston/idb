@@ -5,7 +5,7 @@ import Loader from '../components/Loader';
 import SearchTabs from '../components/SearchTabs';
 import './styles/search.css';
 
-const endpoint = (model, filter) => {
+const endpoint = (model, filter, page) => {
     return `http://gamingdb.info/api/${model}?q={"filters":[{"or":${filter}}]}`;
 }
 
@@ -217,7 +217,9 @@ class Search extends Component {
                 {stateObj.loading && <Loader/>}
                 {!stateObj.loading &&
                     <div>
-                        { stateObj.results.map( (obj) => {
+                        { stateObj.results.length < 1 ? 
+                            <div className="not-found"><h1>No results found</h1></div> 
+                            : stateObj.results.map( (obj) => {
                             return <SearchItem obj={obj} query={this.props.match.params.query} 
                                 link={tabIndex[this.state.currentTab].endpoint + obj[tabIndex[this.state.currentTab].id]}/>
                         })}
