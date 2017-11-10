@@ -225,7 +225,10 @@ class Search extends Component {
                             return <SearchItem obj={obj} query={this.props.match.params.query} 
                                 link={tabIndex[this.state.currentTab].endpoint + obj[tabIndex[this.state.currentTab].id]}/>
                         })}
-                        <Pagination page={stateObj.page} pagelimit={stateObj.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
+                        { stateObj.results.length < 1 ? ""
+                            : <Pagination page={stateObj.page} pagelimit={stateObj.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
+                        }
+                        
                     </div>
                 }
             </div>
