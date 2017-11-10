@@ -143,7 +143,41 @@ class Search extends Component {
 
     componentWillReceiveProps(nextProps){
 		this._buildFilters(nextProps.match.params.query.split(" "));
-	};
+    };
+    
+    componentDidUpdate(prevProps) {
+        if (this.props.location !== prevProps.location) {
+            this.onRouteChanged();
+        }
+    }
+    
+    onRouteChanged() {
+        this.setState({
+            currentTab: "game",
+            game: {
+                pageLimit: 0,
+                results: [],
+                loading: true
+            },
+            developer: {
+                pageLimit: 0,
+                results: [],
+                loading: true
+            },
+            platform: {
+                pageLimit: 0,
+                results: [],
+                loading: true
+            },
+            character: {
+                pageLimit: 0,
+                results: [],
+                loading: true
+            }
+        }, () => {
+            this._buildFilters(this.props.match.params.query.split(" "));
+        })
+    }
 
     fetchData(filter, modelType) {
         fetch(endpoint(modelType, JSON.stringify(filter)),{

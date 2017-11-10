@@ -20,7 +20,7 @@ class SearchItem extends Component {
         return (
             <Link to={this.props.link} className="search-item-container">
                 <div className="search-item-thumbnail" style={style}/><div className="search-item-content">
-                    <div className="search-item-title">{this.props.obj.name}</div>
+                    <div className="search-item-title">{ this.contextTitle() }</div>
                     <hr/>
                     { this.contextFinder().map( (i) => i ) }
                 </div>
@@ -35,8 +35,33 @@ class SearchItem extends Component {
         })
     }
 
+    contextTitle = () => {
+        let titleArr = this.props.obj.name.split(" ");
+
+        return (
+            <span>{
+                titleArr.map( (word) => {
+                    for(let term of this.state.searchTerms) {
+                        let re = new RegExp(term, "i");
+                        if(re.test(word)) {
+                            return (
+                                <span className="search-highlight">{word} </span>
+                            )
+                        }
+                    }
+                    return (
+                        <span>{word} </span>
+                    ) 
+                })
+            }</span>
+        )
+    }
+
     contextFinder = () => {
         let context = [];
+        if(this.props.obj.description === null || this.props.obj.description === "") {
+            return context;
+        }
         let desc = this.props.obj.description.split(" ");
         for(let i in desc) {
             for(let term of this.state.searchTerms) {
