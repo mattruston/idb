@@ -3,10 +3,11 @@ import SearchItem from '../components/SearchItem';
 import Title from '../components/Title';
 import Loader from '../components/Loader';
 import SearchTabs from '../components/SearchTabs';
+import Pagination from '../components/Pagination';
 import './styles/search.css';
 
-const endpoint = (model, filter, page) => {
-    return `http://gamingdb.info/api/${model}?q={"filters":[{"or":${filter}}]}`;
+const endpoint = (model, page, filter) => {
+    return `http://gamingdb.info/api/${model}?page=${page}&q={"filters":[{"or":${filter}}]}`;
 }
 
 const stringFilter = (attr, query) => {
@@ -75,6 +76,7 @@ const searchAttrs = {
         "strings": [
             "gender",
             "name",
+            "description"
         ]
     }
 };
@@ -98,32 +100,42 @@ const tabIndex = {
     }
 }
 
+const initialState = {
+    currentTab: "game",
+    game: {
+        pageLimit: 0,
+        results: [],
+        page: 1,
+        loading: true,
+        filter: []
+    },
+    developer: {
+        pageLimit: 0,
+        page: 1,
+        results: [],
+        loading: true,
+        filter: []
+    },
+    platform: {
+        pageLimit: 0,
+        page: 1,
+        results: [],
+        loading: true,
+        filter: []
+    },
+    character: {
+        pageLimit: 0,
+        page: 1,
+        results: [],
+        loading: true,
+        filter: []
+    }
+}
+
 class Search extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            currentTab: "game",
-            game: {
-                pageLimit: 0,
-                results: [],
-                loading: true
-            },
-            developer: {
-                pageLimit: 0,
-                results: [],
-                loading: true
-            },
-            platform: {
-                pageLimit: 0,
-                results: [],
-                loading: true
-            },
-            character: {
-                pageLimit: 0,
-                results: [],
-                loading: true
-            }
-        }
+        this.state = initialState;
         this.changeTab = (tabName) => {
 			return (event) => {
 				event.stopPropagation();
@@ -152,48 +164,37 @@ class Search extends Component {
     }
     
     onRouteChanged() {
-        this.setState({
-            currentTab: "game",
-            game: {
-                pageLimit: 0,
-                results: [],
-                loading: true
-            },
-            developer: {
-                pageLimit: 0,
-                results: [],
-                loading: true
-            },
-            platform: {
-                pageLimit: 0,
-                results: [],
-                loading: true
-            },
-            character: {
-                pageLimit: 0,
-                results: [],
-                loading: true
-            }
-        }, () => {
+        this.setState(initialState, () => {
             this._buildFilters(this.props.match.params.query.split(" "));
         })
     }
 
     fetchData(filter, modelType) {
-        fetch(endpoint(modelType, JSON.stringify(filter)),{
+        console.log(endpoint(modelType, this.state[modelType].page, JSON.stringify(filter)));
+        fetch(endpoint(modelType, this.state[modelType].page, JSON.stringify(filter)),{
             method: 'GET'
-        }).then(response => response.json())
+        }).then(response => {
+            if(response.ok) {
+                return response.json();
+            }
+            throw new Error('Failed to retrieve response object for game.');
+        })
         .then(response => {
+            console.log(response);
             let resultObj = {};
             resultObj[modelType] = {
                 pageLimit: response.total_pages,
                 results: response.objects,
-                loading: false
+                loading: false,
+                page: this.state[modelType].page,
+                filter: filter
             };
             
             this.setState( resultObj, () => {
                 console.log(modelType + " " + this.state[modelType].loading);
             } );
+        }).catch(error => {
+            console.log(error);
         });
     }
 
@@ -212,6 +213,7 @@ class Search extends Component {
 
     visibleTab = () => {
         let stateObj = this.state[this.state.currentTab];
+        //console.log(stateObj);
         return (
             <div> 
                 {stateObj.loading && <Loader/>}
@@ -223,10 +225,30 @@ class Search extends Component {
                             return <SearchItem obj={obj} query={this.props.match.params.query} 
                                 link={tabIndex[this.state.currentTab].endpoint + obj[tabIndex[this.state.currentTab].id]}/>
                         })}
+                        <Pagination page={stateObj.page} pagelimit={stateObj.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
                     </div>
                 }
             </div>
         )
+    }
+
+    decPage = () => {
+        let obj = Object.assign(this.state);
+        obj[this.state.currentTab].page = parseInt(obj[this.state.currentTab].page, 10) - 1;
+        obj[this.state.currentTab].results = [];
+        obj[this.state.currentTab].loading = true;
+        this.setState(obj,
+        () => this.fetchData(this.state[this.state.currentTab].filter, this.state.currentTab));
+    }
+
+    incPage = () => {
+        let obj = Object.assign(this.state);
+        obj[this.state.currentTab].page = parseInt(obj[this.state.currentTab].page, 10) + 1;
+        obj[this.state.currentTab].results = [];
+        obj[this.state.currentTab].loading = true;
+        console.log(obj);
+        this.setState(obj,
+        () => this.fetchData(this.state[this.state.currentTab].filter, this.state.currentTab));
     }
 
     _buildFilters(query) {
@@ -254,9 +276,11 @@ class Search extends Component {
                 })
             });
         }
-
         let models = Object.keys(filters);
         for (var i = 0; i < models.length; i++) {
+            let obj = Object.assign(this.state);
+            obj[models[i]].filter = filters[models[i]];
+            this.setState(obj);
             this.fetchData(filters[models[i]], models[i]);
         };
     }
