@@ -62,12 +62,9 @@ class CharDetail extends Component {
                 name: response.name ? response.name : "",
                 description: response.description ? response.description : "",
                 mainbar: [
-<<<<<<< HEAD
                     { title: "Average Rating:", content: response.average_rating ? response.average_rating + "/100" : "" }
                 ],
                 sidebar: [
-=======
->>>>>>> dev
                     { title: "Gender", content: response.gender ? response.gender : "" }
                 ],
                 img: response.image_url ? response.image_url : "",
