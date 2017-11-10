@@ -72,7 +72,7 @@ class About extends Component {
                     {name: "React", description:"Frontend engine to power all of our clientside rendering and routing"}
                     ]}/>
                 <ToolCard title="Stats" list={[
-                    {name: "Technical Report", description: "UT Box", url:"https://utexas.app.box.com/s/i454g99dbedyaeh78fq91kcz2yffmsh2"},
+                    {name: "Technical Report", description: "UT Box", url:"https://utexas.box.com/s/3iftv25rgbebli0sh06mj5zmmvxtn1ez"},
                     {name: "UML Diagram", description: "yUML", url:"https://yuml.me/a94c2579.png"},
                     {name: "API Docs", description: "Apiary", url:"http://docs.vgdb1.apiary.io/#"},
                     {name: "Issue Tracker", description: "Trello", url:"https://trello.com/b/OBZSfuJU/idb"},
