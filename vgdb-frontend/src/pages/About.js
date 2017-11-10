@@ -50,7 +50,7 @@ class About extends Component {
                     </div>
                     <div className="about-card-wrapper">
                         <AboutCard 
-                        name="Derek Tolliver" description="Hi, I'm Derek. I'm a senior CS student at UT." roles="Backend" commits={this.state.derektolliver}  issues="16" tests="5" url="https://github.com/derektolliver" image="https://avatars0.githubusercontent.com/u/8220914?s=400&v=4"/>
+                        name="Derek Tolliver" description="Hi, I'm Derek. I'm a senior CS student at UT." roles="Backend" commits={this.state.derektolliver}  issues="16" tests="20" url="https://github.com/derektolliver" image="https://avatars0.githubusercontent.com/u/8220914?s=400&v=4"/>
                     </div>
                     <div className="about-card-wrapper">
                         <AboutCard 
@@ -78,8 +78,8 @@ class About extends Component {
                     {name: "Issue Tracker", description: "Trello", url:"https://trello.com/b/OBZSfuJU/idb"},
                     {name: "Repository", description: "Github", url:"http://github.com/mattruston/idb"},
                     {name: "Total Commits", description: this.state.Jaredk3nt + this.state.jmpo1618 + this.state.derektolliver + this.state.KishanRPatel + this.state.mattruston },
-                    {name: "Issues", description: "36" },
-                    {name: "Unit Tests", description: "10" }
+                    {name: "Issues", description: "51" },
+                    {name: "Unit Tests", description: "24" }
                 ]}/>
                 <ToolCard title="Data Scources" list={[
                     {name: "IGDB", description: "Main source of data", url:"https://igdb.github.io/api/about/welcome/"},
