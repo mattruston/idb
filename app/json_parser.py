@@ -68,7 +68,7 @@ class Parser:
                 app.models.db.session.commit()
 
     def parse_companies(self):
-        with open('data/igdb_companies.json') as company_data:
+        with open('data/companies.json') as company_data:
             data = json.load(company_data)
             for company in data:
                 if not company:
@@ -80,6 +80,9 @@ class Parser:
                 if 'logo' in company:
                     d['image_url'] = 'http:' + company['logo']['url'].strip('\\').replace('/t_thumb', "/companies").replace('images.igdb.com/igdb', 'res.cloudinary.com/gamingdb')
                     d['thumb_url'] = 'http:' + company['logo']['url'].strip('\\').replace('/t_thumb', "/w_400,h_500,c_fit/companies").replace('images.igdb.com/igdb', 'res.cloudinary.com/gamingdb')
+                elif 'original_url' in company and 'medium_url' in company:
+                    d['image_url'] = company['original_url']
+                    d['thumb_url'] = company['medium_url']
                 if 'website' in company:
                     d['website'] = company['website']
                 if 'country' in company:
@@ -105,7 +108,7 @@ class Parser:
                 app.models.db.session.commit()
 
     def parse_platforms(self):
-        with open('data/igdb_platforms.json') as platform_data:
+        with open('data/platforms.json') as platform_data:
             data = json.load(platform_data)
             for platform in data:
                 d = {}
@@ -120,6 +123,9 @@ class Parser:
                 if 'logo' in platform:
                     d['image_url'] = 'http:' + platform['logo']['url'].strip('\\').replace('/t_thumb', "/platforms").replace('images.igdb.com/igdb', 'res.cloudinary.com/gamingdb')
                     d['thumb_url'] = 'http:' + platform['logo']['url'].strip('\\').replace('/t_thumb', "/w_400,h_500,c_fit/platforms").replace('images.igdb.com/igdb', 'res.cloudinary.com/gamingdb')
+                elif 'original_url' in platform and 'medium_url' in platform:
+                    d['image_url'] = platform['original_url']
+                    d['thumb_url'] = platform['medium_url']
                 self.platform_dict[platform['id']] = d
                 new_row = app.models.Platform(**d)
                 rating_sum = 0
@@ -149,6 +155,8 @@ class Parser:
                 d = {}
                 d['name'] = character['name']
                 if 'deck' in character:
+                    if not character['deck']:
+                        continue
                     d['description'] = character['deck']
                 else:
                     continue
@@ -162,12 +170,19 @@ class Parser:
                         d['gender'] = self.gender[character['gender']]
                 self.character_dict[character['id']] = d
                 new_row = app.models.Character(**d)
+                rating_sum = 0
+                rating_count = 0
                 if 'games' in character:
                     for game in character['games']:
                         if game in self.game_dict:
                             game_row = app.models.Game.query.filter(
                                 app.models.Game.name == self.game_dict[game]['name']).first()
                             game_row.characters.append(new_row)
+                            if game_row.rating:
+                                rating_sum += game_row.rating
+                                rating_count += 1 
+                if rating_sum:
+                    new_row.average_rating = int(rating_sum / rating_count)
                 app.models.db.session.add(new_row)
                 app.models.db.session.commit()
     

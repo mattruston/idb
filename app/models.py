@@ -108,6 +108,7 @@ class Platform(db.Model):
     def __init__(self, name, description=None, average_rating=None, image_url=None, thumb_url=None, release_date=None, website=None):
         self.name = name
         self.description = description
+        self.average_rating = average_rating
         self.image_url = image_url
         self.thumb_url = thumb_url
         self.release_date = release_date
@@ -121,13 +122,15 @@ class Character(db.Model):
     character_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     description = db.Column(db.String, nullable=True)
+    average_rating = db.Column(db.Integer, nullable=True)
     image_url = db.Column(db.String, nullable=True)
     thumb_url = db.Column(db.String, nullable=True)
     gender = db.Column(db.String, nullable=True)
 
-    def __init__(self, name, description=None, image_url=None, thumb_url=None, gender=None):
+    def __init__(self, name, description=None, average_rating=None, image_url=None, thumb_url=None, gender=None):
         self.name = name
         self.description = description
+        self.average_rating = average_rating
         self.image_url = image_url
         self.thumb_url = thumb_url
         self.gender = gender
