@@ -170,8 +170,8 @@ class CharactersPage extends Component {
         let details = []
         if(obj.gender) 
             details.push({ title: "Gender:", content: obj.gender});
-        if(obj.species)
-            details.push({title: "Species:", content: obj.species});
+        if(obj.average_rating)
+            details.push({title: "Average Rating:", content: obj.average_rating + "/100"});
         if(obj.games)
             if(obj.games.length > 0)
                 details.push({title: "Game:", content: obj.games[0].name});

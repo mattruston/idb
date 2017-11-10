@@ -61,8 +61,7 @@ class CharDetail extends Component {
                 name: response.name ? response.name : "",
                 description: response.description ? response.description : "",
                 mainbar: [
-                    { title: "Gender", content: response.gender ? response.gender : "" },
-                    { title: "Race", content: response.race ? response.race: "" }
+                    { title: "Gender", content: response.gender ? response.gender : "" }
                 ],
                 img: response.image_url ? response.image_url : "",
                 linkbar: [
