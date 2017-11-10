@@ -25,6 +25,7 @@ func request(for path: String) -> URLRequest? {
     return request
 }
 
+//TODO: Make this return values instead of run it through a block
 func makeSynchronousRequest(_ request: URLRequest, with completion: ((Data)->())?) {
     var semaphore = DispatchSemaphore(value: 0)
     

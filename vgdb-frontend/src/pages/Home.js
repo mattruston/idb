@@ -34,14 +34,18 @@ class Home extends Component {
 
     _fetchData() {
         for(let ep of topPicks) {
-            fetch("https://gamingdb.info/api/game/" + ep,{
-                method: 'GET'
-            }).then(response => response.json())
+            fetch("https://gamingdb.info/api/game/" + ep, {method: 'GET'})
+            .then(response => {
+                if(response.ok) {
+                    return response.json();
+                }
+                throw new Error('Failed to retrieve response object for game.');
+            })
             .then(response => {
                 let obj = response;
                 let details = this._buildDetails(obj);
                 let item = {
-                    title: obj.title,
+                    name: obj.name,
                     img: obj.image_url,
                     url: "/games/" + obj.game_id,
                     details: details
@@ -52,6 +56,9 @@ class Home extends Component {
                     topgames: arr,
                     loading: false
                  });
+            })
+            .catch(error => {
+                console.log(error);
             });
         }
     }
