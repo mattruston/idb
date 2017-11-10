@@ -8,11 +8,18 @@ import SortAndFilter from '../components/SortAndFilter';
 const endpoint = (page, filter, sort) =>
     `http://gamingdb.info/api/character?page=${page}&q={"filters":${filter},"order_by":${sort}}`
 
-const rangeFilters = { };
+const rangeFilters = {
+    "Rating": {
+        "low": "0",
+        "high": "100",
+        "min": "0",
+        "max": "100"
+    }
+ };
 
 const attrMap = {
     "Name": "name",
-    "Popularity": "character_id"
+    "Rating": "average_rating"
 };
 
 class CharactersPage extends Component {
@@ -82,7 +89,12 @@ class CharactersPage extends Component {
                 JSON.stringify(this.state.filter), 
                 JSON.stringify(this.state.sort)),
             { method: 'GET' })
-        .then(response => response.json())
+        .then(response => {
+            if(response.ok) {
+                return response.json();
+            }
+            throw new Error('Failed to retrieve response object for game.');
+        })
         .then(response => {
             this.setState({
                 pageLimit: response.total_pages
@@ -103,6 +115,9 @@ class CharactersPage extends Component {
             this.setState({
                 loading: false
             });
+        })
+        .catch(error => {
+            console.log(error);
         });
     }
 
@@ -154,8 +169,8 @@ class CharactersPage extends Component {
         let details = []
         if(obj.gender) 
             details.push({ title: "Gender:", content: obj.gender});
-        if(obj.species)
-            details.push({title: "Species:", content: obj.species});
+        if(obj.average_rating)
+            details.push({title: "Average Rating:", content: obj.average_rating + "/100"});
         if(obj.games)
             if(obj.games.length > 0)
                 details.push({title: "Game:", content: obj.games[0].name});

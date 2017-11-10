@@ -26,8 +26,7 @@ const rangeFilters = {
 const attrMap = {
     "Name": "name",
     "Release Date": "release_date",
-    "Rating": "average_rating",
-    "Popularity": "platform_id"
+    "Rating": "average_rating"
 };
                 
 class PlatformsPage extends Component {
@@ -54,7 +53,7 @@ class PlatformsPage extends Component {
                             sortOptions={Object.keys(attrMap)} current={this.state.selectedSort} 
                             changeSort={this.changeSort} rangeFilters={rangeFilters} 
                             changeRangeFilter={this.changeRangeFilter}/>
-                        <GridLayout items={this.state.platforms}/>
+                        <GridLayout items={this.state.platforms} aspect="contain"/>
                         <Pagination page={this.props.match.params.page} pagelimit={this.state.pageLimit} decPage={this.decPage} incPage={this.incPage}/>
                     </div>
                 }
@@ -97,7 +96,12 @@ class PlatformsPage extends Component {
                 JSON.stringify(this.state.filter), 
                 JSON.stringify(this.state.sort)),
             { method: 'GET' })
-        .then(response => response.json())
+        .then(response => {
+            if(response.ok) {
+                return response.json();
+            }
+            throw new Error('Failed to retrieve response object for game.');
+        })
         .then(response => {
             this.setState({
                 pageLimit: response.total_pages
@@ -118,6 +122,9 @@ class PlatformsPage extends Component {
             this.setState({
                 loading: false
             });
+        })
+        .catch(error => {
+            console.log(error);
         });
     }
 

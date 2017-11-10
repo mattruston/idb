@@ -33,14 +33,32 @@ class PlatformDetail extends Component {
         );
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.location !== prevProps.location) {
+            this.onRouteChanged();
+        }
+    }
+    
+    onRouteChanged() {
+        this.setState({ loading: true }, () => {
+            this._fetchData();
+        });
+    }
+
     _fetchData() {
         fetch("http://gamingdb.info/api/platform/" + this.props.match.params.id,{
             method: 'GET'
-        }).then(response => response.json())
+        }).then(response => {
+            if(response.ok) {
+                return response.json();
+            }
+            throw new Error('Failed to retrieve response object for game.');
+        })
         .then(response => {
-            let devs = this._linkbarFromArray(response.developers, "/developers/", "developer_id");
-            let characters = this._linkbarFromArray(response.characters, "/characters/", "character_id");
+            let devs = this._topModels(response.developers, "/developers/", "developer_id");
+            let characters = this._topModels(response.characters, "/characters/", "character_id");
             let gameItems = this._gameItemsFromArray(response.games);
+            let website = response.website ? [{link: response.website, text: response.website, external: true}] : [];
             this.setState({
                 name: response.name,
                 description: response.description ? response.description : "",
@@ -52,13 +70,15 @@ class PlatformDetail extends Component {
                     { title: "Release Date", content: response.release_date ? response.release_date : ""}
                 ],
                 linkbar: [
-                    { title: "Developers", links: devs },
-                    { title: "Characters", links: characters },
-                    { title: "Website", links: [{link: response.website, text: response.website, external: true}]}
+                    { title: "Top Developers", links: devs },
+                    { title: "Top Characters", links: characters },
+                    { title: "Website", links: website}
                 ],
                 games: gameItems
             });
             this.setState({ loading: false });
+        }).catch(error => {
+            console.log(error);
         });
     }
 
@@ -74,22 +94,9 @@ class PlatformDetail extends Component {
         return s.substring(0, s.length - 2);
     }
 
-    _linkbarFromArray(array, path, idKey) {
-        let result = [];
-        for (var i = 0; i < array.length; i++) {
-            result.push({
-            link: path + array[i][idKey],
-            text: array[i]["name"]
-            });
-        }
-        return result;
-    }
-
     _gameItemsFromArray(gameArray) {
         let result = [];
         gameArray.sort(function(a, b) {
-            let valB = b.rating ? b.rating : 0;
-            let valA = a.rating ? a.rating : 0;
             return b.rating - a.rating;
         });
         for (var i = 0; i < gameArray.length; i++) {
@@ -100,7 +107,7 @@ class PlatformDetail extends Component {
                 url: "/games/" + obj.game_id,
                 details: this._buildGameDetails(obj)
             });
-            if (i == 10)
+            if (i === 10)
                 break;
         }
         return result;
@@ -114,6 +121,23 @@ class PlatformDetail extends Component {
             details.push({title: "Rating:", content: obj.rating + "/100"});
 
         return details;
+    }
+
+    _topModels(array, path, idKey) {
+        let result = [];
+        array.sort(function(a, b) {
+           return b.average_rating - a.average_rating;
+        });
+        for (var i = 0; i < array.length; i++) {
+            let obj = array[i];
+            result.push({
+                text: obj.name,
+                link: path + obj[idKey]
+            });
+        if (i === 5)
+            break;
+        }   
+        return result; 
     }
 }
 
