@@ -57,6 +57,7 @@ class CharDetail extends Component {
         .then(response => {
             console.log(response);
             let gameItems = this._gameItemsFromArray(response.games);
+            let platforms = this._topModels(response.platforms, "/platforms/", "platform_id");
             this.setState({
                 name: response.name ? response.name : "",
                 description: response.description ? response.description : "",
@@ -65,6 +66,7 @@ class CharDetail extends Component {
                 ],
                 img: response.image_url ? response.image_url : "",
                 linkbar: [
+                    { title: "Top Platforms: ", links: platforms },
                 ],
                 games: gameItems
             });
@@ -124,6 +126,23 @@ class CharDetail extends Component {
             details.push({title: "Rating:", content: obj.rating + "/100"});
 
         return details;
+    }
+
+    _topModels(array, path, idKey) {
+        let result = [];
+        array.sort(function(a, b) {
+           return b.average_rating - a.average_rating;
+        });
+        for (var i = 0; i < array.length; i++) {
+            let obj = array[i];
+            result.push({
+                text: obj.name,
+                link: path + obj[idKey]
+            });
+        if (i === 5)
+            break;
+        }   
+        return result; 
     }
 }
 

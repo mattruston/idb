@@ -55,8 +55,8 @@ class PlatformDetail extends Component {
             throw new Error('Failed to retrieve response object for game.');
         })
         .then(response => {
-            let devs = this._linkbarFromArray(response.developers, "/developers/", "developer_id");
-            let characters = this._linkbarFromArray(response.characters, "/characters/", "character_id");
+            let devs = this._topModels(response.developers, "/developers/", "developer_id");
+            let characters = this._topModels(response.characters, "/characters/", "character_id");
             let gameItems = this._gameItemsFromArray(response.games);
             let website = response.website ? [{link: response.website, text: response.website, external: true}] : [];
             this.setState({
@@ -70,8 +70,8 @@ class PlatformDetail extends Component {
                     { title: "Release Date", content: response.release_date ? response.release_date : ""}
                 ],
                 linkbar: [
-                    { title: "Developers", links: devs },
-                    { title: "Characters", links: characters },
+                    { title: "Top Developers", links: devs },
+                    { title: "Top Characters", links: characters },
                     { title: "Website", links: website}
                 ],
                 games: gameItems
@@ -92,17 +92,6 @@ class PlatformDetail extends Component {
             s += ", ";
         }
         return s.substring(0, s.length - 2);
-    }
-
-    _linkbarFromArray(array, path, idKey) {
-        let result = [];
-        for (var i = 0; i < array.length; i++) {
-            result.push({
-            link: path + array[i][idKey],
-            text: array[i]["name"]
-            });
-        }
-        return result;
     }
 
     _gameItemsFromArray(gameArray) {
@@ -132,6 +121,23 @@ class PlatformDetail extends Component {
             details.push({title: "Rating:", content: obj.rating + "/100"});
 
         return details;
+    }
+
+    _topModels(array, path, idKey) {
+        let result = [];
+        array.sort(function(a, b) {
+           return b.average_rating - a.average_rating;
+        });
+        for (var i = 0; i < array.length; i++) {
+            let obj = array[i];
+            result.push({
+                text: obj.name,
+                link: path + obj[idKey]
+            });
+        if (i === 5)
+            break;
+        }   
+        return result; 
     }
 }
 

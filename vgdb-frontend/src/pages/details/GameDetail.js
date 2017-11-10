@@ -80,10 +80,9 @@ class GameDetail extends Component {
                 });
             });
             let genres = this._stringFromArray(response.genres);
-            let devs = this._linkbarFromArray(response.developers, "/developers/","developer_id");
-            let platforms = this._linkbarFromArray(response.platforms,"/platforms/", "platform_id");
-            let characters = this._linkbarFromArray(response.characters, "/characters/", "character_id");
-
+            let devs = this._topModels(response.developers, "/developers/", "developer_id");
+            let platforms = this._topModels(response.platforms, "/platforms/", "platform_id");
+            let characters = this._topModels(response.characters, "/characters/", "character_id");
             this.setState({
                 name: response.name ? response.name : "",
                 description: response.description ? response.description : "",
@@ -94,9 +93,9 @@ class GameDetail extends Component {
                 ],
                 img: response.image_url,
                 linkbar: [
-                    { title: "Platforms", links: platforms },
-                    { title: "Developers", links: devs },
-                    { title: "Characters", links: characters }
+                    { title: "Top Platforms", links: platforms },
+                    { title: "Top Developers", links: devs },
+                    { title: "Top Characters", links: characters }
                 ]
             });
             this.setState({
@@ -145,17 +144,6 @@ class GameDetail extends Component {
         return s.substring(0, s.length - 2);
     }
 
-    _linkbarFromArray(array, path, idKey) {
-        let result = [];
-        for (var i = 0; i < array.length; i++) {
-            result.push({
-                link: path + array[i][idKey],
-                text: array[i]["name"]
-            });
-        }
-        return result;
-    }
-
     _buildDetails(obj) {
         let details = []
         if(obj.release_date) 
@@ -166,6 +154,23 @@ class GameDetail extends Component {
             details.push({title: "Genre:", content:obj.genres[0].name});
 
         return details;
+    }
+
+    _topModels(array, path, idKey) {
+        let result = [];
+        array.sort(function(a, b) {
+           return b.average_rating - a.average_rating;
+        });
+        for (var i = 0; i < array.length; i++) {
+            let obj = array[i];
+            result.push({
+                text: obj.name,
+                link: path + obj[idKey]
+            });
+        if (i === 5)
+            break;
+        }   
+        return result; 
     }
 
 }

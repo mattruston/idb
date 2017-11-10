@@ -55,7 +55,7 @@ class DevDetail extends Component {
             throw new Error('Failed to retrieve response object for game.');
         })
         .then(response => {
-            let platforms = this._linkbarFromArray(response.platforms, "/platforms/", "platform_id");
+            let platforms = this._topModels(response.platforms, "/platforms/", "platform_id");
             let gameItems = this._gameItemsFromArray(response.games);
             let website = response.website ? [{link: response.website, text: response.website, external: true}] : [];
             this.setState({
@@ -66,7 +66,7 @@ class DevDetail extends Component {
                 ],
                 img: response.image_url,
                 linkbar: [
-                    { title: "Platforms", links: platforms },
+                    { title: "Top Platforms", links: platforms },
                     { title: "Website", links: website}
                 ],
                 games: gameItems 
@@ -87,17 +87,6 @@ class DevDetail extends Component {
             s += ", ";
         }
         return s.substring(0, s.length - 2);
-    }
-
-    _linkbarFromArray(array, path, idKey) {
-        let result = [];
-        for (var i = 0; i < array.length; i++) {
-            result.push({
-                link: path + array[i][idKey],
-                text: array[i]["name"]
-            });
-        }
-        return result;
     }
 
     _gameItemsFromArray(gameArray) {
@@ -127,6 +116,23 @@ class DevDetail extends Component {
             details.push({title: "Rating:", content: obj.rating + "/100"});
 
         return details;
+    }
+
+    _topModels(array, path, idKey) {
+        let result = [];
+        array.sort(function(a, b) {
+           return b.average_rating - a.average_rating;
+        });
+        for (var i = 0; i < array.length; i++) {
+            let obj = array[i];
+            result.push({
+                text: obj.name,
+                link: path + obj[idKey]
+            });
+        if (i === 5)
+            break;
+        }   
+        return result; 
     }
 }
 
