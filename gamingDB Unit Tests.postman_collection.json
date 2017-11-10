@@ -1,0 +1,587 @@
+{
+	"info": {
+		"name": "gamingDB Unit Tests",
+		"_postman_id": "d0077ad5-090d-6155-453f-92353681f7eb",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get game",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Checks that game id matches\", function() {",
+							"    pm.expect(pm.response.json().game_id).to.equal(19)",
+							"});",
+							"",
+							"pm.test(\"Checks that name matches\", function() {",
+							"    pm.expect(pm.response.json().name).to.equal(\"Star Wars: Battlefront II\")",
+							"});",
+							"",
+							"pm.test(\"Checks that release dat matches\", function() {",
+							"    pm.expect(pm.response.json().release_date).to.equal(\"2017-11-17\")",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://gamingdb.info/api/game/19",
+					"protocol": "http",
+					"host": [
+						"gamingdb",
+						"info"
+					],
+					"path": [
+						"api",
+						"game",
+						"19"
+					]
+				},
+				"description": "Gets a specific game and its data based on game id."
+			},
+			"response": []
+		},
+		{
+			"name": "Get developer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Checks that developer id matches\", function() {",
+							"    pm.expect(pm.response.json().developer_id).to.equal(32)",
+							"});",
+							"",
+							"pm.test(\"Checks that developer name matches\", function() {",
+							"    pm.expect(pm.response.json().name).to.equal(\"Telltale Games\")",
+							"});",
+							"",
+							"pm.test(\"Checks that developer website matches\", function() {",
+							"    pm.expect(pm.response.json().website).to.equal(\"https://www.telltalegames.com/\")",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://gamingdb.info/api/developer/32",
+					"protocol": "http",
+					"host": [
+						"gamingdb",
+						"info"
+					],
+					"path": [
+						"api",
+						"developer",
+						"32"
+					]
+				},
+				"description": "Get a developer and its information based on developer id."
+			},
+			"response": []
+		},
+		{
+			"name": "Get platform",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Checks that platform id matches\", function() {",
+							"    pm.expect(pm.response.json().platform_id).to.equal(16)",
+							"});",
+							"",
+							"pm.test(\"Checks that platform name matches\", function() {",
+							"    pm.expect(pm.response.json().name).to.equal(\"Nintendo DS\")",
+							"});",
+							"",
+							"pm.test(\"Checks that platform average rating matches\", function() {",
+							"    pm.expect(pm.response.json().average_rating).to.equal(82)",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://gamingdb.info/api/platform/16",
+					"protocol": "http",
+					"host": [
+						"gamingdb",
+						"info"
+					],
+					"path": [
+						"api",
+						"platform",
+						"16"
+					]
+				},
+				"description": "Get a platform and its data based on platform id."
+			},
+			"response": []
+		},
+		{
+			"name": "Get character",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Checks that character id matches\", function() {",
+							"    pm.expect(pm.response.json().character_id).to.equal(128)",
+							"});",
+							"",
+							"pm.test(\"Checks that character name matches\", function() {",
+							"    pm.expect(pm.response.json().name).to.equal(\"Tyler Breeze\")",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://gamingdb.info/api/character/128",
+					"protocol": "http",
+					"host": [
+						"gamingdb",
+						"info"
+					],
+					"path": [
+						"api",
+						"character",
+						"128"
+					]
+				},
+				"description": "Get a character and its data based on character id."
+			},
+			"response": []
+		},
+		{
+			"name": "Get games alphabetical filtering",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Checks that length of results matches\", function() {",
+							"    pm.expect(pm.response.json().num_results).to.equal(967)",
+							"});",
+							"",
+							"pm.test(\"Checks first game is first alphabetically\", function() {",
+							"    pm.expect(pm.response.json().objects[0].name).to.equal(\"1942\")",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://gamingdb.info/api/game?q={\"order_by\":[{\"field\":\"name\",\"direction\":\"asc\"}]}",
+					"protocol": "http",
+					"host": [
+						"gamingdb",
+						"info"
+					],
+					"path": [
+						"api",
+						"game"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{\"order_by\":[{\"field\":\"name\",\"direction\":\"asc\"}]}",
+							"equals": true
+						}
+					]
+				},
+				"description": "Get game results sorted alphabetically."
+			},
+			"response": []
+		},
+		{
+			"name": "Get platforms average rating filtering",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Checks that platform id matches\", function() {",
+							"    pm.expect(pm.response.json().objects[0].platform_id).to.equal(62)",
+							"});",
+							"",
+							"pm.test(\"Checks that platform name matches\", function() {",
+							"    pm.expect(pm.response.json().objects[0].name).to.equal(\"Web browser\")",
+							"});",
+							"",
+							"pm.test(\"Checks that platform average rating matches\", function() {",
+							"    pm.expect(pm.response.json().objects[0].average_rating).to.equal(68)",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://gamingdb.info/api/platform?&q={\"order_by\":[{\"field\":\"average_rating\",\"direction\":\"asc\"}]}",
+					"protocol": "http",
+					"host": [
+						"gamingdb",
+						"info"
+					],
+					"path": [
+						"api",
+						"platform"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{\"order_by\":[{\"field\":\"average_rating\",\"direction\":\"asc\"}]}",
+							"equals": true
+						},
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				},
+				"description": "Get platform results sorted by their average rating."
+			},
+			"response": []
+		},
+		{
+			"name": "Get developers name filtering",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Checks that developer id matches\", function() {",
+							"    pm.expect(pm.response.json().objects[0].developer_id).to.equal(301)",
+							"});",
+							"",
+							"pm.test(\"Checks that developer name matches\", function() {",
+							"    pm.expect(pm.response.json().objects[0].name).to.equal(\"07th Expansion\")",
+							"});",
+							"",
+							"pm.test(\"Checks that developer average rating matches\", function() {",
+							"    pm.expect(pm.response.json().objects[0].average_rating).to.equal(89)",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://gamingdb.info/api/developer?&q={\"order_by\":[{\"field\":\"name\",\"direction\":\"asc\"}]}",
+					"protocol": "http",
+					"host": [
+						"gamingdb",
+						"info"
+					],
+					"path": [
+						"api",
+						"developer"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{\"order_by\":[{\"field\":\"name\",\"direction\":\"asc\"}]}",
+							"equals": true
+						},
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				},
+				"description": "Get developer results sorted based on their names."
+			},
+			"response": []
+		},
+		{
+			"name": "Get characters name filtering",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Checks that character id matches\", function() {",
+							"    pm.expect(pm.response.json().objects[0].character_id).to.equal(3297)",
+							"});",
+							"",
+							"pm.test(\"Checks that character name matches\", function() {",
+							"    pm.expect(pm.response.json().objects[0].name).to.equal(\"8-Ball\")",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://gamingdb.info/api/character?&q={\"order_by\":[{\"field\":\"name\",\"direction\":\"asc\"}]}",
+					"protocol": "http",
+					"host": [
+						"gamingdb",
+						"info"
+					],
+					"path": [
+						"api",
+						"character"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{\"order_by\":[{\"field\":\"name\",\"direction\":\"asc\"}]}",
+							"equals": true
+						},
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				},
+				"description": "Get character results sorted based on name."
+			},
+			"response": []
+		},
+		{
+			"name": "Search game",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Checks that number of results is greater than zero\", function() {",
+							"    pm.expect(pm.response.json().num_results).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Checks that certain game is in results\", function() {",
+							"    names = []",
+							"    for (let i of pm.response.json().objects) {",
+							"        names.push(i.name)",
+							"    }",
+							"    pm.expect(names).includes(\"Cuphead\")",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://gamingdb.info/api/game?q={\"filters\":[{\"name\":\"name\",\"op\":\"ilike\",\"val\":\"%cuphead%\"}]}",
+					"protocol": "http",
+					"host": [
+						"gamingdb",
+						"info"
+					],
+					"path": [
+						"api",
+						"game"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{\"filters\":[{\"name\":\"name\",\"op\":\"ilike\",\"val\":\"%cuphead%\"}]}",
+							"equals": true
+						}
+					]
+				},
+				"description": "Search the game titles by similarity"
+			},
+			"response": []
+		},
+		{
+			"name": "Search platform",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Checks that number of results is greater than zero\", function() {",
+							"    pm.expect(pm.response.json().num_results).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Checks that certain platform is in results\", function() {",
+							"    names = []",
+							"    for (let i of pm.response.json().objects) {",
+							"        names.push(i.name)",
+							"    }",
+							"    pm.expect(names).includes(\"Xbox\")",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://gamingdb.info/api/platform?q={\"filters\":[{\"name\":\"name\",\"op\":\"ilike\",\"val\":\"%box%\"}]}",
+					"protocol": "http",
+					"host": [
+						"gamingdb",
+						"info"
+					],
+					"path": [
+						"api",
+						"platform"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{\"filters\":[{\"name\":\"name\",\"op\":\"ilike\",\"val\":\"%box%\"}]}",
+							"equals": true
+						}
+					]
+				},
+				"description": "Search platform data for a similar name"
+			},
+			"response": []
+		},
+		{
+			"name": "Search developer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Checks that number of results is greater than zero\", function() {",
+							"    pm.expect(pm.response.json().num_results).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Checks that certain developer is in results\", function() {",
+							"    names = []",
+							"    for (let i of pm.response.json().objects) {",
+							"        names.push(i.name)",
+							"    }",
+							"    pm.expect(names).includes(\"2K Games\")",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://gamingdb.info/api/developer?q={\"filters\":[{\"name\":\"name\",\"op\":\"ilike\",\"val\":\"%2k%\"}]}",
+					"protocol": "http",
+					"host": [
+						"gamingdb",
+						"info"
+					],
+					"path": [
+						"api",
+						"developer"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{\"filters\":[{\"name\":\"name\",\"op\":\"ilike\",\"val\":\"%2k%\"}]}",
+							"equals": true
+						}
+					]
+				},
+				"description": "Search developer data by similar name keyword"
+			},
+			"response": []
+		},
+		{
+			"name": "Search character",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Checks that number of results is greater than zero\", function() {",
+							"    pm.expect(pm.response.json().num_results).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Checks that certain character is in results\", function() {",
+							"    names = []",
+							"    for (let i of pm.response.json().objects) {",
+							"        names.push(i.name)",
+							"    }",
+							"    pm.expect(names).includes(\"Mario\")",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://gamingdb.info/api/character?q={\"filters\":[{\"name\":\"name\",\"op\":\"ilike\",\"val\":\"%mario%\"}]}",
+					"protocol": "http",
+					"host": [
+						"gamingdb",
+						"info"
+					],
+					"path": [
+						"api",
+						"character"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{\"filters\":[{\"name\":\"name\",\"op\":\"ilike\",\"val\":\"%mario%\"}]}",
+							"equals": true
+						}
+					]
+				},
+				"description": "Searches character data for a similar name keyword"
+			},
+			"response": []
+		}
+	]
+}
