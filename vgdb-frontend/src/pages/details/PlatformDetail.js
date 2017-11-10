@@ -48,11 +48,17 @@ class PlatformDetail extends Component {
     _fetchData() {
         fetch("http://gamingdb.info/api/platform/" + this.props.match.params.id,{
             method: 'GET'
-        }).then(response => response.json())
+        }).then(response => {
+            if(response.ok) {
+                return response.json();
+            }
+            throw new Error('Failed to retrieve response object for game.');
+        })
         .then(response => {
             let devs = this._linkbarFromArray(response.developers, "/developers/", "developer_id");
             let characters = this._linkbarFromArray(response.characters, "/characters/", "character_id");
             let gameItems = this._gameItemsFromArray(response.games);
+            let website = response.website ? [{link: response.website, text: response.website, external: true}] : [];
             this.setState({
                 name: response.name,
                 description: response.description ? response.description : "",
@@ -66,11 +72,13 @@ class PlatformDetail extends Component {
                 linkbar: [
                     { title: "Developers", links: devs },
                     { title: "Characters", links: characters },
-                    { title: "Website", links: [{link: response.website, text: response.website, external: true}]}
+                    { title: "Website", links: website}
                 ],
                 games: gameItems
             });
             this.setState({ loading: false });
+        }).catch(error => {
+            console.log(error);
         });
     }
 
@@ -100,8 +108,6 @@ class PlatformDetail extends Component {
     _gameItemsFromArray(gameArray) {
         let result = [];
         gameArray.sort(function(a, b) {
-            let valB = b.rating ? b.rating : 0;
-            let valA = a.rating ? a.rating : 0;
             return b.rating - a.rating;
         });
         for (var i = 0; i < gameArray.length; i++) {
@@ -112,7 +118,7 @@ class PlatformDetail extends Component {
                 url: "/games/" + obj.game_id,
                 details: this._buildGameDetails(obj)
             });
-            if (i == 10)
+            if (i === 10)
                 break;
         }
         return result;

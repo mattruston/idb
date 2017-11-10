@@ -8,11 +8,19 @@ import SortAndFilter from '../components/SortAndFilter';
 const endpoint = (page, filter, sort) =>
     `http://gamingdb.info/api/character?page=${page}&q={"filters":${filter},"order_by":${sort}}`
 
-const rangeFilters = { };
+const rangeFilters = {
+    "Rating": {
+        "low": "0",
+        "high": "100",
+        "min": "0",
+        "max": "100"
+    }
+ };
 
 const attrMap = {
     "Name": "name",
-    "Popularity": "character_id"
+    "Popularity": "character_id",
+    "Rating": "average_rating"
 };
 
 class CharactersPage extends Component {

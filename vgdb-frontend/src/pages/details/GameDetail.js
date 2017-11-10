@@ -52,7 +52,12 @@ class GameDetail extends Component {
     _fetchData() {
         fetch("http://gamingdb.info/api/game/" + this.props.match.params.id,{
             method: 'GET'
-        }).then(response => response.json())
+        }).then(response => {
+            if(response.ok) {
+                return response.json();
+            }
+            throw new Error('Failed to retrieve response object for game.');
+        })
         .then(response => {
             Promise.all(
                 this._fetchRelatedGames(response.related_game_ids)
@@ -60,13 +65,15 @@ class GameDetail extends Component {
                 let relatedGamesArray = [];
                 for (let i = 0; i < results.length; i++) {
                     let response = results[i];
-                    let item = {
-                        name: response.name,
-                        img: response.thumb_url,
-                        url: "/games/" + response.game_id,
-                        details: this._buildDetails(response)
-                    };
-                    relatedGamesArray.push(item);
+                    if (response != null) {
+                        let item = {
+                            name: response.name,
+                            img: response.thumb_url,
+                            url: "/games/" + response.game_id,
+                            details: this._buildDetails(response)
+                        };
+                        relatedGamesArray.push(item);
+                    }
                 }
                 this.setState({
                     relatedGames: relatedGamesArray
@@ -95,6 +102,8 @@ class GameDetail extends Component {
             this.setState({
                 loading: false
             })
+        }).catch(error => {
+            console.log(error);
         });
     };
 
@@ -113,7 +122,15 @@ class GameDetail extends Component {
     _fetchGame(id) {
         return fetch("http://gamingdb.info/api/game/" + id,{
             method: 'GET'
-        }).then(response => response.json());
+        }).then(response => {
+            if(response.ok) {
+                return response.json();
+            }
+            throw new Error('Failed to retrieve response object for game.');
+        }).catch(error => {
+            console.log(error);
+            return null;
+        });
     }
 
     _stringFromArray(a) {

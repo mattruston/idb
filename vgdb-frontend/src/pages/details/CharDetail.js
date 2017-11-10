@@ -48,7 +48,12 @@ class CharDetail extends Component {
     _fetchData() {
         fetch("http://gamingdb.info/api/character/" + this.props.match.params.id,{
             method: 'GET'
-        }).then(response => response.json())
+        }).then(response => {
+            if(response.ok) {
+                return response.json();
+            }
+            throw new Error('Failed to retrieve response object for game.');
+        })
         .then(response => {
             console.log(response);
             let gameItems = this._gameItemsFromArray(response.games);
@@ -65,6 +70,8 @@ class CharDetail extends Component {
                 games: gameItems
             });
             this.setState({ loading: false });
+        }).catch(error => {
+            console.log(error);
         });
     }
 
@@ -94,8 +101,6 @@ class CharDetail extends Component {
     _gameItemsFromArray(gameArray) {
         let result = [];
          gameArray.sort(function(a, b) {
-            let valB = b.rating ? b.rating : 0;
-            let valA = a.rating ? a.rating : 0;
             return b.rating - a.rating;
         });
         for (var i = 0; i < gameArray.length; i++) {
@@ -106,7 +111,7 @@ class CharDetail extends Component {
                 url: "/games/" + obj.game_id,
                 details: this._buildGameDetails(obj)
             });
-            if (i == 10)
+            if (i === 10)
                 break;
         }
         return result;

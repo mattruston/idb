@@ -15,12 +15,12 @@ class DetailsPage extends Component {
                     <div className="sidebar inline-block">
                         <img className="sidebar-img" src={ this.props.img === null ? placeholder : this.props.img }/>
                         {
-                            this.props.sidebar.map(item => 
+                            this.props.sidebar.filter(item => item.content).map(item => 
                                 <SideBarItem attribute={item.title} info={item.content}/>
                             )
                         }
                         {
-                            this.props.linkbar.map(item => 
+                            this.props.linkbar.filter(item => item.links.length !== 0).map(item => 
                                 <LinkBarItem attribute={item.title} links={item.links}/>
                             )
                         }
@@ -30,7 +30,7 @@ class DetailsPage extends Component {
                         <h1 className="detail-title">{this.props.name}</h1>
                         <hr></hr>
                         {
-                            this.props.mainbar.map(item => 
+                            this.props.mainbar.filter(item => item.content).map(item => 
                                 <MainBarItem attribute={item.title} info={item.content}/>
                             )
                         }
