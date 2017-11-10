@@ -19,7 +19,6 @@ const rangeFilters = {
 
 const attrMap = {
     "Name": "name",
-    "Popularity": "character_id",
     "Rating": "average_rating"
 };
 

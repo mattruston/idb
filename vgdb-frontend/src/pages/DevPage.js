@@ -19,8 +19,7 @@ const rangeFilters = {
 
 const attrMap = {
     "Name": "name",
-    "Rating": "average_rating",
-    "Popularity": "developer_id"
+    "Rating": "average_rating"
 };
 
 class DevPage extends Component {
