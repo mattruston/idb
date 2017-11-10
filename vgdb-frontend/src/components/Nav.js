@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Nav.css';
 import NavItem from './NavItem';
+import SearchBar from './SearchBar';
 
 /* Nav component for a standard style navbar */
 class Nav extends Component {
@@ -11,6 +12,7 @@ class Nav extends Component {
                     <div className="nav-start nav-section">
                         <NavItem text="gamingdb" link="/" bold={true}/>
                     </div>
+                    <SearchBar/>
                     <div className="nav-end nav-section">
                         <div className="nav-menu">
                             <NavItem text="Games" link="/games"/>

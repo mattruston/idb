@@ -13,6 +13,7 @@ import GameDetail from './pages/details/GameDetail';
 import PlatformDetail from './pages/details/PlatformDetail';
 import DevDetail from './pages/details/DevDetail';
 import CharDetail from './pages/details/CharDetail';
+import Search from './pages/Search';
 
 class App extends Component {
     render() {
@@ -30,6 +31,7 @@ class App extends Component {
                     <Route exact path='/developers/:id'	component={DevDetail}/>
                     <Route exact path='/platforms/:id' component={PlatformDetail}/>
                     <Route exact path='/characters/:id'	component={CharDetail}/>
+                    <Route exact path='/search/:query' component={Search}/>
                     <Redirect from="/games" to="/games/page/1"/>
                     <Redirect from="/developers" to="/developers/page/1"/>
                     <Redirect from="/platforms" to="/platforms/page/1"/>
