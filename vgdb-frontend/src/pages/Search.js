@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import SearchItem from '../components/SearchItem';
 import Title from '../components/Title';
 import Loader from '../components/Loader';
+import SearchTabs from '../components/SearchTabs';
 import './styles/search.css';
 
 const endpoint = (model, filter) => {
@@ -40,7 +41,7 @@ const searchAttrs = {
     "game": {
         "strings": [
             "description",
-            "title"
+            "name"
         ],
         "nums": [
             "rating"
@@ -74,15 +75,34 @@ const searchAttrs = {
         "strings": [
             "gender",
             "name",
-            "species"
         ]
     }
 };
+
+const tabIndex = {
+    "game": {
+        "endpoint": "/games/",
+        "id": "game_id"
+    },
+    "developer": {
+        "endpoint": "/developers/",
+        "id": "developer_id"
+    },
+    "platform": {
+        "endpoint": "/platforms/",
+        "id": "platform_id"
+    },
+    "character": {
+        "endpoint": "/characters/",
+        "id": "character_id"
+    }
+}
 
 class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            currentTab: "game",
             game: {
                 pageLimit: 0,
                 results: [],
@@ -104,6 +124,17 @@ class Search extends Component {
                 loading: true
             }
         }
+        this.changeTab = (tabName) => {
+			return (event) => {
+				event.stopPropagation();
+				this.setState({
+                    currentTab: tabName
+                }, () => {
+                    console.log(this.state.currentTab);
+                });
+				return false;
+			};
+		};
     }
 
     componentDidMount() {
@@ -125,25 +156,41 @@ class Search extends Component {
                 results: response.objects,
                 loading: false
             };
-            this.setState( resultObj );
+            
+            this.setState( resultObj, () => {
+                console.log(modelType + " " + this.state[modelType].loading);
+            } );
         });
-
     }
 
     render() {
+
         return (
             <div>
-                {this.state.game.loading && <Loader/>}
-                {!this.state.game.loading && 
-                    <div className="container main-page">
-                        <div className="search-query">Search Query: <strong>{this.props.match.params.query}</strong></div>
-                        { this.state.game.results.map( (obj) => {
-                            return <SearchItem obj={obj} query={this.props.match.params.query} link={"/games/" + obj.game_id}/>
+                <div className="container main-page">
+                    <div className="search-query">Search Query: <strong>{this.props.match.params.query}</strong></div>
+                    <SearchTabs tabs={["game", "developer", "platform", "character"]} changeTab={this.changeTab}/>
+                    { this.visibleTab() }
+                </div>
+            </div>
+        );
+    }
+
+    visibleTab = () => {
+        let stateObj = this.state[this.state.currentTab];
+        return (
+            <div> 
+                {stateObj.loading && <Loader/>}
+                {!stateObj.loading &&
+                    <div>
+                        { stateObj.results.map( (obj) => {
+                            return <SearchItem obj={obj} query={this.props.match.params.query} 
+                                link={tabIndex[this.state.currentTab].endpoint + obj[tabIndex[this.state.currentTab].id]}/>
                         })}
                     </div>
                 }
             </div>
-        );
+        )
     }
 
     _buildFilters(query) {
@@ -155,7 +202,6 @@ class Search extends Component {
         };
         for (var i = 0; i < query.length; i++) {
             let currString = query[i];
-            //console.log(currString);
             Object.keys(searchAttrs).forEach(function(model) {
                 Object.keys(searchAttrs[model]).forEach(function(type) {
                     let currFilterArray = filters[model];
@@ -172,7 +218,6 @@ class Search extends Component {
                 })
             });
         }
-        //console.log(filters);
 
         let models = Object.keys(filters);
         for (var i = 0; i < models.length; i++) {

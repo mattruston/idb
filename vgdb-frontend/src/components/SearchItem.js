@@ -50,7 +50,6 @@ class SearchItem extends Component {
                     }
                     index = parseInt(i) + 1;
                     for(index; index < desc.length && index < (parseInt(i) + 5); index++) {
-                        console.log(desc[index]);
                         surroundBack.push(desc[index]);
                     }
                     context.push(
