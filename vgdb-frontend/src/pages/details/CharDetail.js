@@ -48,23 +48,31 @@ class CharDetail extends Component {
     _fetchData() {
         fetch("http://gamingdb.info/api/character/" + this.props.match.params.id,{
             method: 'GET'
-        }).then(response => response.json())
+        }).then(response => {
+            if(response.ok) {
+                return response.json();
+            }
+            throw new Error('Failed to retrieve response object for game.');
+        })
         .then(response => {
             console.log(response);
             let gameItems = this._gameItemsFromArray(response.games);
+            let platforms = this._topModels(response.platforms, "/platforms/", "platform_id");
             this.setState({
                 name: response.name ? response.name : "",
                 description: response.description ? response.description : "",
                 mainbar: [
-                    { title: "Gender", content: response.gender ? response.gender : "" },
-                    { title: "Race", content: response.race ? response.race: "" }
+                    { title: "Gender", content: response.gender ? response.gender : "" }
                 ],
                 img: response.image_url ? response.image_url : "",
                 linkbar: [
+                    { title: "Top Platforms: ", links: platforms },
                 ],
                 games: gameItems
             });
             this.setState({ loading: false });
+        }).catch(error => {
+            console.log(error);
         });
     }
 
@@ -94,8 +102,6 @@ class CharDetail extends Component {
     _gameItemsFromArray(gameArray) {
         let result = [];
          gameArray.sort(function(a, b) {
-            let valB = b.rating ? b.rating : 0;
-            let valA = a.rating ? a.rating : 0;
             return b.rating - a.rating;
         });
         for (var i = 0; i < gameArray.length; i++) {
@@ -106,7 +112,7 @@ class CharDetail extends Component {
                 url: "/games/" + obj.game_id,
                 details: this._buildGameDetails(obj)
             });
-            if (i == 10)
+            if (i === 10)
                 break;
         }
         return result;
@@ -120,6 +126,23 @@ class CharDetail extends Component {
             details.push({title: "Rating:", content: obj.rating + "/100"});
 
         return details;
+    }
+
+    _topModels(array, path, idKey) {
+        let result = [];
+        array.sort(function(a, b) {
+           return b.average_rating - a.average_rating;
+        });
+        for (var i = 0; i < array.length; i++) {
+            let obj = array[i];
+            result.push({
+                text: obj.name,
+                link: path + obj[idKey]
+            });
+        if (i === 5)
+            break;
+        }   
+        return result; 
     }
 }
 

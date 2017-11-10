@@ -26,8 +26,7 @@ const rangeFilters = {
 const attrMap = {
     "Name": "name",
     "Release Date": "release_date",
-    "Rating": "average_rating",
-    "Popularity": "platform_id"
+    "Rating": "average_rating"
 };
                 
 class PlatformsPage extends Component {
