@@ -18,6 +18,10 @@
     cursor: pointer;
     text-align: center;
 }
+
+.dropbtn:hover {
+    background-color: #24b79e;
+}
 .dropdown {
     position: relative;
     display: inline-block;
@@ -67,4 +71,12 @@
     padding: .25em .5em;
     vertical-align: top;
     margin-left: .5em;
+}
+
+.filterbtn:hover {
+     background-color: #24b79e;
+}
+.filterbtn:disabled,
+.filterbtn[disabled] {
+    background-color: #aaa;
 }
