@@ -4,6 +4,7 @@ import Title from '../components/Title';
 import Loader from '../components/Loader';
 import Pagination from '../components/Pagination';
 import SortAndFilter from '../components/SortAndFilter';
+import { request, buildDetails, buildFilter } from '../components/Util';
 
 const endpoint = (page, filter, sort) =>
                     `http://gamingdb.info/api/game?page=${page}&q={"filters":${filter},"order_by":${sort}}`
@@ -29,6 +30,12 @@ const attrMap = {
     "Release Date": "release_date",
     "Popularity": "game_id"
 };
+
+const detailMap = {
+    "release_date": "Released:",
+    "rating": "Rating:",
+    "genres": "Genre:"
+}
 
 class GamesPage extends Component {
     constructor(props) {
@@ -67,41 +74,34 @@ class GamesPage extends Component {
     }
 
     fetchData() {
-        console.log("fetching data...");
-        fetch(
-            endpoint(this.props.match.params.page, 
-                JSON.stringify(this.state.filter), 
-                JSON.stringify(this.state.sort)),
-            { method: 'GET' })
+        request(endpoint(this.props.match.params.page, 
+                    JSON.stringify(this.state.filter), 
+                        JSON.stringify(this.state.sort)))
         .then(response => {
-            if(response.ok) {
-                return response.json();
-            }
-            throw new Error('Failed to retrieve response object for game.');
-        })
-        .then(response => {
-            this.setState({
-                pageLimit: response.total_pages
-            });
-            for (var i = 0; i < response.objects.length; i++) {
-                let obj = response.objects[i];
-                let details = this._buildDetails(obj);
-                let item = {
-                    name: obj.name,
-                    img: obj.thumb_url,
-                    url: "/games/" + obj.game_id,
-                    details: details
+            if (response) {
+                let gamesArray = [];
+                for (var i = 0; i < response.objects.length; i++) {
+                    let obj = response.objects[i];
+                    let details = buildDetails(obj, detailMap);
+                    let item = {
+                        name: obj.name,
+                        img: obj.thumb_url,
+                        url: "/games/" + obj.game_id,
+                        details: details
+                    }
+                    gamesArray.push(item);
                 }
-                var gamesArray = this.state.games.slice();
-                gamesArray.push(item);
-                this.setState({ games: gamesArray });
+                this.setState({
+                    games: gamesArray,
+                    loading: false,
+                    pageLimit: response.total_pages
+                });
+            } else {
+                this.setState({
+                    loading: false,
+                    error: true
+                });
             }
-            this.setState({
-                loading: false
-            });
-        })
-        .catch(error => {
-            console.log(error);
         });
     };
     
@@ -149,43 +149,13 @@ class GamesPage extends Component {
         rangeFilters[attr].low = low;
         rangeFilters[attr].high = high;
         this.setState({
-            filter: this._buildFilter(),
+            filter: buildFilter(rangeFilters, attrMap),
             games: [],
             loading: true
         }, () => { 
             this.props.history.push('/games/page/1'); 
         });
     };
-
-    _buildFilter() {
-        let result = [];
-        Object.keys(rangeFilters).forEach(function(key) {
-            let filter = rangeFilters[key];
-            result.push({
-                "name": attrMap[key],
-                "op": "ge",
-                "val": filter.low
-            });
-            result.push({
-                "name": attrMap[key],
-                "op": "le",
-                "val": filter.high
-            })
-        });
-        return result;
-    }
-
-    _buildDetails(obj) {
-        let details = []
-        if(obj.release_date) 
-            details.push({ title: "Released:", content:obj.release_date});
-        if(obj.rating) 
-            details.push({title: "Rating:", content: obj.rating + "/100"});
-        if(obj.genres.length > 0)
-            details.push({title: "Genre:", content:obj.genres[0].name});
-
-        return details;
-    }
 }
 
 export default GamesPage;

@@ -4,12 +4,13 @@ import Title from '../components/Title';
 import Loader from '../components/Loader';
 import Pagination from '../components/Pagination';
 import SortAndFilter from '../components/SortAndFilter';
+import { request, buildDetails, buildFilter } from '../components/Util'; 
 
 const endpoint = (page, filter, sort) =>
     `http://gamingdb.info/api/platform?page=${page}&q={"filters":${filter},"order_by":${sort}}`
 
 const rangeFilters = {
-    "Rating": {
+    "Average Rating": {
         "low": "0",
         "high": "100",
         "min": "0",
@@ -26,8 +27,14 @@ const rangeFilters = {
 const attrMap = {
     "Name": "name",
     "Release Date": "release_date",
-    "Rating": "average_rating"
+    "Average Rating": "average_rating"
 };
+
+const detailMap = {
+    "release_date": "Released:",
+    "average_rating": "Average Rating:",
+    "games": "Top Game:"
+}
                 
 class PlatformsPage extends Component {
     constructor(props) {
@@ -91,42 +98,36 @@ class PlatformsPage extends Component {
     }
 
     fetchData() {
-        fetch(
-            endpoint(this.props.match.params.page, 
-                JSON.stringify(this.state.filter), 
-                JSON.stringify(this.state.sort)),
-            { method: 'GET' })
+        request(endpoint(this.props.match.params.page, 
+                    JSON.stringify(this.state.filter), 
+                        JSON.stringify(this.state.sort)))
         .then(response => {
-            if(response.ok) {
-                return response.json();
-            }
-            throw new Error('Failed to retrieve response object for game.');
-        })
-        .then(response => {
-            this.setState({
-                pageLimit: response.total_pages
-            });
-            for (var i = 0; i < response.objects.length; i++) {
-                let obj = response.objects[i];
-                let details = this._buildDetails(obj);
-                let item = {
-                    name: obj.name,
-                    img: obj.thumb_url,
-                    url: "/platforms/" + obj.platform_id,
-                    details: details
+            if (response) {
+                let platArray = [];
+                for (var i = 0; i < response.objects.length; i++) {
+                    let obj = response.objects[i];
+                    let details = buildDetails(obj, detailMap);
+                    let item = {
+                        name: obj.name,
+                        img: obj.thumb_url,
+                        url: "/platforms/" + obj.platform_id,
+                        details: details
+                    }
+                    platArray.push(item);
                 }
-                var platforms = this.state.platforms.slice();
-                platforms.push(item);
-                this.setState({ platforms: platforms });
+                this.setState({
+                    platforms: platArray,
+                    loading: false,
+                    pageLimit: response.total_pages
+                });
+            } else {
+                this.setState({
+                    loading: false,
+                    error: true
+                })
             }
-            this.setState({
-                loading: false
-            });
-        })
-        .catch(error => {
-            console.log(error);
         });
-    }
+    };
 
     changeSort = (attr, reverse) => {
         this.setState({
@@ -146,43 +147,12 @@ class PlatformsPage extends Component {
         rangeFilters[attr].low = low;
         rangeFilters[attr].high = high;
         this.setState({
-            filter: this._buildFilter(),
+            filter: buildFilter(rangeFilters, attrMap),
             platforms: [],
             loading: true
         }, () => { 
             this.props.history.push('/platforms/page/1'); 
         });
-    }
-
-    _buildFilter() {
-        let result = [];
-        Object.keys(rangeFilters).forEach(function(key) {
-            let filter = rangeFilters[key];
-            result.push({
-                "name": attrMap[key],
-                "op": "ge",
-                "val": filter.low
-            });
-            result.push({
-                "name": attrMap[key],
-                "op": "le",
-                "val": filter.high
-            })
-        });
-        return result;
-    }
-
-    _buildDetails(obj) {
-        let details = []
-        if(obj.release_date) 
-            details.push({ title: "Released:", content: obj.release_date});
-        if(obj.average_rating)
-            details.push({title: "Average Rating:", content: obj.average_rating + "/100"});
-        if(obj.games)
-            if(obj.games.length > 0)
-                details.push({title: "Game:", content: obj.games[0].name});
-
-        return details;
     }
 }
 
