@@ -60,3 +60,39 @@ export function buildFilter(rangeFilters, attrMap) {
         });
         return result;
 }
+
+export function topModels(array, path, idKey) {
+    let result = [];
+    array.sort(function(a, b) {
+        return b.average_rating - a.average_rating;
+    });
+    for (var i = 0; i < array.length; i++) {
+        let obj = array[i];
+        result.push({
+            text: obj.name,
+            link: path + obj[idKey]
+        });
+        if (i === 4)
+            break;
+    }   
+    return result; 
+}
+
+export function gameItemsFromArray(gameArray, gameDetailMap) {
+        let result = [];
+         gameArray.sort(function(a, b) {
+            return b.rating - a.rating;
+        });
+        for (var i = 0; i < gameArray.length; i++) {
+            let obj = gameArray[i];
+            result.push({
+                name: obj.name,
+                img: obj.thumb_url,
+                url: "/games/" + obj.game_id,
+                details: buildDetails(obj, gameDetailMap)
+            });
+            if (i === 9)
+                break;
+        }
+        return result;
+    }
