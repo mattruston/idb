@@ -4,6 +4,7 @@ import Title from '../components/Title';
 import Loader from '../components/Loader';
 import Pagination from '../components/Pagination';
 import SortAndFilter from '../components/SortAndFilter';
+import HttpHandler from '../components/http/HttpHandler';
 
 const endpoint = (page, filter, sort) =>
                     `http://gamingdb.info/api/game?page=${page}&q={"filters":${filter},"order_by":${sort}}`
@@ -44,15 +45,22 @@ class GamesPage extends Component {
     };
 
     componentDidMount() {
-        this.fetchData();
+        //this.fetchData();
     };
 
     render() {
         return (
             <div>
+                <HttpHandler 
+                    endpoint={endpoint(this.props.match.params.page, 
+                        JSON.stringify(this.state.filter), 
+                        JSON.stringify(this.state.sort))} 
+                    callback={this.callback}
+                    onRouteChanged={this.onRouteChanged}/>
                 {this.state.loading && <Loader/>}
                 {!this.state.loading && 
                     <div className="container main-page">
+                        
                         <Title title="Games"/>
                         <SortAndFilter 
                             sortOptions={Object.keys(attrMap)} current={this.state.selectedSort} 
@@ -80,39 +88,43 @@ class GamesPage extends Component {
             throw new Error('Failed to retrieve response object for game.');
         })
         .then(response => {
-            this.setState({
-                pageLimit: response.total_pages
-            });
-            for (var i = 0; i < response.objects.length; i++) {
-                let obj = response.objects[i];
-                let details = this._buildDetails(obj);
-                let item = {
-                    name: obj.name,
-                    img: obj.thumb_url,
-                    url: "/games/" + obj.game_id,
-                    details: details
-                }
-                var gamesArray = this.state.games.slice();
-                gamesArray.push(item);
-                this.setState({ games: gamesArray });
-            }
-            this.setState({
-                loading: false
-            });
+            
         })
         .catch(error => {
             console.log(error);
         });
     };
     
-    componentDidUpdate(prevProps) {
-        if (this.props.location !== prevProps.location) {
-            this.onRouteChanged();
-        }
-    }
+    // componentDidUpdate(prevProps) {
+    //     if (this.props.location !== prevProps.location) {
+    //         this.onRouteChanged();
+    //     }
+    // }
     
     onRouteChanged() {
         this.changePage();
+    }
+
+    callback = (response) => {
+        this.setState({
+            pageLimit: response.total_pages
+        });
+        for (var i = 0; i < response.objects.length; i++) {
+            let obj = response.objects[i];
+            let details = this._buildDetails(obj);
+            let item = {
+                name: obj.name,
+                img: obj.thumb_url,
+                url: "/games/" + obj.game_id,
+                details: details
+            }
+            var gamesArray = this.state.games.slice();
+            gamesArray.push(item);
+            this.setState({ games: gamesArray });
+        }
+        this.setState({
+            loading: false
+        });
     }
     
     incPage = () => {
