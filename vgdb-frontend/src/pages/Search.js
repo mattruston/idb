@@ -4,6 +4,7 @@ import Title from '../components/Title';
 import Loader from '../components/Loader';
 import SearchTabs from '../components/SearchTabs';
 import Pagination from '../components/Pagination';
+import { request} from '../components/Util';
 import './styles/search.css';
 
 const endpoint = (model, page, filter) => {
@@ -12,28 +13,28 @@ const endpoint = (model, page, filter) => {
 
 const stringFilter = (attr, query) => {
     return {
-        "name":attr,
-        "op":"ilike",
-        "val":"%" + query + "%"
+        "name": attr,
+        "op": "ilike",
+        "val": "%" + query + "%"
     }
 }
 
 const numFilter = (attr, query) => {
     return {
         "name": attr,
-        "op":"eq",
+        "op": "eq",
         "val": query
     }
 }
 
-const genreFilter = (query) => {
+const genreFilter = (query, percent) => {
     return {
         "name":"genres",
         "op":"any",
         "val":{
-            "name":"name",
-            "op":"ilike",
-            "val":"%" + query + "%"
+            "name": "name",
+            "op": "ilike",
+            "val": percent ? "%" + query + "%" : query
         }
     }
 }
@@ -141,8 +142,6 @@ class Search extends Component {
 				event.stopPropagation();
 				this.setState({
                     currentTab: tabName
-                }, () => {
-                    console.log(this.state.currentTab);
                 });
 				return false;
 			};
@@ -171,30 +170,29 @@ class Search extends Component {
 
     fetchData(filter, modelType) {
         console.log(endpoint(modelType, this.state[modelType].page, JSON.stringify(filter)));
-        fetch(endpoint(modelType, this.state[modelType].page, JSON.stringify(filter)),{
-            method: 'GET'
-        }).then(response => {
-            if(response.ok) {
-                return response.json();
-            }
-            throw new Error('Failed to retrieve response object for game.');
-        })
+        request(endpoint(modelType, this.state[modelType].page, JSON.stringify(filter)))
         .then(response => {
-            console.log(response);
-            let resultObj = {};
-            resultObj[modelType] = {
-                pageLimit: response.total_pages,
-                results: response.objects,
-                loading: false,
-                page: this.state[modelType].page,
-                filter: filter
-            };
-            
-            this.setState( resultObj, () => {
-                console.log(modelType + " " + this.state[modelType].loading);
-            } );
-        }).catch(error => {
-            console.log(error);
+            if (response) {
+                let resultObj = {};
+                resultObj[modelType] = {
+                    pageLimit: response.total_pages,
+                    results: response.objects,
+                    loading: false,
+                    page: this.state[modelType].page,
+                    filter: filter
+                };
+                this.setState( resultObj );
+            } else {
+                let resultObj = {};
+                resultObj[modelType] = {
+                    pageLimit: 1,
+                    results: [],
+                    loading: false,
+                    page: this.state[modelType].page,
+                    filter: filter
+                }
+                this.setState( resultObj );
+            }
         });
     }
 
@@ -213,7 +211,6 @@ class Search extends Component {
 
     visibleTab = () => {
         let stateObj = this.state[this.state.currentTab];
-        //console.log(stateObj);
         return (
             <div> 
                 {stateObj.loading && <Loader/>}
@@ -249,7 +246,6 @@ class Search extends Component {
         obj[this.state.currentTab].page = parseInt(obj[this.state.currentTab].page, 10) + 1;
         obj[this.state.currentTab].results = [];
         obj[this.state.currentTab].loading = true;
-        console.log(obj);
         this.setState(obj,
         () => this.fetchData(this.state[this.state.currentTab].filter, this.state.currentTab));
     }
@@ -273,7 +269,8 @@ class Search extends Component {
                         } else if (type == "nums" && !isNaN(currString)) {
                             currFilterArray.push(numFilter(attrArray[j], currString));
                         } else if (type == "genres" && isNaN(currString)) {
-                            currFilterArray.push(genreFilter(currString));
+                            currFilterArray.push(genreFilter(currString, true));
+                            currFilterArray.push(genreFilter(currString, false));
                         }
                     }
                 })
