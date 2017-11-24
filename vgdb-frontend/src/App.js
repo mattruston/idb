@@ -14,6 +14,7 @@ import PlatformDetail from './pages/details/PlatformDetail';
 import DevDetail from './pages/details/DevDetail';
 import CharDetail from './pages/details/CharDetail';
 import Search from './pages/Search';
+import Viz from './pages/Viz';
 
 class App extends Component {
     render() {
@@ -36,6 +37,7 @@ class App extends Component {
                     <Redirect from="/developers" to="/developers/page/1"/>
                     <Redirect from="/platforms" to="/platforms/page/1"/>
                     <Redirect from="/characters" to="/characters/page/1"/>
+                    <Route exact path='/visualization' component={Viz}/>
                 </Switch>
                 <div className="footer">
                     <a className="link" href="https://github.com/mattruston/idb">Check out the project on Github</a>
