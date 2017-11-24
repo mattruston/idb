@@ -101,7 +101,7 @@ A website.
 - < Frontend specifics >
 - < Extra >
 
-------
+---
 
 ## Game Day Ballers Critique
 
@@ -112,7 +112,7 @@ A website.
 - < Frontend specifics >
 - < Extra >
 
-------
+---
 
 ## Game Day Ballers Critique
 
@@ -123,7 +123,7 @@ A website.
 - < Frontend specifics >
 - < Extra >
 
-------
+---
 
 ## Game Day Ballers Critique
 
