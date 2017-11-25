@@ -78,6 +78,7 @@ A website.
 - Utilize https requests for more reliable loading of pages.
 - < Scraping specifics >
 - < Frontend specifics >
+- Include more media on instance pages.
 - < Extra >
 
 ---
