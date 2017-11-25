@@ -20,7 +20,7 @@ A website.
 
 ---
 
-## Juan Penaranda
+## Juan Peñaranda
 
 - Server/hosting setup.
 - Database setup and population.
@@ -38,9 +38,9 @@ A website.
 
 ## Derek Tolliver
 
-- FIll up with
-- responsibilites
-- and stuff.
+- Database modification.
+- Python unit tests.
+- Postman API tests.
 
 ---
 
@@ -75,6 +75,7 @@ A website.
 #### What can we do better?
 
 - Make backend endpoints more friendly.
+- Utilize https requests for more reliable loading of pages.
 - < Scraping specifics >
 - < Frontend specifics >
 - < Extra >
