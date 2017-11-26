@@ -17,9 +17,9 @@ const rangeFilters = {
         "max": "100"
     },
     "Release Date": {
-        "low": "1973",
+        "low": "1976",
         "high": "2017",
-        "min": "1973",
+        "min": "1976",
         "max": "2017"
     }
 };

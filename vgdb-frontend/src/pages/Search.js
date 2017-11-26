@@ -11,11 +11,11 @@ const endpoint = (model, page, filter) => {
     return `http://gamingdb.info/api/${model}?page=${page}&q={"filters":[{"or":${filter}}]}`;
 }
 
-const stringFilter = (attr, query) => {
+const stringFilter = (attr, query, isNum) => {
     return {
         "name": attr,
         "op": "ilike",
-        "val": "%" + query + "%"
+        "val": isNum ? "%25" + query + "%25" : "%" + query + "%"
     }
 }
 
@@ -264,8 +264,8 @@ class Search extends Component {
                     let currFilterArray = filters[model];
                     let attrArray = searchAttrs[model][type];
                     for (var j = 0; j < attrArray.length; j++) {
-                        if (type == "strings" && isNaN(currString)) {
-                            currFilterArray.push(stringFilter(attrArray[j], currString));
+                        if (type == "strings") {
+                            currFilterArray.push(stringFilter(attrArray[j], currString, !isNaN(currString)));
                         } else if (type == "nums" && !isNaN(currString)) {
                             currFilterArray.push(numFilter(attrArray[j], currString));
                         } else if (type == "genres" && isNaN(currString)) {
