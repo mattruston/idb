@@ -97,36 +97,36 @@ class PlatformsPage extends Component {
         }, () => { this.fetchData() });
     }
 
-    fetchData() {
-        request(endpoint(this.props.match.params.page, 
-                    JSON.stringify(this.state.filter), 
-                        JSON.stringify(this.state.sort)))
-        .then(response => {
-            if (response) {
-                let platArray = [];
-                for (var i = 0; i < response.objects.length; i++) {
-                    let obj = response.objects[i];
-                    let details = buildDetails(obj, detailMap);
-                    let item = {
-                        name: obj.name,
-                        img: obj.thumb_url,
-                        url: "/platforms/" + obj.platform_id,
-                        details: details
-                    }
-                    platArray.push(item);
+    callback = (response) => {
+        if (response) {
+            let platArray = [];
+            for (var i = 0; i < response.objects.length; i++) {
+                let obj = response.objects[i];
+                let details = buildDetails(obj, detailMap);
+                let item = {
+                    name: obj.name,
+                    img: obj.thumb_url,
+                    url: "/platforms/" + obj.platform_id,
+                    details: details
                 }
-                this.setState({
-                    platforms: platArray,
-                    loading: false,
-                    pageLimit: response.total_pages
-                });
-            } else {
-                this.setState({
-                    loading: false,
-                    error: true
-                })
+                platArray.push(item);
             }
-        });
+            this.setState({
+                platforms: platArray,
+                loading: false,
+                pageLimit: response.total_pages
+            });
+        } else {
+            this.setState({
+                loading: false,
+                error: true
+            })
+        }
+    }
+
+    fetchData() {
+        request(endpoint(this.props.match.params.page, JSON.stringify(this.state.filter), 
+            JSON.stringify(this.state.sort)), this.callback);
     };
 
     changeSort = (attr, reverse) => {

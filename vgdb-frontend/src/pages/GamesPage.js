@@ -73,36 +73,36 @@ class GamesPage extends Component {
         )
     }
 
-    fetchData() {
-        request(endpoint(this.props.match.params.page, 
-                    JSON.stringify(this.state.filter), 
-                        JSON.stringify(this.state.sort)))
-        .then(response => {
-            if (response) {
-                let gamesArray = [];
-                for (var i = 0; i < response.objects.length; i++) {
-                    let obj = response.objects[i];
-                    let details = buildDetails(obj, detailMap);
-                    let item = {
-                        name: obj.name,
-                        img: obj.thumb_url,
-                        url: "/games/" + obj.game_id,
-                        details: details
-                    }
-                    gamesArray.push(item);
+    callback = (response) => {
+        if (response) {
+            let gamesArray = [];
+            for (var i = 0; i < response.objects.length; i++) {
+                let obj = response.objects[i];
+                let details = buildDetails(obj, detailMap);
+                let item = {
+                    name: obj.name,
+                    img: obj.thumb_url,
+                    url: "/games/" + obj.game_id,
+                    details: details
                 }
-                this.setState({
-                    games: gamesArray,
-                    loading: false,
-                    pageLimit: response.total_pages
-                });
-            } else {
-                this.setState({
-                    loading: false,
-                    error: true
-                });
+                gamesArray.push(item);
             }
-        });
+            this.setState({
+                games: gamesArray,
+                loading: false,
+                pageLimit: response.total_pages
+            });
+        } else {
+            this.setState({
+                loading: false,
+                error: true
+            });
+        }
+    }
+
+    fetchData = () => {
+        request(endpoint(this.props.match.params.page, JSON.stringify(this.state.filter), 
+            JSON.stringify(this.state.sort)), this.callback);
     };
     
     componentDidUpdate(prevProps) {

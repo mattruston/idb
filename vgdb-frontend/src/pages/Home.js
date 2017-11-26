@@ -39,27 +39,28 @@ class Home extends Component {
         )
     }
 
+    callback = (response) => {
+        if (response) {
+            let obj = response;
+            let details = buildDetails(obj, detailMap);
+            let item = {
+                name: obj.name,
+                img: obj.image_url,
+                url: "/games/" + obj.game_id,
+                details: details
+            }
+            var arr = this.state.topgames.slice();
+            arr.push(item);
+            this.setState({ 
+                topgames: arr,
+                loading: false
+            });
+        }
+    }
+
     fetchData() {
         for(let ep of topPicks) {
-            request("https://gamingdb.info/api/game/" + ep)
-            .then(response => {
-                if (response) {
-                    let obj = response;
-                    let details = buildDetails(obj, detailMap);
-                    let item = {
-                        name: obj.name,
-                        img: obj.image_url,
-                        url: "/games/" + obj.game_id,
-                        details: details
-                    }
-                    var arr = this.state.topgames.slice();
-                    arr.push(item);
-                    this.setState({ 
-                        topgames: arr,
-                        loading: false
-                    });
-                }
-            });
+            request("https://gamingdb.info/api/game/" + ep, this.callback);
         }
     }
 

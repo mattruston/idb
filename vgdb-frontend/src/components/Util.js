@@ -1,16 +1,18 @@
-export function request(endpoint) {
+export function request(endpoint, callback) {
     console.log("fetching data...");
     return fetch(endpoint, { method: 'GET' })
-    .then(response => {
-        if (response.ok) {
-            return response.json();
-        }
-        throw new Error("Error occured while trying to retrieve data.");
-    })
-    .catch(error => {
-        console.log(error);
-        return null;
-    });
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error("Error occured while trying to retrieve data.");
+        })
+        .then(response => {
+            callback(response);
+        })
+        .catch(error => {
+            console.log(error);
+        });
 }
 
 export function buildDetails(model, detailMap) {

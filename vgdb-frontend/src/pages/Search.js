@@ -169,35 +169,37 @@ class Search extends Component {
     }
 
     fetchData(filter, modelType) {
-        console.log(endpoint(modelType, this.state[modelType].page, JSON.stringify(filter)));
-        request(endpoint(modelType, this.state[modelType].page, JSON.stringify(filter)))
-        .then(response => {
+        //console.log(endpoint(modelType, this.state[modelType].page, JSON.stringify(filter)));
+        let self = this;
+        // Inner function to keep ModelType in the scope, with a variable bound reference
+        // to this (self) since scope is overridden in inner functions
+        let callback = function(response) {
             if (response) {
                 let resultObj = {};
                 resultObj[modelType] = {
                     pageLimit: response.total_pages,
                     results: response.objects,
                     loading: false,
-                    page: this.state[modelType].page,
+                    page: self.state[modelType].page,
                     filter: filter
                 };
-                this.setState( resultObj );
+                self.setState( resultObj );
             } else {
                 let resultObj = {};
                 resultObj[modelType] = {
                     pageLimit: 1,
                     results: [],
                     loading: false,
-                    page: this.state[modelType].page,
+                    page: self.state[modelType].page,
                     filter: filter
                 }
-                this.setState( resultObj );
+                self.setState( resultObj );
             }
-        });
+        }
+        request(endpoint(modelType, this.state[modelType].page, JSON.stringify(filter)), callback);
     }
 
     render() {
-
         return (
             <div>
                 <div className="container main-page">
