@@ -42,10 +42,12 @@ class DetailsPage extends Component {
                     </div>
                     
                 </div>
-                <div className="container detail-game-list">
-                    <h3 className="detail-subtitle">{this.props.gamesTitle}</h3>
-                    <GridLayout items={this.props.games}/>
-                </div>
+                {this.props.games.length &&
+                    <div className="container detail-game-list">
+                        <h3 className="detail-subtitle">{this.props.gamesTitle}</h3>
+                        <GridLayout items={this.props.games}/>
+                    </div>
+                }
             </div>
         );
     }

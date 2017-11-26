@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import './styles/sortandfilter.css';
 
 class SortDropdown extends Component {
@@ -16,6 +17,20 @@ class SortDropdown extends Component {
 				return false;
 			};
 		};
+    }
+
+    componentWillMount() {
+        document.addEventListener('click', this.handleClick, false);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('click', this.handleClick, false);
+    }
+
+    handleClick = e => {
+        if(!ReactDOM.findDOMNode(this).contains(e.target)) {
+            this.setState({drop: false});
+        }
     }
     
     toggleDrop = () => {

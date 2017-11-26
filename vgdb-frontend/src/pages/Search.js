@@ -4,36 +4,37 @@ import Title from '../components/Title';
 import Loader from '../components/Loader';
 import SearchTabs from '../components/SearchTabs';
 import Pagination from '../components/Pagination';
+import { request} from '../components/Util';
 import './styles/search.css';
 
 const endpoint = (model, page, filter) => {
     return `http://gamingdb.info/api/${model}?page=${page}&q={"filters":[{"or":${filter}}]}`;
 }
 
-const stringFilter = (attr, query) => {
+const stringFilter = (attr, query, isNum) => {
     return {
-        "name":attr,
-        "op":"ilike",
-        "val":"%" + query + "%"
+        "name": attr,
+        "op": "ilike",
+        "val": isNum ? "%25" + query + "%25" : "%" + query + "%"
     }
 }
 
 const numFilter = (attr, query) => {
     return {
         "name": attr,
-        "op":"eq",
+        "op": "eq",
         "val": query
     }
 }
 
-const genreFilter = (query) => {
+const genreFilter = (query, percent) => {
     return {
         "name":"genres",
         "op":"any",
         "val":{
-            "name":"name",
-            "op":"ilike",
-            "val":"%" + query + "%"
+            "name": "name",
+            "op": "ilike",
+            "val": percent ? "%" + query + "%" : query
         }
     }
 }
@@ -141,8 +142,6 @@ class Search extends Component {
 				event.stopPropagation();
 				this.setState({
                     currentTab: tabName
-                }, () => {
-                    console.log(this.state.currentTab);
                 });
 				return false;
 			};
@@ -170,36 +169,37 @@ class Search extends Component {
     }
 
     fetchData(filter, modelType) {
-        console.log(endpoint(modelType, this.state[modelType].page, JSON.stringify(filter)));
-        fetch(endpoint(modelType, this.state[modelType].page, JSON.stringify(filter)),{
-            method: 'GET'
-        }).then(response => {
-            if(response.ok) {
-                return response.json();
+        //console.log(endpoint(modelType, this.state[modelType].page, JSON.stringify(filter)));
+        let self = this;
+        // Inner function to keep ModelType in the scope, with a variable bound reference
+        // to this (self) since scope is overridden in inner functions
+        let callback = function(response) {
+            if (response) {
+                let resultObj = {};
+                resultObj[modelType] = {
+                    pageLimit: response.total_pages,
+                    results: response.objects,
+                    loading: false,
+                    page: self.state[modelType].page,
+                    filter: filter
+                };
+                self.setState( resultObj );
+            } else {
+                let resultObj = {};
+                resultObj[modelType] = {
+                    pageLimit: 1,
+                    results: [],
+                    loading: false,
+                    page: self.state[modelType].page,
+                    filter: filter
+                }
+                self.setState( resultObj );
             }
-            throw new Error('Failed to retrieve response object for game.');
-        })
-        .then(response => {
-            console.log(response);
-            let resultObj = {};
-            resultObj[modelType] = {
-                pageLimit: response.total_pages,
-                results: response.objects,
-                loading: false,
-                page: this.state[modelType].page,
-                filter: filter
-            };
-            
-            this.setState( resultObj, () => {
-                console.log(modelType + " " + this.state[modelType].loading);
-            } );
-        }).catch(error => {
-            console.log(error);
-        });
+        }
+        request(endpoint(modelType, this.state[modelType].page, JSON.stringify(filter)), callback);
     }
 
     render() {
-
         return (
             <div>
                 <div className="container main-page">
@@ -213,7 +213,6 @@ class Search extends Component {
 
     visibleTab = () => {
         let stateObj = this.state[this.state.currentTab];
-        //console.log(stateObj);
         return (
             <div> 
                 {stateObj.loading && <Loader/>}
@@ -249,7 +248,6 @@ class Search extends Component {
         obj[this.state.currentTab].page = parseInt(obj[this.state.currentTab].page, 10) + 1;
         obj[this.state.currentTab].results = [];
         obj[this.state.currentTab].loading = true;
-        console.log(obj);
         this.setState(obj,
         () => this.fetchData(this.state[this.state.currentTab].filter, this.state.currentTab));
     }
@@ -268,12 +266,13 @@ class Search extends Component {
                     let currFilterArray = filters[model];
                     let attrArray = searchAttrs[model][type];
                     for (var j = 0; j < attrArray.length; j++) {
-                        if (type == "strings" && isNaN(currString)) {
-                            currFilterArray.push(stringFilter(attrArray[j], currString));
+                        if (type == "strings") {
+                            currFilterArray.push(stringFilter(attrArray[j], currString, !isNaN(currString)));
                         } else if (type == "nums" && !isNaN(currString)) {
                             currFilterArray.push(numFilter(attrArray[j], currString));
                         } else if (type == "genres" && isNaN(currString)) {
-                            currFilterArray.push(genreFilter(currString));
+                            currFilterArray.push(genreFilter(currString, true));
+                            currFilterArray.push(genreFilter(currString, false));
                         }
                     }
                 })

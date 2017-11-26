@@ -4,12 +4,13 @@ import Title from '../components/Title';
 import Loader from '../components/Loader';
 import Pagination from '../components/Pagination';
 import SortAndFilter from '../components/SortAndFilter';
+import { request, buildDetails, buildFilter } from '../components/Util'; 
 
 const endpoint = (page, filter, sort) =>
     `http://gamingdb.info/api/developer?page=${page}&q={"filters":${filter},"order_by":${sort}}`
 
 const rangeFilters = {
-    "Rating": {
+    "Average Rating": {
         "low": "0",
         "high": "100",
         "min": "0",
@@ -19,8 +20,14 @@ const rangeFilters = {
 
 const attrMap = {
     "Name": "name",
-    "Rating": "average_rating"
+    "Average Rating": "average_rating"
 };
+
+const detailMap = {
+    "location": "Location:",
+    "average_rating": "Average Rating:",
+    "games": "Top Game:"
+}
 
 class DevPage extends Component {
     constructor(props) {
@@ -83,57 +90,37 @@ class DevPage extends Component {
         }, () => { this.fetchData() });
     }
 
-    fetchData() {
-        fetch(
-            endpoint(this.props.match.params.page, 
-                JSON.stringify(this.state.filter), 
-                JSON.stringify(this.state.sort)),
-            { method: 'GET' })
-        .then(response => {
-            if(response.ok) {
-                return response.json();
-            }
-            throw new Error('Failed to retrieve response object for game.');
-        })
-        .then(response => {
-            this.setState({
-                pageLimit: response.total_pages
-            });
-            console.log(response);
+    callback = (response) => {
+        if (response) {
+            let devArray = [];
             for (var i = 0; i < response.objects.length; i++) {
                 let obj = response.objects[i];
-                let details = this._buildDetails(obj);
+                let details = buildDetails(obj, detailMap);
                 let item = {
                     name: obj.name,
                     img: obj.thumb_url,
                     url: "/developers/" + obj.developer_id,
                     details: details
                 }
-                var devs = this.state.developers.slice();
-                devs.push(item);
-                this.setState({ developers: devs });
+                devArray.push(item);
             }
             this.setState({
-                loading: false
+                developers: devArray,
+                loading: false,
+                pageLimit: response.total_pages
             });
-        })
-        .catch(error => {
-            console.log(error);
-        });
+        } else {
+            this.setState({
+                loading: false,
+                error: true
+            });
+        }
     }
 
-    _buildDetails(obj) {
-        let details = []
-        if(obj.location) 
-            details.push({ title: "Location:", content: obj.location});
-        if(obj.average_rating)
-            details.push({title: "Average Rating:", content: obj.average_rating + "/100"});
-        if(obj.games)
-            if(obj.games.length > 0)
-                details.push({title: "Game:", content: obj.games[0].name});
-
-        return details;
-    }
+    fetchData() {
+        request(endpoint(this.props.match.params.page, JSON.stringify(this.state.filter), 
+            JSON.stringify(this.state.sort)), this.callback);
+    };
 
     changeSort = (attr, reverse) => {
         this.setState({
@@ -153,30 +140,12 @@ class DevPage extends Component {
         rangeFilters[attr].low = low;
         rangeFilters[attr].high = high;
         this.setState({
-            filter: this._buildFilter(),
+            filter: buildFilter(rangeFilters, attrMap),
             developers: [],
             loading: true
         }, () => { 
             this.props.history.push('/developers/page/1'); 
         });
-    }
-
-    _buildFilter() {
-        let result = [];
-        Object.keys(rangeFilters).forEach(function(key) {
-            let filter = rangeFilters[key];
-            result.push({
-                "name": attrMap[key],
-                "op": "ge",
-                "val": filter.low
-            });
-            result.push({
-                "name": attrMap[key],
-                "op": "le",
-                "val": filter.high
-            })
-        });
-        return result;
     }
 }
 

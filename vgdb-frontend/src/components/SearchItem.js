@@ -23,6 +23,7 @@ class SearchItem extends Component {
                     <div className="search-item-title">{ this.contextTitle() }</div>
                     <hr/>
                     { this.contextFinder().map( (i) => i ) }
+                    {this.props.obj.genres && this.contextGenre()}
                 </div>
             </Link>
         );
@@ -55,6 +56,38 @@ class SearchItem extends Component {
                 })
             }</span>
         )
+    }
+
+    contextGenre = () => {
+        let genreArr = [];
+        for( let genre of this.props.obj.genres ) {
+            genreArr.push(genre.name);
+        }
+        let lastIndex = genreArr.length - 1;
+        return (
+            <span> Genres: {
+                genreArr.map( (word, index) => {
+                    for(let term of this.state.searchTerms) {
+                        let re = new RegExp(term, "i");
+                        if(re.test(word)) {
+                            return (
+                                <span>
+                                    <span className="search-highlight"><strong>{word}</strong></span>
+                                    {index != lastIndex ? ", " : ""} 
+                                </span>
+                            )
+                        }
+                    }
+                    return (
+                        <span>
+                            <span>{word}</span>
+                            {index != lastIndex ? ", " : ""} 
+                        </span>
+                    )
+                })
+            }</span>
+        )
+
     }
 
     contextFinder = () => {
