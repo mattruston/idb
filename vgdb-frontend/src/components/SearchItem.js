@@ -65,7 +65,7 @@ class SearchItem extends Component {
         }
         let lastIndex = genreArr.length - 1;
         return (
-            <span> Genres: {
+            <span><strong> Genres: </strong> {
                 genreArr.map( (word, index) => {
                     for(let term of this.state.searchTerms) {
                         let re = new RegExp(term, "i");
