@@ -3,6 +3,7 @@ import {request} from '../components/Util';
 import GDBPieChart from '../components/viz-components/GDBPieChart';
 import GDBBarChart from '../components/viz-components/GDBBarChart';
 import GDBLineChart from '../components/viz-components/GDBLineChart';
+import GDBScatterPlot from '../components/viz-components/GDBScatterPlot';
 
 const url = "http://api.gamedayballers.me/";
 const modelTypes = ["players", "coaches", "teams", "divisions"];
@@ -16,7 +17,16 @@ class Viz extends Component {
             modelsPieData: [],
             playerPositions: [{ "C": 0, "F": 0, "G": 0 }],
             playerHeights: [], // { name: "6-8", value: 100 }
+            playerBmi: [],
             players: 0,
+            coachAges: [
+                { name: "under 30", value: 0},
+                { name: "30-40", value: 0},
+                { name: "41-50", value: 0},
+                { name: "51-60", value: 0},
+                { name: "over 60", value: 0},
+            ],
+            coaches: 0,
         }
     }
 
@@ -45,6 +55,18 @@ class Viz extends Component {
                 if(height.value > max) {
                     max = height.value;
                     arg = height.name;
+                }
+            });
+            return arg;
+        }
+
+        let argMaxAge = () => {
+            let max = 0;
+            let arg = 0;
+            this.state.coachAges.map((age) => {
+                if(age.value > max) {
+                    max = age.value;
+                    arg = age.name;
                 }
             });
             return arg;
@@ -86,8 +108,59 @@ class Viz extends Component {
                         <p>In GameDayBallers db, players range from <strong>{minHeight()} ft.</strong> to <strong>{maxHeight()} ft.</strong> with the largest amount of players standing <strong>{argMaxHeight()} ft.</strong> tall.</p>
                     </div>
                 </div>
+                <div className="graph-container">
+                    <span className="graph">
+                        <GDBScatterPlot data={this.state.playerBmi} height={height} width={width} keys={["height", "weight"]} colors={COLORS}/>
+                    </span>
+                    <div className="graph-text">
+                        <h3>Player Weight vs Height</h3>
+                        <p>A relatively uninteresting distribution of players weight vs their height.</p>
+                    </div>
+                </div>
+                <div className="graph-container">
+                    <span className="graph">
+                        <GDBBarChart data={this.state.coachAges} height={height} width={width} keys={["value"]} colors={COLORS}/>
+                    </span>
+                    <div className="graph-text">
+                        <h3>Coach Ages</h3>
+                        <p>Out of <strong>{this.state.coaches}</strong> coaches, the majority of them are in the age group <strong>{argMaxAge()}.</strong></p>
+                    </div>
+                </div>
             </div>
         );
+    }
+
+    getCoaches = () => {
+        request(url + "coaches_full/", (response) => {
+            let ageObj = this.state.coachAges.slice();
+            for(let coach of response) {
+                let birth = coach.dob.length > 4 ? 
+                    parseInt(coach.dob.slice(coach.dob.length - 5)) : parseInt(coach.dob);
+                let age = 2017 - birth;
+                switch(true) {
+                    case age > 60:
+                        ageObj[4].value++;
+                        break;
+                    case age > 50:
+                        ageObj[3].value++;
+                        break;
+                    case age > 40:
+                        ageObj[2].value++;
+                        break;
+                    case age > 30:
+                        ageObj[1].value++;
+                        break;
+                    case age < 30:
+                        ageObj[0].value++;
+                        break;
+                }
+            }
+            this.setState({
+                ...this.state,
+                coachAges: ageObj,
+                coaches: response.length
+            })
+        });
     }
 
     buildModelsPie = () => {
@@ -105,6 +178,7 @@ class Viz extends Component {
         request(url + "players_full/", (request) => {
             let posObj = this.state.playerPositions.slice()[0];
             let heightCounter = {};
+            let bmi = [];
             for(let player of request) {
                 // calculate positions
                 let pos = player.position.split("-");
@@ -124,6 +198,8 @@ class Viz extends Component {
                 } else {
                     heightCounter[height] = 1;
                 }
+                //get height vs weight scatter
+                bmi.push({height: parseFloat(height), weight: player.weight});
             }
             //create formatted array for heights
             let heights = [];
@@ -143,9 +219,11 @@ class Viz extends Component {
                 ...this.state,
                 playerPositions: [posObj],
                 playerHeights: heights,
+                playerBmi: bmi,
                 players: request.length
             }, () => {
                 this.buildModelsPie();
+                this.getCoaches();
             });
         });
     }
