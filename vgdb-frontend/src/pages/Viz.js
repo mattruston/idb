@@ -32,14 +32,10 @@ class Viz extends Component {
 
     componentWillMount() {
         this.getPlayers();
-        //this.buildModelsPie()
     }
 
     render() {
         const width = 400, height = 300;
-        const BarData = [
-            {name: 'Players', c: 4000, f: 2400, g: 2400},
-        ];
         const COLORS = ["#2DE5C6", "#5863F8", "#65DEF1", "#173753", "#EDAC17", ];
 
         let reducer = (arr) => {
@@ -59,7 +55,6 @@ class Viz extends Component {
             });
             return arg;
         }
-
         let argMaxAge = () => {
             let max = 0;
             let arg = 0;
@@ -134,9 +129,11 @@ class Viz extends Component {
         request(url + "coaches_full/", (response) => {
             let ageObj = this.state.coachAges.slice();
             for(let coach of response) {
+                // Turn the dob to a integer year
                 let birth = coach.dob.length > 4 ? 
                     parseInt(coach.dob.slice(coach.dob.length - 5)) : parseInt(coach.dob);
                 let age = 2017 - birth;
+                //Aggregate the count for the category the coach belongs to
                 switch(true) {
                     case age > 60:
                         ageObj[4].value++;
@@ -165,6 +162,7 @@ class Viz extends Component {
 
     buildModelsPie = () => {
         for(let model of modelTypes) {
+            // get the count of each model type with a basic request
             request(url + model + "/", (request) => {
                 this.setState({ 
                     ...this.state,
@@ -222,6 +220,7 @@ class Viz extends Component {
                 playerBmi: bmi,
                 players: request.length
             }, () => {
+                // Make these calls later to prevent layout thrashing
                 this.buildModelsPie();
                 this.getCoaches();
             });
