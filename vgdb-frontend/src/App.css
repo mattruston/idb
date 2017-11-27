@@ -86,5 +86,5 @@ body {
     display: inline-block;
     vertical-align: top;
     width: 50%;
-    float: right;
+    padding: 1em;
 }

@@ -1,62 +1,89 @@
 import React, {Component} from 'react';
-import {Pie, PieChart, Cell, BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Bar} from 'recharts';
+import {request} from '../components/Util';
+import GDBPieChart from '../components/viz-components/GDBPieChart';
+import GDBBarChart from '../components/viz-components/GDBBarChart';
+import GDBLineChart from '../components/viz-components/GDBLineChart';
+
+const url = "http://api.gamedayballers.me/";
+const modelTypes = ["players", "coaches", "teams", "divisions"];
 
 class Viz extends Component {
 
     constructor(props) {
         super(props);
-
+        this.model
         this.state = {
-            modelsPieData = [];
+            modelsPieData: [],
+            playerPositions: [{ "C": 0, "F": 0, "G": 0 }],
+            playerHeights: [], // { name: "6-8", value: 100 }
+            players: 0,
         }
     }
 
-    componentDidMount() {
-        this.buildModelsPie();
+    componentWillMount() {
+        this.getPlayers();
+        //this.buildModelsPie()
     }
 
     render() {
         const width = 400, height = 300;
-        const PieData = [
-            { name: "Val 1", value: 100 },
-            { name: "Val 2", value: 200 },
-            { name: "Val 3", value: 300 },
-        ];
         const BarData = [
             {name: 'Players', c: 4000, f: 2400, g: 2400},
         ];
-        const COLORS = ["#2DE5C6", "#173753", "#5863F8"];
+        const COLORS = ["#2DE5C6", "#5863F8", "#65DEF1", "#173753", "#EDAC17", ];
+
+        let reducer = (arr) => {
+            return arr.reduce((a, b) => a + b.value, 0);
+        }
+
+        let minHeight = () => this.state.playerHeights.length > 1 ? this.state.playerHeights[0].name : 0.0;
+        let maxHeight = () => this.state.playerHeights.length > 1 ? this.state.playerHeights[this.state.playerHeights.length - 1].name : 0.0;
+        let argMaxHeight = () => {
+            let max = 0;
+            let arg = 0;
+            this.state.playerHeights.map((height) => {
+                if(height.value > max) {
+                    max = height.value;
+                    arg = height.name;
+                }
+            });
+            return arg;
+        }
 
         return(
             <div className="container main-page">
+                <h1>GameDayBallers DB Visualization</h1>
                 <div className="graph-container">
                     <span className="graph">
-                        <PieChart width={width} height={height}>
-                            <Pie data={this.state.modelsPieData} dataKey="value" cx={width/2} cy={height/2} outerRadius={80} label={(obj)=> obj.name}>
-                                { PieData.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>) }
-                            </Pie>
-                        </PieChart>
+                        <GDBPieChart data={this.state.modelsPieData} width={width} height={height} colors={COLORS}/>
                     </span>
                     <div className="graph-text">
-                        This is a pie chart that shows some data!
+                        <h3>Model Distribution</h3>
+                        <p>GameDayBallers have <strong>{this.state.modelsPieData.length}</strong> models in their database, made up by {
+                            this.state.modelsPieData.map(model => <span key={model.name}><strong>{model.value}</strong> {model.name} </span>)
+                        } totaling <strong>{reducer(this.state.modelsPieData)}</strong> objects.</p>
                     </div>
                 </div>
                 <div className="graph-container">
                     <span className="graph">
-                        <BarChart   width={width} height={height} data={BarData}
-                                    margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-                            <XAxis dataKey="name"/>
-                            <YAxis/>
-                            <CartesianGrid strokeDasharray="3 3"/>
-                            <Tooltip/>
-                            <Legend />
-                            <Bar dataKey="c" fill={COLORS[0]} />
-                            <Bar dataKey="f" fill={COLORS[1]} />
-                            <Bar dataKey="g" fill={COLORS[2]} />
-                        </BarChart>
+                        <GDBBarChart data={this.state.playerPositions} height={height} width={width} keys={["C", "F", "G"]} colors={COLORS}/>
                     </span>
                     <div className="graph-text">
-                        This is a bar chart that shows the distribution of positions in the GameDayBallers db!
+                        <h3>Player Positions</h3>
+                        <p>In the players model each player has a position. Of the <strong>{this.state.players}</strong> players there are {
+                            Object.entries(this.state.playerPositions[0]).map(([pos, count]) => <span key={pos}><strong>{count}</strong> {pos} </span>)
+                        }</p>
+                        <p>* Where <strong>G</strong> = Guard, <strong>C</strong> = Center, <strong>F</strong> = Forward
+                        </p>
+                    </div>
+                </div>
+                <div className="graph-container">
+                    <span className="graph">
+                        <GDBLineChart data={this.state.playerHeights} height={height} width={width} keys={["value"]} colors={COLORS}/>
+                    </span>
+                    <div className="graph-text">
+                        <h3>Player Height Distributions</h3>
+                        <p>In GameDayBallers db, players range from <strong>{minHeight()} ft.</strong> to <strong>{maxHeight()} ft.</strong> with the largest amount of players standing <strong>{argMaxHeight()} ft.</strong> tall.</p>
                     </div>
                 </div>
             </div>
@@ -64,42 +91,63 @@ class Viz extends Component {
     }
 
     buildModelsPie = () => {
-        fetch(
-            endpoint(this.props.match.params.page, 
-                JSON.stringify(this.state.filter), 
-                JSON.stringify(this.state.sort)),
-            { method: 'GET' })
-        .then(response => {
-            if(response.ok) {
-                return response.json();
-            }
-            throw new Error('Failed to retrieve response object for game.');
-        })
-        .then(response => {
-            this.setState({
-                pageLimit: response.total_pages
+        for(let model of modelTypes) {
+            request(url + model + "/", (request) => {
+                this.setState({ 
+                    ...this.state,
+                    modelsPieData: [...this.state.modelsPieData, { name: model, value: request.length }] 
+                });
             });
-            for (var i = 0; i < response.objects.length; i++) {
-                let obj = response.objects[i];
-                let details = this._buildDetails(obj);
-                let item = {
-                    name: obj.name,
-                    img: obj.thumb_url,
-                    url: "/games/" + obj.game_id,
-                    details: details
+        }
+    }
+
+    getPlayers = () => {
+        request(url + "players_full/", (request) => {
+            let posObj = this.state.playerPositions.slice()[0];
+            let heightCounter = {};
+            for(let player of request) {
+                // calculate positions
+                let pos = player.position.split("-");
+                for(let p of pos) {
+                    posObj[p]++;
                 }
-                var gamesArray = this.state.games.slice();
-                gamesArray.push(item);
-                this.setState({ games: gamesArray });
+                //calculate height
+                // convert string to actual height
+                let hvals = player.height.split("-");
+                hvals[0] = parseInt(hvals[0]);
+                if(hvals[1] !== undefined) {
+                    hvals[0] = hvals[0] + parseInt(hvals[1])/12;
+                }
+                let height = hvals[0].toFixed(2);//.toFixed(2);
+                if(height in heightCounter) {
+                    heightCounter[height]++;
+                } else {
+                    heightCounter[height] = 1;
+                }
             }
-            this.setState({
-                loading: false
+            //create formatted array for heights
+            let heights = [];
+            Object.entries(heightCounter).map(([height, count]) => {
+                heights.push({name: height, value: count});
             });
-        })
-        .catch(error => {
-            console.log(error);
+            //sort height array
+            heights.sort(function(a, b){
+                let keyA = a.name,
+                    keyB = b.name;
+                // Compare the 2 dates
+                if(keyA < keyB) return -1;
+                if(keyA > keyB) return 1;
+                return 0;
+            });
+            this.setState({
+                ...this.state,
+                playerPositions: [posObj],
+                playerHeights: heights,
+                players: request.length
+            }, () => {
+                this.buildModelsPie();
+            });
         });
-    };
     }
 }
 
