@@ -85,6 +85,9 @@ class About extends Component {
                     {name: "IGDB", description: "Main source of data", url:"https://igdb.github.io/api/about/welcome/"},
                     {name: "Giant Bomb", description: "Secondary source of data", url:"https://www.giantbomb.com/api/"},
                 ]}/>
+                <ToolCard title="Data Scources" list={[
+                    {name: "Visualization", description: "Game Day Ballers", url:"http://gamingdb.info/visualization"},
+                ]}/>
             </div>
         )
     }
