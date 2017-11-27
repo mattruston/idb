@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import './styles/sortandfilter.css';
+import '../styles/sortandfilter.css';
 
 class SortDropdown extends Component {
     constructor(props) {

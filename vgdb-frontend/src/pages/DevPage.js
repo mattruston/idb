@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import GridLayout from '../components/GridLayout';
+import GridLayout from '../components/grid/GridLayout';
 import Title from '../components/Title';
-import Loader from '../components/Loader';
+import Loader from '../components/loader/Loader';
 import Pagination from '../components/Pagination';
-import SortAndFilter from '../components/SortAndFilter';
+import SortAndFilter from '../components/filter/SortAndFilter';
 import { request, buildDetails, buildFilter } from '../components/Util'; 
 
 const endpoint = (page, filter, sort) =>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import DetailsPage from './DetailsPage';
-import Loader from '../../components/Loader';
+import Loader from '../../components/loader/Loader';
 import { request, topModels, gameItemsFromArray } from '../../components/Util';
 
 const gameDetailMap = {
