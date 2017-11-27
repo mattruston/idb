@@ -52,8 +52,7 @@ class CharDetail extends Component {
     }
 
     fetchData() {
-        request("http://gamingdb.info/api/character/" + this.props.match.params.id)
-        .then(response => {
+        request("http://gamingdb.info/api/character/" + this.props.match.params.id, (response) => {
             if (response) {
                 let gameItems = gameItemsFromArray(response.games, gameDetailMap);
                 let platforms = topModels(response.platforms, "/platforms/", "platform_id");

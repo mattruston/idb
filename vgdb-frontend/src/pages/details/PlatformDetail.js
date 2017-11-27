@@ -52,8 +52,7 @@ class PlatformDetail extends Component {
     }
 
     fetchData() {
-        request("http://gamingdb.info/api/platform/" + this.props.match.params.id)
-        .then(response => {
+        request("http://gamingdb.info/api/platform/" + this.props.match.params.id, (response) => {
             if (response) {
                 let devs = topModels(response.developers, "/developers/", "developer_id");
                 let characters = topModels(response.characters, "/characters/", "character_id");

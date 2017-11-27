@@ -57,8 +57,7 @@ class GameDetail extends Component {
     }
 
     fetchData() {
-        request("http://gamingdb.info/api/game/" + this.props.match.params.id)
-        .then(response => {
+        request("http://gamingdb.info/api/game/" + this.props.match.params.id, (response) => {
             if (response) {
                 Promise.all(
                     this._fetchRelatedGames(response.related_game_ids)
