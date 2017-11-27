@@ -30,9 +30,9 @@ A website.
 
 ## Matt Ruston
 
-- Fill up with
-- responsibilities
-- and stuff.
+- Server/hosting setup.
+- Data scraping and population.
+- Media hosting.
 
 ---
 
@@ -53,9 +53,9 @@ A website.
 #### What did we do well?
 
 - Take advantage of Flask's capabilities.
-- < Scraping specifics >
-- < Frontend specifics >
-- < Extra >
+- High quality and quantity of content.
+- Good design with mobile support.
+- 
 
 ---
 
@@ -64,7 +64,7 @@ A website.
 #### What did we learn?
 
 - Start the backend from scratch.
-- < Scraping specifics >
+- How to use React.
 - < Frontend specifics >
 - < Extra >
 
@@ -76,7 +76,7 @@ A website.
 
 - Make backend endpoints more friendly.
 - Utilize https requests for more reliable loading of pages.
-- < Scraping specifics >
+- Improve search to return more relevant content.
 - < Frontend specifics >
 - Include more media on instance pages.
 - < Extra >
@@ -88,7 +88,7 @@ A website.
 #### What puzzles us?
 
 - How GCP works!
-- < Scraping specifics >
+- Some related games don't seem related.
 - < Frontend specifics >
 - < Extra >
 
@@ -99,9 +99,10 @@ A website.
 #### What did they do well?
 
 - Search backend.
-- < Scraping specifics >
-- < Frontend specifics >
-- < Extra >
+- Twitter feed provides new live content.
+- Good loading indicator and favicon.
+- High quality of content.
+- Mobile friendly.
 
 ---
 
@@ -110,7 +111,7 @@ A website.
 #### What did we learn from their website?
 
 - Divide models properly (although it doesn't follow the models.py spec).
-- < Scraping specifics >
+- Most basketball coaches are between the ages 50 and 60.
 - < Frontend specifics >
 - < Extra >
 
@@ -121,7 +122,7 @@ A website.
 #### What can they do better?
 
 - Ignore .pyc files.
-- < Scraping specifics >
+- Site doesnt fully support https and results in endless loading.
 - < Frontend specifics >
 - < Extra >
 
