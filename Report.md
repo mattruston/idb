@@ -205,6 +205,14 @@ That is all it takes to get a project up and running using the Google Cloud Plat
 
 We also needed to get our project to use a custom domain. We purchased gamingdb.info from Google Domains, Google's domain selling service. From there, we went to our Google Cloud Platform console under App Engine Settings and added our custom domain to the project. From there, all we had left to do was configure the DNS correctly so that GCP could generate the SSL certificates and link the domain to our project. To configure the DNS, all we had to do was go to Google Domains and add custom resource records using the information provided by GCP when adding your custom domain. After those couple steps, we had our project up and running on a custom domain.
 
+### Critiques
+
+Like all products, there are always ways that our website could improve. One of the obvious improvements is increasing the quality of information on each of the model pages. Right now on each page we mainly only have some basic pieces of information such as an image, title, description, and links to related models. This could be improved by providing additional details such as screenshots, videos, and even something such as user reviews. Another place where our detail pages could be better is in the links to other objects. Currently we limited the number of links shown for each different model because having too many was making the page bloated. The problem is that now some pieces of related information are missing that a user might care to see. In the future we could redesign the page so that all related models are listed, but in a way that the page doesnt look bad if there are numerous connections.
+
+The next thing that could use some improvement is our search. Currently it works by just using an 'or' search over all words in our database. This could be improved by also finding similar words and maybe having a ranking for things that are probably more relevant. We also do not highlight the currently selected model type when you are filtering the result types.
+
+More little updates could be done all around the website. For example we could provide a feed that features new games and content on the main page, make the site logo more interesting by adding an image to be the logo, add a favicon, or even provide new features that are useful when learning about games. 
+
 ### Tools & Technologies
 
 #### Front-end
