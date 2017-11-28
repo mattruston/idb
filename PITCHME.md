@@ -7,7 +7,7 @@ A website.
 ## Jared Jones
 
 - Custom CSS for frontend.
-- 
+- Building React components.
 - Visualization.
 
 ---
