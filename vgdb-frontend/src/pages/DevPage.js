@@ -36,7 +36,7 @@ class DevPage extends Component {
             developers:[],
             loading: true,
             pageLimit: 0,
-            selectedSort: "Sort By",
+            selectedSort: "Sort By  🡻🡹",
             filter: [],
             sort: [],
         };
@@ -123,14 +123,20 @@ class DevPage extends Component {
     };
 
     changeSort = (attr, reverse) => {
+        let newFilter = buildFilter(rangeFilters, attrMap);
+        newFilter.push({
+            "name": attrMap[attr],
+            "op": "is_not_null"
+        });
         this.setState({
             sort: [{
                 "field": attrMap[attr],
                 "direction": reverse ? "desc" : "asc"
             }],
-            selectedSort: attr + (reverse ? ' (Reverse)' : ''),
+            selectedSort: attr + (reverse ? ' 🡻' : ' 🡹'),
             developers: [],
-            loading: true
+            loading: true,
+            filter: newFilter
         }, () => {
             this.props.history.push('/developers/page/1');
         });
@@ -139,8 +145,15 @@ class DevPage extends Component {
     changeRangeFilter = (attr, low, high) => {
         rangeFilters[attr].low = low;
         rangeFilters[attr].high = high;
+        let newFilter = buildFilter(rangeFilters, attrMap);
+        if (!this.state.selectedSort.includes("Sort By")) {
+            newFilter.push({
+                "name": attrMap[this.state.selectedSort.substring(0, this.state.selectedSort.lastIndexOf(" "))],
+                "op": "is_not_null"
+            })
+        }
         this.setState({
-            filter: buildFilter(rangeFilters, attrMap),
+            filter: newFilter,
             developers: [],
             loading: true
         }, () => { 

@@ -133,6 +133,10 @@ const initialState = {
     }
 }
 
+const stopWords = new Set([
+    "of", "the", "a", "an", "in", "or", "and", "to"
+])
+
 class Search extends Component {
     constructor(props) {
         super(props);
@@ -203,7 +207,7 @@ class Search extends Component {
         return (
             <div>
                 <div className="container main-page">
-                    <div className="search-query">Search Query: <strong>{this.props.match.params.query}</strong></div>
+                    <div className="search-query">Search Query: <strong>{this.props.match.params.query.split(" ").filter(word => !stopWords.has(word)).join(" ")}</strong></div>
                     <SearchTabs tabs={["game", "developer", "platform", "character"]} changeTab={this.changeTab}/>
                     { this.visibleTab() }
                 </div>
@@ -213,6 +217,7 @@ class Search extends Component {
 
     visibleTab = () => {
         let stateObj = this.state[this.state.currentTab];
+        let filteredQuery = this.props.match.params.query.split(" ").filter(word => !stopWords.has(word)).join(" ");
         return (
             <div> 
                 {stateObj.loading && <Loader/>}
@@ -221,7 +226,7 @@ class Search extends Component {
                         { stateObj.results.length < 1 ? 
                             <div className="not-found"><h1>No results found</h1></div> 
                             : stateObj.results.map( (obj) => {
-                            return <SearchItem obj={obj} query={this.props.match.params.query} 
+                            return <SearchItem obj={obj} query={filteredQuery} 
                                 link={tabIndex[this.state.currentTab].endpoint + obj[tabIndex[this.state.currentTab].id]}/>
                         })}
                         { stateObj.results.length < 1 ? ""
@@ -259,6 +264,7 @@ class Search extends Component {
             "platform": [],
             "character": []
         };
+        query = query.filter(word => !stopWords.has(word));
         for (var i = 0; i < query.length; i++) {
             let currString = query[i];
             Object.keys(searchAttrs).forEach(function(model) {

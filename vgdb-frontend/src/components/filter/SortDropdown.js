@@ -40,7 +40,7 @@ class SortDropdown extends Component {
     render() { 
 		const dropdownItem = (sortOpt) => {
 			const rev  = sortOpt.reverse;
-			const name = sortOpt.sort + (rev ? ' (Reverse)' : '');
+			const name = sortOpt.sort + (rev ? ' 🡻' : ' 🡹');
 			return (
 				<a onClick={this.setSortBy(sortOpt.sort, rev)}>{name}</a>
 			);
