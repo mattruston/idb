@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import DetailsPage from './DetailsPage';
-import Loader from '../../components/Loader';
+import Loader from '../../components/loader/Loader';
 import { request, topModels, gameItemsFromArray } from '../../components/Util';
 
 const gameDetailMap = {
@@ -52,8 +52,7 @@ class DevDetail extends Component {
     }
 
     fetchData() {
-        request("http://gamingdb.info/api/developer/" + this.props.match.params.id)
-        .then(response => {
+        request("http://gamingdb.info/api/developer/" + this.props.match.params.id, (response) => {
             if (response) {
                 let platforms = topModels(response.platforms, "/platforms/", "platform_id");
                 let gameItems = gameItemsFromArray(response.games, gameDetailMap);

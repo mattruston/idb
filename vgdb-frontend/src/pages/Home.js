@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import GridLayout from '../components/GridLayout';
+import GridLayout from '../components/grid/GridLayout';
 import Title from '../components/Title';
-import Loader from '../components/Loader';
+import Loader from '../components/loader/Loader';
 import { request, buildDetails } from '../components/Util';
 
 const topPicks = [4, 13, 87, 106, 149, 178, 183, 186, 225, 281, 295, 296, 317, 474, 483, 585, 715, 720, 728, 861, 939];

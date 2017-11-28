@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import SearchItem from '../components/SearchItem';
 import Title from '../components/Title';
-import Loader from '../components/Loader';
+import Loader from '../components/loader/Loader';
 import SearchTabs from '../components/SearchTabs';
 import Pagination from '../components/Pagination';
 import { request} from '../components/Util';

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import DetailsPage from './DetailsPage';
-import Loader from '../../components/Loader';
+import Loader from '../../components/loader/Loader';
 import { request, buildDetails, topModels } from '../../components/Util';
 
 const detailMap = {
@@ -57,8 +57,7 @@ class GameDetail extends Component {
     }
 
     fetchData() {
-        request("http://gamingdb.info/api/game/" + this.props.match.params.id)
-        .then(response => {
+        request("http://gamingdb.info/api/game/" + this.props.match.params.id, (response) => {
             if (response) {
                 Promise.all(
                     this._fetchRelatedGames(response.related_game_ids)

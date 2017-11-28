@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import './App.css';
 
-import Nav from './components/Nav';
+import Nav from './components/nav/Nav';
 import GamesPage from './pages/GamesPage';
 import DevPage from './pages/DevPage';
 import PlatformsPage from './pages/PlatformsPage';
