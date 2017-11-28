@@ -211,6 +211,8 @@ Like all products, there are always ways that our website could improve. One of 
 
 The next thing that could use some improvement is our search. Currently it works by just using an 'or' search over all words in our database. This could be improved by also finding similar words and maybe having a ranking for things that are probably more relevant. We also do not highlight the currently selected model type when you are filtering the result types.
 
+In terms of performance, our API could be slightly more selective in terms of what information is provided through our API endpoints. At the moment, the relationships in each model are displayed by exact copies of the instances that are related. This, of course, results in large responses per page, specifically for models like platforms, which are connected to a signficant amount of game instances. Given the amount of data in our site, this is not very perceivable in terms of loading time; but if we scale the amount of information we host, latency when hitting our API would be unacceptable.
+
 More little updates could be done all around the website. For example we could provide a feed that features new games and content on the main page, make the site logo more interesting by adding an image to be the logo, add a favicon, or even provide new features that are useful when learning about games. 
 
 ### Tools & Technologies
