@@ -21,16 +21,17 @@ class About extends Component {
     }
 
     componentDidMount() {
-        request(gitEndpoint)
-        .then(response => {
-            if (response) {
-                for (var i = 0; i < response.length; i++) {
-                    var json = { };
-                    json[response[i].author.login] = response[i].total;
-                    this.setState(json);
-                }
+        request(gitEndpoint, this.callback);
+    }
+
+    callback = (response) => {
+        if (response) {
+            for (var i = 0; i < response.length; i++) {
+                var json = { };
+                json[response[i].author.login] = response[i].total;
+                this.setState(json);
             }
-        });
+        } 
     }
     
     render() {
@@ -82,11 +83,11 @@ class About extends Component {
                     {name: "Issues", description: "64" },
                     {name: "Unit Tests", description: "46" }
                 ]}/>
-                <ToolCard title="Data Scources" list={[
+                <ToolCard title="Data Sources" list={[
                     {name: "IGDB", description: "Main source of data", url:"https://igdb.github.io/api/about/welcome/"},
                     {name: "Giant Bomb", description: "Secondary source of data", url:"https://www.giantbomb.com/api/"},
                 ]}/>
-                <ToolCard title="Data Scources" list={[
+                <ToolCard title="Data Sources" list={[
                     {name: "Visualization", description: "Game Day Ballers", url:"http://gamingdb.info/visualization"},
                 ]}/>
             </div>
