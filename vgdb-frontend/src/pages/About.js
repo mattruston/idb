@@ -42,23 +42,23 @@ class About extends Component {
                 <div className="about-grid">
                     <div className="about-card-wrapper">
                         <AboutCard 
-                        name="Jared Jones" description="Howdy, I'm Jared. I'm a senior CS student at UT." roles="Frontend" commits={this.state.Jaredk3nt} issues="20" tests="0" url="https://github.com/Jaredk3nt" image="https://avatars3.githubusercontent.com/u/6362515?s=460&v=4"/>
+                        name="Jared Jones" description="Howdy, I'm Jared. I'm a senior CS student at UT." roles="Frontend" commits={this.state.Jaredk3nt} issues="25" tests="0" url="https://github.com/Jaredk3nt" image="https://avatars3.githubusercontent.com/u/6362515?s=460&v=4"/>
                     </div>
                     <div className="about-card-wrapper">
                         <AboutCard 
-                        name="Juan Penaranda" description="Hi, I'm Juan. I'm a senior CS student at UT." roles="Backend" commits={this.state.jmpo1618}  issues="18" tests="5" url="https://github.com/jmpo1618" image="https://avatars0.githubusercontent.com/u/7012740?s=400&v=4"/>
+                        name="Juan Penaranda" description="Hi, I'm Juan. I'm a senior CS student at UT." roles="Backend" commits={this.state.jmpo1618}  issues="23" tests="5" url="https://github.com/jmpo1618" image="https://avatars0.githubusercontent.com/u/7012740?s=400&v=4"/>
                     </div>
                     <div className="about-card-wrapper">
                         <AboutCard 
-                        name="Derek Tolliver" description="Hi, I'm Derek. I'm a senior CS student at UT." roles="Backend" commits={this.state.derektolliver}  issues="16" tests="20" url="https://github.com/derektolliver" image="https://avatars0.githubusercontent.com/u/8220914?s=400&v=4"/>
+                        name="Derek Tolliver" description="Hi, I'm Derek. I'm a senior CS student at UT." roles="Backend" commits={this.state.derektolliver}  issues="21" tests="20" url="https://github.com/derektolliver" image="https://avatars0.githubusercontent.com/u/8220914?s=400&v=4"/>
                     </div>
                     <div className="about-card-wrapper">
                         <AboutCard 
-                        name="Kishan Patel" description="Hi, I'm Kishan. I'm a junior CS student at UT." roles="Frontend" commits={this.state.KishanRPatel}  issues="15" tests="0" url="https://github.com/KishanRPatel" image="https://avatars3.githubusercontent.com/u/25357245?s=400&v=4"/>
+                        name="Kishan Patel" description="Hi, I'm Kishan. I'm a junior CS student at UT." roles="Frontend" commits={this.state.KishanRPatel}  issues="27" tests="9" url="https://github.com/KishanRPatel" image="https://avatars3.githubusercontent.com/u/25357245?s=400&v=4"/>
                     </div>
                     <div className="about-card-wrapper">
                         <AboutCard 
-                        name="Matt Ruston" description="Hi, I'm Matt. I'm a senior CS student at UT." roles="Backend" commits={this.state.mattruston}  issues="16" tests="0" url="https://github.com/mattruston" image="https://avatars0.githubusercontent.com/u/10778569?s=400&v=4"/>
+                        name="Matt Ruston" description="Hi, I'm Matt. I'm a senior CS student at UT." roles="Backend" commits={this.state.mattruston}  issues="20" tests="5" url="https://github.com/mattruston" image="https://avatars0.githubusercontent.com/u/10778569?s=400&v=4"/>
                     </div>
                 </div>
                 <ToolCard title="Tools" list={[
@@ -72,14 +72,15 @@ class About extends Component {
                     {name: "React", description:"Frontend engine to power all of our clientside rendering and routing"}
                     ]}/>
                 <ToolCard title="Stats" list={[
-                    {name: "Technical Report", description: "UT Box", url:"https://utexas.box.com/s/3iftv25rgbebli0sh06mj5zmmvxtn1ez"},
+                    {name: "Technical Report", description: "GitBooks", url:"https://jmpo1618.gitbooks.io/report/content/"},
+                    {name: "Presentation", description: "GitPitch", url:"https://gitpitch.com/mattruston/idb"},
                     {name: "UML Diagram", description: "yUML", url:"https://yuml.me/a94c2579.png"},
                     {name: "API Docs", description: "Apiary", url:"http://docs.vgdb1.apiary.io/#"},
                     {name: "Issue Tracker", description: "Trello", url:"https://trello.com/b/OBZSfuJU/idb"},
                     {name: "Repository", description: "Github", url:"http://github.com/mattruston/idb"},
                     {name: "Total Commits", description: this.state.Jaredk3nt + this.state.jmpo1618 + this.state.derektolliver + this.state.KishanRPatel + this.state.mattruston },
-                    {name: "Issues", description: "51" },
-                    {name: "Unit Tests", description: "24" }
+                    {name: "Issues", description: "64" },
+                    {name: "Unit Tests", description: "46" }
                 ]}/>
                 <ToolCard title="Data Scources" list={[
                     {name: "IGDB", description: "Main source of data", url:"https://igdb.github.io/api/about/welcome/"},
