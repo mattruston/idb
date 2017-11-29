@@ -9,11 +9,11 @@ class LinkBarItem extends Component {
                 <div className="bar-item-title">{this.props.attribute}</div>
 
                    {this.props.links.filter(link => !link.external).map(item => 
-                            <Link to={item.link} className="bar-item-info"> {item.text}</Link>
+                            <div className="bar-item-info"><Link to={item.link}> {item.text}</Link></div>
                             )
                    }
                    {this.props.links.filter(link => link.external).map(item => 
-                            <a href={item.link} className="bar-item-info"> {item.text}</a>
+                            <div className="bar-item-info"><a href={item.link} className="bar-item-info"> {item.text}</a></div>
                             )
                    }
             </div>

@@ -180,7 +180,7 @@
 			"response": []
 		},
 		{
-			"name": "Get games alphabetical filtering",
+			"name": "Get games alphabetical sorting",
 			"event": [
 				{
 					"listen": "test",
@@ -226,7 +226,7 @@
 			"response": []
 		},
 		{
-			"name": "Get platforms average rating filtering",
+			"name": "Get platforms average rating sorting",
 			"event": [
 				{
 					"listen": "test",
@@ -280,7 +280,7 @@
 			"response": []
 		},
 		{
-			"name": "Get developers name filtering",
+			"name": "Get developers name sorting",
 			"event": [
 				{
 					"listen": "test",
@@ -334,7 +334,7 @@
 			"response": []
 		},
 		{
-			"name": "Get characters name filtering",
+			"name": "Get characters name sorting",
 			"event": [
 				{
 					"listen": "test",
@@ -580,6 +580,190 @@
 					]
 				},
 				"description": "Searches character data for a similar name keyword"
+			},
+			"response": []
+		},
+		{
+			"name": "Filter games by release date",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Checks that number of results is greater than zero\", function() {",
+							"    pm.expect(pm.response.json().num_results).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Checks that number of objects is equal to number of results\", function() {",
+							"    pm.expect(parseInt(pm.response.json().objects[0].release_date.split(\"-\")[0], 10)).to.greaterThan(2016)",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://gamingdb.info/api/game?q={\"filters\":[{\"name\":\"release_date\",\"op\":\">=\",\"val\":\"2017\"}]}",
+					"protocol": "http",
+					"host": [
+						"gamingdb",
+						"info"
+					],
+					"path": [
+						"api",
+						"game"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{\"filters\":[{\"name\":\"release_date\",\"op\":\">=\",\"val\":\"2017\"}]}",
+							"equals": true
+						}
+					]
+				},
+				"description": "Filters games by checking for release dates during or after the year 2017."
+			},
+			"response": []
+		},
+		{
+			"name": "Filter developers by average rating",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Checks that number of results is greater than zero\", function() {",
+							"    pm.expect(pm.response.json().num_results).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Checks that number of objects is equal to number of results\", function() {",
+							"    pm.expect(pm.response.json().objects[0].average_rating).to.greaterThan(68)",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://gamingdb.info/api/developer?q={\"filters\":[{\"name\":\"average_rating\",\"op\":\">=\",\"val\":\"69\"}]}",
+					"protocol": "http",
+					"host": [
+						"gamingdb",
+						"info"
+					],
+					"path": [
+						"api",
+						"developer"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{\"filters\":[{\"name\":\"average_rating\",\"op\":\">=\",\"val\":\"69\"}]}",
+							"equals": true
+						}
+					]
+				},
+				"description": "Filters developers by average rating greater or equal to 69."
+			},
+			"response": []
+		},
+		{
+			"name": "Filter platforms by release date",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Checks that number of results is greater than zero\", function() {",
+							"    pm.expect(pm.response.json().num_results).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Checks that number of objects is equal to number of results\", function() {",
+							"    pm.expect(parseInt(pm.response.json().objects[0].release_date.split(\"-\")[0], 10)).to.greaterThan(2010)",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://gamingdb.info/api/platform?q={\"filters\":[{\"name\":\"release_date\",\"op\":\">=\",\"val\":\"2011\"}]}",
+					"protocol": "http",
+					"host": [
+						"gamingdb",
+						"info"
+					],
+					"path": [
+						"api",
+						"platform"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{\"filters\":[{\"name\":\"release_date\",\"op\":\">=\",\"val\":\"2011\"}]}",
+							"equals": true
+						}
+					]
+				},
+				"description": "Filters platforms by release dates that occur in 2011 or later."
+			},
+			"response": []
+		},
+		{
+			"name": "Filter characters by average rating",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Checks that number of results is greater than zero\", function() {",
+							"    pm.expect(pm.response.json().num_results).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Checks that number of objects is equal to number of results\", function() {",
+							"    pm.expect(pm.response.json().objects[0].average_rating).to.greaterThan(95)",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://gamingdb.info/api/character?q={\"filters\":[{\"name\":\"average_rating\",\"op\":\">=\",\"val\":\"96\"}]}",
+					"protocol": "http",
+					"host": [
+						"gamingdb",
+						"info"
+					],
+					"path": [
+						"api",
+						"character"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{\"filters\":[{\"name\":\"average_rating\",\"op\":\">=\",\"val\":\"96\"}]}",
+							"equals": true
+						}
+					]
+				},
+				"description": "Filters characters by retrieving those with an average rating of 96 or above."
 			},
 			"response": []
 		}

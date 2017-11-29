@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './GridItem.css';
 
-const placeholder = require('../assets/imgholder.png');
+const placeholder = require('../../assets/imgholder.png');
 
 class GridItem extends Component {
     static defaultProps = {

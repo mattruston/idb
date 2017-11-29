@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import SideBarItem from '../../components/SideBarItem';
-import MainBarItem from '../../components/MainBarItem';
-import LinkBarItem from '../../components/LinkBarItem';
-import GridLayout from '../../components/GridLayout';
+import SideBarItem from '../../components/details/SideBarItem';
+import MainBarItem from '../../components/details/MainBarItem';
+import LinkBarItem from '../../components/details/LinkBarItem';
+import GridLayout from '../../components/grid/GridLayout';
 import './DetailsPage.css';
 
 const placeholder = require('../../assets/imgholder.png');
@@ -42,10 +42,12 @@ class DetailsPage extends Component {
                     </div>
                     
                 </div>
-                <div className="container detail-game-list">
-                    <h3 className="detail-subtitle">{this.props.gamesTitle}</h3>
-                    <GridLayout items={this.props.games}/>
-                </div>
+                {(this.props.games.length > 0) &&
+                    <div className="container detail-game-list">
+                        <h3 className="detail-subtitle">{this.props.gamesTitle}</h3>
+                        <GridLayout items={this.props.games}/>
+                    </div>
+                }
             </div>
         );
     }
