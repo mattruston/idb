@@ -1,6 +1,13 @@
 import React, {Component} from 'react';
 import DetailsPage from './DetailsPage';
-import Loader from '../../components/Loader';
+import Loader from '../../components/loader/Loader';
+import { request, buildDetails, topModels, reformatDate, requestGame } from '../../components/Util';
+
+const detailMap = {
+    "release_date": "Released:",
+    "rating": "Rating:",
+    "genres": "Genre:"
+}
 
 class GameDetail extends Component {
     constructor(props) {
@@ -17,7 +24,7 @@ class GameDetail extends Component {
     }
 
     componentDidMount() {
-        this._fetchData();
+        this.fetchData();
     }
 
     componentDidUpdate(prevProps) {
@@ -31,7 +38,7 @@ class GameDetail extends Component {
             loading: true,
             relatedGames: []
         }, () => {
-            this._fetchData();
+            this.fetchData();
         });
     }
 
@@ -49,60 +56,58 @@ class GameDetail extends Component {
         );
     }
 
-    _fetchData() {
-        fetch("http://gamingdb.info/api/game/" + this.props.match.params.id,{
-            method: 'GET'
-        }).then(response => {
-            if(response.ok) {
-                return response.json();
-            }
-            throw new Error('Failed to retrieve response object for game.');
-        })
-        .then(response => {
-            Promise.all(
-                this._fetchRelatedGames(response.related_game_ids)
-            ).then(results => {
-                let relatedGamesArray = [];
-                for (let i = 0; i < results.length; i++) {
-                    let response = results[i];
-                    if (response != null) {
-                        let item = {
-                            name: response.name,
-                            img: response.thumb_url,
-                            url: "/games/" + response.game_id,
-                            details: this._buildDetails(response)
-                        };
-                        relatedGamesArray.push(item);
+    fetchData() {
+        request("http://gamingdb.info/api/game/" + this.props.match.params.id, (response) => {
+            if (response) {
+                Promise.all(
+                    this._fetchRelatedGames(response.related_game_ids)
+                ).then(results => {
+                    let relatedGamesArray = [];
+                    for (let i = 0; i < results.length; i++) {
+                        let response = results[i];
+                        if (response != null) {
+                            let item = {
+                                name: response.name,
+                                img: response.thumb_url,
+                                url: "/games/" + response.game_id,
+                                details: buildDetails(response, detailMap)
+                            };
+                            relatedGamesArray.push(item);
+                        }
                     }
-                }
-                this.setState({
-                    relatedGames: relatedGamesArray
+                    this.setState({
+                        relatedGames: relatedGamesArray
+                    });
                 });
-            });
-            let genres = this._stringFromArray(response.genres);
-            let devs = this._topModels(response.developers, "/developers/", "developer_id");
-            let platforms = this._topModels(response.platforms, "/platforms/", "platform_id");
-            let characters = this._topModels(response.characters, "/characters/", "character_id");
-            this.setState({
-                name: response.name ? response.name : "",
-                description: response.description ? response.description : "",
-                mainbar: [
-                    { title: "Rating", content: response.rating ? response.rating + "/100" : "" },
-                    { title: "Genres", content: genres }
+                let genres = this._getGenreString(response.genres);
+                let devs = topModels(response.developers, "/developers/", "developer_id");
+                let platforms = topModels(response.platforms, "/platforms/", "platform_id");
+                let characters = topModels(response.characters, "/characters/", "character_id");
+                this.setState({
+                    name: response.name ? response.name : "",
+                    description: response.description ? response.description : "",
+                    mainbar: [
+                        { title: "Release Date", content: response.release_date ? reformatDate(response.release_date) : ""},
+                        { title: "Rating", content: response.rating ? response.rating + "/100" : "" },
+                        { title: "Genres", content: genres }
 
-                ],
-                img: response.image_url,
-                linkbar: [
-                    { title: "Top Platforms", links: platforms },
-                    { title: "Top Developers", links: devs },
-                    { title: "Top Characters", links: characters }
-                ]
-            });
-            this.setState({
-                loading: false
-            })
-        }).catch(error => {
-            console.log(error);
+                    ],
+                    img: response.image_url,
+                    linkbar: [
+                        { title: "Top Platforms", links: platforms },
+                        { title: "Top Developers", links: devs },
+                        { title: "Top Characters", links: characters }
+                    ]
+                });
+                this.setState({
+                    loading: false
+                })
+            } else {
+                this.setState({
+                    loading: false,
+                    error: true
+                });
+            }
         });
     };
 
@@ -111,68 +116,23 @@ class GameDetail extends Component {
         if(idArray !== null) {
             for (var i = 0; i < idArray.length; i++) {
                 promiseArray.push(
-                    this._fetchGame(idArray[i])
+                    requestGame("http://gamingdb.info/api/game/" + idArray[i])
                 );
             }
         }
         return promiseArray;
     }
 
-    _fetchGame(id) {
-        return fetch("http://gamingdb.info/api/game/" + id,{
-            method: 'GET'
-        }).then(response => {
-            if(response.ok) {
-                return response.json();
-            }
-            throw new Error('Failed to retrieve response object for game.');
-        }).catch(error => {
-            console.log(error);
-            return null;
-        });
-    }
-
-    _stringFromArray(a) {
+    _getGenreString(a) {
         if(!a) {
             return "";
         }
-        let s = "";
+        let s = [];
         for( let x of a ) {
-            s += x.name;
-            s += ", ";
+            s.push(x.name);
         }
-        return s.substring(0, s.length - 2);
+        return s.join(", ");
     }
-
-    _buildDetails(obj) {
-        let details = []
-        if(obj.release_date) 
-            details.push({ title: "Released:", content:obj.release_date});
-        if(obj.rating) 
-            details.push({title: "Rating:", content: obj.rating + "/100"});
-        if(obj.genres.length > 0)
-            details.push({title: "Genre:", content:obj.genres[0].name});
-
-        return details;
-    }
-
-    _topModels(array, path, idKey) {
-        let result = [];
-        array.sort(function(a, b) {
-           return b.average_rating - a.average_rating;
-        });
-        for (var i = 0; i < array.length; i++) {
-            let obj = array[i];
-            result.push({
-                text: obj.name,
-                link: path + obj[idKey]
-            });
-        if (i === 5)
-            break;
-        }   
-        return result; 
-    }
-
 }
 
 export default GameDetail;

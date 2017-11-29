@@ -3,10 +3,22 @@
 }
 .bar-item-title {
     font-weight: 700;
+    font-size: 1.1rem;
 }
 .bar-item-info {
     margin-top: 0em;
     margin-bottom: 0em;
+    font-size: 1.1rem;
+}
+
+.bar-item-info a {
+    color: #1bddbc;
+    text-decoration: none; 
+}
+
+.bar-item-info a:hover {
+    color: #2de5c6;
+    text-decoration: underline;
 }
 .main-info {
     margin-left: .5em;

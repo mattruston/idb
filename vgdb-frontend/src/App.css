@@ -69,3 +69,25 @@ body {
         width: 95%;
     }
 }
+
+.graph-container {
+    box-sizing: border-box;
+    width: 90%;
+    background: #fff;
+    border-radius: 5px;
+    margin-top: 2em;
+}
+.graph {
+    display: inline-block;
+    max-width: 50%;
+    padding: 1em 0em;
+    height: 100%;
+    background-color: #fbfbfb;
+    border-radius: 5px 0px 0px 5px;
+}
+.graph-text {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    padding: 2em 1em 2em 2em;
+}

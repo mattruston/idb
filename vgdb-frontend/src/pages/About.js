@@ -3,6 +3,7 @@ import AboutCard from '../components/AboutCard';
 import Title from '../components/Title';
 import ToolCard from '../components/ToolCard'
 import './About.css';
+import { request } from '../components/Util';
 
 const gitEndpoint = "https://api.github.com/repos/mattruston/idb/stats/contributors";
 
@@ -20,15 +21,14 @@ class About extends Component {
     }
 
     componentDidMount() {
-        fetch(gitEndpoint, {
-            method: 'GET'
-        }).then(response => response.json())
+        request(gitEndpoint)
         .then(response => {
-            console.log(response);
-            for (var i = 0; i < response.length; i++) {
-                var json = { };
-                json[response[i].author.login] = response[i].total;
-                this.setState(json);
+            if (response) {
+                for (var i = 0; i < response.length; i++) {
+                    var json = { };
+                    json[response[i].author.login] = response[i].total;
+                    this.setState(json);
+                }
             }
         });
     }
@@ -84,6 +84,9 @@ class About extends Component {
                 <ToolCard title="Data Scources" list={[
                     {name: "IGDB", description: "Main source of data", url:"https://igdb.github.io/api/about/welcome/"},
                     {name: "Giant Bomb", description: "Secondary source of data", url:"https://www.giantbomb.com/api/"},
+                ]}/>
+                <ToolCard title="Data Scources" list={[
+                    {name: "Visualization", description: "Game Day Ballers", url:"http://gamingdb.info/visualization"},
                 ]}/>
             </div>
         )

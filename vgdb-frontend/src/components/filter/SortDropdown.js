@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import './styles/sortandfilter.css';
+import ReactDOM from 'react-dom';
+import '../styles/sortandfilter.css';
 
 class SortDropdown extends Component {
     constructor(props) {
@@ -17,6 +18,20 @@ class SortDropdown extends Component {
 			};
 		};
     }
+
+    componentWillMount() {
+        document.addEventListener('click', this.handleClick, false);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('click', this.handleClick, false);
+    }
+
+    handleClick = e => {
+        if(!ReactDOM.findDOMNode(this).contains(e.target)) {
+            this.setState({drop: false});
+        }
+    }
     
     toggleDrop = () => {
         this.setState({ drop: !this.state.drop });
@@ -25,7 +40,7 @@ class SortDropdown extends Component {
     render() { 
 		const dropdownItem = (sortOpt) => {
 			const rev  = sortOpt.reverse;
-			const name = sortOpt.sort + (rev ? ' (Reverse)' : '');
+			const name = sortOpt.sort + (rev ? ' 🡻' : ' 🡹');
 			return (
 				<a onClick={this.setSortBy(sortOpt.sort, rev)}>{name}</a>
 			);

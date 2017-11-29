@@ -14,7 +14,7 @@ class SearchBar extends Component {
             <div className="search-bar">
                 <input className="search-bar-input" placeholder="Search" onChange={this.inputChange} onKeyPress={this.enterPressed}></input>
                 <div className="search-bar-button" onClick={this.search} >
-                    <img className="search-bar-button-img" src={require('../assets/search.svg')}/>
+                    <img className="search-bar-button-img" src={require('../../assets/search.svg')}/>
                 </div>
             </div>
         );
