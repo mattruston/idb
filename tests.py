@@ -51,14 +51,14 @@ class DBTests(TestCase):
             db.session.commit()
 
     def test_create_character(self):
-        character = Character(name="Mugman", summary="Best character.", gender='Male', 
+        character = Character(name="Mugman", description="Best character.", gender='Male', 
                         image_url='https://img00.deviantart.net/6d0a/i/2017/138/e/d/sad_mugman_by_vintage_ink1941-db9m5mi.jpg')
         with app.app_context():
             db.session.add(character)
             db.session.commit()
             query = db.session.query(Character).filter_by(name="Mugman").first()
             self.assertEqual(query.name, "Mugman")
-            self.assertEqual(query.summary, "Best character.")
+            self.assertEqual(query.description, "Best character.")
             self.assertEqual(query.gender, 'Male')
             self.assertEqual(query.image_url, "https://img00.deviantart.net/6d0a/i/2017/138/e/d/sad_mugman_by_vintage_ink1941-db9m5mi.jpg")
             db.session.delete(character)
@@ -172,47 +172,25 @@ class DBTests(TestCase):
             self.assertEqual(api_id, db_id)
             self.assertEqual(api_average_rating, db_average_rating)
 
-    def test_get_first_character_alphabetically(self):
-        with app.app_context():
-            api_request = requests.get('http://gamingdb.info/api/character?q={"order_by":[{"field":"name","direction":"asc"}]}')
-            character_data = json.loads(api_request.text)
-            api_id = character_data['objects'][0]['character_id']
-            api_name = character_data['objects'][0]['name']
-
-            db_request = db.session.query(Character).order_by(Character.name)
-            db_id = db_request[0].character_id
-            db_name = db_request[0].name
-
-            self.assertEqual(api_id, db_id)
-            self.assertEqual(api_name, db_name)
-
     def test_get_game_filter(self):
         with app.app_context():
             api_request = requests.get('http://gamingdb.info/api/game?q={"filters":[{"name":"rating","op":">=","val":"69"}]}')
             game_data = json.loads(api_request.text)
-            api_id = game_data['objects'][0]['game_id']
-            api_name = game_data['objects'][0]['name']
 
             db_request = db.session.query(Game).filter(Game.rating >= 69)
-            db_id = db_request[0].game_id
-            db_name = db_request[0].name
 
-            self.assertEqual(api_id, db_id)
-            self.assertEqual(api_name, db_name)
+            self.assertEqual(game_data['num_results'], db_request.count())
 
     def test_get_character_filter(self):
         with app.app_context():
-            api_request = requests.get('http://gamingdb.info/api/character?q={"filters":[{"name":"average_rating","op":">=","val":"69"}]}')
+            api_request = requests.get('http://gamingdb.info/api/character?q={"filters":[{"name":"average_rating","op":">=","val":"96"}]}')
             character_data = json.loads(api_request.text)
             api_id = character_data['objects'][0]['character_id']
             api_name = character_data['objects'][0]['name']
 
             db_request = db.session.query(Character).filter(Character.average_rating >= 96)
-            db_id = db_request[0].character_id
-            db_name = db_request[0].name
 
-            self.assertEqual(api_id, db_id)
-            self.assertEqual(api_name, db_name)
+            self.assertEqual(character_data['num_results'], db_request.count())
         
 if __name__ == "__main__":
     main()
