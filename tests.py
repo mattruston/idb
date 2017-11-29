@@ -185,6 +185,34 @@ class DBTests(TestCase):
 
             self.assertEqual(api_id, db_id)
             self.assertEqual(api_name, db_name)
+
+    def test_get_game_filter(self):
+        with app.app_context():
+            api_request = requests.get('http://gamingdb.info/api/game?q={"filters":[{"name":"rating","op":">=","val":"69"}]}')
+            game_data = json.loads(api_request.text)
+            api_id = game_data['objects'][0]['game_id']
+            api_name = game_data['objects'][0]['name']
+
+            db_request = db.session.query(Game).filter(Game.rating >= 69)
+            db_id = db_request[0].game_id
+            db_name = db_request[0].name
+
+            self.assertEqual(api_id, db_id)
+            self.assertEqual(api_name, db_name)
+
+    def test_get_character_filter(self):
+        with app.app_context():
+            api_request = requests.get('http://gamingdb.info/api/character?q={"filters":[{"name":"average_rating","op":">=","val":"69"}]}')
+            character_data = json.loads(api_request.text)
+            api_id = character_data['objects'][0]['character_id']
+            api_name = character_data['objects'][0]['name']
+
+            db_request = db.session.query(Character).filter(Character.average_rating >= 96)
+            db_id = db_request[0].character_id
+            db_name = db_request[0].name
+
+            self.assertEqual(api_id, db_id)
+            self.assertEqual(api_name, db_name)
         
 if __name__ == "__main__":
     main()
