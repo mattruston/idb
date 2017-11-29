@@ -15,6 +15,20 @@ export function request(endpoint, callback) {
         });
 }
 
+export function requestGame(endpoint) {
+    console.log("fetching related game...");
+    return fetch(endpoint, { method: 'GET' })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error("Error occured while trying to retrieve data.");
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
+
 export function buildDetails(model, detailMap) {
     let details = [];
     Object.keys(detailMap).forEach(function(attr) {

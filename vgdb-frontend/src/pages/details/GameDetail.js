@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import DetailsPage from './DetailsPage';
 import Loader from '../../components/loader/Loader';
-import { request, buildDetails, topModels, reformatDate } from '../../components/Util';
+import { request, buildDetails, topModels, reformatDate, requestGame } from '../../components/Util';
 
 const detailMap = {
     "release_date": "Released:",
@@ -116,7 +116,7 @@ class GameDetail extends Component {
         if(idArray !== null) {
             for (var i = 0; i < idArray.length; i++) {
                 promiseArray.push(
-                    request("http://gamingdb.info/api/game/" + idArray[i])
+                    requestGame("http://gamingdb.info/api/game/" + idArray[i])
                 );
             }
         }
