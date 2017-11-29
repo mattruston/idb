@@ -207,6 +207,8 @@ We also needed to get our project to use a custom domain. We purchased gamingdb.
 
 ### Critiques
 
+####gamingdb.info
+
 Like all products, there are always ways that our website could improve. One of the obvious improvements is increasing the quality of information on each of the model pages. Right now on each page we mainly only have some basic pieces of information such as an image, title, description, and links to related models. This could be improved by providing additional details such as screenshots, videos, and even something such as user reviews. Another place where our detail pages could be better is in the links to other objects. Currently we limited the number of links shown for each different model because having too many was making the page bloated. The problem is that now some pieces of related information are missing that a user might care to see. In the future we could redesign the page so that all related models are listed, but in a way that the page doesnt look bad if there are numerous connections.
 
 The next thing that could use some improvement is our search. Currently it works by just using an 'or' search over all words in our database. This could be improved by also finding similar words and maybe having a ranking for things that are probably more relevant. We also do not highlight the currently selected model type when you are filtering the result types.
@@ -216,6 +218,10 @@ In terms of performance, our API could be slightly more selective in terms of wh
 More little updates could be done all around the website. For example we could provide a feed that features new games and content on the main page, make the site logo more interesting by adding an image to be the logo, add a favicon, or even provide new features that are useful when learning about games.
 
 On a less technical note, after consulting with potential users of the website, we got some insight on how its usability could be improved. Many small changes could be implemented to make this possible, but it would require more extensive testing and feedback analysis.
+
+#### gamedayballers.me
+
+Overall, their website was solid. The main technical problems with it is that it attempts to load using HTTPS while not fully supporting it and a very infrequent Javascript runtime error on their about page. Personally, from a design perspective, we believe that their late addition of a scrollbar at the top of their site is quite distracting and less useful than their previous homepage.
 
 ### Tools & Technologies
 
