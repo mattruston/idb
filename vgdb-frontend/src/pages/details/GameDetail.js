@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import DetailsPage from './DetailsPage';
 import Loader from '../../components/loader/Loader';
-import { request, buildDetails, topModels } from '../../components/Util';
+import { request, buildDetails, topModels, reformatDate } from '../../components/Util';
 
 const detailMap = {
     "release_date": "Released:",
@@ -87,7 +87,7 @@ class GameDetail extends Component {
                     name: response.name ? response.name : "",
                     description: response.description ? response.description : "",
                     mainbar: [
-                        { title: "Release Date", content: response.release_date ? response.release_date : ""},
+                        { title: "Release Date", content: response.release_date ? reformatDate(response.release_date) : ""},
                         { title: "Rating", content: response.rating ? response.rating + "/100" : "" },
                         { title: "Genres", content: genres }
 

@@ -37,6 +37,8 @@ export function buildDetails(model, detailMap) {
             }
         } else if (attr === "rating" || attr === "average_rating") {
             result.content = model[attr] + "/100";
+        } else if (attr === "release_date") {
+            result.content = reformatDate(model[attr]);
         } else {
             result.content = model[attr];
         }
@@ -97,4 +99,14 @@ export function gameItemsFromArray(gameArray, gameDetailMap) {
                 break;
         }
         return result;
-    }
+}
+
+export function reformatDate(date) {
+    let dateArr = date.split("-");
+    let result = [];
+    result.push(dateArr[1]);
+    result.push(dateArr[2]);
+    result.push(dateArr[0]);
+    return result.join("-");
+
+}

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import DetailsPage from './DetailsPage';
 import Loader from '../../components/loader/Loader';
-import { request, topModels, gameItemsFromArray } from '../../components/Util';
+import { request, topModels, gameItemsFromArray, reformatDate } from '../../components/Util';
 
 const gameDetailMap = {
     "release_date": "Released:",
@@ -66,7 +66,7 @@ class PlatformDetail extends Component {
                     ],
                     img: response.image_url ? response.image_url : "",
                     sidebar: [
-                        { title: "Release Date", content: response.release_date ? response.release_date : ""}
+                        { title: "Release Date", content: response.release_date ? reformatDate(response.release_date) : ""}
                     ],
                     linkbar: [
                         { title: "Top Developers", links: devs },
