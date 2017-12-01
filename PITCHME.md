@@ -55,6 +55,7 @@ A website for all games
 - Take advantage of Flask's capabilities
 - High quality and quantity of content
 - Good design with mobile support
+- Good atomic design with React
 
 ---
 
@@ -102,7 +103,8 @@ A website for all games
 
 #### What did we learn from their website?
 
-- Divide models properly (although it doesn't follow the models.py spec)
+- Divide models properly
+- Include more rich media
 
 ---
 
