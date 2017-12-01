@@ -1,6 +1,6 @@
 # gamingdb.info
 
-A website.
+A website for all games
 
 ---
 
@@ -42,9 +42,9 @@ A website.
 - Python unit tests
 - Postman API tests
 
-+++
+---
 
-## (Demo)[http://gamingdb.info]
+## [Demo](http://gamingdb.info)
 
 ---
 
