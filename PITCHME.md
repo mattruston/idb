@@ -52,8 +52,8 @@ A website for all games
 
 #### What did we do well?
 
-- Take advantage of Flask's capabilities
 - High quality and quantity of content
+- Take advantage of Flask's capabilities
 - Good design with mobile support
 - Good atomic design with React
 
