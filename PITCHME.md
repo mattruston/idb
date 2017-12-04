@@ -38,7 +38,7 @@ A website for all games
 
 ## Derek Tolliver
 
-- Database modification
+- Backend/Database
 - Python unit tests
 - Postman API tests
 
@@ -113,7 +113,7 @@ A website for all games
 #### What can they do better?
 
 - Ignore .pyc files
-- Site doesnt fully support https and results in endless loading
+- Site doesn't fully support https and results in endless loading
 - The moving banner could be slower, and distracts on model pages
 
 ---
@@ -122,5 +122,5 @@ A website for all games
 
 #### What puzzles us?
 
-- Why their website attempts to use HTTPS but can't load that way
 - Why they changed their homepage
+- Why our websites attempt to use HTTPS but can't load that way
